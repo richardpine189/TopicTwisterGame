@@ -27,24 +27,11 @@ namespace Team8.TopicTwister
             foreach(RectTransform rt in _panels)
             {
                 Vector2 tempVector = rt.GetComponent<PanelPosition>().PanelInitialPosition;
+                rt.DOAnchorPos(tempVector, ANIMATION_TIME_TO_SLIDING);
             }
             panelToShow.DOAnchorPos(Vector2.zero, ANIMATION_TIME_TO_SLIDING);
         }
 
-    }
-
-    public class PanelPosition : MonoBehaviour
-    {
-        private Vector2 _panelInitialPosition;
-        private RectTransform _panelTransform;
-
-        public Vector2 PanelInitialPosition { get => _panelInitialPosition; private set => _panelInitialPosition = value; }
-
-        private void Awake()
-        {
-            _panelTransform = GetComponent<RectTransform>();
-            _panelInitialPosition = _panelTransform.anchoredPosition;
-        }
     }
 }
 

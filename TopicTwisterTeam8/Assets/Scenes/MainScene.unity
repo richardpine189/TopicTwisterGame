@@ -609,6 +609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 112570108}
   - component: {fileID: 112570109}
+  - component: {fileID: 112570110}
   m_Layer: 5
   m_Name: MatchMainScreen
   m_TagString: Untagged
@@ -664,6 +665,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &112570110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112570107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf58a71ba63d004e84ab5305d36654d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &171780463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,7 +1114,7 @@ GameObject:
   - component: {fileID: 390765365}
   - component: {fileID: 390765364}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Footer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1123,7 +1136,7 @@ RectTransform:
   - {fileID: 1454473414}
   - {fileID: 850195658}
   m_Father: {fileID: 1898445676}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -2166,6 +2179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 814782195}
   - component: {fileID: 814782196}
+  - component: {fileID: 814782197}
   m_Layer: 5
   m_Name: MatchRecords
   m_TagString: Untagged
@@ -2222,6 +2236,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &814782197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814782194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf58a71ba63d004e84ab5305d36654d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &850195657
 GameObject:
   m_ObjectHideFlags: 0
@@ -4729,6 +4755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1728902087}
   - component: {fileID: 1728902088}
+  - component: {fileID: 1728902089}
   m_Layer: 5
   m_Name: ShopInventoryScreen
   m_TagString: Untagged
@@ -4784,6 +4811,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1728902089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728902086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf58a71ba63d004e84ab5305d36654d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1764457198
 GameObject:
   m_ObjectHideFlags: 0
@@ -5285,8 +5324,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 390765363}
   - {fileID: 2052908847}
+  - {fileID: 390765363}
   - {fileID: 112570108}
   - {fileID: 1728902087}
   - {fileID: 814782195}
@@ -5309,6 +5348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1900328278}
   - component: {fileID: 1900328279}
+  - component: {fileID: 1900328280}
   m_Layer: 5
   m_Name: SettingPanel
   m_TagString: Untagged
@@ -5363,6 +5403,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1900328280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900328277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf58a71ba63d004e84ab5305d36654d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1903879173
 GameObject:
   m_ObjectHideFlags: 0
@@ -5806,7 +5858,7 @@ RectTransform:
   - {fileID: 432456617}
   - {fileID: 1402209504}
   m_Father: {fileID: 1898445676}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
