@@ -4,36 +4,49 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using NSubstitute;
+using Team8.TopicTwister.Assets.Scripts;
 
 public class UserServiceShould
 {
+    IUserRepository repoSubstitute;
+    UserService uService;
+
+    [SetUp]
+    public void SetUp()
+    {
+        repoSubstitute = Substitute.For<IUserRepository>();
+
+        uService = new UserService(repoSubstitute);
+    }
+
     [Test]
     public void GivenUserId_ReturnAnUserAccount()
     {
-        UserService uService = new UserService();
-        
         int id = 2;
 
-        User user = uService.GetUser(id);
+        uService.GetUserById(id);
 
-        Assert.IsNotNull(user);
+        repoSubstitute.Received().GetUser(id);
     }
 
-}
-
-
-
-internal class UserService
-{
-    public UserService()
+    [Test]
+    public void GivenAnEmail_CreateUserAccount()
     {
+        string email = "test@quark.com.ar";
+
+        uService.CreateUser(email);
+
+        repoSubstitute.Received().CreateUser(Arg.Is<string>(email => email.Contains('@') && email.Contains(".com")));
     }
 
-    internal User GetUser(int userId)
+    [Test]
+    public void GivenAUser_UpdateUserAccount()
     {
-        
-        return new User(userId);
-    }
+        User user = new User(3, "Juancito");
 
-    
+        uService.UpdateUser(user);
+
+        repoSubstitute.Received().UpdateUser(Arg.Is<User>(user));
+    }
 }
