@@ -1,5 +1,5 @@
 {
-    "name": "Game.UserPlayMode",
+    "name": "Match.PlayMode",
     "optionalUnityReferences": [
         "TestAssemblies"
     ]
