@@ -8,12 +8,14 @@ using Team8.TopicTwister.Assets.Scripts;
 
 public class MatchShould
 {
+    User _opponent;
     Match _match;
 
     [SetUp]
     public void SetUp()
     {
-        _match = new Match();
+        _opponent = new User(2, "test");
+        _match = new Match(_opponent);
     }
 
     [Test]
@@ -25,13 +27,11 @@ public class MatchShould
     }
 
     //[Test]
-    //public void GivenAMatch_GetMatchState()
+    //public void GivenAnOngoingMatch_GetMatchState()
     //{
     //    //0 = no termino la partida
 
-    //    Match match = new Match();
-
-    //    Assert.AreEqual(0, match.GetState());
+    //    Assert.AreEqual(0, _match.GetState());
     //}
 }
 
