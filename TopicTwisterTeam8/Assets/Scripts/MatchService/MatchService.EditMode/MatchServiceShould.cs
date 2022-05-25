@@ -26,6 +26,13 @@ public class MatchServiceShould
 
         matchService.CreateMatch(opponent);
     }
+    //MatchService debe encontrar un oponente.
+
+    //MatchService debe combrobar criterios de emparejamiento de los usuarios.
+
+    //MatchService debe Iniciar una partida (instanciar Match?)
+
+    
 }
 
 public class MatchService
