@@ -7,45 +7,5 @@ using UnityEngine.TestTools;
 
 public class MatchServiceShould
 {
-    [Test]
-    public void FindOpponent()
-    {
-        MatchService matchService = new MatchService();
 
-        var user = matchService.FindOpponent();
-
-        Assert.IsNotNull(user);
-    }
-
-    [Test]
-    public void GivenOpponent_StartNewMatch()
-    {
-        MatchService matchService = new MatchService();
-
-        User opponent = new User(1, "test");
-
-        matchService.CreateMatch(opponent);
-    }
-    //MatchService debe encontrar un oponente.
-
-    //MatchService debe combrobar criterios de emparejamiento de los usuarios.
-
-    //MatchService debe Iniciar una partida (instanciar Match?)
-
-    
-}
-
-public class MatchService
-{
-    public object FindOpponent()
-    {
-        return new object();
-    }
-
-    public bool CreateMatch(User opponent)
-    {
-        Match newMatch = new Match(opponent);
-
-        return true;
-    }
 }
