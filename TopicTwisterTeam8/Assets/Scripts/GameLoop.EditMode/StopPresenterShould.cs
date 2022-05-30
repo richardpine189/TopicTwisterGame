@@ -13,45 +13,43 @@ public class StopPresenterShould
     public void SendAnswers_WhenStopButtonClicked()
     {
         // Arrange
-        string[] answers = { "hola", "chau", "test", "", " " };
+        String[] answers = { "hola", "chau", "test", "", " " };
         IAnsweringView _view = Substitute.For<IAnsweringView>();
-        StopPresenter _presenter = new StopPresenter(_view);
+        IAnswerSender _answerSender = Substitute.For<IAnswerSender>();
+        StopPresenter _presenter = new StopPresenter(_view, _answerSender);
 
         // Act
         _view.OnStopClick += Raise.Event<Action<string[]>>(answers);
 
         // Assert
-        _presenter.Received().SendAnswersAction(answers);
+        _answerSender.Received().SendAnswers(answers);
     }
 }
 
-internal class StopPresenter
+public class StopPresenter
 {
     private IAnsweringView _view;
-    private StopAction _stopAction;
+    private IAnswerSender _answerSender;
 
-    public StopPresenter(IAnsweringView view)
+    public StopPresenter(IAnsweringView view, IAnswerSender answerSender)
     {
         _view = view;
-         _stopAction = new StopAction();
+        _answerSender = answerSender;
         _view.OnStopClick += SendAnswersAction;
     }
 
-    private void SendAnswersAction(string[] answers)
+    private void SendAnswersAction(String[] answers)
     {
-        _stopAction.SendAnswers(answers);
+        _answerSender.SendAnswers(answers);
     }
 }
 
-internal interface IAnsweringView
+public interface IAnsweringView
 {
     event Action<string[]> OnStopClick;
 }
 
-public class StopAction
+public interface IAnswerSender
 {
-    public void SendAnswers(string[] answers)
-    {
-        
-    }
+    public void SendAnswers(string[] answers);
 }
