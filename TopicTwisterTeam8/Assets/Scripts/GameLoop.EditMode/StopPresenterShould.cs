@@ -13,13 +13,16 @@ public class StopPresenterShould
     public void SendAnswers_WhenStopButtonClicked()
     {
         // Arrange
-        String[] answers = { "hola", "chau", "test", "", " " };
+        string[] answers = { "hola", "chau", "test"};
+        
+
         IAnsweringView _view = Substitute.For<IAnsweringView>();
         IAnswerSender _answerSender = Substitute.For<IAnswerSender>();
         StopPresenter _presenter = new StopPresenter(_view, _answerSender);
 
         // Act
         _view.OnStopClick += Raise.Event<Action<string[]>>(answers);
+        
 
         // Assert
         _answerSender.Received().SendAnswers(answers);
@@ -38,7 +41,7 @@ public class StopPresenter
         _view.OnStopClick += SendAnswersAction;
     }
 
-    private void SendAnswersAction(String[] answers)
+    private void SendAnswersAction(string[] answers)
     {
         _answerSender.SendAnswers(answers);
     }
