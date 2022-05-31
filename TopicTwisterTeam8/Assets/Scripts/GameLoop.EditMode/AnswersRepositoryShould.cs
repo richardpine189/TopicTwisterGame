@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using UnityEditor;
 
 public class AnswersRepositoryShould
 {
@@ -18,20 +19,24 @@ public class AnswersRepositoryShould
         //Act
         answersRepository.SaveAnswers(answers);
         //Assert
-        Assert.IsTrue(File.Exists($"../Assets/Scripts/Answers/{fileName}"));
+        Assert.IsTrue(File.Exists($"Assets/Scripts/Answers/{fileName}"));
     }
 
 }
 
 public class SOAnswersRepository : IAnswersRepository
 {
-    string _fileName;
+    private string _fileName;
+    private string _path = "Assets/Scripts/GameLoop.EditMode/";
+    private Answers _answersScriptable;
     public SOAnswersRepository(string fileName)
     {
         _fileName = fileName;
     }
     public void SaveAnswers(string[] answers)
     {
-        throw new System.NotImplementedException();
+        _answersScriptable = ScriptableObject.CreateInstance<Answers>();
+        _answersScriptable.AnswersString = answers;
+        AssetDatabase.CreateAsset(_answersScriptable, _path + _fileName);
     }
 }
