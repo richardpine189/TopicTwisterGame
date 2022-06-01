@@ -7,7 +7,7 @@ using NSubstitute;
 using Team8.TopicTwister.Assets.Scripts;
 using System;
 
-public class MatchShould
+public class MatchMakerShould
 {
     //Match debe comprobar que una ronda se ha iniciado correctamente. (instanciar Round)
 
