@@ -19,7 +19,7 @@ public class AnswersRepositoryShould
         //Act
         answersRepository.SaveAnswers(answers);
         //Assert
-        Assert.IsTrue(File.Exists($"Assets/Scripts/Answers/{fileName}"));
+        Assert.IsTrue(File.Exists($"Assets/Scripts/GameLoop.EditMode/{fileName}"));
     }
 
 }

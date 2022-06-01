@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "TopicTwister/AnswersFile", fileName = "newAnswersFile")]
 public class Answers : ScriptableObject
 {
-    private string[] _answersString = new string[5];
+    [SerializeField] private string[] _answersString = new string[5];
 
     public string[] AnswersString { get => _answersString; set => _answersString = value; }
 }
