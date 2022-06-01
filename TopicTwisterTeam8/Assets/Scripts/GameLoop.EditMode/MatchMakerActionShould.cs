@@ -6,7 +6,7 @@ using Team8.TopicTwister.Assets.Scripts;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-public class LoadingGamePresenterShould
+public class MatchMakerActionShould
 {
     private LoadingGamePresenter _gamePresenter;
     private IGameLoopView _view;
