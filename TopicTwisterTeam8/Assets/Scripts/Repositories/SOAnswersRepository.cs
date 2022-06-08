@@ -28,6 +28,4 @@ namespace Assets.Scripts.Repositories
             AssetDatabase.CreateAsset(_answersScriptable, _path + _fileName);
         }
     }
-
-
 }
