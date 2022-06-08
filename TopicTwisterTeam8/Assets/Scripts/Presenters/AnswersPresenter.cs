@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace Assets.Scripts.Presenters
 {
-    public class StopPresenter
+    public class AnswersPresenter
     {
         private IAnsweringView _view;
         private IAnswerSender _answerSender;
 
-        public StopPresenter(IAnsweringView view, IAnswerSender answerSender)
+        public AnswersPresenter(IAnsweringView view, IAnswerSender answerSender)
         {
             _view = view;
             _answerSender = answerSender;

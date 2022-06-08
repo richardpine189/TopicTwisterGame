@@ -13,7 +13,7 @@ namespace Assets.Scripts.Repositories
     public class SOAnswersRepository : IAnswersRepository
     {
         private string _fileName;
-        private string _path = "Assets/Scripts/Tests.EditMode/";
+        private string _path = "Assets/Scripts/";
         private Answers _answersScriptable;
 
         public SOAnswersRepository(string fileName)

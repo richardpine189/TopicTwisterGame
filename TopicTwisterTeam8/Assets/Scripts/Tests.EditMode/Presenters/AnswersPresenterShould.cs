@@ -8,7 +8,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-public class StopPresenterShould
+public class AnswersPresenterShould
 {
     [Test]
     public void SendAnswers_WhenStopButtonClicked()
@@ -19,7 +19,7 @@ public class StopPresenterShould
 
         IAnsweringView _view = Substitute.For<IAnsweringView>();
         IAnswerSender _answerSender = Substitute.For<IAnswerSender>();
-        StopPresenter _presenter = new StopPresenter(_view, _answerSender);
+        AnswersPresenter _presenter = new AnswersPresenter(_view, _answerSender);
 
         // Act
         _view.OnStopClick += Raise.Event<Action<string[]>>(answers);
