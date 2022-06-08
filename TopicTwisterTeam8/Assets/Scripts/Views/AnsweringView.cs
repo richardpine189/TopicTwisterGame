@@ -30,9 +30,12 @@ namespace Team8.TopicTwister.Assets.Scripts.Views
         [SerializeField]
         private TMP_Text[] _answers;
 
+        [SerializeField]
+        private LetterSO _letter;
         private void Start()
         {
-            _presenter = new AnswersPresenter(this, new SendAnswersAction(new AnswersService(new SOAnswersRepository("answers.asset"))));
+            _presenter = new AnswersPresenter(this, ServiceLocator.Instance.GetService<IAnswerSender>());
+            _roundLetter.text = _letter.letter.ToString();
         }
 
         public void SendAnswers()

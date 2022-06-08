@@ -1,0 +1,20 @@
+{
+    "name": "REFACTOR",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ce96c8ab9a9e2474a80ff254cbad0253",
+        "GUID:ffa1cd3929b793f4794ef78d42594316",
+        "GUID:19f9314f8a91b4f40beabf44d4177e41",
+        "GUID:42d8f36eb9bf87f4b817a51e51f87951",
+        "GUID:11ba1f198fa08d244b68e9875c44c4df"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

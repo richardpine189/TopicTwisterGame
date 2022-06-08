@@ -31,6 +31,8 @@ namespace Team8.TopicTwister.Assets.Scripts.Views
 
         [SerializeField]
         private GameObject _nextPanel;
+        [SerializeField]
+        private LetterSO _letterSO;
 
         private LetterPresenter _presenter;
 
@@ -38,14 +40,16 @@ namespace Team8.TopicTwister.Assets.Scripts.Views
         {
             _presenter = new LetterPresenter(this, new RandomLetterGetter(), new HardCodedCategoriesGetter());
             _getLetterButton.onClick.AddListener(OnSpinClick.Invoke);
+            
         }
 
         public void ShowLetter(char letter)
         {
+
             _letter.text = letter.ToString();
             _letter.gameObject.SetActive(true);
             _getLetterButton.gameObject.SetActive(false);
-
+            _letterSO.letter = letter; // SAVING LETTER
             StartCoroutine(CoutdownAnimation());
         }
 
