@@ -1,0 +1,18 @@
+{
+    "name": "Actions",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ce96c8ab9a9e2474a80ff254cbad0253",
+        "GUID:11ba1f198fa08d244b68e9875c44c4df",
+        "GUID:19f9314f8a91b4f40beabf44d4177e41"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

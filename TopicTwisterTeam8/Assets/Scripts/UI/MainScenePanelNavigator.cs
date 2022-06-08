@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-namespace Team8.TopicTwister
+namespace TopicTwister
 {
     public class MainScenePanelNavigator : MonoBehaviour
     {

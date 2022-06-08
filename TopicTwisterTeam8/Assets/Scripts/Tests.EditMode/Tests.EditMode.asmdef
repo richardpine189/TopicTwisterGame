@@ -1,11 +1,15 @@
 {
-    "name": "Match.EditMode",
+    "name": "Tests",
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
+        "Interfaces",
+        "Actions",
         "Presenters",
-        "Interfaces"
+        "Repositories",
+        "Services",
+        "Models"
     ],
     "includePlatforms": [
         "Editor"

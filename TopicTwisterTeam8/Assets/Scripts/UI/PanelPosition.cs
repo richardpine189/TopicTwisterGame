@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Team8.TopicTwister
+namespace TopicTwister
 {
     public class PanelPosition : MonoBehaviour
     {
