@@ -9,6 +9,7 @@ namespace Assets.Scripts.Presenters
 {
     public class CorrectionPresenter
     {
+        ICategoriesRepository _categoryRepository;
         ICorrectionView _view;
 
         public CorrectionPresenter(ICorrectionView view)
@@ -18,7 +19,12 @@ namespace Assets.Scripts.Presenters
 
         public void GetCorrections(string[] roundCategories, string[] answers)
         {
+            //TODO
+        }
 
+        public void GetCategoriesFromRepository(ICategoriesRepository categoryRepository)
+        {
+            _categoryRepository = categoryRepository;
         }
     }
 }

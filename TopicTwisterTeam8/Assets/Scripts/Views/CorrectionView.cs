@@ -27,6 +27,9 @@ namespace Team8.TopicTwister
         [SerializeField]
         private Button nextTurnButton;
 
+        [SerializeField]
+        private CategoriesDB _categoriesDB;
+
         CorrectionPresenter _presenter;
 
 
@@ -37,7 +40,7 @@ namespace Team8.TopicTwister
 
         public void ShowCorrections()
         {
-            throw new NotImplementedException();
+            _presenter.GetCategoriesFromRepository(_categoriesDB);
         }
     }
 }
