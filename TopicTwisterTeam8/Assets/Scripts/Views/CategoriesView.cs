@@ -33,6 +33,8 @@ namespace Team8.TopicTwister.Assets.Scripts.Views
         private GameObject _nextPanel;
         [SerializeField]
         private LetterSO _letterSO;
+        [SerializeField]
+        private CategoriesSO _categoriesSO;
 
         private LetterPresenter _presenter;
 
@@ -49,7 +51,7 @@ namespace Team8.TopicTwister.Assets.Scripts.Views
             _letter.text = letter.ToString();
             _letter.gameObject.SetActive(true);
             _getLetterButton.gameObject.SetActive(false);
-            _letterSO.letter = letter; // SAVING LETTER
+            _letterSO.Letter = letter; // SAVING LETTER
             StartCoroutine(CoutdownAnimation());
         }
 
@@ -73,6 +75,7 @@ namespace Team8.TopicTwister.Assets.Scripts.Views
             {
                 _categories[i].text = categories[i];
             }
+            _categoriesSO.CategoriesName = categories; // SAVING CATEGORIES NAME
         }
     }
 }

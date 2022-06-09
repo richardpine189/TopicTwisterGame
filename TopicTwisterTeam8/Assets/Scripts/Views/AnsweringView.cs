@@ -31,11 +31,19 @@ namespace Team8.TopicTwister.Assets.Scripts.Views
         private TMP_Text[] _answers;
 
         [SerializeField]
-        private LetterSO _letter;
+        private GameObject _nextPanel;
+
+        [SerializeField]
+        private LetterSO _letterSO;
+
+        [SerializeField]
+        private CategoriesSO _categoriesSO;
         private void Start()
         {
             _presenter = new AnswersPresenter(this, ServiceLocator.Instance.GetService<IAnswerSender>());
-            _roundLetter.text = _letter.letter.ToString();
+            _roundLetter.text = _letterSO.Letter.ToString();
+
+            ShowCategories(); // REVISAR
         }
 
         public void SendAnswers()
@@ -48,6 +56,14 @@ namespace Team8.TopicTwister.Assets.Scripts.Views
             }
 
             OnStopClick.Invoke(answers);
+            _nextPanel.SetActive(true);
+            this.gameObject.SetActive(false);
+        }
+
+        private void ShowCategories()
+        {
+            for (int i = 0; i < _categories.Length; i++)
+                _categories[i].text = _categoriesSO.CategoriesName[i];
         }
     }
 }
