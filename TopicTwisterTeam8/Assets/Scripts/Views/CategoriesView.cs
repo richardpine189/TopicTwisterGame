@@ -31,8 +31,10 @@ namespace Team8.TopicTwister.Assets.Scripts.Views
 
         [SerializeField]
         private GameObject _nextPanel;
+
         [SerializeField]
         private LetterSO _letterSO;
+
         [SerializeField]
         private CategoriesSO _categoriesSO;
 

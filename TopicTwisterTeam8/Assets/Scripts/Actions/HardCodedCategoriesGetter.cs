@@ -12,7 +12,7 @@ namespace Assets.Scripts.Actions
     {
         public string[] GetCategories()
         {
-            return new string[5] { "Objetos", "Animales", "Ropa", "Comida", "Paises"};
+            return new string[5] { "Cosas", "Animales", "Color", "Paises", "Marcas" };
         }
     }
 }

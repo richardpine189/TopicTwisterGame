@@ -12,19 +12,24 @@ namespace Assets.Scripts.Presenters
         ICategoriesRepository _categoryRepository;
         ICorrectionView _view;
 
-        public CorrectionPresenter(ICorrectionView view)
+        public CorrectionPresenter(ICorrectionView view, ICategoriesRepository categoryRepository)
         {
             _view = view;
-        }
-
-        public void GetCorrections(string[] roundCategories, string[] answers)
-        {
-            //TODO
-        }
-
-        public void GetCategoriesFromRepository(ICategoriesRepository categoryRepository)
-        {
             _categoryRepository = categoryRepository;
+        }
+
+        public bool[] GetCorrections(string[] roundCategories, string[] answers)
+        {
+            bool[] result = new bool[5];
+
+            List<Category> categories = _categoryRepository.GetCategories();
+
+            for(int i = 0; i < 5; i++)
+            {
+                result[i] = categories.FirstOrDefault(x => x.Name == roundCategories[i]).ExisistInCategory(answers[i]);
+            }
+
+            return result;
         }
     }
 }
