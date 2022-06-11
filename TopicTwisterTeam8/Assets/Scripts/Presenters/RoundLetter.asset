@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a75e870487bb36b4db84cac596e8b6cc, type: 3}
   m_Name: RoundLetter
   m_EditorClassIdentifier: 
-  letter: 0
+  _letter: 65
