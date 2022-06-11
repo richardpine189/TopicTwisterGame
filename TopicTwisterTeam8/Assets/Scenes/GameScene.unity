@@ -6003,11 +6003,11 @@ MonoBehaviour:
   - {fileID: 954993513}
   - {fileID: 358334365}
   _answers:
-  - {fileID: 548838121}
-  - {fileID: 511574770}
-  - {fileID: 1546919659}
-  - {fileID: 1581056565}
-  - {fileID: 264023236}
+  - {fileID: 1431752391}
+  - {fileID: 1660446789}
+  - {fileID: 581733931}
+  - {fileID: 251051026}
+  - {fileID: 2137769482}
   _nextPanel: {fileID: 1784816757}
   _letterSO: {fileID: 11400000, guid: 0b32b4ca43e6300499707ede34d4b819, type: 2}
   _categoriesSO: {fileID: 11400000, guid: c3dd0cbdee602834cb35022555714303, type: 2}

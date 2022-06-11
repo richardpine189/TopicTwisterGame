@@ -16,10 +16,10 @@ namespace TopicTwister.Assets.Scripts.Models
         public bool ExisistInCategory(string word)
         {
             //return words.Any(x => x.ToUpper() == word.ToUpper());
-
-            for(int i = 0; i < words.Count; i++)
+            
+            for (int i = 0; i < words.Count; i++)
             {
-                if(words[i].ToUpper() == word.ToUpper())
+                if (string.Equals(word.ToUpper(), words[i].ToUpper()))
                 {
                     return true;
                 }

@@ -28,7 +28,7 @@ namespace Team8.TopicTwister.Assets.Scripts.Views
         private TMP_Text[] _categories;
 
         [SerializeField]
-        private TMP_Text[] _answers;
+        private TMP_InputField[] _answers;
 
         [SerializeField]
         private GameObject _nextPanel;
