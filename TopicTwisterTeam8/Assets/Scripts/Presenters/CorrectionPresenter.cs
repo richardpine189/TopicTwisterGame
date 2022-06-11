@@ -18,7 +18,7 @@ namespace Assets.Scripts.Presenters
             _categoryRepository = categoryRepository;
         }
 
-        public bool[] GetCorrections(string[] roundCategories, string[] answers)
+        public bool[] GetCorrections(string[] roundCategories, string[] answers, char letter)
         {
             bool[] result = new bool[5];
 
@@ -26,7 +26,7 @@ namespace Assets.Scripts.Presenters
 
             for(int i = 0; i < 5; i++)
             {
-                result[i] = categories.FirstOrDefault(x => x.Name == roundCategories[i]).ExisistInCategory(answers[i]);
+                result[i] = categories.FirstOrDefault(x => x.Name == roundCategories[i]).ExisistInCategory(answers[i], letter);
             }
 
             return result;

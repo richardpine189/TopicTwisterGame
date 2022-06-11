@@ -33,7 +33,7 @@ namespace Team8.TopicTwister
         private CategoriesDB _categoriesDB;
 
         [SerializeField]
-        private CategoriesSO _currentCategories;
+        private LetterSO _letterSO;
 
         [SerializeField]
         private Sprite _tickSprite;
@@ -61,7 +61,7 @@ namespace Team8.TopicTwister
 
             ShowAnswers(answers);
 
-            bool[] corrections = _presenter.GetCorrections(_currentCategories.CategoriesName, answers);
+            bool[] corrections = _presenter.GetCorrections(_categoriesSO.CategoriesName, answers, _letterSO.Letter);
 
             for(int i = 0; i < 5; i++)
             {
