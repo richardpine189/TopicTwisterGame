@@ -12,7 +12,6 @@ public class Installer : MonoBehaviour
     
     
     
-    // Start is called before the first frame update
     void Start()
     {
         IAnswerSender _answerSender;
@@ -24,16 +23,12 @@ public class Installer : MonoBehaviour
 
         _answerRepository = new SOAnswersRepository(fileName);
         servicesLocatorInstance.RegisterService<IAnswersRepository>(_answerRepository);
+
         _answeringService = new AnswersService(servicesLocatorInstance.GetService<IAnswersRepository>());
         servicesLocatorInstance.RegisterService<IAnsweringService>(_answeringService);
+
         _answerSender = new SendAnswersAction(servicesLocatorInstance.GetService<IAnsweringService>());
         servicesLocatorInstance.RegisterService<IAnswerSender>(_answerSender);
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 }

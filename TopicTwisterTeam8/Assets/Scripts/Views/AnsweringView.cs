@@ -38,6 +38,7 @@ namespace Team8.TopicTwister.Assets.Scripts.Views
 
         [SerializeField]
         private CategoriesSO _categoriesSO;
+
         private void Start()
         {
             _presenter = new AnswersPresenter(this, ServiceLocator.Instance.GetService<IAnswerSender>());

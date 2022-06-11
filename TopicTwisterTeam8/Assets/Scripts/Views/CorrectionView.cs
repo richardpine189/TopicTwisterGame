@@ -15,19 +15,19 @@ namespace Team8.TopicTwister
         public event Action OnNextTurnClick;
 
         [SerializeField]
-        private TMP_Text[] categories;
+        private TMP_Text[] _categories;
 
         [SerializeField]
-        private TMP_Text[] playerAnswers;
+        private TMP_InputField[] _playerAnswers;
 
         [SerializeField]
-        private Image[] playerResults;
+        private Image[] _playerResults;
 
         [SerializeField]
-        private TMP_Text roundLetter;
+        private TMP_Text _roundLetter;
 
         [SerializeField]
-        private Button nextTurnButton;
+        private Button _nextTurnButton;
 
         [SerializeField]
         private CategoriesDB _categoriesDB;
@@ -40,6 +40,9 @@ namespace Team8.TopicTwister
 
         [SerializeField]
         private Sprite _crossSprite;
+
+        [SerializeField]
+        private CategoriesSO _categoriesSO;
 
         CorrectionPresenter _presenter;
 
@@ -56,19 +59,30 @@ namespace Team8.TopicTwister
             Answers answersObject = AssetDatabase.LoadAssetAtPath<Answers>("Assets/Scripts/pruebaSO.asset");
             string[] answers = answersObject.AnswersString;
 
+            ShowAnswers(answers);
+
             bool[] corrections = _presenter.GetCorrections(_currentCategories.CategoriesName, answers);
 
             for(int i = 0; i < 5; i++)
             {
                 if (corrections[i])
                 {
-                    playerResults[i].sprite = _tickSprite;
+                    _playerResults[i].sprite = _tickSprite;
                 }
                 else
                 {
-                    playerResults[i].sprite = _crossSprite;
+                    _playerResults[i].sprite = _crossSprite;
                 }
             }
+        }
+
+        private void ShowAnswers(string[] answers)
+        {
+            for (int i = 0; i < _categories.Length; i++)
+                _categories[i].text = _categoriesSO.CategoriesName[i];
+
+            for (int i = 0; i < _playerAnswers.Length; i++)
+                _playerAnswers[i].text = answers[i];
         }
     }
 }
