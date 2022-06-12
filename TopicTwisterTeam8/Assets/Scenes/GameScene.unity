@@ -23659,7 +23659,8 @@ MonoBehaviour:
   _opponentName: {fileID: 1615036518}
   _loadingText: {fileID: 897789831}
   _versusImage: {fileID: 1004448978}
-  _nextPanel: {fileID: 593648985}
+  _categoriesPanel: {fileID: 593648985}
+  _endRoundPanel: {fileID: 797511439}
 --- !u!1 &1834802048
 GameObject:
   m_ObjectHideFlags: 0

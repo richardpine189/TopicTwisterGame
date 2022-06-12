@@ -27,7 +27,10 @@ namespace Team8.TopicTwister
         private GameObject _versusImage;
 
         [SerializeField]
-        private GameObject _nextPanel;
+        private GameObject _categoriesPanel;
+
+        [SerializeField]
+        private GameObject _endRoundPanel;
 
         private LoadingGamePresenter _presenter;
 
@@ -72,7 +75,17 @@ namespace Team8.TopicTwister
 
         private void ChangePanel()
         {
-            _nextPanel.SetActive(true);
+            // Check if opponent has answered
+            bool playerGoesFirst = true;
+
+            if(playerGoesFirst)
+            {
+                _categoriesPanel.SetActive(true);
+            }
+            else
+            {
+                _endRoundPanel.SetActive(true);
+            }
 
             this.gameObject.SetActive(false);
         }
