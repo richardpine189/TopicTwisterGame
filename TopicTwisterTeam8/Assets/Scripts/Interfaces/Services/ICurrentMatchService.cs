@@ -9,8 +9,8 @@ namespace Assets.Scripts.Interfaces
 {
     public interface ICurrentMatchService
     {
-        void Save(Match match);
+        void SetActiveMatch(Match match);
 
-        Match Get();
+        Match GetActiveMatch();
     }
 }

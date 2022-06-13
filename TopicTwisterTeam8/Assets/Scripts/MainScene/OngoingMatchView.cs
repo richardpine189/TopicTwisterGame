@@ -1,8 +1,10 @@
 using Assets.Scripts.Models;
+using Assets.Scripts.Presenters;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Team8.TopicTwister
 {
@@ -20,9 +22,26 @@ namespace Team8.TopicTwister
         [SerializeField]
         private TMP_Text _turn;
 
+        private int matchId;
+
+        private OngoingMatchPresenter _presenter;
+
+        private void Start()
+        {
+            _presenter = new OngoingMatchPresenter();
+        }
+
         public void SetFields(MatchViewModel match)
         {
+            matchId = match.idMatch;
             _opponentName.text = match.opponent;
+        }
+
+        public void LoadMatch()
+        {
+            _presenter.SaveCurrentMatch(matchId);
+
+            SceneManager.LoadScene(2, LoadSceneMode.Single);
         }
     }
 }

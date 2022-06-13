@@ -8,9 +8,9 @@ namespace Assets.Scripts.Models
 {
     public class MatchViewModel
     {
+        public int idMatch;
         public string opponent;
         public int currentRound;
         public bool isPlayerTurn;
-        public int idMatch;
     }
 }

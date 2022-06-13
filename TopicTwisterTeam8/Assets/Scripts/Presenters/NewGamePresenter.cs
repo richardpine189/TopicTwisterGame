@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Interfaces;
+﻿using Assets.Scripts.Actions;
+using Assets.Scripts.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,8 @@ namespace Assets.Scripts.Presenters
 
         private void LoadGameLoopScene()
         {
+            SetActiveMatch action = new SetActiveMatch();
+            action.RemoveActiveMatch();
             SceneManager.LoadScene("GameScene");
         }
     }

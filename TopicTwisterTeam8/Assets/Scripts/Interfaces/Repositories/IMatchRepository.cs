@@ -9,7 +9,7 @@ namespace Assets.Scripts.Interfaces
 {
     public interface IMatchRepository
     {
-        void Save(Match match);
+        void SaveMatch(Match match);
 
         List<Match> GetMatches();
 

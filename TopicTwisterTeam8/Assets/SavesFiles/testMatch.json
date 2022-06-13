@@ -1,5 +1,36 @@
 [
   {
+    "id": 1,
+    "challenger": {
+      "UserName": "Ricardo"
+    },
+    "opponent": {
+      "UserName": "Juan"
+    },
+    "rounds": [
+      {
+        "letter": "V",
+        "assignedCategoryNames": [
+          "Cosas",
+          "Animales",
+          "Color",
+          "Paises",
+          "Marcas"
+        ],
+        "challengerAnswers": [
+          "qweqwe",
+          "qweqweq",
+          "qweqweq",
+          "qweqeq",
+          "qwewe"
+        ],
+        "opponentAnswers": null
+      },
+      null,
+      null
+    ]
+  },
+  {
     "id": 0,
     "challenger": {
       "UserName": "Ricardo"

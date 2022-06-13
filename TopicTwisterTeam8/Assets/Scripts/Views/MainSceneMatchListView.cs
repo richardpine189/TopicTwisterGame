@@ -62,6 +62,7 @@ namespace Team8.TopicTwister
             {
                 return matches.Select(m => new MatchViewModel
                 {
+                    idMatch = (int)m.id,
                     opponent = m.opponent.UserName,
                     currentRound = m.rounds.TakeWhile(t => t == null).Count(),
                     isPlayerTurn = false

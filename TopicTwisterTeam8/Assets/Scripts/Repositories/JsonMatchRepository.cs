@@ -15,7 +15,7 @@ namespace Assets.Scripts.Repositories
             return SaveDataToJson.LoadFromJson<List<Match>>("testMatch");
         }
 
-        public void Save(Match match)
+        public void SaveMatch(Match match)
         {
             List<Match> matches = SaveDataToJson.LoadFromJson<List<Match>>("testMatch");
 

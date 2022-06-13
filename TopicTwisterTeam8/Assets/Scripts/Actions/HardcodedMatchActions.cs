@@ -29,7 +29,7 @@ namespace Assets.Scripts.Actions
             match.challenger = new User(1, "Ricardo");
             match.opponent = new User(2, "Theo");
 
-            _matchService.Save(match);
+            _matchService.SetActiveMatch(match);
         }
 
         public void FindPlayers()
@@ -40,12 +40,12 @@ namespace Assets.Scripts.Actions
 
         public string GetPlayerName()
         {
-            return _matchService.Get().challenger.UserName;
+            return _matchService.GetActiveMatch().challenger.UserName;
         }
 
         public string GetOpponentName()
         {
-            return _matchService.Get().opponent.UserName;
+            return _matchService.GetActiveMatch().opponent.UserName;
         }
     }
 }

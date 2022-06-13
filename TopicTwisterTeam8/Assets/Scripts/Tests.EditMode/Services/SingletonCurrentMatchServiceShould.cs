@@ -24,10 +24,10 @@ namespace Assets.Scripts.Tests.EditMode.Services
             SingletonCurrentMatchService _matchService = new SingletonCurrentMatchService();
 
             // Act
-            _matchService.Save(expectedMatch);
+            _matchService.SetActiveMatch(expectedMatch);
 
             // Assert
-            Assert.AreEqual(expectedMatch, _matchService.Get());
+            Assert.AreEqual(expectedMatch, _matchService.GetActiveMatch());
         }
     }
 }

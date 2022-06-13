@@ -25,7 +25,7 @@ namespace Assets.Scripts.Actions
                 match.id = _matchRepository.GetNewId();
             }
 
-            _matchRepository.Save(match);
+            _matchRepository.SaveMatch(match);
         }
     }
 }

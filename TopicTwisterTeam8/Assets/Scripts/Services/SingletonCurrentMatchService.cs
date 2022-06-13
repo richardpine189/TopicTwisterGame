@@ -11,12 +11,12 @@ namespace Assets.Scripts.Services
 {
     public class SingletonCurrentMatchService : ICurrentMatchService
     {
-        public Match Get()
+        public Match GetActiveMatch()
         {
             return CurrentMatchSingleton.Get();
         }
 
-        public void Save(Match match)
+        public void SetActiveMatch(Match match)
         {
             CurrentMatchSingleton.Set(match);
         }

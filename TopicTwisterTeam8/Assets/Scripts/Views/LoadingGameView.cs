@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Actions;
 using Assets.Scripts.Interfaces;
 using Assets.Scripts.Presenters;
+using Assets.Scripts.Services;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,6 +37,15 @@ namespace Team8.TopicTwister
 
         private void Start()
         {
+            if (new SingletonCurrentMatchService().GetActiveMatch() != null)
+            {
+                Debug.Log(new SingletonCurrentMatchService().GetActiveMatch().id);
+            }
+            else
+            {
+                Debug.Log("null");
+            }
+
             StartCoroutine(MainMethod());
         }
 
