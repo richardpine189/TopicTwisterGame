@@ -11,5 +11,6 @@ namespace Assets.Scripts.Models
         public string opponent;
         public int currentRound;
         public bool isPlayerTurn;
+        public int idMatch;
     }
 }
