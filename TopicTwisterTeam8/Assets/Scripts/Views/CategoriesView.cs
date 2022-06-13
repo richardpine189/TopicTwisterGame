@@ -38,11 +38,14 @@ namespace Team8.TopicTwister.Assets.Scripts.Views
         [SerializeField]
         private CategoriesSO _categoriesSO;
 
+        [SerializeField]
+        private CategoriesDB _categoriesDB;
+
         private LetterPresenter _presenter;
 
         private void Start()
         {
-            _presenter = new LetterPresenter(this, new RandomLetterGetter(), new HardCodedCategoriesGetter());
+            _presenter = new LetterPresenter(this, new RandomLetterGetter(), new HardCodedCategoriesGetter(_categoriesDB));
             _getLetterButton.onClick.AddListener(OnSpinClick.Invoke);
             
         }

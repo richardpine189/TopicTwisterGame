@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cfe4e57839973842b7e1f2a4ca349a0, type: 3}
   m_Name: RoundCurrentCategories
   m_EditorClassIdentifier: 
+  _categoriesName: []

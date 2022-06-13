@@ -8275,6 +8275,7 @@ MonoBehaviour:
   _nextPanel: {fileID: 406296897}
   _letterSO: {fileID: 11400000, guid: 0b32b4ca43e6300499707ede34d4b819, type: 2}
   _categoriesSO: {fileID: 11400000, guid: c3dd0cbdee602834cb35022555714303, type: 2}
+  _categoriesDB: {fileID: 57294667}
 --- !u!1 &593653743
 GameObject:
   m_ObjectHideFlags: 0

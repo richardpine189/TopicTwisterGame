@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Profesiones
   words:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Arquitecto
+  - Barbero
+  - Cocinero
+  - Director
+  - Enfermero
+  - Fiscal
+  - Granjero

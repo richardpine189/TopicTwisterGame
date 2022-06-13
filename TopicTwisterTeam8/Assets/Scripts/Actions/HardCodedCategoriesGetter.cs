@@ -10,9 +10,17 @@ namespace Assets.Scripts.Actions
 {
     public class HardCodedCategoriesGetter : ICategoriesGetter
     {
+        ICategoriesRepository _categoryRepository;
+
+        public HardCodedCategoriesGetter(ICategoriesRepository categoriesDB)
+        {
+            _categoryRepository = categoriesDB;
+        }
         public string[] GetCategories()
         {
-            return new string[5] { "Cosas", "Animales", "Color", "Paises", "Marcas" };
+            List<Category> categories = _categoryRepository.GetCategories(5); // HARDCODED
+            String[] categoriesName = categories.Select(x => x.Name).ToArray();
+            return categoriesName;
         }
     }
 }

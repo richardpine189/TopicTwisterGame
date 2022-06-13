@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbfd02a5cc51cfd42a601ad5f876ce7e, type: 3}
   m_Name: Verbos
   m_EditorClassIdentifier: 
-  name: 
+  name: Verbos
   words:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Amar
+  - Beber
+  - Codear
+  - Dormir
+  - Estudiar
+  - Felicitar
+  - Gatear
