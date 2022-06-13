@@ -8,18 +8,18 @@ namespace Assets.Scripts.Presenters
     public class AnswersPresenter
     {
         private IAnsweringView _view;
-        private IAnswerSender _answerSender;
+        private IAnswersRepository _answersRepository;
 
-        public AnswersPresenter(IAnsweringView view, IAnswerSender answerSender)
+        public AnswersPresenter(IAnsweringView view, IAnswersRepository answersRepository)
         {
             _view = view;
-            _answerSender = answerSender;
+            _answersRepository = answersRepository;
             _view.OnStopClick += SendAnswersAction;
         }
 
         private void SendAnswersAction(string[] answers)
         {
-            _answerSender.SendAnswers(answers);
+            _answersRepository.SaveAnswers(answers);
         }
     }
 }

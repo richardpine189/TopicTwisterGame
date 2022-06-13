@@ -5,7 +5,7 @@ using UnityEngine;
 
 public interface ICorrectionView
 {
-    event Action OnNextTurnClick;
+    event Action<string[], string[], char> OnNextTurnClick;
 
     void ShowCorrections();
 }

@@ -1,0 +1,21 @@
+using Assets.Scripts.Interfaces;
+using Assets.Scripts.Repositories;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Installer
+{
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    public static void Test()
+    {
+        IAnswersRepository _answerRepository;
+        
+        var fileName = "pruebaSO.asset";
+
+        _answerRepository = new SOAnswersRepository(fileName);
+        ServiceLocator.Instance.RegisterService<IAnswersRepository>(_answerRepository);
+
+        ServiceLocator.Instance.RegisterService<IMatchRepository>(new JsonMatchRepository());
+    }
+}

@@ -25,7 +25,11 @@ namespace Assets.Scripts.Actions
         {
             FindPlayers();
 
-            _matchService.Save(new Match(_player, _opponent));
+            Match match = new Match();
+            match.challenger = new User(1, "Ricardo");
+            match.opponent = new User(2, "Theo");
+
+            _matchService.Save(match);
         }
 
         public void FindPlayers()
@@ -36,12 +40,12 @@ namespace Assets.Scripts.Actions
 
         public string GetPlayerName()
         {
-            return _matchService.Get().Player.UserName;
+            return _matchService.Get().challenger.UserName;
         }
 
         public string GetOpponentName()
         {
-            return _matchService.Get().Opponent.UserName;
+            return _matchService.Get().opponent.UserName;
         }
     }
 }

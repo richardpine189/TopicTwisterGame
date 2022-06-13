@@ -15,7 +15,12 @@ namespace Assets.Scripts.Tests.EditMode.Services
         public void GivenMatch_SaveMatch()
         {
             // Arrange
-            Match expectedMatch = new Match(new User(1, "test"), new User(44, "test2"));
+            User challenger = new User(1, "test");
+            User opponent = new User(44, "test2");
+            Match match = new Match();
+            match.challenger = challenger;
+            match.opponent = opponent;
+            Match expectedMatch = match;
             SingletonCurrentMatchService _matchService = new SingletonCurrentMatchService();
 
             // Act

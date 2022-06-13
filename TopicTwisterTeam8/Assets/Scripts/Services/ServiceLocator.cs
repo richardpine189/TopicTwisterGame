@@ -3,19 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ServiceLocator : MonoBehaviour
+public class ServiceLocator
 {
-    private static ServiceLocator instance;
-    public static ServiceLocator Instance { get { return instance; } }
+    private static ServiceLocator _instance;
+    public static ServiceLocator Instance => _instance ?? (_instance = new ServiceLocator());
 
-    Dictionary<Type, object> _services;
+    Dictionary<Type, object> _services = new Dictionary<Type, object>();
 
-    private void Awake()
-    {
-        instance = this;
-        _services = new Dictionary<Type, object>();
-        
-    }
     public void RegisterService<T>(T service)
     {
         var type = typeof(T);

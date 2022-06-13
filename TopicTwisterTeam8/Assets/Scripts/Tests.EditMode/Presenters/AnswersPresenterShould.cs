@@ -18,14 +18,14 @@ public class AnswersPresenterShould
 
 
         IAnsweringView _view = Substitute.For<IAnsweringView>();
-        IAnswerSender _answerSender = Substitute.For<IAnswerSender>();
-        AnswersPresenter _presenter = new AnswersPresenter(_view, _answerSender);
+        IAnswersRepository _answerRepository = Substitute.For<IAnswersRepository>();
+        AnswersPresenter _presenter = new AnswersPresenter(_view, _answerRepository);
 
         // Act
         _view.OnStopClick += Raise.Event<Action<string[]>>(answers);
 
 
         // Assert
-        _answerSender.Received().SendAnswers(answers);
+        _answerRepository.Received().SaveAnswers(answers);
     }
 }

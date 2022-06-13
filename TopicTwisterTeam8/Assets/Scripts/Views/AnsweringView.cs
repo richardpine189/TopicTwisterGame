@@ -41,7 +41,7 @@ namespace Team8.TopicTwister.Assets.Scripts.Views
 
         private void Start()
         {
-            _presenter = new AnswersPresenter(this, ServiceLocator.Instance.GetService<IAnswerSender>());
+            _presenter = new AnswersPresenter(this, ServiceLocator.Instance.GetService<IAnswersRepository>());
             _roundLetter.text = _letterSO.Letter.ToString();
 
             ShowCategories(); // REVISAR

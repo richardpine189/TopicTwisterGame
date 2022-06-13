@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Actions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,23 @@ namespace Assets.Scripts.Presenters
         {
             _view = view;
             _categoryRepository = categoryRepository;
+            _view.OnNextTurnClick += EndTurn;
+        }
+
+        public void EndTurn(string[] roundCategories, string[] answers, char letter)
+        {
+            Match match = new Match();
+
+            match.challenger = new User(1, "Ricardo");
+            match.opponent = new User(2, "Theo");
+            match.rounds[0] = new Round() {
+                assignedCategoryNames = roundCategories,
+                letter = letter,
+                challengerAnswers = answers
+            };
+
+            SaveMatch action = new SaveMatch();
+            action.Save(match);
         }
 
         public bool[] GetCorrections(string[] roundCategories, string[] answers, char letter)

@@ -3,6 +3,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
+using Unity.Plastic.Newtonsoft.Json;
 
 public static class SaveDataToJson
 {
@@ -26,7 +27,8 @@ public static class SaveDataToJson
             if (fileName != "")
             {
                 string filePath = fileName + ".json";
-                string data = JsonUtility.ToJson(receiver);
+                //string data = JsonUtility.ToJson(receiver);
+                string data = JsonConvert.SerializeObject(receiver, Formatting.Indented);
 
                 if (!Directory.Exists(directoryPath))
                 {
@@ -34,7 +36,7 @@ public static class SaveDataToJson
                 }
 
                 File.WriteAllText(directoryPath + filePath, data);
-                //                Debug.Log(receiver + " saved");
+                //Debug.Log(receiver + " saved");
             }
             else
             {
@@ -69,15 +71,11 @@ public static class SaveDataToJson
             if (File.Exists(directoryPath + filePath))
             {
                 string dataAsJson = File.ReadAllText(directoryPath + filePath);
-                T loadedData = JsonUtility.FromJson<T>(dataAsJson);
+                //T loadedData = JsonUtility.FromJson<T>(dataAsJson);
+                T loadedData = JsonConvert.DeserializeObject<T>(dataAsJson);
                 return loadedData;
             }
         }
         return null;
     }
-}
-
-[System.Serializable]
-public class Match{
-    
 }

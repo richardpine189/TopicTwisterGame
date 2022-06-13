@@ -1,0 +1,33 @@
+[
+  {
+    "id": 0,
+    "challenger": {
+      "UserName": "Ricardo"
+    },
+    "opponent": {
+      "UserName": "Theo"
+    },
+    "rounds": [
+      {
+        "letter": "V",
+        "assignedCategoryNames": [
+          "Cosas",
+          "Animales",
+          "Color",
+          "Paises",
+          "Marcas"
+        ],
+        "challengerAnswers": [
+          "aaa",
+          "ssss",
+          "ddd",
+          "fff",
+          "ggg"
+        ],
+        "opponentAnswers": null
+      },
+      null,
+      null
+    ]
+  }
+]

@@ -2,29 +2,17 @@ namespace TopicTwister.Assets.Scripts.Models
 {
     public class Match
     {
-        User _user;
-        User _opponent;
+        public int? id;
+        public User challenger;
+        public User opponent;
+        public Round[] rounds = new Round[3];
+    }
 
-        public User Player
-        {
-            get
-            {
-                return _user;
-            }
-        }
-
-        public User Opponent
-        {
-            get
-            {
-                return _opponent;
-            }
-        }
-
-        public Match(User user, User opponent)
-        {
-            _user = user;
-            _opponent = opponent;
-        }
+    public class Round
+    {
+        public char letter;
+        public string[] assignedCategoryNames;
+        public string[] challengerAnswers;
+        public string[] opponentAnswers;
     }
 }

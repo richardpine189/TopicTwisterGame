@@ -6,25 +6,26 @@ using TMPro;
 using TopicTwister.Assets.Scripts.Models;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Team8.TopicTwister
 {
     public class CorrectionView : MonoBehaviour, ICorrectionView
     {
-        public event Action OnNextTurnClick;
+        public event Action<string[], string[], char> OnNextTurnClick;
 
         [SerializeField]
         private TMP_Text[] _categories;
 
         [SerializeField]
-        private TMP_InputField[] _playerAnswers;
+        private TMP_InputField[] _answersUI;
 
         [SerializeField]
-        private Image[] _playerResults;
+        private Image[] _resultsUI;
 
         [SerializeField]
-        private TMP_Text _roundLetter;
+        private TMP_Text _roundLetterUI;
 
         [SerializeField]
         private Button _nextTurnButton;
@@ -46,43 +47,58 @@ namespace Team8.TopicTwister
 
         CorrectionPresenter _presenter;
 
+        private string[] _answers;
+        private string[] _categoryNames;
+        private char _roundLetter;
+
 
         private void Start()
         {
             _presenter = new CorrectionPresenter(this, _categoriesDB);
 
+            Answers answersObject = AssetDatabase.LoadAssetAtPath<Answers>("Assets/Scripts/pruebaSO.asset");
+            _answers = answersObject.AnswersString;
+            _categoryNames = _categoriesSO.CategoriesName;
+            _roundLetter = _letterSO.Letter;
+
+            _roundLetterUI.text = _roundLetter.ToString();
+
             ShowCorrections();
+
+            OnNextTurnClick.Invoke(_categoryNames, _answers, _roundLetter);
         }
 
         public void ShowCorrections()
         {
-            Answers answersObject = AssetDatabase.LoadAssetAtPath<Answers>("Assets/Scripts/pruebaSO.asset");
-            string[] answers = answersObject.AnswersString;
+            ShowAnswers(_answers);
 
-            ShowAnswers(answers);
-
-            bool[] corrections = _presenter.GetCorrections(_categoriesSO.CategoriesName, answers, _letterSO.Letter);
+            bool[] corrections = _presenter.GetCorrections(_categoryNames, _answers, _roundLetter);
 
             for(int i = 0; i < 5; i++)
             {
                 if (corrections[i])
                 {
-                    _playerResults[i].sprite = _tickSprite;
+                    _resultsUI[i].sprite = _tickSprite;
                 }
                 else
                 {
-                    _playerResults[i].sprite = _crossSprite;
+                    _resultsUI[i].sprite = _crossSprite;
                 }
             }
         }
 
         private void ShowAnswers(string[] answers)
         {
-            for (int i = 0; i < _categories.Length; i++)
-                _categories[i].text = _categoriesSO.CategoriesName[i];
+            for (int i = 0; i < _categoryNames.Length; i++)
+                _categories[i].text = _categoryNames[i];
 
-            for (int i = 0; i < _playerAnswers.Length; i++)
-                _playerAnswers[i].text = answers[i];
+            for (int i = 0; i < _answersUI.Length; i++)
+                _answersUI[i].text = answers[i];
+        }
+
+        public void SaveMatch()
+        {
+            _presenter.EndTurn(_categoryNames, _answers, _roundLetter);
         }
     }
 }
