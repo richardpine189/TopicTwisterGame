@@ -8,6 +8,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Team8.TopicTwister
 {
@@ -65,7 +66,7 @@ namespace Team8.TopicTwister
 
             ShowCorrections();
 
-            OnNextTurnClick.Invoke(_categoryNames, _answers, _roundLetter);
+            //OnNextTurnClick.Invoke(_categoryNames, _answers, _roundLetter);
         }
 
         public void ShowCorrections()
@@ -99,6 +100,12 @@ namespace Team8.TopicTwister
         public void SaveMatch()
         {
             _presenter.EndTurn(_categoryNames, _answers, _roundLetter);
+
+        }
+
+        public void ChangeScene()
+        {
+            SceneManager.LoadScene(1,LoadSceneMode.Single);
         }
     }
 }

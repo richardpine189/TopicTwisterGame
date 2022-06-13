@@ -65,7 +65,7 @@ namespace Assets.Scripts.Repositories
             {
                 for (int i = 0; i < matches.Count; i++)
                 {
-                    if (highestId > matches[i].id)
+                    if (highestId < matches[i].id)
                     {
                         highestId = (int)matches[i].id;
                     }

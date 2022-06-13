@@ -7,7 +7,7 @@ using UnityEngine;
 public class Installer
 {
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    public static void Test()
+    public static void Init()
     {
         IAnswersRepository _answerRepository;
         

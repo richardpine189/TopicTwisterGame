@@ -9,7 +9,7 @@
     },
     "rounds": [
       {
-        "letter": "V",
+        "letter": "M",
         "assignedCategoryNames": [
           "Cosas",
           "Animales",
@@ -18,11 +18,11 @@
           "Marcas"
         ],
         "challengerAnswers": [
-          "aaa",
-          "ssss",
-          "ddd",
-          "fff",
-          "ggg"
+          "Respuesta",
+          "Respuesta",
+          "Respuesta",
+          "Respuesta",
+          "Respuesta"
         ],
         "opponentAnswers": null
       },
