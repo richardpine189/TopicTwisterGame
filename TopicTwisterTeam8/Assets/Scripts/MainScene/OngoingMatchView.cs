@@ -22,16 +22,18 @@ namespace Team8.TopicTwister
         [SerializeField]
         private TMP_Text _turn;
 
-        private int matchId;
+        [SerializeField]
+        private int matchId = 0;
 
         private OngoingMatchPresenter _presenter;
+
 
         private void Start()
         {
             _presenter = new OngoingMatchPresenter();
         }
 
-        public void SetFields(MatchViewModel match)
+        public void SetFields(MatchViewModel match) 
         {
             matchId = match.idMatch;
             _opponentName.text = match.opponent;

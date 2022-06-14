@@ -11,6 +11,7 @@ namespace Assets.Scripts.Presenters
 {
     public class CorrectionPresenter
     {
+        bool[] result;
         ICategoriesRepository _categoryRepository;
         ICorrectionView _view;
 
@@ -30,7 +31,8 @@ namespace Assets.Scripts.Presenters
             match.rounds[0] = new Round() {
                 assignedCategoryNames = roundCategories,
                 letter = letter,
-                challengerAnswers = answers
+                challengerAnswers = answers,
+                challengerResult = result
             };
 
             SaveMatch action = new SaveMatch();
@@ -39,7 +41,7 @@ namespace Assets.Scripts.Presenters
 
         public bool[] GetCorrections(string[] roundCategories, string[] answers, char letter)
         {
-            bool[] result = new bool[5];
+            result = new bool[5];
 
             List<Category> categories = _categoryRepository.GetCategories();
 

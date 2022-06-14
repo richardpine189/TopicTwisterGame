@@ -23,7 +23,8 @@ public class CategoriesDB : MonoBehaviour, ICategoriesRepository
         int index;
         for(int i=0; i < quantity; i++)
         {
-            index = random.Next(_categories.Count);
+            index = random.Next(tempCategories.Count);
+
             asignedCategories.Add(tempCategories[index]);
             tempCategories.RemoveAt(index);
         }

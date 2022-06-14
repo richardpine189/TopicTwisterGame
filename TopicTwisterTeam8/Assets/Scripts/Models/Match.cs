@@ -14,5 +14,7 @@ namespace TopicTwister.Assets.Scripts.Models
         public string[] assignedCategoryNames;
         public string[] challengerAnswers;
         public string[] opponentAnswers;
+        public bool[] challengerResult;
+        public bool[] oponentResult;
     }
 }

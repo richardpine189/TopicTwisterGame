@@ -60,5 +60,36 @@
       null,
       null
     ]
+  },
+  {
+    "id": 2,
+    "challenger": {
+      "UserName": "Ricardo"
+    },
+    "opponent": {
+      "UserName": "Theo"
+    },
+    "rounds": [
+      {
+        "letter": "B",
+        "assignedCategoryNames": [
+          "Cosas",
+          "Marcas",
+          "Profesiones",
+          "Animales",
+          "Paises"
+        ],
+        "challengerAnswers": [
+          "Bebe",
+          "Bebe",
+          "Balbañil",
+          "Ballena",
+          "Brasil"
+        ],
+        "opponentAnswers": null
+      },
+      null,
+      null
+    ]
   }
 ]
