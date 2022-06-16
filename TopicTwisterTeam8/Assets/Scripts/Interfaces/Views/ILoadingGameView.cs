@@ -12,6 +12,6 @@ namespace Assets.Scripts.Interfaces
         public void ShowEndRoundSection();
         public void ShowCategoriesSection();
 
-        
+        public void StartAnimation();
     }
 }

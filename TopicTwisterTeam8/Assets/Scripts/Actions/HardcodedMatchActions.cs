@@ -48,12 +48,14 @@ namespace Assets.Scripts.Actions
             return _matchService.GetActiveMatch().opponent.UserName;
         }
 
-        public void GetMatch()
+        public Match GetMatch()
         {
             if (CheckActiveMatch())
                 match = _matchService.GetActiveMatch();
             else
                 CreateMatch();
+
+            return match;
             
         }
 

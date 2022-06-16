@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Actions;
 using Assets.Scripts.Interfaces;
-using Assets.Scripts.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,27 +25,29 @@ namespace Assets.Scripts.Presenters
 
             InitMatchData();
             _view.ShowPlayersInfo(_playerName, _opponentName);
-
+            
             SelectSectionAtStart();
         }
        
         private void InitMatchData()
         {
-            _isNewGame = _matchActions.CheckActiveMatch();
+            _isNewGame = !_matchActions.CheckActiveMatch();
             _matchActions.GetMatch();
             _playerName = _matchActions.GetPlayerName();
             _opponentName = _matchActions.GetOpponentName();
         }
-        private void SelectSectionAtStart()
+        private  void SelectSectionAtStart()
         {
+            _view.StartAnimation();
             if (_isNewGame)
             {
                 _view.ShowCategoriesSection();
             }
             else
             {
+                
                 // HARDCODEADO PARA EL SPRINT REVIEW
-                if (new SingletonCurrentMatchService().GetActiveMatch().rounds[0].opponentAnswers == null)
+                if (_matchActions.GetMatch().rounds[0].opponentAnswers == null)
                 {
                     _view.ShowCategoriesSection();
                 }

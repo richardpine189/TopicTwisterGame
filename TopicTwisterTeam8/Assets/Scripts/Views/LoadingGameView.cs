@@ -41,20 +41,19 @@ namespace Team8.TopicTwister
         private void Start()
         {
             _presenter = new LoadingGamePresenter(this, new HardcodedMatchActions());
+
         }
 
-        private IEnumerator MainMethod()
+        public void StartAnimation()
         {
             if (_isNewGame)
             {
                 // Simulated loading, change name, refactor
                 StartCoroutine(LoadingAnimation());
 
-                yield return new WaitForSeconds(3.0f);
-
             }
-            //INVOKE
         }
+
         private IEnumerator LoadingAnimation()
         {
             _loadingText.gameObject.SetActive(true);
@@ -68,6 +67,8 @@ namespace Team8.TopicTwister
 
             _loadingText.gameObject.SetActive(false);
             _versusImage.SetActive(true);
+
+            yield return new WaitForSeconds(3.0f);
         }
 
         public void ShowPlayersInfo(string playerName, string opponentName)
@@ -82,12 +83,13 @@ namespace Team8.TopicTwister
         public void ShowCategoriesSection()
         {
             _categoriesPanel.SetActive(true);
-            
+            DeactivateLoading();
         }
         public void ShowEndRoundSection()
         {
-            _categoriesPanel.SetActive(true);
-            
+            _endRoundPanel.SetActive(true);
+            DeactivateLoading();
+
         }
         private void DeactivateLoading()
         {

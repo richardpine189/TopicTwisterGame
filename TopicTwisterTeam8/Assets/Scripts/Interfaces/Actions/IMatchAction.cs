@@ -16,7 +16,7 @@ namespace Assets.Scripts.Interfaces
         string GetPlayerName();
 
         string GetOpponentName();
-        void GetMatch();
+        Match GetMatch();
 
         public bool CheckActiveMatch();
     }
