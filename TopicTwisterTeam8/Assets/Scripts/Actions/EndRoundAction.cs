@@ -6,33 +6,35 @@ namespace Team8.TopicTwister
     public class EndRoundAction : IEndRoundAction
     {
         private Match _currentMatch; 
+
         public EndRoundAction()
         {
             _currentMatch = CurrentMatchSingleton.Get();
         }
+
         public string[] GetCategories()
         {
-            throw new System.NotImplementedException();
+            return _currentMatch.rounds[0].assignedCategoryNames;
         }
 
         public string[] GetChallengerAnswers()
         {
-            throw new System.NotImplementedException();
+            return _currentMatch.rounds[0].challengerAnswers;
         }
 
         public bool[] GetChallengerResults()
         {
-            throw new System.NotImplementedException();
+            return _currentMatch.rounds[0].challengerResult;
         }
 
         public string[] GetOponentAnswers()
         {
-            throw new System.NotImplementedException();
+            return _currentMatch.rounds[0].opponentAnswers;
         }
 
         public bool[] GetOponentResults()
         {
-            throw new System.NotImplementedException();
+            return _currentMatch.rounds[0].oponentResult;
         }
     }
 }

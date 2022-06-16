@@ -47,5 +47,13 @@ namespace Assets.Scripts.Actions
         {
             return _matchService.GetActiveMatch().opponent.UserName;
         }
+
+        public void GetMatch()
+        {
+            if(_matchService.GetActiveMatch() == null)
+            {
+                CreateMatch();
+            }
+        }
     }
 }

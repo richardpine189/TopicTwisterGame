@@ -1,68 +1,57 @@
 [
   {
-    "id": 1,
-    "challenger": {
-      "UserName": "Ricardo"
-    },
-    "opponent": {
-      "UserName": "Juan"
-    },
-    "rounds": [
-      {
-        "letter": "V",
-        "assignedCategoryNames": [
-          "Cosas",
-          "Animales",
-          "Color",
-          "Paises",
-          "Marcas"
-        ],
-        "challengerAnswers": [
-          "qweqwe",
-          "qweqweq",
-          "qweqweq",
-          "qweqeq",
-          "qwewe"
-        ],
-        "opponentAnswers": null
-      },
-      null,
-      null
-    ]
-  },
-  {
     "id": 0,
     "challenger": {
       "UserName": "Ricardo"
     },
     "opponent": {
-      "UserName": "Theo"
+      "UserName": "Jesus"
     },
     "rounds": [
       {
-        "letter": "M",
+        "letter": "D",
         "assignedCategoryNames": [
-          "Cosas",
+          "Marcas",
           "Animales",
-          "Color",
+          "Celebridad",
           "Paises",
-          "Marcas"
+          "Frutas Y Verduras"
         ],
         "challengerAnswers": [
-          "Respuesta",
-          "Respuesta",
-          "Respuesta",
-          "Respuesta",
-          "Respuesta"
+          "dede",
+          "delfin",
+          "qweqwe",
+          "Dinamarca",
+          "retret"
         ],
-        "opponentAnswers": null
+        "opponentAnswers": [
+          "qweqwe",
+          "werrew",
+          "trerte",
+          "ytrtry",
+          "uytuyt"
+        ],
+        "challengerResult": [
+          false,
+          true,
+          false,
+          true,
+          false
+        ],
+        "oponentResult": [
+          false,
+          false,
+          false,
+          true,
+          true
+        ]
       },
       null,
       null
     ]
   },
   {
-    "id": 2,
+    "id": 1,
     "challenger": {
       "UserName": "Ricardo"
     },
@@ -71,22 +60,30 @@
     },
     "rounds": [
       {
-        "letter": "B",
+        "letter": "D",
         "assignedCategoryNames": [
-          "Cosas",
-          "Marcas",
           "Profesiones",
+          "Frutas Y Verduras",
+          "Verbos",
           "Animales",
-          "Paises"
+          "Peliculas"
         ],
         "challengerAnswers": [
-          "Bebe",
-          "Bebe",
-          "Balbañil",
-          "Ballena",
-          "Brasil"
+          "Dentista",
+          "Durazno",
+          "Dormir",
+          "Delfin",
+          "It"
         ],
-        "opponentAnswers": null
+        "opponentAnswers": null,
+        "challengerResult": [
+          false,
+          true,
+          true,
+          true,
+          false
+        ],
+        "oponentResult": null
       },
       null,
       null

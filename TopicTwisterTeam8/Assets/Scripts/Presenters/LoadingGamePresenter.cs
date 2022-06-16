@@ -20,7 +20,7 @@ namespace Assets.Scripts.Presenters
         {
             _view = view;
             _matchActions = matchActions;
-            _matchActions.CreateMatch();
+            _matchActions.GetMatch();
 
             string playerName = _matchActions.GetPlayerName();
             string opponentName = _matchActions.GetOpponentName();

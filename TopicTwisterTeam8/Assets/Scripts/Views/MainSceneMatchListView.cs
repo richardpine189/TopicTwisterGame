@@ -38,9 +38,16 @@ namespace Team8.TopicTwister
             _view = view;
             IMatchInfoGetter action = new MatchGetter();
 
-            foreach(var match in action.GetMatchesInfo())
+            // Hardcodeado para que no aparezca el match con ID = 0, USAR ESTE DESPUÉS DEL SPRINT REVIEW
+            //foreach(var match in action.GetMatchesInfo())
+            //{
+            //    _view.CreateMatchUI(match);
+            //}
+
+            MatchViewModel[] matches = action.GetMatchesInfo();
+            for (int i = 1; i < matches.Length; i++)
             {
-                _view.CreateMatchUI(match);
+                _view.CreateMatchUI(matches[i]);
             }
         }
     }

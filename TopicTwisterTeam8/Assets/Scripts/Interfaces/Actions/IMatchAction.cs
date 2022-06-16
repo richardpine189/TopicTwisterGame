@@ -16,5 +16,6 @@ namespace Assets.Scripts.Interfaces
         string GetPlayerName();
 
         string GetOpponentName();
+        void GetMatch();
     }
 }

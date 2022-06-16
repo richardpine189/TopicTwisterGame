@@ -15,13 +15,22 @@ namespace Team8.TopicTwister
         private TMP_InputField[] _challengerAnswers;
 
         [SerializeField]
-        private TMP_InputField[] _oponentAnswers;
+        private TMP_InputField[] _opponentAnswers;
 
         [SerializeField]
         private Image[] _challengerResult;
 
         [SerializeField]
-        private Image[] _oponentResult;
+        private Image[] _opponentResult;
+
+        [SerializeField]
+        private Sprite _tickSprite;
+
+        [SerializeField]
+        private Sprite _crossSprite;
+
+        [SerializeField]
+        private GameObject _categoriesPanel;
 
         private EndRoundPresenter _endRoundPresenter;
 
@@ -29,21 +38,53 @@ namespace Team8.TopicTwister
         {
             _endRoundPresenter = new EndRoundPresenter(this);
         }
-        void IEndRoundView.ShowCategories(string[] categories)
+
+        public void ShowCategories(string[] categories)
         {
-            throw new System.NotImplementedException();
+            for (int i = 0; i < categories.Length; i++)
+            {
+                _categories[i].text = categories[i];
+            }
         }
 
-        void IEndRoundView.ShowChallengerAnswersAndResult(string[] categories, bool[] results)
+        public void ShowChallengerAnswersAndResult(string[] answers, bool[] results)
         {
-            throw new System.NotImplementedException();
+            for (int i = 0; i < answers.Length; i++)
+            {
+                _challengerAnswers[i].text = answers[i];
+
+                if(results[i])
+                {
+                    _challengerResult[i].sprite = _tickSprite;
+                }
+                else
+                {
+                    _challengerResult[i].sprite = _crossSprite;
+                }
+            }
         }
 
-        void IEndRoundView.ShowOponentAnswersAndResult(string[] categories, bool[] results)
+        public void ShowOponentAnswersAndResult(string[] answers, bool[] results)
         {
-            throw new System.NotImplementedException();
+            for (int i = 0; i < answers.Length; i++)
+            {
+                _opponentAnswers[i].text = answers[i];
+
+                if (results[i])
+                {
+                    _opponentResult[i].sprite = _tickSprite;
+                }
+                else
+                {
+                    _opponentResult[i].sprite = _crossSprite;
+                }
+            }
         }
 
-        
+        public void ChangePanel()
+        {
+            _categoriesPanel.SetActive(true);
+            this.gameObject.SetActive(false);
+        }
     }
 }

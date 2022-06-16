@@ -2,8 +2,10 @@
 {
     public interface IEndRoundView
     {
-        public void ShowCategories(string[] categories);
-        public void ShowChallengerAnswersAndResult(string[] categories, bool[] results);
-        public void ShowOponentAnswersAndResult(string[] categories, bool[] results);
+        void ShowCategories(string[] categories);
+
+        void ShowChallengerAnswersAndResult(string[] answers, bool[] results);
+
+        void ShowOponentAnswersAndResult(string[] answers, bool[] results);
     }
 }

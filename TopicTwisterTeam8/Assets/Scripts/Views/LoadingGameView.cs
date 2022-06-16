@@ -35,9 +35,14 @@ namespace Team8.TopicTwister
 
         private LoadingGamePresenter _presenter;
 
+        bool _isNewGame;
+
         private void Start()
         {
-            if (new SingletonCurrentMatchService().GetActiveMatch() != null)
+            // Check if opponent has answered
+            _isNewGame = (new SingletonCurrentMatchService().GetActiveMatch() == null);
+
+            if (!_isNewGame)
             {
                 Debug.Log(new SingletonCurrentMatchService().GetActiveMatch().id);
             }
@@ -51,13 +56,18 @@ namespace Team8.TopicTwister
 
         private IEnumerator MainMethod()
         {
-            // Simulated loading, change name, refactor
-            StartCoroutine(LoadingAnimation());
+            if (_isNewGame)
+            {
+                // Simulated loading, change name, refactor
+                StartCoroutine(LoadingAnimation());
 
-            yield return new WaitForSeconds(3.0f);
+                yield return new WaitForSeconds(3.0f);
 
+            }
+            
             // Should the matchcreator be instantiated here? In the view file?
             _presenter = new LoadingGamePresenter(this, new HardcodedMatchActions());
+
 
             Invoke("ChangePanel", 3.0f);
         }
@@ -85,16 +95,21 @@ namespace Team8.TopicTwister
 
         private void ChangePanel()
         {
-            // Check if opponent has answered
-            bool playerGoesFirst = true;
-
-            if(playerGoesFirst)
+            if (_isNewGame)
             {
                 _categoriesPanel.SetActive(true);
             }
             else
             {
-                _endRoundPanel.SetActive(true);
+                // HARDCODEADO PARA EL SPRINT REVIEW
+                if (new SingletonCurrentMatchService().GetActiveMatch().rounds[0].opponentAnswers == null)
+                {
+                    _categoriesPanel.SetActive(true);
+                }
+                else
+                {
+                    _endRoundPanel.SetActive(true);
+                }
             }
 
             this.gameObject.SetActive(false);

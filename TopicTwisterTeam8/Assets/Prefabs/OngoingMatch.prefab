@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 125, y: 62.5}
-  m_SizeDelta: {x: 200, y: 25}
+  m_SizeDelta: {x: 234.332, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &731327750
 CanvasRenderer:
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA1Es su turno!"
+  m_text: Esperando al oponente
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 04f090996aae7463d918156bd4ff8ce2, type: 2}
   m_sharedMaterial: {fileID: 21744886475155490, guid: 04f090996aae7463d918156bd4ff8ce2,
@@ -1124,8 +1124,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9909600979ccd4c60b0526e5a92ad021, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: de96990c450934c9c9276c2f84723f5f, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1233,6 +1233,7 @@ MonoBehaviour:
   _score: {fileID: 1213635329}
   _round: {fileID: 904733208}
   _turn: {fileID: 731327749}
+  matchId: 0
 --- !u!1 &746463713976935790
 GameObject:
   m_ObjectHideFlags: 0
