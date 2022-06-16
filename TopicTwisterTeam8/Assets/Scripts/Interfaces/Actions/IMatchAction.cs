@@ -17,5 +17,7 @@ namespace Assets.Scripts.Interfaces
 
         string GetOpponentName();
         void GetMatch();
+
+        public bool CheckActiveMatch();
     }
 }

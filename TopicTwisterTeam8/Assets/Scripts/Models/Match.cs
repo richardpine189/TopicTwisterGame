@@ -6,6 +6,7 @@ namespace TopicTwister.Assets.Scripts.Models
         public User challenger;
         public User opponent;
         public Round[] rounds = new Round[3];
+        
     }
 
     public class Round
@@ -16,5 +17,6 @@ namespace TopicTwister.Assets.Scripts.Models
         public string[] opponentAnswers;
         public bool[] challengerResult;
         public bool[] oponentResult;
+        public bool roundFinished = false;
     }
 }

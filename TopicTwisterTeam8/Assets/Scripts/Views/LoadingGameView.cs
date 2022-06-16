@@ -37,21 +37,10 @@ namespace Team8.TopicTwister
 
         bool _isNewGame;
 
+
         private void Start()
         {
-            // Check if opponent has answered
-            _isNewGame = (new SingletonCurrentMatchService().GetActiveMatch() == null);
-
-            if (!_isNewGame)
-            {
-                Debug.Log(new SingletonCurrentMatchService().GetActiveMatch().id);
-            }
-            else
-            {
-                Debug.Log("null");
-            }
-
-            StartCoroutine(MainMethod());
+            _presenter = new LoadingGamePresenter(this, new HardcodedMatchActions());
         }
 
         private IEnumerator MainMethod()
@@ -64,20 +53,8 @@ namespace Team8.TopicTwister
                 yield return new WaitForSeconds(3.0f);
 
             }
-            
-            // Should the matchcreator be instantiated here? In the view file?
-            _presenter = new LoadingGamePresenter(this, new HardcodedMatchActions());
-
-
-            Invoke("ChangePanel", 3.0f);
+            //INVOKE
         }
-
-        public void ShowPlayersInfo(string playerName, string opponentName)
-        {
-            _playerName.text = playerName;
-            _opponentName.text = opponentName;
-        }
-
         private IEnumerator LoadingAnimation()
         {
             _loadingText.gameObject.SetActive(true);
@@ -93,26 +70,30 @@ namespace Team8.TopicTwister
             _versusImage.SetActive(true);
         }
 
-        private void ChangePanel()
+        public void ShowPlayersInfo(string playerName, string opponentName)
         {
-            if (_isNewGame)
-            {
-                _categoriesPanel.SetActive(true);
-            }
-            else
-            {
-                // HARDCODEADO PARA EL SPRINT REVIEW
-                if (new SingletonCurrentMatchService().GetActiveMatch().rounds[0].opponentAnswers == null)
-                {
-                    _categoriesPanel.SetActive(true);
-                }
-                else
-                {
-                    _endRoundPanel.SetActive(true);
-                }
-            }
+            _playerName.text = playerName;
+            _opponentName.text = opponentName;
+        }
 
+        
+
+        
+        public void ShowCategoriesSection()
+        {
+            _categoriesPanel.SetActive(true);
+            
+        }
+        public void ShowEndRoundSection()
+        {
+            _categoriesPanel.SetActive(true);
+            
+        }
+        private void DeactivateLoading()
+        {
             this.gameObject.SetActive(false);
         }
     }
+    
+
 }
