@@ -1,14 +1,10 @@
-﻿using Assets.Scripts.Actions;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TopicTwister.Assets.Scripts.Models;
-using Assets.Scripts.Interfaces;
 
-namespace Assets.Scripts.Presenters
-{
     public class CorrectionPresenter
     {
         bool[] result;
@@ -19,9 +15,9 @@ namespace Assets.Scripts.Presenters
         {
             _view = view;
             _categoryRepository = categoryRepository;
-            _view.OnNextTurnClick += EndTurn;
+            //_view.OnNextTurnClick += EndTurn;
         }
-
+    
         public void EndTurn(string[] roundCategories, string[] answers, char letter)
         {
             Match match = new Match();
@@ -38,7 +34,7 @@ namespace Assets.Scripts.Presenters
             SaveMatch action = new SaveMatch();
             action.Save(match);
         }
-
+    
         public bool[] GetCorrections(string[] roundCategories, string[] answers, char letter)
         {
             result = new bool[5];
@@ -53,4 +49,3 @@ namespace Assets.Scripts.Presenters
             return result;
         }
     }
-}

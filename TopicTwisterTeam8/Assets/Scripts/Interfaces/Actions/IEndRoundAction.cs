@@ -1,5 +1,4 @@
-﻿namespace Team8.TopicTwister
-{
+﻿
     public interface IEndRoundAction
     {
         public string[] GetCategories();
@@ -8,4 +7,4 @@
         public bool[] GetChallengerResults();
         public bool[] GetOponentResults();
     }
-}
+

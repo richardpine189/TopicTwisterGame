@@ -4,12 +4,7 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "Interfaces",
-        "Actions",
-        "Presenters",
-        "Repositories",
-        "Services",
-        "Models"
+        "MainAssembly"
     ],
     "includePlatforms": [
         "Editor"

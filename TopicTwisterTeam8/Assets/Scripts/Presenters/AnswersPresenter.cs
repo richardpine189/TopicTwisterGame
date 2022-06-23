@@ -1,10 +1,8 @@
-using Assets.Scripts.Interfaces;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Presenters
-{
     public class AnswersPresenter
     {
         private IAnsweringView _view;
@@ -22,4 +20,4 @@ namespace Assets.Scripts.Presenters
             _answersRepository.SaveAnswers(answers);
         }
     }
-}
+

@@ -1,14 +1,11 @@
-﻿using Assets.Scripts.Actions;
-using Assets.Scripts.Interfaces;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Tests.Actions
-{
+
     class RandomLetterGetterShould
     {
         ILetterGetter _letterGetter;
@@ -45,4 +42,4 @@ namespace Assets.Scripts.Tests.Actions
             Assert.IsTrue(char.IsUpper(_letter));
         }
     }
-}
+

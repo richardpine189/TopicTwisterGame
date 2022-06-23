@@ -1,18 +1,17 @@
-﻿using Assets.Scripts.Interfaces;
-using Assets.Scripts.Services;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TopicTwister.Assets.Scripts.Models;
 
-namespace Assets.Scripts.Actions
-{
+
+
     public class HardcodedMatchActions : IMatchAction
     {
         private User _player;
         private User _opponent;
+        private ImBot _newBoot;
         Match match;
         private ICurrentMatchService _matchService;
 
@@ -62,6 +61,10 @@ namespace Assets.Scripts.Actions
             return match;
             
         }
+        public Round GetCurrentRound()
+        {
+            return match.rounds.First(x => x.roundFinished == false);
+        }
 
         public bool CheckActiveMatch()
         {
@@ -73,4 +76,4 @@ namespace Assets.Scripts.Actions
             return _matchService.GetActiveMatch().rounds.First(x => !x.roundFinished).opponentAnswers == null;
         }
     }
-}
+

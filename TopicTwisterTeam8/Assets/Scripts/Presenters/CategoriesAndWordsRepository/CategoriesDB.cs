@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TopicTwister.Assets.Scripts.Models;
+
 using UnityEngine;
 using System.Linq;
-using Assets.Scripts.Interfaces;
+
 
 public class CategoriesDB : MonoBehaviour, ICategoriesRepository
 {

@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Interfaces
-{
     public interface ILetterView
     {
         void ShowLetter(char letter);
@@ -14,4 +12,4 @@ namespace Assets.Scripts.Interfaces
 
         event Action OnSpinClick;
     }
-}
+

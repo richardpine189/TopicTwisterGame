@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Actions;
-using Assets.Scripts.Interfaces;
+﻿
 using NSubstitute;
 using NUnit.Framework;
 using System;
@@ -8,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Tests.Actions
-{
     class SendAnswersActionShould
     {
         [Test]
@@ -25,4 +22,4 @@ namespace Assets.Scripts.Tests.Actions
             answeringService.Received(1).SendToRepository(answers);
         }
     }
-}
+

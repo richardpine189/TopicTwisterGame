@@ -1,8 +1,4 @@
-﻿using Assets.Scripts.Repositories;
-using TopicTwister.Assets.Scripts.Models;
-
-namespace Team8.TopicTwister
-{
+﻿
     public class EndRoundAction : IEndRoundAction
     {
         private Match _currentMatch; 
@@ -37,4 +33,3 @@ namespace Team8.TopicTwister
             return _currentMatch.rounds[0].oponentResult;
         }
     }
-}

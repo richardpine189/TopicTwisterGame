@@ -1,37 +1,31 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
 
-namespace TopicTwister
+public class MainScenePanelNavigator : MonoBehaviour
 {
-    public class MainScenePanelNavigator : MonoBehaviour
+    [Header("Panel")]
+
+    [SerializeField] private RectTransform _mainPanel;
+    [SerializeField] private List<RectTransform> _panels;
+
+    private const float ANIMATION_TIME_TO_SLIDING = 0.5f;
+
+    void Start()
     {
-        [Header("Panel")]
 
-        [SerializeField] private RectTransform _mainPanel;
-        [SerializeField] private List<RectTransform> _panels;
+        _mainPanel.DOAnchorPos(Vector2.zero, ANIMATION_TIME_TO_SLIDING);
+    }
 
-        private const float ANIMATION_TIME_TO_SLIDING = 0.5f;
-
-        void Start()
+    public void ShowPanel(RectTransform panelToShow)
+    {
+        foreach(RectTransform rt in _panels)
         {
-            
-            _mainPanel.DOAnchorPos(Vector2.zero, ANIMATION_TIME_TO_SLIDING);
-            
+            Vector2 tempVector = rt.GetComponent<PanelPosition>().PanelInitialPosition;
+            rt.DOAnchorPos(tempVector, ANIMATION_TIME_TO_SLIDING);
         }
-
-        public void ShowPanel(RectTransform panelToShow)
-        {
-            foreach(RectTransform rt in _panels)
-            {
-                Vector2 tempVector = rt.GetComponent<PanelPosition>().PanelInitialPosition;
-                rt.DOAnchorPos(tempVector, ANIMATION_TIME_TO_SLIDING);
-            }
-            panelToShow.DOAnchorPos(Vector2.zero, ANIMATION_TIME_TO_SLIDING);
-        }
-
+        panelToShow.DOAnchorPos(Vector2.zero, ANIMATION_TIME_TO_SLIDING);
     }
 }
+
 

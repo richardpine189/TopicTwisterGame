@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TopicTwister.Assets.Scripts.Models;
 
-namespace Assets.Scripts.Interfaces
-{
+
+
     public interface IMatchAction
     {
         void CreateMatch();
@@ -19,8 +18,10 @@ namespace Assets.Scripts.Interfaces
 
         Match GetMatch();
 
+        Round GetCurrentRound();
+
         public bool CheckActiveMatch();
 
         bool IsChallengerTurn();
     }
-}
+

@@ -1,13 +1,10 @@
-﻿using Assets.Scripts.Interfaces;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TopicTwister.Assets.Scripts.Models;
 
-namespace Assets.Scripts.Repositories
-{
     public class JsonMatchRepository : IMatchRepository
     {
         public List<Match> GetMatches()
@@ -75,4 +72,4 @@ namespace Assets.Scripts.Repositories
             return highestId + 1;
         }
     }
-}
+

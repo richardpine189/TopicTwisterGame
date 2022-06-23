@@ -1,13 +1,11 @@
-using Assets.Scripts.Interfaces;
-using Assets.Scripts.Models;
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TopicTwister.Assets.Scripts.Models;
+
 using UnityEngine;
 
-namespace Team8.TopicTwister
-{
+
     public class MainSceneMatchListView : MonoBehaviour, IMatchListView
     {
         MatchListPresenter _presenter;
@@ -86,4 +84,4 @@ namespace Team8.TopicTwister
     {
         void CreateMatchUI(MatchViewModel matchViewModel);
     }
-}
+

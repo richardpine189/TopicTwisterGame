@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Interfaces;
-using Assets.Scripts.Presenters;
-using NSubstitute;
+﻿using NSubstitute;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -8,49 +6,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Tests.Presenters
+
+public class LetterPresenterShould
 {
-    public class LetterPresenterShould
+    ILetterView _view;
+    ILetterGetter _letterGetter;
+    ICategoriesGetter _categoriesGetter;
+
+    [SetUp]
+    public void SetUp()
     {
-        ILetterView _view;
-        ILetterGetter _letterGetter;
-        ICategoriesGetter _categoriesGetter;
+        _view = Substitute.For<ILetterView>();
+        _letterGetter = Substitute.For<ILetterGetter>();
+        _categoriesGetter = Substitute.For<ICategoriesGetter>();
+    }
 
-        [SetUp]
-        public void SetUp()
-        {
-            _view = Substitute.For<ILetterView>();
-            _letterGetter = Substitute.For<ILetterGetter>();
-            _categoriesGetter = Substitute.For<ICategoriesGetter>();
-        }
+    [Test]
+    public void ShowCategories_OnStart()
+    {
+        // Arrange
+        string[] categories = { "Objetos", "Animales", "Ropa", "Comida", "Paises" };
+        _categoriesGetter.GetCategories().Returns(categories);
 
-        [Test]
-        public void ShowCategories_OnStart()
-        {
-            // Arrange
-            string[] categories = { "Objetos", "Animales", "Ropa", "Comida", "Paises" };
-            _categoriesGetter.GetCategories().Returns(categories);
+        // Act
+        LetterPresenter _presenter = new LetterPresenter(_view, _letterGetter, _categoriesGetter);
 
-            // Act
-            LetterPresenter _presenter = new LetterPresenter(_view, _letterGetter, _categoriesGetter);
+        // Assert
+        _view.Received().ShowCategories(categories);
+    }
 
-            // Assert
-            _view.Received().ShowCategories(categories);
-        }
+    [Test]
+    public void ShowRandomLetter_WhenButtonClick()
+    {
+        // Arrange
+        char letter = 'A';
+        _letterGetter.GetLetter().Returns(letter);
+        LetterPresenter _presenter = new LetterPresenter(_view, _letterGetter, _categoriesGetter);
 
-        [Test]
-        public void ShowRandomLetter_WhenButtonClick()
-        {
-            // Arrange
-            char letter = 'A';
-            _letterGetter.GetLetter().Returns(letter);
-            LetterPresenter _presenter = new LetterPresenter(_view, _letterGetter, _categoriesGetter);
+        // Act
+        _view.OnSpinClick += Raise.Event<Action>();
 
-            // Act
-            _view.OnSpinClick += Raise.Event<Action>();
-
-            // Assert
-            _view.Received().ShowLetter(letter);
-        }
+        // Assert
+        _view.Received().ShowLetter(letter);
     }
 }
+

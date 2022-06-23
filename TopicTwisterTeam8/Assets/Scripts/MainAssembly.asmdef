@@ -1,10 +1,9 @@
 {
-    "name": "Presenters",
+    "name": "MainAssembly",
     "rootNamespace": "",
     "references": [
-        "GUID:ce96c8ab9a9e2474a80ff254cbad0253",
-        "GUID:11ba1f198fa08d244b68e9875c44c4df",
-        "GUID:ffa1cd3929b793f4794ef78d42594316"
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:847e2ba0311ed264a93a4ff1d78d49bf"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

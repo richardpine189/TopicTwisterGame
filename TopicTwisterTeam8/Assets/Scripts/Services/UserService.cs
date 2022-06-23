@@ -1,13 +1,12 @@
-﻿using Assets.Scripts.Interfaces;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TopicTwister.Assets.Scripts.Models;
 
-namespace TopicTwister.Assets.Scripts
-{
+
+
     public class UserService
     {
         private IUserRepository _repo;
@@ -32,4 +31,4 @@ namespace TopicTwister.Assets.Scripts
             _repo.UpdateUser(user);
         }
     }
-}
+
