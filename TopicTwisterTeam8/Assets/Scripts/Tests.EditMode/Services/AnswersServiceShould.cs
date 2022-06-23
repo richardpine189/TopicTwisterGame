@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Interfaces;
-using Assets.Scripts.Services;
-using NSubstitute;
+﻿using NSubstitute;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

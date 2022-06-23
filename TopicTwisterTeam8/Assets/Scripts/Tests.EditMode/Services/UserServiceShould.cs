@@ -5,9 +5,6 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using NSubstitute;
-using Assets.Scripts.Interfaces;
-using TopicTwister.Assets.Scripts;
-using TopicTwister.Assets.Scripts.Models;
 
 public class UserServiceShould
 {

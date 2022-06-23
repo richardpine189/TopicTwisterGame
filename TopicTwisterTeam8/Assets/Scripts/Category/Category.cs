@@ -4,7 +4,7 @@ using UnityEngine;
 
 
     [CreateAssetMenu(menuName = "TopicTwister/Category",fileName = "newCategory")]
-    public class Category : ScriptableObject
+    public class Category_not_use : ScriptableObject
     {
         [SerializeField] private string name;
         [SerializeField] private List<string> words;
