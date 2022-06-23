@@ -40,7 +40,7 @@ namespace Team8.TopicTwister
 
         private void Start()
         {
-            _presenter = new LoadingGamePresenter(this, new HardcodedMatchActions());
+            _presenter = new LoadingGamePresenter(this);
 
         }
 

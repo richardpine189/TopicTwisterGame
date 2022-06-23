@@ -16,8 +16,11 @@ namespace Assets.Scripts.Interfaces
         string GetPlayerName();
 
         string GetOpponentName();
+
         Match GetMatch();
 
         public bool CheckActiveMatch();
+
+        bool IsChallengerTurn();
     }
 }

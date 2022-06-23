@@ -38,7 +38,7 @@ namespace Assets.Scripts.Tests.Presenters
 
         private void WhenAPresenterIsCreated()
         {
-            _gamePresenter = new LoadingGamePresenter(_view, _matchActions);
+            _gamePresenter = new LoadingGamePresenter(_view);
         }
 
         private void ThenShowPlayersInfo(string playerName, string opponentName)

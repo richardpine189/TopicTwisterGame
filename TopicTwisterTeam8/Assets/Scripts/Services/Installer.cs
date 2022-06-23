@@ -1,5 +1,6 @@
 using Assets.Scripts.Interfaces;
 using Assets.Scripts.Repositories;
+using Assets.Scripts.Services;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,5 +18,7 @@ public class Installer
         ServiceLocator.Instance.RegisterService<IAnswersRepository>(_answerRepository);
 
         ServiceLocator.Instance.RegisterService<IMatchRepository>(new JsonMatchRepository());
+
+        ServiceLocator.Instance.RegisterService<ICurrentMatchService>(new SingletonCurrentMatchService());
     }
 }

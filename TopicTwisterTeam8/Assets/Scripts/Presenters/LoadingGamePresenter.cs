@@ -16,12 +16,11 @@ namespace Assets.Scripts.Presenters
         private bool _isNewGame;
         private string _playerName;
         private string _opponentName;
-        // The matchcreator must come by dependency injection if the only class to access this constructor is the view?
-        // Should matchCreator and matchInfo be the same entity if both deal with match responsabilities?
-        public LoadingGamePresenter(ILoadingGameView view, IMatchAction matchActions)
+
+        public LoadingGamePresenter(ILoadingGameView view)
         {
             _view = view;
-            _matchActions = matchActions;
+            _matchActions = new HardcodedMatchActions();
 
             InitMatchData();
             _view.ShowPlayersInfo(_playerName, _opponentName);
@@ -36,9 +35,11 @@ namespace Assets.Scripts.Presenters
             _playerName = _matchActions.GetPlayerName();
             _opponentName = _matchActions.GetOpponentName();
         }
-        private  void SelectSectionAtStart()
+
+        private void SelectSectionAtStart()
         {
             _view.StartAnimation();
+
             if (_isNewGame)
             {
                 _view.ShowCategoriesSection();
@@ -46,8 +47,7 @@ namespace Assets.Scripts.Presenters
             else
             {
                 
-                // HARDCODEADO PARA EL SPRINT REVIEW
-                if (_matchActions.GetMatch().rounds[0].opponentAnswers == null)
+                if (_matchActions.IsChallengerTurn())
                 {
                     _view.ShowCategoriesSection();
                 }

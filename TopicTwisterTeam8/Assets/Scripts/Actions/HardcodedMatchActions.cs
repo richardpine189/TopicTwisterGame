@@ -18,7 +18,7 @@ namespace Assets.Scripts.Actions
 
         public HardcodedMatchActions()
         {
-            _matchService = new SingletonCurrentMatchService();
+            _matchService = ServiceLocator.Instance.GetService<ICurrentMatchService>();
         }
 
         public void CreateMatch()
@@ -34,8 +34,8 @@ namespace Assets.Scripts.Actions
 
         public void FindPlayers()
         {
-            _player = new User(1, "jugador");
-            _opponent = new User(2, "oponente");
+            _player = new User(1, "Ricardo");
+            _opponent = new User(2, "Theo");
         }
 
         public string GetPlayerName()
@@ -51,9 +51,13 @@ namespace Assets.Scripts.Actions
         public Match GetMatch()
         {
             if (CheckActiveMatch())
+            {
                 match = _matchService.GetActiveMatch();
+            }
             else
+            {
                 CreateMatch();
+            }
 
             return match;
             
@@ -62,7 +66,11 @@ namespace Assets.Scripts.Actions
         public bool CheckActiveMatch()
         {
             return (_matchService.GetActiveMatch() != null);
-          
+        }
+
+        public bool IsChallengerTurn()
+        {
+            return _matchService.GetActiveMatch().rounds.First(x => !x.roundFinished).opponentAnswers == null;
         }
     }
 }
