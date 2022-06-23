@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class CorrectionView : MonoBehaviour, ICorrectionView
 {
-    public event Action<string[], string[], char> OnNextTurnClick;
+    //public event Action<string[], string[], char> OnNextTurnClick;
 
     [SerializeField]
     private TMP_Text[] _categories;

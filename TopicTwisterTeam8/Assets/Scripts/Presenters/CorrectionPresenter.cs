@@ -15,9 +15,9 @@ using System.Threading.Tasks;
         {
             _view = view;
             _categoryRepository = categoryRepository;
-            _view.OnNextTurnClick += EndTurn;
+            //_view.OnNextTurnClick += EndTurn;
         }
-
+    
         public void EndTurn(string[] roundCategories, string[] answers, char letter)
         {
             Match match = new Match();
@@ -34,7 +34,7 @@ using System.Threading.Tasks;
             SaveMatch action = new SaveMatch();
             action.Save(match);
         }
-
+    
         public bool[] GetCorrections(string[] roundCategories, string[] answers, char letter)
         {
             result = new bool[5];

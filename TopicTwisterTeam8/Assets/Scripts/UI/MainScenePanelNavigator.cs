@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
-using DG.Tweening.Core;
 
 public class MainScenePanelNavigator : MonoBehaviour
 {
@@ -16,6 +13,7 @@ public class MainScenePanelNavigator : MonoBehaviour
 
     void Start()
     {
+
         _mainPanel.DOAnchorPos(Vector2.zero, ANIMATION_TIME_TO_SLIDING);
     }
 

@@ -6,10 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "TopicTwister/Category",fileName = "newCategory")]
 public class Category : ScriptableObject
 {
-    [SerializeField] private string name;
+    [SerializeField] private string _name;
     [SerializeField] private List<string> words;
 
-    public string Name { get => name; private set => name = value; }
+    public string Name { get => _name; private set => _name = value; }
 
     public bool ExisistInCategory(string word, char letter)
     {
