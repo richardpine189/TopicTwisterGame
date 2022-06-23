@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-namespace TopicTwister
-{
+
     public class MainScenePanelNavigator : MonoBehaviour
     {
         [Header("Panel")]
@@ -33,5 +32,5 @@ namespace TopicTwister
         }
 
     }
-}
+
 

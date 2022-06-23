@@ -1,14 +1,12 @@
-﻿using Assets.Scripts.Interfaces;
-using Assets.Scripts.Services;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TopicTwister.Assets.Scripts.Models;
 
-namespace Assets.Scripts.Actions
-{
+
+
     public class SetActiveMatch
     {
         IMatchRepository _matchRepository;
@@ -32,4 +30,4 @@ namespace Assets.Scripts.Actions
             _matchService.SetActiveMatch(null);
         }
     }
-}
+

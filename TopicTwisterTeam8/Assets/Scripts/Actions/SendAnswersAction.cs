@@ -1,10 +1,8 @@
-using Assets.Scripts.Interfaces;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Actions
-{
     public class SendAnswersAction : IAnswerSender
     {
         IAnsweringService _answersService;
@@ -17,4 +15,4 @@ namespace Assets.Scripts.Actions
             _answersService.SendToRepository(answers);
         }
     }
-}
+

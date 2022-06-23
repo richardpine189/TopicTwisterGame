@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Actions;
-using Assets.Scripts.Interfaces;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts.Presenters
-{
+
     public class NewGamePresenter
     {
         private INewGameView _view;
@@ -26,4 +24,3 @@ namespace Assets.Scripts.Presenters
             SceneManager.LoadScene("GameScene");
         }
     }
-}

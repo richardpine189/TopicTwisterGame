@@ -1,14 +1,9 @@
-﻿using Assets.Scripts.Actions;
-using Assets.Scripts.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TopicTwister.Assets.Scripts.Models;
 
-namespace Assets.Scripts.Presenters
-{
     public class LoadingGamePresenter
     {
         private ILoadingGameView _view;
@@ -25,7 +20,7 @@ namespace Assets.Scripts.Presenters
 
             InitMatchData();
             _view.ShowPlayersInfo(_playerName, _opponentName);
-            
+            _view.StartAnimation();
             SelectSectionAtStart();
         }
        
@@ -38,7 +33,7 @@ namespace Assets.Scripts.Presenters
         }
         private  void SelectSectionAtStart()
         {
-            _view.StartAnimation();
+            
             if (_isNewGame)
             {
                 _view.ShowCategoriesSection();
@@ -46,7 +41,7 @@ namespace Assets.Scripts.Presenters
             else
             {
                 
-                // HARDCODEADO PARA EL SPRINT REVIEW
+                // HARDCODEADO PARA EL SPRINT REVIEW.... Implementar CurrentRound
                 if (_matchActions.GetMatch().rounds[0].opponentAnswers == null)
                 {
                     _view.ShowCategoriesSection();
@@ -59,4 +54,4 @@ namespace Assets.Scripts.Presenters
 
         }
     }
-}
+

@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Team8.TopicTwister
-{
+
     [CreateAssetMenu(menuName = "TopicTwister/Category",fileName = "newCategory")]
     public class Category : ScriptableObject
     {
@@ -12,4 +11,4 @@ namespace Team8.TopicTwister
 
         public string Name { get => name; private set => name = value; }
     }
-}
+

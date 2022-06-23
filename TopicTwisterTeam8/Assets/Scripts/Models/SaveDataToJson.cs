@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
-using Unity.Plastic.Newtonsoft.Json;
+using Newtonsoft.Json;
 
 public static class SaveDataToJson
 {

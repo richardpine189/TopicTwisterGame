@@ -1,8 +1,4 @@
-﻿using Assets.Scripts.Actions;
-using Assets.Scripts.Interfaces;
-using Assets.Scripts.Presenters;
-using Assets.Scripts.Repositories;
-using Assets.Scripts.Services;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +9,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Team8.TopicTwister.Assets.Scripts.Views
-{
+
     public class AnsweringView : MonoBehaviour, IAnsweringView
     {
         private AnswersPresenter _presenter;
@@ -67,4 +62,4 @@ namespace Team8.TopicTwister.Assets.Scripts.Views
                 _categories[i].text = _categoriesSO.CategoriesName[i];
         }
     }
-}
+

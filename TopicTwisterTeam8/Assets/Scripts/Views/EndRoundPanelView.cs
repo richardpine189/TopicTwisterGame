@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-namespace Team8.TopicTwister
-{
+
     public class EndRoundPanelView : MonoBehaviour, IEndRoundView
     {
         [SerializeField]
@@ -87,4 +86,4 @@ namespace Team8.TopicTwister
             this.gameObject.SetActive(false);
         }
     }
-}
+

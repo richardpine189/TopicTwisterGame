@@ -1,5 +1,4 @@
-namespace TopicTwister.Assets.Scripts.Models
-{
+
     public class Match
     {
         public int? id;
@@ -19,4 +18,3 @@ namespace TopicTwister.Assets.Scripts.Models
         public bool[] oponentResult;
         public bool roundFinished = false;
     }
-}

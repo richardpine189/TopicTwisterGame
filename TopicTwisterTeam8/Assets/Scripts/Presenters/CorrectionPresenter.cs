@@ -1,14 +1,10 @@
-﻿using Assets.Scripts.Actions;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TopicTwister.Assets.Scripts.Models;
-using Assets.Scripts.Interfaces;
 
-namespace Assets.Scripts.Presenters
-{
     public class CorrectionPresenter
     {
         bool[] result;
@@ -53,4 +49,3 @@ namespace Assets.Scripts.Presenters
             return result;
         }
     }
-}

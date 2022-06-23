@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Actions;
-using Assets.Scripts.Interfaces;
-using Assets.Scripts.Presenters;
+﻿
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,8 +9,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Team8.TopicTwister.Assets.Scripts.Views
-{
+
     public class CategoriesView : MonoBehaviour, ILetterView
     {
         public event Action OnSpinClick;
@@ -83,4 +80,4 @@ namespace Team8.TopicTwister.Assets.Scripts.Views
             _categoriesSO.CategoriesName = categories; // SAVING CATEGORIES NAME
         }
     }
-}
+

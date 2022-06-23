@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace TopicTwister.Assets.Scripts.Models
-{
     [CreateAssetMenu(menuName = "TopicTwister/Category",fileName = "newCategory")]
     public class Category : ScriptableObject
     {
@@ -28,4 +26,4 @@ namespace TopicTwister.Assets.Scripts.Models
             return false;
         }
     }
-}
+

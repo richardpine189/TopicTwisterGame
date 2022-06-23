@@ -1,12 +1,11 @@
-﻿using Assets.Scripts.Interfaces;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Services
-{
+
     public class AnswersService : IAnsweringService
     {
         IAnswersRepository _answersRepository;
@@ -19,4 +18,4 @@ namespace Assets.Scripts.Services
             _answersRepository.SaveAnswers(answers);
         }
     }
-}
+

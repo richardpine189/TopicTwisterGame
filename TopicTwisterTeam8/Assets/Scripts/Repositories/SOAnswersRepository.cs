@@ -1,15 +1,14 @@
-﻿using Assets.Scripts.Interfaces;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TopicTwister.Assets.Scripts.Models;
+
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts.Repositories
-{
+
     public class SOAnswersRepository : IAnswersRepository
     {
         private string _fileName;
@@ -28,4 +27,4 @@ namespace Assets.Scripts.Repositories
             AssetDatabase.CreateAsset(_answersScriptable, _path + _fileName);
         }
     }
-}
+

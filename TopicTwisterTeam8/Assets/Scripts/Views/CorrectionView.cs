@@ -1,18 +1,16 @@
-using Assets.Scripts.Presenters;
-using Assets.Scripts.Interfaces;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using TopicTwister.Assets.Scripts.Models;
+
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-namespace Team8.TopicTwister
-{
+
     public class CorrectionView : MonoBehaviour, ICorrectionView
     {
         public event Action<string[], string[], char> OnNextTurnClick;
@@ -109,4 +107,4 @@ namespace Team8.TopicTwister
             SceneManager.LoadScene(1,LoadSceneMode.Single);
         }
     }
-}
+

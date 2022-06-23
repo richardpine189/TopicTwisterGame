@@ -1,5 +1,4 @@
-﻿namespace Team8.TopicTwister
-{
+﻿
     public interface IEndRoundView
     {
         void ShowCategories(string[] categories);
@@ -8,4 +7,4 @@
 
         void ShowOponentAnswersAndResult(string[] answers, bool[] results);
     }
-}
+

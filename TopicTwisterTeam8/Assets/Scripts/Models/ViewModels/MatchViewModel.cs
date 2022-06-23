@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Models
-{
     public class MatchViewModel
     {
         public int idMatch;
@@ -13,4 +11,4 @@ namespace Assets.Scripts.Models
         public int currentRound;
         public bool isPlayerTurn;
     }
-}
+

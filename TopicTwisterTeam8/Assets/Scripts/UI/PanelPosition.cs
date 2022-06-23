@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TopicTwister
-{
+
     public class PanelPosition : MonoBehaviour
     {
         private Vector2 _panelInitialPosition;
@@ -15,5 +14,5 @@ namespace TopicTwister
             _panelInitialPosition = _panelTransform.anchoredPosition;
         }
     }
-}
+
 

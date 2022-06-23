@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TopicTwister.Assets.Scripts.Models;
 
-namespace Assets.Scripts.Repositories
-{
     public sealed class CurrentMatchSingleton
     {
         private CurrentMatchSingleton() { }
@@ -23,4 +20,4 @@ namespace Assets.Scripts.Repositories
             _currentMatch = match;
         }
     }
-}
+

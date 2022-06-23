@@ -1,13 +1,11 @@
-using Assets.Scripts.Interfaces;
-using Assets.Scripts.Presenters;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Team8.TopicTwister
-{
+
     public class NewGameView : MonoBehaviour, INewGameView
     {
         [SerializeField]
@@ -23,4 +21,4 @@ namespace Team8.TopicTwister
             newGameButton.onClick.AddListener(OnNewGameButtonClick.Invoke);
         }
     }
-}
+

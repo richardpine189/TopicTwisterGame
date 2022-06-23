@@ -1,5 +1,4 @@
-﻿namespace Team8.TopicTwister
-{
+﻿
     public class EndRoundPresenter
     {
         private IEndRoundView _view;
@@ -14,4 +13,4 @@
             _view.ShowOponentAnswersAndResult(_action.GetOponentAnswers(), _action.GetOponentResults());
         }
     }
-}
+

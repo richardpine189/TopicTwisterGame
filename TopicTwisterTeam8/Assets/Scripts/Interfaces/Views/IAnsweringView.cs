@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Interfaces
-{
     public interface IAnsweringView
     {
         event Action<string[]> OnStopClick;
     }
-}
+

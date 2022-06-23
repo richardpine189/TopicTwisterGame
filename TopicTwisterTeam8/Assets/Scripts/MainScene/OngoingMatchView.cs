@@ -1,13 +1,9 @@
-using Assets.Scripts.Models;
-using Assets.Scripts.Presenters;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Team8.TopicTwister
-{
     public class OngoingMatchView : MonoBehaviour
     {
         [SerializeField]
@@ -46,4 +42,4 @@ namespace Team8.TopicTwister
             SceneManager.LoadScene(2, LoadSceneMode.Single);
         }
     }
-}
+

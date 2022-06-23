@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Interfaces;
-using Assets.Scripts.Presenters;
-using NSubstitute;
+﻿using NSubstitute;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -8,8 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Tests.Presenters
-{
+
     public class LetterPresenterShould
     {
         ILetterView _view;
@@ -53,4 +50,4 @@ namespace Assets.Scripts.Tests.Presenters
             _view.Received().ShowLetter(letter);
         }
     }
-}
+

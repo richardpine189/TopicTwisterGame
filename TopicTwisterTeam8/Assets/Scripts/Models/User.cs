@@ -1,5 +1,4 @@
-﻿namespace TopicTwister.Assets.Scripts.Models
-{
+﻿
     public class User
     {
         private int _userId;
@@ -19,4 +18,3 @@
             _userName = userName;
         }
     }
-}
