@@ -116,5 +116,133 @@
       null,
       null
     ]
+  },
+  {
+    "id": 2,
+    "challenger": {
+      "UserName": "Ricardo"
+    },
+    "opponent": {
+      "UserName": "Theo"
+    },
+    "rounds": [
+      {
+        "letter": "D",
+        "assignedCategoryNames": [
+          "Color",
+          "Peliculas",
+          "Profesiones",
+          "Celebridad",
+          "Frutas Y Verduras"
+        ],
+        "challengerAnswers": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "opponentAnswers": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "challengerResult": [
+          true,
+          true,
+          true,
+          false,
+          false
+        ],
+        "opponentResult": [
+          true,
+          false,
+          false,
+          true,
+          false
+        ],
+        "roundFinished": true
+      },
+      {
+        "letter": "A",
+        "assignedCategoryNames": [
+          "Color",
+          "Peliculas",
+          "Profesiones",
+          "Celebridad",
+          "Frutas Y Verduras"
+        ],
+        "challengerAnswers": [
+          "1",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "opponentAnswers": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "challengerResult": [
+          true,
+          true,
+          true,
+          false,
+          false
+        ],
+        "opponentResult": [
+          true,
+          false,
+          false,
+          true,
+          false
+        ],
+        "roundFinished": true
+      },
+      {
+        "letter": "D",
+        "assignedCategoryNames": [
+          "Marcas",
+          "Celebridad",
+          "Color",
+          "Verbos",
+          "Profesiones"
+        ],
+        "challengerAnswers": [
+          "2",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "opponentAnswers": [
+          "2",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "challengerResult": [
+          true,
+          true,
+          true,
+          false,
+          false
+        ],
+        "opponentResult": [
+          false,
+          false,
+          false,
+          false,
+          true
+        ],
+        "roundFinished": true
+      }
+    ]
   }
 ]

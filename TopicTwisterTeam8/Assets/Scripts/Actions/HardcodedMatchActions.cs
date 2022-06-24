@@ -72,11 +72,6 @@ public class HardcodedMatchActions : IMatchAction
             return 0;
         }
 
-        if (match.rounds.All(x => x.roundFinished))
-        {
-            return 2;
-        }
-
         for (int i = 0; i < match.rounds.Length; i++)
         {
             if (match.rounds[i] == null || !match.rounds[i].roundFinished)
@@ -85,12 +80,12 @@ public class HardcodedMatchActions : IMatchAction
             }
         }
 
-        return -1;
+        return 3;
     }
 
     public bool IsFinished()
     {
-        if (match.rounds.All(x => x.roundFinished))
+        if (!match.rounds.Any(x => x == null) && match.rounds.All(x => x.roundFinished))
         {
             return true;
         }

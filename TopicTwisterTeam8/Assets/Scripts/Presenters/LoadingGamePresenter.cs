@@ -43,8 +43,7 @@ namespace Assets.Scripts.Presenters
             }
             else
             {
-                
-                if (_matchActions.IsChallengerTurn())
+                if (!_matchActions.IsFinished() && _matchActions.IsChallengerTurn())
                 {
                     _view.ShowCategoriesSection();
                 }

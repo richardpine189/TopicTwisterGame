@@ -61,7 +61,7 @@ internal class GetMatchesInfo : IGetMatchesInfo
                 idMatch = (int)m.id,
                 opponent = m.opponent.UserName,
                 currentRound = m.rounds.All(x => x == null) ? 1 : m.rounds.Where(t => t != null).Count(),
-                isPlayerTurn = m.rounds.First(x => !x.roundFinished).opponentAnswers != null
+                isPlayerTurn = (m.rounds.Any(x => !x.roundFinished) ? m.rounds.First(x => !x.roundFinished).opponentAnswers != null : true)
             }).ToArray();
         }
         else

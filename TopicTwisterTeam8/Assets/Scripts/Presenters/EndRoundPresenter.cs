@@ -13,12 +13,9 @@
         if (_action.IsFinished())
         {
             _view.ShowEndGamePanel(_action.ChallengerWon());
-            roundIndex = _action.GetCurrentRoundIndex();
         }
-        else
-        {
-            roundIndex = _action.GetCurrentRoundIndex() - 1;
-        }
+
+        roundIndex = _action.GetCurrentRoundIndex() - 1;
 
         //This shouldn't be in the presenter
         Match match = _action.GetMatch();

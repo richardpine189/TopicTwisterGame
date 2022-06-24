@@ -39,14 +39,13 @@ public class AnsweringView : MonoBehaviour, IAnsweringView
     private void Start()
     {
         Initialize();
-
-        ShowCategories(); // REVISAR
     }
 
     private void Initialize()
     {
         _presenter = new AnswersPresenter(this, ServiceLocator.Instance.GetService<IAnswersRepository>());
         _roundLetter.text = _letterSO.Letter.ToString();
+        ShowCategories(); // REVISAR
     }
 
     void OnEnable()
