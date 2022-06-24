@@ -15,6 +15,6 @@
         public string[] challengerAnswers;
         public string[] opponentAnswers;
         public bool[] challengerResult;
-        public bool[] oponentResult;
+        public bool[] opponentResult;
         public bool roundFinished = false;
     }

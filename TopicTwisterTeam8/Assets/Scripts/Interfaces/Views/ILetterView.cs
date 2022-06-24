@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    public interface ILetterView
-    {
-        void ShowLetter(char letter);
+public interface ILetterView
+{
+    void ShowLetter(char letter);
 
-        void ShowCategories(string[] categories);
+    void ShowCategories(string[] categories);
 
-        event Action OnSpinClick;
-    }
+    event Action OnSpinClick;
+
+    void ShowRoundNumber(int index);
+}
 

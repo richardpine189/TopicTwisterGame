@@ -1,7 +1,4 @@
-﻿using Assets.Scripts.Actions;
-using Assets.Scripts.Interfaces;
-using Assets.Scripts.Presenters;
-using Assets.Scripts.Services;
+﻿using Assets.Scripts.Presenters;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -37,11 +34,9 @@ namespace Team8.TopicTwister
 
         bool _isNewGame;
 
-
         private void Start()
         {
             _presenter = new LoadingGamePresenter(this);
-
         }
 
         public void StartAnimation()
@@ -50,7 +45,6 @@ namespace Team8.TopicTwister
             {
                 // Simulated loading, change name, refactor
                 StartCoroutine(LoadingAnimation());
-
             }
         }
 
@@ -76,26 +70,22 @@ namespace Team8.TopicTwister
             _playerName.text = playerName;
             _opponentName.text = opponentName;
         }
-
-        
-
         
         public void ShowCategoriesSection()
         {
             _categoriesPanel.SetActive(true);
             DeactivateLoading();
         }
+
         public void ShowEndRoundSection()
         {
             _endRoundPanel.SetActive(true);
             DeactivateLoading();
-
         }
+
         private void DeactivateLoading()
         {
             this.gameObject.SetActive(false);
         }
     }
-    
-
 }

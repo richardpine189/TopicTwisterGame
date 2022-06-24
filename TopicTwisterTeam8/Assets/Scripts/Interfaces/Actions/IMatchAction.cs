@@ -6,22 +6,26 @@ using System.Threading.Tasks;
 
 
 
-    public interface IMatchAction
-    {
-        void CreateMatch();
+public interface IMatchAction
+{
+    void CreateMatch();
 
-        void FindPlayers();
+    void FindPlayers();
 
-        string GetPlayerName();
+    string GetPlayerName();
 
-        string GetOpponentName();
+    string GetOpponentName();
 
-        Match GetMatch();
+    Match GetMatch();
 
-        Round GetCurrentRound();
+    Round GetCurrentRound();
 
-        public bool CheckActiveMatch();
+    public int GetCurrentRoundIndex();
 
-        bool IsChallengerTurn();
-    }
+    public bool CheckActiveMatch();
+
+    bool IsChallengerTurn();
+    bool IsFinished();
+    bool ChallengerWon();
+}
 

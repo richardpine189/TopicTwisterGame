@@ -1,51 +1,68 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    public class CorrectionPresenter
+public class CorrectionPresenter
+{
+    private bool[] results;
+    private ICorrectionView _view;
+    private ICategoriesRepository _categoryRepository;
+    private IMatchAction _matchActions;
+
+    public CorrectionPresenter(ICorrectionView view, ICategoriesRepository categoryRepository)
     {
-        bool[] result;
-        ICategoriesRepository _categoryRepository;
-        ICorrectionView _view;
-
-        public CorrectionPresenter(ICorrectionView view, ICategoriesRepository categoryRepository)
-        {
-            _view = view;
-            _categoryRepository = categoryRepository;
-            //_view.OnNextTurnClick += EndTurn;
-        }
+        _view = view;
+        _categoryRepository = categoryRepository;
+        _matchActions = new HardcodedMatchActions();
+        //_view.OnNextTurnClick += EndTurn;
+    }
     
-        public void EndTurn(string[] roundCategories, string[] answers, char letter)
+    public void EndTurn(string[] roundCategories, string[] answers, char letter)
+    {
+        // This assaingment should be inside a method of the actions object
+        Match match = _matchActions.GetMatch();
+        int currentRoundIndex = _matchActions.GetCurrentRoundIndex();
+
+        Round round = _matchActions.GetCurrentRound() != null ? _matchActions.GetCurrentRound() : new Round();
+
+        round.assignedCategoryNames = roundCategories;
+        round.letter = letter;
+        round.challengerAnswers = answers;
+        round.challengerResult = results;
+
+        if(round.opponentAnswers != null)
         {
-            Match match = new Match();
-
-            match.challenger = new User(1, "Ricardo");
-            match.opponent = new User(2, "Theo");
-            match.rounds[0] = new Round() {
-                assignedCategoryNames = roundCategories,
-                letter = letter,
-                challengerAnswers = answers,
-                challengerResult = result
-            };
-
-            SaveMatch action = new SaveMatch();
-            action.Save(match);
+            round.roundFinished = true;
         }
-    
-        public bool[] GetCorrections(string[] roundCategories, string[] answers, char letter)
+
+        match.rounds[currentRoundIndex] = round;
+
+        SaveMatch action = new SaveMatch();
+        action.Save(match);
+
+        if(round.roundFinished)
         {
-            result = new bool[5];
-
-            List<Category> categories = _categoryRepository.GetCategories();
-
-            for(int i = 0; i < 5; i++)
-            {
-                result[i] = categories.FirstOrDefault(x => x.Name == roundCategories[i]).ExisistInCategory(answers[i], letter);
-            }
-
-            return result;
+            _view.LoadNextTurn();
+        }
+        else
+        {
+            _view.ChangeScene();
         }
     }
+    
+    public bool[] GetCorrections(string[] roundCategories, string[] answers, char letter)
+    {
+        results = new bool[5];
+
+        List<Category> categories = _categoryRepository.GetCategories();
+
+        for(int i = 0; i < 5; i++)
+        {
+            results[i] = categories.FirstOrDefault(x => x.Name == roundCategories[i]).ExisistInCategory(answers[i], letter);
+        }
+
+        return results;
+    }
+}

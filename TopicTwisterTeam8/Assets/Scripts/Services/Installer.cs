@@ -1,6 +1,3 @@
-using Assets.Scripts.Interfaces;
-using Assets.Scripts.Repositories;
-using Assets.Scripts.Services;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

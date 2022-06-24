@@ -19,6 +19,9 @@ public class AnsweringView : MonoBehaviour, IAnsweringView
     private TMP_Text _roundLetter;
 
     [SerializeField]
+    private TMP_Text _roundText;
+
+    [SerializeField]
     private TMP_Text[] _categories;
 
     [SerializeField]
@@ -35,10 +38,25 @@ public class AnsweringView : MonoBehaviour, IAnsweringView
 
     private void Start()
     {
-        _presenter = new AnswersPresenter(this, ServiceLocator.Instance.GetService<IAnswersRepository>());
-        _roundLetter.text = _letterSO.Letter.ToString();
+        Initialize();
 
         ShowCategories(); // REVISAR
+    }
+
+    private void Initialize()
+    {
+        _presenter = new AnswersPresenter(this, ServiceLocator.Instance.GetService<IAnswersRepository>());
+        _roundLetter.text = _letterSO.Letter.ToString();
+    }
+
+    void OnEnable()
+    {
+        Initialize();
+
+        for(int i = 0; i < _answers.Length; i++)
+        {
+            _answers[i].text = "";
+        }
     }
 
     public void SendAnswers()
@@ -59,6 +77,11 @@ public class AnsweringView : MonoBehaviour, IAnsweringView
     {
         for (int i = 0; i < _categories.Length; i++)
             _categories[i].text = _categoriesSO.CategoriesName[i];
+    }
+
+    public void ShowRoundNumber(int round)
+    {
+        _roundText.text = "Ronda " + round;
     }
 }
 

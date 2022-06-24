@@ -16,6 +16,9 @@ public class CategoriesView : MonoBehaviour, ILetterView
     private TMP_Text _letter;
 
     [SerializeField]
+    private TMP_Text _roundText;
+
+    [SerializeField]
     private TMP_Text _countdownText;
 
     [SerializeField]
@@ -40,14 +43,26 @@ public class CategoriesView : MonoBehaviour, ILetterView
 
     private void Start()
     {
-        _presenter = new LetterPresenter(this, new RandomLetterGetter(), new HardCodedCategoriesGetter(_categoriesDB));
+        Initialize();
         _getLetterButton.onClick.AddListener(OnSpinClick.Invoke);
-            
+    }
+
+    void OnEnable()
+    {
+        Initialize();
+        _getLetterButton.gameObject.SetActive(true);
+        _letter.text = null;
+        _letter.gameObject.SetActive(false);
+        _countdownText.gameObject.SetActive(false);
+    }
+
+    private void Initialize()
+    {
+        _presenter = new LetterPresenter(this, new RandomLetterGetter(), new HardCodedCategoriesGetter(_categoriesDB));
     }
 
     public void ShowLetter(char letter)
     {
-
         _letter.text = letter.ToString();
         _letter.gameObject.SetActive(true);
         _getLetterButton.gameObject.SetActive(false);
@@ -77,5 +92,9 @@ public class CategoriesView : MonoBehaviour, ILetterView
         }
         _categoriesSO.CategoriesName = categories; // SAVING CATEGORIES NAME
     }
-}
 
+    public void ShowRoundNumber(int round)
+    {
+        _roundText.text = "Ronda " + round;
+    }
+}

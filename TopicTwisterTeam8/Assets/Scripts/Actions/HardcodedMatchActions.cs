@@ -1,79 +1,134 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+public class HardcodedMatchActions : IMatchAction
+{
+    private User _player;
+    private User _opponent;
+    private ImBot _newBoot;
+    Match match;
+    private ICurrentMatchService _matchService;
 
-
-    public class HardcodedMatchActions : IMatchAction
+    public HardcodedMatchActions()
     {
-        private User _player;
-        private User _opponent;
-        private ImBot _newBoot;
-        Match match;
-        private ICurrentMatchService _matchService;
+        _matchService = ServiceLocator.Instance.GetService<ICurrentMatchService>();
+    }
 
-        public HardcodedMatchActions()
+    public void CreateMatch()
+    {
+        FindPlayers();
+
+        match = new Match();
+        match.challenger = new User(1, "Ricardo");
+        match.opponent = new User(2, "Theo");
+
+        _matchService.SetActiveMatch(match);
+    }
+
+    public void FindPlayers()
+    {
+        _player = new User(1, "Ricardo");
+        _opponent = new User(2, "Theo");
+    }
+
+    public string GetPlayerName()
+    {
+        return _matchService.GetActiveMatch().challenger.UserName;
+    }
+
+    public string GetOpponentName()
+    {
+        return _matchService.GetActiveMatch().opponent.UserName;
+    }
+
+    public Match GetMatch()
+    {
+        if (CheckActiveMatch())
         {
-            _matchService = ServiceLocator.Instance.GetService<ICurrentMatchService>();
+            match = _matchService.GetActiveMatch();
+        }
+        else
+        {
+            CreateMatch();
         }
 
-        public void CreateMatch()
+        return match;
+    }
+
+    #region Other_Class
+    // These methods should be in a separate action class responsible of multiple verifications of a Match instance. The methods should receive a Match by parameter.
+    public Round GetCurrentRound()
+    {
+        return match.rounds[GetCurrentRoundIndex()];
+    }
+
+    public int GetCurrentRoundIndex()
+    {
+        if (match.rounds.All(x => x == null))
         {
-            FindPlayers();
-
-            match = new Match();
-            match.challenger = new User(1, "Ricardo");
-            match.opponent = new User(2, "Theo");
-
-            _matchService.SetActiveMatch(match);
+            return 0;
         }
 
-        public void FindPlayers()
+        if (match.rounds.All(x => x.roundFinished))
         {
-            _player = new User(1, "Ricardo");
-            _opponent = new User(2, "Theo");
+            return 2;
         }
 
-        public string GetPlayerName()
+        for (int i = 0; i < match.rounds.Length; i++)
         {
-            return _matchService.GetActiveMatch().challenger.UserName;
-        }
-
-        public string GetOpponentName()
-        {
-            return _matchService.GetActiveMatch().opponent.UserName;
-        }
-
-        public Match GetMatch()
-        {
-            if (CheckActiveMatch())
+            if (match.rounds[i] == null || !match.rounds[i].roundFinished)
             {
-                match = _matchService.GetActiveMatch();
+                return i;
             }
-            else
+        }
+
+        return -1;
+    }
+
+    public bool IsFinished()
+    {
+        if (match.rounds.All(x => x.roundFinished))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool ChallengerWon()
+    {
+        int wonRoundsCount = 0;
+
+        for(int i = 0; i < match.rounds.Length; i++)
+        {
+            if(match.rounds[i].challengerResult.Where(x => x).Count() > match.rounds[i].opponentResult.Where(x => x).Count())
             {
-                CreateMatch();
+                wonRoundsCount += 1;
             }
-
-            return match;
-            
-        }
-        public Round GetCurrentRound()
-        {
-            return match.rounds.First(x => x.roundFinished == false);
         }
 
-        public bool CheckActiveMatch()
+        if(wonRoundsCount > 1)
         {
-            return (_matchService.GetActiveMatch() != null);
+            return true;
         }
-
-        public bool IsChallengerTurn()
+        else
         {
-            return _matchService.GetActiveMatch().rounds.First(x => !x.roundFinished).opponentAnswers == null;
+            return false;
         }
     }
+
+    public bool CheckActiveMatch()
+    {
+        return (_matchService.GetActiveMatch() != null);
+    }
+
+    public bool IsChallengerTurn()
+    {
+        return (CheckActiveMatch() && GetCurrentRound().opponentAnswers == null);
+    }
+    #endregion
+}
 

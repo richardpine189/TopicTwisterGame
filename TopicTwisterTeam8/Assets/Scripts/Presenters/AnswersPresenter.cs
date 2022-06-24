@@ -1,23 +1,34 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-    public class AnswersPresenter
+public class AnswersPresenter
+{
+    private IAnsweringView _view;
+
+    // The presenter shouldn't communicate with the repository directly, only indirectly through the action layer.
+    private IAnswersRepository _answersRepository;
+    private IMatchAction _matchActions;
+
+    public AnswersPresenter(IAnsweringView view, IAnswersRepository answersRepository)
     {
-        private IAnsweringView _view;
-        private IAnswersRepository _answersRepository;
+        _view = view;
+        _answersRepository = answersRepository;
+        _matchActions = new HardcodedMatchActions();
+        _view.OnStopClick += SendAnswersAction;
 
-        public AnswersPresenter(IAnsweringView view, IAnswersRepository answersRepository)
-        {
-            _view = view;
-            _answersRepository = answersRepository;
-            _view.OnStopClick += SendAnswersAction;
-        }
-
-        private void SendAnswersAction(string[] answers)
-        {
-            _answersRepository.SaveAnswers(answers);
-        }
+        GetRoundNumber();
     }
 
+    private void SendAnswersAction(string[] answers)
+    {
+        _answersRepository.SaveAnswers(answers);
+    }
+
+    private void GetRoundNumber()
+    {
+        _matchActions.GetMatch();
+        int index = _matchActions.GetCurrentRoundIndex();
+        _view.ShowRoundNumber(index + 1);
+    }
+}

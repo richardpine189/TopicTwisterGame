@@ -13,6 +13,7 @@ using System.Threading.Tasks;
         {
             _categoryRepository = categoriesDB;
         }
+
         public string[] GetCategories()
         {
             List<Category> categories = _categoryRepository.GetCategories(5); // HARDCODED

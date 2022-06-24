@@ -7,5 +7,7 @@ using System.Threading.Tasks;
     public interface IAnsweringView
     {
         event Action<string[]> OnStopClick;
-    }
+
+    void ShowRoundNumber(int v);
+}
 

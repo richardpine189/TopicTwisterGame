@@ -42,14 +42,26 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
     [SerializeField]
     private CategoriesSO _categoriesSO;
 
-    CorrectionPresenter _presenter;
+    [SerializeField]
+    private GameObject _endRoundPanel;
 
+    private CorrectionPresenter _presenter;
     private string[] _answers;
     private string[] _categoryNames;
     private char _roundLetter;
 
 
     private void Start()
+    {
+        Initialize();
+    }
+
+    void OnEnable()
+    {
+        Initialize();
+    }
+
+    private void Initialize()
     {
         _presenter = new CorrectionPresenter(this, _categoriesDB);
 
@@ -61,8 +73,6 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
         _roundLetterUI.text = _roundLetter.ToString();
 
         ShowCorrections();
-
-        //OnNextTurnClick.Invoke(_categoryNames, _answers, _roundLetter);
     }
 
     public void ShowCorrections()
@@ -96,12 +106,17 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
     public void SaveMatch()
     {
         _presenter.EndTurn(_categoryNames, _answers, _roundLetter);
-
     }
 
     public void ChangeScene()
     {
         SceneManager.LoadScene(1,LoadSceneMode.Single);
+    }
+
+    public void LoadNextTurn()
+    {
+        _endRoundPanel.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 }
 

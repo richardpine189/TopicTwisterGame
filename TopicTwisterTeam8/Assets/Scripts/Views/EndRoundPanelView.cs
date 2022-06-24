@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 
 public class EndRoundPanelView : MonoBehaviour, IEndRoundView
 {
@@ -29,11 +29,19 @@ public class EndRoundPanelView : MonoBehaviour, IEndRoundView
     private Sprite _crossSprite;
 
     [SerializeField]
+    private GameObject _endgamePanel;
+
+    [SerializeField]
     private GameObject _categoriesPanel;
 
     private EndRoundPresenter _endRoundPresenter;
 
     private void Start()
+    {
+        _endRoundPresenter = new EndRoundPresenter(this);
+    }
+
+    void OnEnable()
     {
         _endRoundPresenter = new EndRoundPresenter(this);
     }
@@ -84,6 +92,13 @@ public class EndRoundPanelView : MonoBehaviour, IEndRoundView
     {
         _categoriesPanel.SetActive(true);
         this.gameObject.SetActive(false);
+    }
+
+    public void ShowEndGamePanel(bool challengerWon)
+    {
+        TMP_Text text = _endgamePanel.GetComponentInChildren(typeof(TMP_Text)) as TMP_Text;
+        text.text = challengerWon ? "Ganaste!" : "Perdiste :(";
+        _endgamePanel.SetActive(true);
     }
 }
 

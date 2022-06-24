@@ -19,6 +19,11 @@ public class OngoingMatchView : MonoBehaviour
     private TMP_Text _turn;
 
     [SerializeField]
+    private GameObject _waitingClock;
+
+    [SerializeField]
+    private GameObject _playButton;
+
     private int matchId = 0;
 
     private OngoingMatchPresenter _presenter;
@@ -33,6 +38,18 @@ public class OngoingMatchView : MonoBehaviour
     {
         matchId = match.idMatch;
         _opponentName.text = match.opponent;
+        _round.text = "Ronda " + match.currentRound;
+
+        if(match.isPlayerTurn)
+        {
+            _waitingClock.SetActive(false);
+            _playButton.SetActive(true);
+        }
+        else
+        {
+            _waitingClock.SetActive(true);
+            _playButton.SetActive(false);
+        }
     }
 
     public void LoadMatch()

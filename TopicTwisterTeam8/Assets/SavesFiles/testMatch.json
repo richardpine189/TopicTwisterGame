@@ -5,85 +5,113 @@
       "UserName": "Ricardo"
     },
     "opponent": {
-      "UserName": "Jesus"
-    },
-    "rounds": [
-      {
-        "letter": "D",
-        "assignedCategoryNames": [
-          "Marcas",
-          "Animales",
-          "Celebridad",
-          "Paises",
-          "Frutas Y Verduras"
-        ],
-        "challengerAnswers": [
-          "dede",
-          "delfin",
-          "qweqwe",
-          "Dinamarca",
-          "retret"
-        ],
-        "opponentAnswers": [
-          "qweqwe",
-          "werrew",
-          "trerte",
-          "ytrtry",
-          "uytuyt"
-        ],
-        "challengerResult": [
-          false,
-          true,
-          false,
-          true,
-          false
-        ],
-        "oponentResult": [
-          false,
-          false,
-          false,
-          true,
-          true
-        ]
-      },
-      null,
-      null
-    ]
-  },
-  {
-    "id": 1,
-    "challenger": {
-      "UserName": "Ricardo"
-    },
-    "opponent": {
       "UserName": "Theo"
     },
     "rounds": [
       {
         "letter": "D",
         "assignedCategoryNames": [
+          "Peliculas",
+          "Celebridad",
+          "Marcas",
           "Profesiones",
-          "Frutas Y Verduras",
-          "Verbos",
-          "Animales",
-          "Peliculas"
+          "Cosas"
         ],
         "challengerAnswers": [
-          "Dentista",
-          "Durazno",
-          "Dormir",
-          "Delfin",
-          "It"
+          "dddA",
+          "QWEWQE",
+          "ASDSAD",
+          "cxzzxc",
+          "fgddgf"
         ],
-        "opponentAnswers": null,
+        "opponentAnswers": [
+          "dddA",
+          "QWEWQE",
+          "ASDSAD",
+          "cxzzxc",
+          "fgddgf"
+        ],
         "challengerResult": [
           false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "opponentResult": [
           true,
-          true,
+          false,
+          false,
           true,
           false
         ],
-        "oponentResult": null
+        "roundFinished": true
+      },
+      {
+        "letter": "A",
+        "assignedCategoryNames": [
+          "Frutas Y Verduras",
+          "Color",
+          "Cosas",
+          "Verbos",
+          "Peliculas"
+        ],
+        "challengerAnswers": null,
+        "opponentAnswers": [
+          "dddA",
+          "QWEWQE",
+          "ASDSAD",
+          "cxzzxc",
+          "fgddgf"
+        ],
+        "challengerResult": null,
+        "opponentResult": [
+          false,
+          false,
+          false,
+          true,
+          true
+        ],
+        "roundFinished": false
+      },
+      null
+    ]
+  },
+  {
+    "id": 1,
+    "challenger": {
+      "UserName": "Juana"
+    },
+    "opponent": {
+      "UserName": "Romina"
+    },
+    "rounds": [
+      {
+        "letter": "B",
+        "assignedCategoryNames": [
+          "Peliculas",
+          "Celebridad",
+          "Marcas",
+          "Profesiones",
+          "Cosas"
+        ],
+        "challengerAnswers": [
+          "dddA",
+          "QWEWQE",
+          "ASDSAD",
+          "cxzzxc",
+          "fgddgf"
+        ],
+        "opponentAnswers": null,
+        "challengerResult": [
+          true,
+          false,
+          false,
+          true,
+          false
+        ],
+        "opponentResult": null,
+        "roundFinished": false
       },
       null,
       null

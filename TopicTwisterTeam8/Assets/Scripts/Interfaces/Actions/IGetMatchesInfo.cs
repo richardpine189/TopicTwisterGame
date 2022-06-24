@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    public interface IMatchInfoGetter
+    public interface IGetMatchesInfo
     {
-        MatchViewModel[] GetMatchesInfo();
+        MatchViewModel[] Execute();
     }
 

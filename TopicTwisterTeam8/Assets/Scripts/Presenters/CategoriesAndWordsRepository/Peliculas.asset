@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbfd02a5cc51cfd42a601ad5f876ce7e, type: 3}
   m_Name: Peliculas
   m_EditorClassIdentifier: 
-  name: Peliculas
+  _name: Peliculas
   words:
   - Avengers
   - Black Widow

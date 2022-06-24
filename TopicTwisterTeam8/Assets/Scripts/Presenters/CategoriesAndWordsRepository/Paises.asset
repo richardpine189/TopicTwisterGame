@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbfd02a5cc51cfd42a601ad5f876ce7e, type: 3}
   m_Name: Paises
   m_EditorClassIdentifier: 
-  name: Paises
+  _name: Paises
   words:
   - Argentina
   - Brasil
