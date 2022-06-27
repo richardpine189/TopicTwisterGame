@@ -33,6 +33,9 @@ public class EndRoundPanelView : MonoBehaviour, IEndRoundView
 
     [SerializeField]
     private GameObject _categoriesPanel;
+    
+    [SerializeField]
+    private GameObject _nextRoundButton;
 
     private EndRoundPresenter _endRoundPresenter;
 
@@ -98,7 +101,13 @@ public class EndRoundPanelView : MonoBehaviour, IEndRoundView
     {
         TMP_Text text = _endgamePanel.GetComponentInChildren(typeof(TMP_Text)) as TMP_Text;
         text.text = challengerWon ? "Ganaste!" : "Perdiste :(";
+        _nextRoundButton.SetActive(false);
         _endgamePanel.SetActive(true);
+    }
+
+    public void BackToMain()
+    {
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 }
 

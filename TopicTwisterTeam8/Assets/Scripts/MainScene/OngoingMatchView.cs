@@ -83,5 +83,10 @@ public class OngoingMatchView : MonoBehaviour
 
         SceneManager.LoadScene(2, LoadSceneMode.Single);
     }
+
+    public void LockButtonAndClock()
+    {
+
+    }
 }
 

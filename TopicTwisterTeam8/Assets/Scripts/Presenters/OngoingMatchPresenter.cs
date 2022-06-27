@@ -17,5 +17,6 @@ public class OngoingMatchPresenter
         SetBotInMatchAction botAction = new SetBotInMatchAction(matchId, categoriesDB);
         botAction.Execute();
     }
+
 }
 

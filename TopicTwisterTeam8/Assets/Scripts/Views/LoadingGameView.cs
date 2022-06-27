@@ -10,8 +10,11 @@ using UnityEngine.UI;
 
 namespace Team8.TopicTwister
 {
+    
     public class LoadingGameView : MonoBehaviour, ILoadingGameView
     {
+        public event Action OnReadyForNext;
+
         [SerializeField]
         private TMP_Text _playerName;
 
@@ -42,10 +45,11 @@ namespace Team8.TopicTwister
         public void StartAnimation()
         {
             if (_isNewGame)
-            {
                 // Simulated loading, change name, refactor
                 StartCoroutine(LoadingAnimation());
-            }
+            else
+                StartCoroutine(SecondWaiting());
+
         }
 
         private IEnumerator LoadingAnimation()
@@ -59,10 +63,17 @@ namespace Team8.TopicTwister
                 yield return new WaitForSeconds(0.3f);
             }
 
+            StartCoroutine(SecondWaiting());
+        }
+
+        public IEnumerator SecondWaiting()
+        {
             _loadingText.gameObject.SetActive(false);
             _versusImage.SetActive(true);
 
             yield return new WaitForSeconds(3.0f);
+
+            OnReadyForNext?.Invoke();
         }
 
         public void ShowPlayersInfo(string playerName, string opponentName)
@@ -86,6 +97,10 @@ namespace Team8.TopicTwister
         private void DeactivateLoading()
         {
             this.gameObject.SetActive(false);
+        }
+        public void SetNewGameState(bool gameState)
+        {
+            _isNewGame = gameState;
         }
     }
 }

@@ -21,10 +21,19 @@ namespace Assets.Scripts.Presenters
 
             InitMatchData();
             _view.ShowPlayersInfo(_playerName, _opponentName);
-            
-            SelectSectionAtStart();
+
+            _view.OnReadyForNext += SelectSectionAtStart;
+            _view.SetNewGameState(_isNewGame);
+            _view.StartAnimation();
+            //SelectSectionAtStart();
+
+
+
         }
-       
+       ~LoadingGamePresenter()
+        {
+            _view.OnReadyForNext -= SelectSectionAtStart;
+        }
         private void InitMatchData()
         {
             _isNewGame = !_matchActions.CheckActiveMatch();
@@ -35,7 +44,7 @@ namespace Assets.Scripts.Presenters
 
         private void SelectSectionAtStart()
         {
-            _view.StartAnimation();
+            
 
             if (_isNewGame)
             {

@@ -12,5 +12,7 @@ using System.Threading.Tasks;
         public void ShowCategoriesSection();
 
         public void StartAnimation();
-    }
+        public void SetNewGameState(bool gameState);
+        public event Action OnReadyForNext;
+}
 
