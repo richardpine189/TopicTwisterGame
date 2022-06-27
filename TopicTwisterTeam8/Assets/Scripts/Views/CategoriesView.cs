@@ -58,7 +58,7 @@ public class CategoriesView : MonoBehaviour, ILetterView
 
     private void Initialize()
     {
-        _presenter = new LetterPresenter(this, new RandomLetterGetter(), new HardCodedCategoriesGetter(_categoriesDB));
+        _presenter = new LetterPresenter(this, new RandomLetterGetter(), new CategoriesGetter(_categoriesDB));
     }
 
     public void ShowLetter(char letter)

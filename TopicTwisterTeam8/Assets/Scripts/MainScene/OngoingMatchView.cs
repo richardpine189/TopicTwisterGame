@@ -24,6 +24,8 @@ public class OngoingMatchView : MonoBehaviour
     [SerializeField]
     private GameObject _playButton;
 
+    private CategoriesDB _categoriesDB;
+
     private int matchId = 0;
 
     private OngoingMatchPresenter _presenter;
@@ -32,8 +34,31 @@ public class OngoingMatchView : MonoBehaviour
     private void Start()
     {
         _presenter = new OngoingMatchPresenter();
+        StartCoroutine(ChangeClockForButton());
+        _categoriesDB = GameObject.Find("DataBase").GetComponent<CategoriesDB>();
     }
 
+    IEnumerator ChangeClockForButton()
+    {
+        yield return new WaitForSeconds(5);
+        _waitingClock.SetActive(false);
+        _presenter.BotResolveRound(matchId, _categoriesDB);
+        _playButton.SetActive(true);
+        SaveState();
+    }
+
+    private void SaveState()
+    {
+        MatchViewModel match = new MatchViewModel();
+        match.idMatch = matchId;
+        match.opponent = _opponentName.text;
+        match.currentRound = int.Parse(_round.text.Split(" ")[1]);
+        match.isPlayerTurn = true;
+        _presenter.SaveCurrentMatch(match.idMatch);
+    }
+
+        
+    
     public void SetFields(MatchViewModel match) 
     {
         matchId = match.idMatch;

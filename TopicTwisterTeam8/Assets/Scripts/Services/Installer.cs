@@ -17,5 +17,7 @@ public class Installer
         ServiceLocator.Instance.RegisterService<IMatchRepository>(new JsonMatchRepository());
 
         ServiceLocator.Instance.RegisterService<ICurrentMatchService>(new SingletonCurrentMatchService());
+
+
     }
 }

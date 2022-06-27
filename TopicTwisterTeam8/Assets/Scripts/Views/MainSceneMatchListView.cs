@@ -41,7 +41,7 @@ public class MatchListPresenter
     }
 }
 
-internal class GetMatchesInfo : IGetMatchesInfo
+public class GetMatchesInfo : IGetMatchesInfo
 {
     IMatchRepository _matchRepository;
 

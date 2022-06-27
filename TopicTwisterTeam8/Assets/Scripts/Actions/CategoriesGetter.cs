@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    public class HardCodedCategoriesGetter : ICategoriesGetter
+    public class CategoriesGetter : ICategoriesGetter
     {
         ICategoriesRepository _categoryRepository;
 
-        public HardCodedCategoriesGetter(ICategoriesRepository categoriesDB)
+        public CategoriesGetter(ICategoriesRepository categoriesDB)
         {
             _categoryRepository = categoriesDB;
         }

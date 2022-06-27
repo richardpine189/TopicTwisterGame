@@ -60,6 +60,7 @@ public class HardcodedMatchActions : IMatchAction
 
     #region Other_Class
     // These methods should be in a separate action class responsible of multiple verifications of a Match instance. The methods should receive a Match by parameter.
+    
     public Round GetCurrentRound()
     {
         return match.rounds[GetCurrentRoundIndex()];
