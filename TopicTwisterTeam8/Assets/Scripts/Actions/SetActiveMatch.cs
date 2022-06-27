@@ -51,12 +51,25 @@ public class SetBotInMatchAction
         bool isPlayerTurn = (activeMatch.rounds.Any(x => !x.roundFinished) ? activeMatch.rounds.First(x => !x.roundFinished).opponentAnswers != null : true);
         if (isPlayerTurn)
             return;
-        SubExecute(activeMatch);
-        
+        Round tempRound = SubExecute(activeMatch);
+        tempRound.roundFinished = true;
+        int indexRound = 0;
+        for (int i = 0; i < activeMatch.rounds.Length; i++)
+        {
+            if (activeMatch.rounds[i] != null && activeMatch.rounds[i].roundFinished == false)
+            {
+                indexRound = i;
+                break;
+            }
+        }
+       
+        activeMatch.rounds[indexRound] = tempRound;
+        _matchRepository.SaveMatch(activeMatch);
+        if (indexRound == 2) return;
         Round newCurrentRound = new Round();
         newCurrentRound.letter = letterGeter.GetLetter();
         newCurrentRound.assignedCategoryNames = _categoriesRepository.GetCategories(5).Select(x => x.Name).ToArray();
-        int indexRound = 0;
+        
         for(int i=0; i< activeMatch.rounds.Length;i++)
         {
             if(activeMatch.rounds[i] == null)
@@ -66,12 +79,16 @@ public class SetBotInMatchAction
             }
         }
         activeMatch.rounds[indexRound] = newCurrentRound;
-        SubExecute(activeMatch);
+        tempRound = SubExecute(activeMatch);
+        activeMatch.rounds[indexRound] = tempRound;
+        _matchRepository.SaveMatch(activeMatch);
+
+
     }
 
-    private void SubExecute(Match match)
+    private Round SubExecute(Match match)
     {
-        
+
         //Referenciar a una Clase MatchAction
         Round currentRound = match.rounds.First(r => r.roundFinished == false && r != null);
         CategoriesGetter categoriesGetter = new CategoriesGetter(_categoriesRepository);
@@ -89,8 +106,8 @@ public class SetBotInMatchAction
         }
         currentRound.opponentAnswers = answers;
         currentRound.opponentResult = result;
-        currentRound.roundFinished = true;
-        _matchRepository.SaveMatch(match);
+        return currentRound;
+        
     }
 }
 
