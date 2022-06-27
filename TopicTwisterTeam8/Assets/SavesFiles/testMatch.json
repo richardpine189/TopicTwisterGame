@@ -87,34 +87,122 @@
     },
     "rounds": [
       {
-        "letter": "B",
+        "letter": "D",
         "assignedCategoryNames": [
-          "Peliculas",
-          "Celebridad",
+          "Color",
+          "Frutas Y Verduras",
           "Marcas",
-          "Profesiones",
-          "Cosas"
+          "Paises",
+          "Profesiones"
         ],
         "challengerAnswers": [
-          "dddA",
-          "QWEWQE",
-          "ASDSAD",
-          "cxzzxc",
-          "fgddgf"
+          "Dorado",
+          "Apio",
+          "Grimoldi",
+          "Finlandia",
+          "Arquitecto"
         ],
-        "opponentAnswers": null,
+        "opponentAnswers": [
+          "Dorado",
+          "Apio",
+          "Grimoldi",
+          "Finlandia",
+          "Arquitecto"
+        ],
         "challengerResult": [
           true,
           false,
           false,
-          true,
+          false,
           false
         ],
-        "opponentResult": null,
-        "roundFinished": false
+        "opponentResult": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true
       },
-      null,
-      null
+      {
+        "letter": "B",
+        "assignedCategoryNames": [
+          "Cosas",
+          "Peliculas",
+          "Paises",
+          "Marcas",
+          "Animales"
+        ],
+        "challengerAnswers": [
+          "Dedo",
+          "",
+          "Dinamarca",
+          "",
+          "Delfin"
+        ],
+        "opponentAnswers": [
+          "Auto",
+          "Black Widow",
+          "Finlandia",
+          "Grimoldi",
+          "Ballena"
+        ],
+        "challengerResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "opponentResult": [
+          false,
+          true,
+          false,
+          false,
+          true
+        ],
+        "roundFinished": true
+      },
+      {
+        "letter": "B",
+        "assignedCategoryNames": [
+          "Marcas",
+          "Color",
+          "Frutas Y Verduras",
+          "Peliculas",
+          "Paises"
+        ],
+        "challengerAnswers": [
+          "",
+          "",
+          "",
+          "",
+          "Brasil"
+        ],
+        "opponentAnswers": [
+          "Diesel",
+          "Azul",
+          "Espinaca",
+          "Eternals",
+          "Dinamarca"
+        ],
+        "challengerResult": [
+          false,
+          false,
+          false,
+          false,
+          true
+        ],
+        "opponentResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true
+      }
     ]
   },
   {
@@ -240,6 +328,134 @@
           false,
           false,
           true
+        ],
+        "roundFinished": true
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "challenger": {
+      "UserName": "Ricardo"
+    },
+    "opponent": {
+      "UserName": "Theo"
+    },
+    "rounds": [
+      {
+        "letter": "C",
+        "assignedCategoryNames": [
+          "Cosas",
+          "Animales",
+          "Celebridad",
+          "Paises",
+          "Marcas"
+        ],
+        "challengerAnswers": [
+          "Casa",
+          "Camello",
+          "Chester Bennington",
+          "",
+          ""
+        ],
+        "opponentAnswers": [
+          "Auto",
+          "Foca",
+          "Dakota Fanning",
+          "Argentina",
+          "Ford"
+        ],
+        "challengerResult": [
+          true,
+          true,
+          true,
+          false,
+          false
+        ],
+        "opponentResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true
+      },
+      {
+        "letter": "B",
+        "assignedCategoryNames": [
+          "Color",
+          "Profesiones",
+          "Frutas Y Verduras",
+          "Celebridad",
+          "Paises"
+        ],
+        "challengerAnswers": [
+          "Beige",
+          "Barbero",
+          "Berenjena",
+          "",
+          ""
+        ],
+        "opponentAnswers": [
+          "Azul",
+          "Cocinero",
+          "Calabaza",
+          "Francine Dee",
+          "Finlandia"
+        ],
+        "challengerResult": [
+          true,
+          true,
+          true,
+          false,
+          false
+        ],
+        "opponentResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true
+      },
+      {
+        "letter": "A",
+        "assignedCategoryNames": [
+          "Peliculas",
+          "Verbos",
+          "Color",
+          "Profesiones",
+          "Marcas"
+        ],
+        "challengerAnswers": [
+          "Avengers",
+          "Amar",
+          "Azul",
+          "",
+          ""
+        ],
+        "opponentAnswers": [
+          "Capitan America",
+          "Codear",
+          "Fucsia",
+          "Barbero",
+          "Ford"
+        ],
+        "challengerResult": [
+          true,
+          true,
+          true,
+          false,
+          false
+        ],
+        "opponentResult": [
+          false,
+          false,
+          false,
+          false,
+          false
         ],
         "roundFinished": true
       }

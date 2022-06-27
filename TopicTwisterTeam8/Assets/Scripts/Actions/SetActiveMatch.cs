@@ -52,7 +52,6 @@ public class SetBotInMatchAction
         if (isPlayerTurn)
             return;
         Round tempRound = SubExecute(activeMatch);
-        tempRound.roundFinished = true;
         int indexRound = 0;
         for (int i = 0; i < activeMatch.rounds.Length; i++)
         {
@@ -62,6 +61,9 @@ public class SetBotInMatchAction
                 break;
             }
         }
+        tempRound.roundFinished = true;
+        
+        
        
         activeMatch.rounds[indexRound] = tempRound;
         _matchRepository.SaveMatch(activeMatch);
