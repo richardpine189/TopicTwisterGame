@@ -32,14 +32,14 @@ public class LetterPresenter
 
     private void GetCategories()
     {
-        string[] categories = _matchActions.GetCurrentRound() != null ? _matchActions.GetCurrentRound().assignedCategoryNames : _categoriesGetter.GetCategories();
+        string[] categories = (_matchActions.GetCurrentRound() != null && _matchActions.GetCurrentRound().assignedCategoryNames != null) ? _matchActions.GetCurrentRound().assignedCategoryNames : _categoriesGetter.GetCategories();
 
         _view.ShowCategories(categories);
     }
 
     private void GetLetter()
     {
-        char letter = _matchActions.GetCurrentRound() != null ? _matchActions.GetCurrentRound().letter : _letterGetter.GetLetter();
+        char letter = (char)((_matchActions.GetCurrentRound() != null && _matchActions.GetCurrentRound().letter != null) ? _matchActions.GetCurrentRound().letter : _letterGetter.GetLetter());
 
         _view.ShowLetter(letter);
     }

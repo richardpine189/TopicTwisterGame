@@ -25,6 +25,8 @@ public class HardcodedMatchActions : IMatchAction
         match.challenger = new User(1, "Ricardo");
         match.opponent = new User(2, "Theo");
 
+        match.rounds[0] = new Round();
+
         _matchService.SetActiveMatch(match);
     }
 
@@ -63,6 +65,12 @@ public class HardcodedMatchActions : IMatchAction
     
     public Round GetCurrentRound()
     {
+        int index = GetCurrentRoundIndex();
+        if (match.rounds[index] == null)
+        {
+            match.rounds[index] = new Round();
+        }
+
         return match.rounds[GetCurrentRoundIndex()];
     }
 
@@ -125,6 +133,25 @@ public class HardcodedMatchActions : IMatchAction
     {
         return (CheckActiveMatch() && GetCurrentRound().opponentAnswers == null);
     }
+
+    public void SaveTimeToRound(int timeLeft)
+    {
+        Round round = GetCurrentRound();
+        round.timer = timeLeft;
+    }
+
+    public int GetTimeToAnswer()
+    {
+        Round round = GetCurrentRound();
+
+        if(round.timer < 50)
+        {
+            return round.timer + 10;
+        }
+
+        return round.timer;
+    }
+
     #endregion
 }
 

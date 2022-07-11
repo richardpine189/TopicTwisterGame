@@ -80,17 +80,16 @@ public class SetBotInMatchAction
                 break;
             }
         }
+        Random timer = new Random();
+        newCurrentRound.timer = timer.Next(10, 55);
         activeMatch.rounds[indexRound] = newCurrentRound;
         tempRound = SubExecute(activeMatch);
         activeMatch.rounds[indexRound] = tempRound;
         _matchRepository.SaveMatch(activeMatch);
-
-
     }
 
     private Round SubExecute(Match match)
     {
-
         //Referenciar a una Clase MatchAction
         Round currentRound = match.rounds.First(r => r.roundFinished == false && r != null);
         CategoriesGetter categoriesGetter = new CategoriesGetter(_categoriesRepository);
@@ -104,7 +103,7 @@ public class SetBotInMatchAction
             Random random = new Random();
             int index = random.Next(0, category.Words.Count);
             answers[i] = category.Words[index];
-            result[i] = category.ExisistInCategory(answers[i], currentRound.letter);
+            result[i] = category.ExisistInCategory(answers[i], (char)currentRound.letter);
         }
         currentRound.opponentAnswers = answers;
         currentRound.opponentResult = result;

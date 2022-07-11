@@ -1,24 +1,22 @@
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public class NewGameView : MonoBehaviour, INewGameView
+{
+    [SerializeField]
+    private Button newGameButton;
 
-    public class NewGameView : MonoBehaviour, INewGameView
+    private NewGamePresenter _presenter;
+
+    public event Action OnNewGameButtonClick;
+
+    void Start()
     {
-        [SerializeField]
-        private Button newGameButton;
-
-        private NewGamePresenter _presenter;
-
-        public event Action OnNewGameButtonClick;
-
-        void Start()
-        {
-            _presenter = new NewGamePresenter(this);
-            newGameButton.onClick.AddListener(OnNewGameButtonClick.Invoke);
-        }
+        _presenter = new NewGamePresenter(this);
+        newGameButton.onClick.AddListener(OnNewGameButtonClick.Invoke);
     }
+}
 
