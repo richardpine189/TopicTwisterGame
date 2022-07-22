@@ -129,5 +129,267 @@
         "timer": 60
       }
     ]
+  },
+  {
+    "id": 1,
+    "challenger": {
+      "UserName": "Ricardo"
+    },
+    "opponent": {
+      "UserName": "Theo"
+    },
+    "rounds": [
+      {
+        "letter": "D",
+        "assignedCategoryNames": [
+          "Celebridad",
+          "Profesiones",
+          "Cosas",
+          "Frutas Y Verduras",
+          "Marcas"
+        ],
+        "challengerAnswers": [
+          "",
+          "",
+          "Dedo",
+          "Durazno",
+          ""
+        ],
+        "opponentAnswers": [
+          "Elton John",
+          "Granjero",
+          "Bebe",
+          "Espinaca",
+          "Grimoldi"
+        ],
+        "challengerResult": [
+          false,
+          false,
+          true,
+          true,
+          false
+        ],
+        "opponentResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true,
+        "timer": 60
+      },
+      {
+        "letter": "A",
+        "assignedCategoryNames": [
+          "Verbos",
+          "Cosas",
+          "Marcas",
+          "Animales",
+          "Color"
+        ],
+        "challengerAnswers": [
+          "",
+          "",
+          "Asus",
+          "",
+          "Azul"
+        ],
+        "opponentAnswers": [
+          "Amar",
+          "Auto",
+          "Ford",
+          "Ballena",
+          "Beige"
+        ],
+        "challengerResult": [
+          false,
+          false,
+          true,
+          false,
+          true
+        ],
+        "opponentResult": [
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true,
+        "timer": 32
+      },
+      {
+        "letter": "D",
+        "assignedCategoryNames": [
+          "Verbos",
+          "Cosas",
+          "Paises",
+          "Animales",
+          "Celebridad"
+        ],
+        "challengerAnswers": [
+          "",
+          "",
+          "Dinamarca",
+          "",
+          ""
+        ],
+        "opponentAnswers": [
+          "Amar",
+          "Dedo",
+          "Estados Unidos",
+          "Araña",
+          "Francine Dee"
+        ],
+        "challengerResult": [
+          false,
+          false,
+          true,
+          false,
+          false
+        ],
+        "opponentResult": [
+          false,
+          true,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true,
+        "timer": 60
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "challenger": {
+      "UserName": "Ricardo"
+    },
+    "opponent": {
+      "UserName": "Theo"
+    },
+    "rounds": [
+      {
+        "letter": "A",
+        "assignedCategoryNames": [
+          "Verbos",
+          "Celebridad",
+          "Peliculas",
+          "Frutas Y Verduras",
+          "Color"
+        ],
+        "challengerAnswers": [
+          "",
+          "",
+          "avengers",
+          "",
+          "azul"
+        ],
+        "opponentAnswers": [
+          "Estudiar",
+          "Elton John",
+          "Avengers",
+          "Calabaza",
+          "Esperanza"
+        ],
+        "challengerResult": [
+          false,
+          false,
+          true,
+          false,
+          true
+        ],
+        "opponentResult": [
+          false,
+          false,
+          true,
+          false,
+          false
+        ],
+        "roundFinished": true,
+        "timer": 60
+      },
+      {
+        "letter": "B",
+        "assignedCategoryNames": [
+          "Color",
+          "Marcas",
+          "Cosas",
+          "Profesiones",
+          "Celebridad"
+        ],
+        "challengerAnswers": [
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "opponentAnswers": [
+          "Azul",
+          "Grimoldi",
+          "Estaca",
+          "Fiscal",
+          "Francine Dee"
+        ],
+        "challengerResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "opponentResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true,
+        "timer": 40
+      },
+      {
+        "letter": "A",
+        "assignedCategoryNames": [
+          "Marcas",
+          "Cosas",
+          "Animales",
+          "Peliculas",
+          "Color"
+        ],
+        "challengerAnswers": [
+          "asus",
+          "",
+          "",
+          "",
+          "azul"
+        ],
+        "opponentAnswers": [
+          "Ford",
+          "Auto",
+          "Foca",
+          "Avengers",
+          "Fucsia"
+        ],
+        "challengerResult": [
+          true,
+          false,
+          false,
+          false,
+          true
+        ],
+        "opponentResult": [
+          false,
+          true,
+          false,
+          true,
+          false
+        ],
+        "roundFinished": true,
+        "timer": 60
+      }
+    ]
   }
 ]

@@ -1,13 +1,17 @@
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public interface ICorrectionView
+namespace Assets.Scripts.Interfaces
 {
-    //event Action<string[], string[], char> OnNextTurnClick;
+    public interface ICorrectionView
+    {
+        //event Action<string[], string[], char> OnNextTurnClick;
 
-    void ShowCorrections();
-    void ChangeScene();
-    void LoadNextTurn();
+        void ShowCorrections();
+        void ChangeScene();
+        void LoadNextTurn();
+    }
 }
