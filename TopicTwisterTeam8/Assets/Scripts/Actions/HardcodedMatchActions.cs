@@ -108,7 +108,7 @@ public class HardcodedMatchActions : IMatchAction
 
         for(int i = 0; i < match.rounds.Length; i++)
         {
-            if(match.rounds[i].challengerResult.Where(x => x == CorrectionStatus.Valid).Count() > match.rounds[i].opponentResult.Where(x => x == CorrectionStatus.Valid).Count())
+            if(match.rounds[i].challengerResult.Where(x => x == true).Count() > match.rounds[i].opponentResult.Where(x => x == true).Count())
             {
                 wonRoundsCount += 1;
             }

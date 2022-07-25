@@ -13,8 +13,8 @@ public class Round
     public string[] assignedCategoryNames;
     public string[] challengerAnswers;
     public string[] opponentAnswers;
-    public CorrectionStatus[] challengerResult;
-    public CorrectionStatus[] opponentResult;
+    public bool[] challengerResult;
+    public bool[] opponentResult;
     public bool roundFinished = false;
     public int timer = 60;
 }

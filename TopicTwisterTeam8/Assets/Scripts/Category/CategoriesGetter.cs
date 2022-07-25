@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -31,10 +30,3 @@ public class CategoriesGetter : ICategoriesGetter
         return categories;
     }
 }
-
-
-
-
-
-public enum CorrectionStatus {Valid, Wrong}
-

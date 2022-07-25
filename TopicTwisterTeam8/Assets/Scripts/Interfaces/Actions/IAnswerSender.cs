@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    public interface IAnswerSender
-    {
-        public void SendAnswers(string[] answers);
-    }
+public interface IAnswerSender
+{
+    public void SendAnswers(string[] answers);
+}
 

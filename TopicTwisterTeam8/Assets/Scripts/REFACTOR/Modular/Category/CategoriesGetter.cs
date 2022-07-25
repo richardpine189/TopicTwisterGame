@@ -31,10 +31,3 @@ public class CategoriesGetter : ICategoriesGetter
         return categories;
     }
 }
-
-
-
-
-
-public enum CorrectionStatus {Valid, Wrong}
-

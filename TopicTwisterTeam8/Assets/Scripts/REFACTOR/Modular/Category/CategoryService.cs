@@ -33,7 +33,7 @@ public class CategoryService : ICategoryService
         return deserializeResponse;
     }
 
-    public async Task<CorrectionStatus[]> GetWordCorrection()
+    public async Task<bool[]> GetWordCorrection()
     {
         throw new NotImplementedException();
     }

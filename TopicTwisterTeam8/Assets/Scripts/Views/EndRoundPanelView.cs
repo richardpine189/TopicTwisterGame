@@ -57,13 +57,13 @@ public class EndRoundPanelView : MonoBehaviour, IEndRoundView
         }
     }
 
-    public void ShowChallengerAnswersAndResult(string[] answers, CorrectionStatus[] results)
+    public void ShowChallengerAnswersAndResult(string[] answers, bool[] results)
     {
         for (int i = 0; i < answers.Length; i++)
         {
             _challengerAnswers[i].text = answers[i];
 
-            if(results[i] == CorrectionStatus.Valid)
+            if(results[i] == true)
             {
                 _challengerResult[i].sprite = _tickSprite;
             }
@@ -74,13 +74,13 @@ public class EndRoundPanelView : MonoBehaviour, IEndRoundView
         }
     }
 
-    public void ShowOponentAnswersAndResult(string[] answers, CorrectionStatus[] results)
+    public void ShowOponentAnswersAndResult(string[] answers, bool[] results)
     {
         for (int i = 0; i < answers.Length; i++)
         {
             _opponentAnswers[i].text = answers[i];
 
-            if (results[i] == CorrectionStatus.Valid)
+            if (results[i] == true)
             {
                 _opponentResult[i].sprite = _tickSprite;
             }

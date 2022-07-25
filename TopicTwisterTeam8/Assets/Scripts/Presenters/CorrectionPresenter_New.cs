@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 public class CorrectionPresenter_New
 {
-    private CorrectionStatus[] results;
+    private bool[] results;
     private ICorrectionView_New _view;
     private IMatchAction _matchActions;
     private ICorrectionAction _correctionAction;
@@ -57,7 +57,7 @@ public class CorrectionPresenter_New
     
     public async void GetCorrections(string[] roundCategories, string[] answers, char letter)
     {
-        results = new CorrectionStatus[5];
+        results = new bool[5];
 
         for(int i = 0; i < 5; i++)
         {
@@ -77,7 +77,7 @@ internal class JsonAPICorrectionAction : ICorrectionAction
     // Development URL
     private static readonly string baseURL = @"http://localhost:8080";
 
-    public async Task<CorrectionStatus> GetCorrection(string word, string categoryName)
+    public async Task<bool> GetCorrection(string word, string categoryName)
     {
         //var values = new Dictionary<string, string>
         //{
@@ -90,11 +90,11 @@ internal class JsonAPICorrectionAction : ICorrectionAction
 
         var responseString = await response.Content.ReadAsStringAsync();
 
-        return JsonConvert.DeserializeObject<CorrectionStatus>(responseString);
+        return JsonConvert.DeserializeObject<bool>(responseString);
     }
 }
 
 public interface ICorrectionAction
 {
-    Task<CorrectionStatus> GetCorrection(string word, string categoryName);
+    Task<bool> GetCorrection(string word, string categoryName);
 }

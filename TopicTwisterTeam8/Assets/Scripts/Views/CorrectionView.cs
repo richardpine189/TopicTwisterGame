@@ -57,7 +57,7 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
 
     private void Initialize()
     {
-        _presenter = new CorrectionPresenter(this, new CategoriesGetter(new CategoryService()));
+        _presenter = new CorrectionPresenter(this, new CorrectionGetter(new CategoryService()));
 
         Answers answersObject = AssetDatabase.LoadAssetAtPath<Answers>("Assets/Scripts/pruebaSO.asset");
         _answers = answersObject.AnswersString;
@@ -73,11 +73,11 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
     {
         ShowAnswers(_answers);
 
-        CorrectionStatus[] corrections = await _presenter.GetCorrections(_categoryNames, _answers, _roundLetter);
+        bool[] corrections = await _presenter.GetCorrections(_categoryNames, _answers, _roundLetter);
 
         for(int i = 0; i < 5; i++)
         {
-            if (corrections[i] == CorrectionStatus.Valid)
+            if (corrections[i] == true)
             {
                 _resultsUI[i].sprite = _tickSprite;
             }
