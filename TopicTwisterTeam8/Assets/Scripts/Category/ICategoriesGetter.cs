@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
     public interface ICategoriesGetter
     {
-        string[] GetCategories();
+        Task<string[]> GetCategories(int amount);
     }
 

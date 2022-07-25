@@ -1,12 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-
 public class SetActiveMatch
 {
     IMatchRepository _matchRepository;
@@ -30,20 +24,20 @@ public class SetActiveMatch
         _matchService.SetActiveMatch(null);
     }
 }
-
+/*
 public class SetBotInMatchAction
 {
     private int _matchId;
     private IMatchRepository _matchRepository;
-    private ICategoriesRepository _categoriesRepository;
-    public SetBotInMatchAction(int matchId, ICategoriesRepository categoriesRepository)
+    private ICategoriesGetter _categoriesGetter;
+    public SetBotInMatchAction(int matchId, ICategoriesGetter categoriesGetter)
     {
         _matchId = matchId;
-        _categoriesRepository = categoriesRepository;
+        _categoriesGetter = categoriesGetter;
         _matchRepository = ServiceLocator.Instance.GetService<IMatchRepository>();
     }
 
-    public void Execute()
+    public async void Execute()
     {
         ILetterGetter letterGeter = new RandomLetterGetter();
         List<Match> matches = _matchRepository.GetMatches();
@@ -70,7 +64,7 @@ public class SetBotInMatchAction
         if (indexRound == 2) return;
         Round newCurrentRound = new Round();
         newCurrentRound.letter = letterGeter.GetLetter();
-        newCurrentRound.assignedCategoryNames = _categoriesRepository.GetCategories(5).Select(x => x.Name).ToArray();
+        newCurrentRound.assignedCategoryNames = await _categoriesGetter.GetCategories(5);
         
         for(int i=0; i< activeMatch.rounds.Length;i++)
         {
@@ -92,14 +86,14 @@ public class SetBotInMatchAction
     {
         //Referenciar a una Clase MatchAction
         Round currentRound = match.rounds.First(r => r.roundFinished == false && r != null);
-        CategoriesGetter categoriesGetter = new CategoriesGetter(_categoriesRepository);
-        var categories = _categoriesRepository.GetCategories();
+        CategoriesGetter categoriesGetter = new CategoriesGetter(new CategoryService());
+        var categories = categoriesGetter.GetCategories(5);
         string[] currentCatergories = currentRound.assignedCategoryNames;
         string[] answers = new string[5];
         bool[] result = new bool[5];
         for (int i = 0; i < 5; i++)
         {
-            Category category = categories.First(c => c.Name == currentCatergories[i]);
+            var category = categories.First(c => c.Name == currentCatergories[i]);
             Random random = new Random();
             int index = random.Next(0, category.Words.Count);
             answers[i] = category.Words[index];
@@ -111,4 +105,4 @@ public class SetBotInMatchAction
         
     }
 }
-
+*/

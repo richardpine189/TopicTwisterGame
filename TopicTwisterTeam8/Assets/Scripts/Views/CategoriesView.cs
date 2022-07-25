@@ -36,9 +36,6 @@ public class CategoriesView : MonoBehaviour, ILetterView
     [SerializeField]
     private CategoriesSO _categoriesSO;
 
-    [SerializeField]
-    private CategoriesDB _categoriesDB;
-
     private LetterPresenter _presenter;
 
     private void Start()
@@ -58,7 +55,7 @@ public class CategoriesView : MonoBehaviour, ILetterView
 
     private void Initialize()
     {
-        _presenter = new LetterPresenter(this, new RandomLetterGetter(), new CategoriesGetter(_categoriesDB));
+        _presenter = new LetterPresenter(this, new RandomLetterGetter(), new CategoriesGetter(new CategoryService()));
     }
 
     public void ShowLetter(char letter)

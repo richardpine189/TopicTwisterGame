@@ -26,7 +26,7 @@ public class LetterPresenterShould
     {
         // Arrange
         string[] categories = { "Objetos", "Animales", "Ropa", "Comida", "Paises" };
-        _categoriesGetter.GetCategories().Returns(categories);
+        _categoriesGetter.GetCategories(5).Returns(categories);
 
         // Act
         LetterPresenter _presenter = new LetterPresenter(_view, _letterGetter, _categoriesGetter);

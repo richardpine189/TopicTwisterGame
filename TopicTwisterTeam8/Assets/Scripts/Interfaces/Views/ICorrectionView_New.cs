@@ -9,7 +9,7 @@ public interface ICorrectionView_New
 
     //event Action<string[], string[], char> OnNextTurnClick;
 
-    void ShowCorrections(bool[] results);
+    void ShowCorrections(CorrectionStatus[] results);
     void ChangeScene();
     void LoadNextTurn();
 }

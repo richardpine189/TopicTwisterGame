@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.LoginScene
 {
-    class LoginAction
+    class LoginAction : ILoginGetUserAction
     {
         // This should be in a general config file for the whole project
-        private static readonly HttpClient client = new HttpClient();
+        private readonly HttpClient _client = new HttpClient();
 
         // Development URL
-        private static readonly string baseURL = @"http://localhost:8080";
+        private readonly string _baseURL = @"http://localhost:8080";
 
         public async Task<string> Invoke(string username)
         {
@@ -26,7 +26,7 @@ namespace Assets.Scripts.LoginScene
 
             var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PostAsync(baseURL + "/user/logIn", content);
+            var response = await _client.PostAsync(_baseURL + "/user/logIn", content);
 
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
@@ -42,5 +42,11 @@ namespace Assets.Scripts.LoginScene
         {
             return JsonConvert.DeserializeObject<UserDTO>(userJson);
         }
+    }
+
+    public interface ILoginGetUserAction
+    {
+        Task<string> Invoke(string username);
+        UserDTO UserJsonToDTO(string userJson);
     }
 }

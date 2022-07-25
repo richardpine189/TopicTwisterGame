@@ -12,9 +12,10 @@ public class OngoingMatchPresenter
         action.Execute(matchId);
     }
         
-    public void BotResolveRound(int matchId, ICategoriesRepository categoriesDB)
+    /*public void BotResolveRound(int matchId, ICategoriesGetter categoriesGetter)
     {
-        SetBotInMatchAction botAction = new SetBotInMatchAction(matchId, categoriesDB);
+        SetBotInMatchAction botAction = new SetBotInMatchAction(matchId, categoriesGetter);
         botAction.Execute();
     }
+    */
 }

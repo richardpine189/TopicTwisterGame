@@ -1,23 +1,19 @@
-﻿using Assets.Scripts.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Presenters
-{
-    class CorrectionPresenter
+
+class CorrectionPresenter
     {
-        private bool[] results;
+        private CorrectionStatus[] _results;
         private ICorrectionView _view;
-        private ICategoriesRepository _categoryRepository;
+        private ICategoriesGetter _categoriesGetter;
         private IMatchAction _matchActions;
 
-        public CorrectionPresenter(ICorrectionView view, ICategoriesRepository categoryRepository)
+        public CorrectionPresenter(ICorrectionView view, ICategoriesGetter categoryService)
         {
             _view = view;
-            _categoryRepository = categoryRepository;
+            _categoriesGetter = categoryService;
             _matchActions = new HardcodedMatchActions();
             //_view.OnNextTurnClick += EndTurn;
         }
@@ -33,7 +29,7 @@ namespace Assets.Scripts.Presenters
             round.assignedCategoryNames = roundCategories;
             round.letter = letter;
             round.challengerAnswers = answers;
-            round.challengerResult = results;
+            round.challengerResult = _results;
 
             if (round.opponentAnswers != null)
             {
@@ -55,18 +51,13 @@ namespace Assets.Scripts.Presenters
             }
         }
 
-        public bool[] GetCorrections(string[] roundCategories, string[] answers, char letter)
+        public async Task<CorrectionStatus[]> GetCorrections(string[] roundCategories, string[] answers, char letter)
         {
-            results = new bool[5];
+            _results = new CorrectionStatus[5];
 
-            List<Category> categories = _categoryRepository.GetCategories();
-
-            for(int i = 0; i< 5; i++)
-            {
-                results[i] = categories.FirstOrDefault(x => x.Name == roundCategories[i]).ExisistInCategory(answers[i], letter);
-            }
-
-            return results;
+            var categories = await _categoriesGetter.GetCategories(5); //HARDCODED AMOUNT
+            //TODO
+            return _results;
         }
     }
-}
+

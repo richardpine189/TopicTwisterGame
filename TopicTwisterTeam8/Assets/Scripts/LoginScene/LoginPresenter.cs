@@ -9,7 +9,7 @@ namespace Assets.Scripts.LoginScene
     class LoginPresenter
     {
         private ILoginView _view;
-        private LoginAction _loginAction;
+        private ILoginGetUserAction _loginAction;
 
         public LoginPresenter(ILoginView view)
         {

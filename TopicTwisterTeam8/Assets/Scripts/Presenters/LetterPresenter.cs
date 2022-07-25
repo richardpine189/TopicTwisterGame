@@ -30,9 +30,9 @@ public class LetterPresenter
         _view.ShowRoundNumber(index + 1);
     }
 
-    private void GetCategories()
+    private async void GetCategories()
     {
-        string[] categories = (_matchActions.GetCurrentRound() != null && _matchActions.GetCurrentRound().assignedCategoryNames != null) ? _matchActions.GetCurrentRound().assignedCategoryNames : _categoriesGetter.GetCategories();
+        string[] categories = (_matchActions.GetCurrentRound() != null && _matchActions.GetCurrentRound().assignedCategoryNames != null) ? _matchActions.GetCurrentRound().assignedCategoryNames : await _categoriesGetter.GetCategories(5);
 
         _view.ShowCategories(categories);
     }

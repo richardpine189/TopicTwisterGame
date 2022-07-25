@@ -4,10 +4,11 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 public class CorrectionPresenter_New
 {
-    private bool[] results;
+    private CorrectionStatus[] results;
     private ICorrectionView_New _view;
     private IMatchAction _matchActions;
     private ICorrectionAction _correctionAction;
@@ -56,7 +57,7 @@ public class CorrectionPresenter_New
     
     public async void GetCorrections(string[] roundCategories, string[] answers, char letter)
     {
-        results = new bool[5];
+        results = new CorrectionStatus[5];
 
         for(int i = 0; i < 5; i++)
         {
@@ -76,7 +77,7 @@ internal class JsonAPICorrectionAction : ICorrectionAction
     // Development URL
     private static readonly string baseURL = @"http://localhost:8080";
 
-    public async Task<bool> GetCorrection(string word, string categoryName)
+    public async Task<CorrectionStatus> GetCorrection(string word, string categoryName)
     {
         //var values = new Dictionary<string, string>
         //{
@@ -89,11 +90,11 @@ internal class JsonAPICorrectionAction : ICorrectionAction
 
         var responseString = await response.Content.ReadAsStringAsync();
 
-        return Convert.ToBoolean(responseString);
+        return JsonConvert.DeserializeObject<CorrectionStatus>(responseString);
     }
 }
 
-internal interface ICorrectionAction
+public interface ICorrectionAction
 {
-    Task<bool> GetCorrection(string word, string categoryName);
+    Task<CorrectionStatus> GetCorrection(string word, string categoryName);
 }

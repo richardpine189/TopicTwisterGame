@@ -75,13 +75,13 @@ public class CorrectionView_New : MonoBehaviour, ICorrectionView_New
         OnStart?.Invoke(_categoryNames, _answers, _roundLetter);
     }
 
-    public void ShowCorrections(bool[] results)
+    public void ShowCorrections(CorrectionStatus[] results)
     {
         ShowAnswers(_answers);
 
         for(int i = 0; i < 5; i++)
         {
-            if (results[i])
+            if (results[i] == CorrectionStatus.Valid)
             {
                 _resultsUI[i].sprite = _tickSprite;
             }

@@ -23,8 +23,7 @@ public class OngoingMatchView : MonoBehaviour
 
     [SerializeField]
     private GameObject _playButton;
-
-    private CategoriesDB _categoriesDB;
+    
 
     private int matchId = 0;
 
@@ -35,14 +34,13 @@ public class OngoingMatchView : MonoBehaviour
     {
         _presenter = new OngoingMatchPresenter();
         StartCoroutine(ChangeClockForButton());
-        _categoriesDB = GameObject.Find("DataBase").GetComponent<CategoriesDB>();
     }
 
     IEnumerator ChangeClockForButton()
     {
         yield return new WaitForSeconds(5);
         _waitingClock.SetActive(false);
-        _presenter.BotResolveRound(matchId, _categoriesDB);
+        //_presenter.BotResolveRound(matchId, new CategoriesGetter(new CategoryService())); SKYNET SOLVE
         _playButton.SetActive(true);
         SaveState();
     }

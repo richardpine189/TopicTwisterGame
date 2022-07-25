@@ -1,12 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 using System.Linq;
 
 
-public class CategoriesDB : MonoBehaviour, ICategoriesRepository
+public class CategoriesDB : MonoBehaviour
 {
     [SerializeField] List<Category> _categories;
 
