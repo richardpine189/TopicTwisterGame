@@ -4,7 +4,8 @@ public class Match
     public User challenger;
     public User opponent;
     public Round[] rounds = new Round[3];
-        
+    public bool isChallengerTurn = true;
+
 }
 
 public class Round

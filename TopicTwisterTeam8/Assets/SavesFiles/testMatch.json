@@ -9,7 +9,7 @@
     },
     "rounds": [
       {
-        "letter": "C",
+        "letter": "D",
         "assignedCategoryNames": [
           "Animales",
           "Paises",
@@ -18,19 +18,19 @@
           "Profesiones"
         ],
         "challengerAnswers": [
-          "aaa",
-          "ssss",
-          "",
-          "",
-          ""
+          "Araña",
+          "asd",
+          "asdas",
+          "sdf",
+          "Arquitecto"
         ],
         "opponentAnswers": null,
         "challengerResult": [
-          0,
-          0,
-          0,
-          0,
-          0
+          true,
+          false,
+          false,
+          false,
+          true
         ],
         "opponentResult": null,
         "roundFinished": false,

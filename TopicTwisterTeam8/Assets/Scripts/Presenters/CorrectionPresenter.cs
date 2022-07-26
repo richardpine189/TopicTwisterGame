@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 
@@ -37,7 +38,7 @@ class CorrectionPresenter
         }
 
         match.rounds[currentRoundIndex] = round;
-
+        match.isChallengerTurn = !match.isChallengerTurn; //SE VA A ROMPEEEEER!!!!
         SaveMatch action = new SaveMatch();
         action.Save(match);
 
@@ -53,11 +54,7 @@ class CorrectionPresenter
 
     public async Task<bool[]> GetCorrections(string[] roundCategories, string[] answers, char letter)
     {
-        bool[] _results = new bool[5];
-
-        _results = await _getCorrections.GetCorrections(roundCategories, answers, letter); //HARDCODED AMOUNT
-
-            
+        _results = await _getCorrections.GetCorrections(roundCategories, answers, letter);
 
         return _results;
     }

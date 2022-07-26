@@ -33,7 +33,7 @@ public class OngoingMatchView : MonoBehaviour
     private void Start()
     {
         _presenter = new OngoingMatchPresenter();
-        //StartCoroutine(ChangeClockForButton());
+        //StartCoroutine(ChangeClockForButton()); ACCESO AL BOT
     }
 
     IEnumerator ChangeClockForButton()

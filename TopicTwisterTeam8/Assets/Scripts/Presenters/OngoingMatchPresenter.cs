@@ -11,7 +11,7 @@ public class OngoingMatchPresenter
         SetActiveMatch action = new SetActiveMatch();
         action.Execute(matchId);
     }
-        
+
     /*public void BotResolveRound(int matchId, ICategoriesGetter categoriesGetter)
     {
         SetBotInMatchAction botAction = new SetBotInMatchAction(matchId, categoriesGetter);

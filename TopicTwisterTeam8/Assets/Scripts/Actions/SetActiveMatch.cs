@@ -24,7 +24,7 @@ public class SetActiveMatch
         _matchService.SetActiveMatch(null);
     }
 }
-/*
+/* SKYNET 0.1
 public class SetBotInMatchAction
 {
     private int _matchId;

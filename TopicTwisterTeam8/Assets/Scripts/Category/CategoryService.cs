@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.WebUtilities;
+//using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json;
 
 
@@ -16,7 +16,7 @@ public class CategoryService : ICategoryService
     public CategoryService()
     {
         _client = new HttpClient();
-        _baseURL = "http://localhost:8080";
+        _baseURL = "http://localhost:8081";
     }
 
     public async Task<string[]> GetCategoriesNames(int amount)
@@ -37,6 +37,7 @@ public class CategoryService : ICategoryService
 
     public async Task<bool[]> GetWordsCorrection(string[] roundCategories, string[] answers, char letter)
     {
+        /*
         var queryParameters = new Dictionary<string, string[]>()
         {
             ["Categories"] = roundCategories,
@@ -46,8 +47,23 @@ public class CategoryService : ICategoryService
         // https://makolyte.com/csharp-sending-query-strings-with-httpclient/
 
         var query = QueryHelpers.AddQueryString(_baseURL + "/isValid", queryParameters);
-
-        var response = await _client.GetAsync(_baseURL + "/isValid");
+        */
+        string finalURL = _baseURL + "/isValid?";
+        for (int i = 0; i < answers.Length; i++)
+        {
+            finalURL += $"word[{i}]={answers[i]}&";
+            
+        }
+        for (int i = 0; i < roundCategories.Length; i++)
+        {
+            finalURL += $"category[{i}]={roundCategories[i]}&";
+            
+        }
+        finalURL += $"letter = {letter}";
+        
+        UnityEngine.Debug.Log(finalURL);
+        
+        var response = await _client.GetAsync(finalURL);
 
         if (response.StatusCode == HttpStatusCode.InternalServerError)
         {
@@ -55,9 +71,13 @@ public class CategoryService : ICategoryService
         }
 
         var responseArray = await response.Content.ReadAsStringAsync();
+        
+        UnityEngine.Debug.Log(responseArray);
+        var deserializeResponse = JsonConvert.DeserializeObject<bool[]>(responseArray);
+        
+        
 
-        var deserializeResponse = JsonConvert.DeserializeObject<string[]>(responseArray);
-
+        
         return deserializeResponse;
     }
 }
