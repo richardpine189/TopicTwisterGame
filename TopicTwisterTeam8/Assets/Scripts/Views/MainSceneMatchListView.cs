@@ -13,6 +13,7 @@ public class MainSceneMatchListView : MonoBehaviour, IMatchListView
     void Start()
     {
         _presenter = new MatchListPresenter(this);
+        
     }
 
     public void CreateMatchUI(MatchViewModel matchViewModel)

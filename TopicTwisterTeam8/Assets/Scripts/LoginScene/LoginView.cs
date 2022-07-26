@@ -3,10 +3,10 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
 
-namespace Assets.Scripts.LoginScene
-{
-    public class LoginView : MonoBehaviour, ILoginView
+
+public class LoginView : MonoBehaviour, ILoginView
     {
         // Development URL
         //private static readonly string baseURL = @"http://localhost:8080";
@@ -44,8 +44,8 @@ namespace Assets.Scripts.LoginScene
         public void LoadMainScene(UserDTO user)
         {
             // TODO save user
-
+            UserDTO.PlayerName = user.name;
             SceneManager.LoadScene("MainScene");
         }
     }
-}
+

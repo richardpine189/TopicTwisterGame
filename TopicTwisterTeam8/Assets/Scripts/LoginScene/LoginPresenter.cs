@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.LoginScene
-{
+
     class LoginPresenter
     {
         private ILoginView _view;
@@ -43,4 +42,4 @@ namespace Assets.Scripts.LoginScene
 
         ~LoginPresenter() { _view.OnLoginTrigger -= LogIn; }
     }
-}
+

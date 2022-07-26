@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Object = UnityEngine.Object;
 
-namespace Assets.Scripts.LoginScene
-{
-    public interface ILoginView
+
+public interface ILoginView
     {
         event Action<string> OnLoginTrigger;
 
@@ -14,4 +14,4 @@ namespace Assets.Scripts.LoginScene
 
         void LoadMainScene(UserDTO user);
     }
-}
+

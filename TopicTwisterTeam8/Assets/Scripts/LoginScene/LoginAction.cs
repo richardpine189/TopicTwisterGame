@@ -7,8 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.LoginScene
-{
+
     class LoginAction : ILoginGetUserAction
     {
         // This should be in a general config file for the whole project
@@ -49,4 +48,4 @@ namespace Assets.Scripts.LoginScene
         Task<string> Invoke(string username);
         UserDTO UserJsonToDTO(string userJson);
     }
-}
+
