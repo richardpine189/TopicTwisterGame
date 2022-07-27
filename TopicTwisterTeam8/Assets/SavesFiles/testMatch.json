@@ -19,25 +19,248 @@
         ],
         "challengerAnswers": [
           "Araña",
-          "asd",
-          "asdas",
-          "sdf",
-          "Arquitecto"
+          "xx",
+          "Etermax",
+          "xxx",
+          "xxx"
         ],
-        "opponentAnswers": null,
+        "opponentAnswers": [
+          "Araña",
+          "Argentina",
+          "Etermax",
+          "Dorado",
+          "aaaa"
+        ],
         "challengerResult": [
           true,
           false,
+          true,
+          false,
+          false
+        ],
+        "opponentResult": [
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "roundFinished": true,
+        "timer": 60
+      },
+      {
+        "letter": "A",
+        "assignedCategoryNames": [
+          "Animales",
+          "Paises",
+          "Marcas",
+          "Color",
+          "Profesiones"
+        ],
+        "challengerAnswers": [
+          "Delfin",
+          "Chile",
+          "aa",
+          "sss",
+          "Arquitecto"
+        ],
+        "opponentAnswers": [
+          "ccc",
+          "ccc",
+          "cccc",
+          "ccc",
+          "cccc"
+        ],
+        "challengerResult": [
+          true,
+          true,
           false,
           false,
           true
         ],
-        "opponentResult": null,
-        "roundFinished": false,
+        "opponentResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true,
         "timer": 60
       },
-      null,
-      null
-    ]
+      {
+        "letter": "A",
+        "assignedCategoryNames": [
+          "Animales",
+          "Paises",
+          "Marcas",
+          "Color",
+          "Profesiones"
+        ],
+        "challengerAnswers": [
+          "zzz",
+          "xxx",
+          "aaa",
+          "zzz",
+          "xxx"
+        ],
+        "opponentAnswers": [
+          "Araña",
+          "qq",
+          "qqq",
+          "qq",
+          "qqq"
+        ],
+        "challengerResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "opponentResult": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true,
+        "timer": 60
+      }
+    ],
+    "isChallengerTurn": false
+  },
+  {
+    "id": 1,
+    "challenger": {
+      "UserName": "Romina"
+    },
+    "opponent": {
+      "UserName": "Ricardo"
+    },
+    "rounds": [
+      {
+        "letter": "B",
+        "assignedCategoryNames": [
+          "Animales",
+          "Paises",
+          "Marcas",
+          "Color",
+          "Profesiones"
+        ],
+        "challengerAnswers": [
+          "a",
+          "s",
+          "d",
+          "f",
+          "g"
+        ],
+        "opponentAnswers": [
+          "a",
+          "a",
+          "a",
+          "azul",
+          "a"
+        ],
+        "challengerResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "opponentResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true,
+        "timer": 60
+      },
+      {
+        "letter": "A",
+        "assignedCategoryNames": [
+          "Animales",
+          "Paises",
+          "Marcas",
+          "Color",
+          "Profesiones"
+        ],
+        "challengerAnswers": [
+          "v",
+          "v",
+          "v",
+          "v",
+          "v"
+        ],
+        "opponentAnswers": [
+          "Araña",
+          "Argentina",
+          "Etermax",
+          "Azul",
+          ""
+        ],
+        "challengerResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "opponentResult": [
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "roundFinished": true,
+        "timer": 60
+      },
+      {
+        "letter": "C",
+        "assignedCategoryNames": [
+          "Animales",
+          "Paises",
+          "Marcas",
+          "Color",
+          "Profesiones"
+        ],
+        "challengerAnswers": [
+          "a",
+          "a",
+          "a",
+          "a",
+          "a"
+        ],
+        "opponentAnswers": [
+          "Araña",
+          "a",
+          "a",
+          "a",
+          "a"
+        ],
+        "challengerResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "opponentResult": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true,
+        "timer": 60
+      }
+    ],
+    "isChallengerTurn": false
   }
 ]

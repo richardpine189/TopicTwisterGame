@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
 public class HardcodedMatchActions : IMatchAction
 {
-    private User _player;
+    private User _challenger;
     private User _opponent;
     private ImBot _newBoot;
     Match match;
@@ -22,8 +25,8 @@ public class HardcodedMatchActions : IMatchAction
         FindPlayers();
 
         match = new Match();
-        match.challenger = new User(1, "Ricardo");
-        match.opponent = new User(2, "Theo");
+        match.challenger = _challenger;
+        match.opponent = _opponent;
 
         match.rounds[0] = new Round();
 
@@ -32,8 +35,15 @@ public class HardcodedMatchActions : IMatchAction
 
     public void FindPlayers()
     {
-        _player = new User(1, "Ricardo");
-        _opponent = new User(2, "Theo");
+        var users = new List<User>() { new User(0, "Ricardo"), new User(1, "Theo"), new User(2, "Romina") };
+
+        _challenger = users.First(x => x.UserName == UserDTO.PlayerName);
+
+        users.Remove(_challenger);
+
+        Random rnd = new Random();
+
+        _opponent = users[rnd.Next(0, users.Count)];
     }
 
     public string GetPlayerName()

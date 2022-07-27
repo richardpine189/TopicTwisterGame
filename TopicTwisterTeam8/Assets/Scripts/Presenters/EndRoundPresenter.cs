@@ -12,7 +12,9 @@
 
         if (_action.IsFinished())
         {
-            _view.ShowEndGamePanel(_action.ChallengerWon());
+            bool playerWon = (_action.ChallengerWon() && _action.GetMatch().challenger.UserName == UserDTO.PlayerName) || (!_action.ChallengerWon() && _action.GetMatch().opponent.UserName == UserDTO.PlayerName);
+
+            _view.ShowEndGamePanel(playerWon);
         }
 
         roundIndex = _action.GetCurrentRoundIndex() - 1;

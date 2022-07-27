@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
         List<Match> GetMatches();
 
+        List<Match> GetMatchesByName(string userName);
+
         int GetNewId();
     }
 

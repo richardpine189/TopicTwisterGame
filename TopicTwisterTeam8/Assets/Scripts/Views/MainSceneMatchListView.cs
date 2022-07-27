@@ -13,7 +13,6 @@ public class MainSceneMatchListView : MonoBehaviour, IMatchListView
     void Start()
     {
         _presenter = new MatchListPresenter(this);
-        
     }
 
     public void CreateMatchUI(MatchViewModel matchViewModel)
@@ -22,8 +21,6 @@ public class MainSceneMatchListView : MonoBehaviour, IMatchListView
         go.transform.SetParent(this.transform, false);
         go.GetComponent<OngoingMatchView>().SetFields(matchViewModel);
     }
-
-
 }
 
 public class MatchListPresenter
@@ -35,6 +32,7 @@ public class MatchListPresenter
         IGetMatchesInfo action = new GetMatchesInfo();
 
         MatchViewModel[] matches = action.Execute();
+
         for (int i = 0; i < matches.Length; i++)
         {
             _view.CreateMatchUI(matches[i]);
@@ -53,16 +51,20 @@ public class GetMatchesInfo : IGetMatchesInfo
 
     public MatchViewModel[] Execute()
     {
-        List<Match> matches = _matchRepository.GetMatches();
+        List<Match> matches = _matchRepository.GetMatchesByName(UserDTO.PlayerName);
+
+        IsMatchFinishedAction isMatchFinished = new IsMatchFinishedAction();
 
         if (matches != null)
         {
             return matches.Select(m => new MatchViewModel
             {
                 idMatch = (int)m.id,
-                opponent = m.opponent.UserName,
+                challengerName = m.challenger.UserName,
+                opponentName = m.opponent.UserName,
                 currentRound = m.rounds.All(x => x == null) ? 1 : m.rounds.Where(t => t != null).Count(),
-                isPlayerTurn = m.isChallengerTurn
+                isChallengerTurn = m.isChallengerTurn,
+                isMatchFinished = isMatchFinished.Execute(m)
             }).ToArray();
         }
         else

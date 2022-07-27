@@ -49,21 +49,21 @@ public class OngoingMatchView : MonoBehaviour
     {
         MatchViewModel match = new MatchViewModel();
         match.idMatch = matchId;
-        match.opponent = _opponentName.text;
+        match.opponentName = _opponentName.text;
         match.currentRound = int.Parse(_round.text.Split(" ")[1]);
-        match.isPlayerTurn = true;
+        match.isChallengerTurn = true;
         _presenter.SaveCurrentMatch(match.idMatch);
     }
 
-        
-    
     public void SetFields(MatchViewModel match) 
     {
         matchId = match.idMatch;
-        _opponentName.text = match.opponent;
+        _opponentName.text = match.opponentName;
         _round.text = "Ronda " + match.currentRound;
 
-        if(match.isPlayerTurn)
+        bool isPlayerTurn = (match.isChallengerTurn && UserDTO.PlayerName == match.challengerName) || (!match.isChallengerTurn && UserDTO.PlayerName == match.opponentName);
+
+        if (isPlayerTurn || match.isMatchFinished)
         {
             _waitingClock.SetActive(false);
             _playButton.SetActive(true);

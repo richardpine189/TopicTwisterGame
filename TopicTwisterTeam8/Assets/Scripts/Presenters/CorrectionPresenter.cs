@@ -29,16 +29,37 @@ class CorrectionPresenter
 
         round.assignedCategoryNames = roundCategories;
         round.letter = letter;
-        round.challengerAnswers = answers;
-        round.challengerResult = _results;
 
-        if (round.opponentAnswers != null)
+        if (match.isChallengerTurn)
         {
-            round.roundFinished = true;
+            round.challengerAnswers = answers;
+            round.challengerResult = _results;
+
+            if (round.opponentAnswers != null)
+            {
+                round.roundFinished = true;
+            }
+            else
+            {
+                match.isChallengerTurn = false;
+            }
+        }
+        else
+        {
+            round.opponentAnswers = answers;
+            round.opponentResult = _results;
+
+            if (round.challengerAnswers != null)
+            {
+                round.roundFinished = true;
+            }
+            else
+            {
+                match.isChallengerTurn = true;
+            }
         }
 
         match.rounds[currentRoundIndex] = round;
-        match.isChallengerTurn = !match.isChallengerTurn; //SE VA A ROMPEEEEER!!!!
         SaveMatch action = new SaveMatch();
         action.Save(match);
 

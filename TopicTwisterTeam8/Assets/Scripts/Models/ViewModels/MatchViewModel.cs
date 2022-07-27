@@ -7,8 +7,10 @@ using System.Threading.Tasks;
     public class MatchViewModel
     {
         public int idMatch;
-        public string opponent;
+        public string challengerName;
+        public string opponentName;
         public int currentRound;
-        public bool isPlayerTurn;
+        public bool isChallengerTurn;
+        public bool isMatchFinished;
     }
 

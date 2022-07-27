@@ -1,19 +1,19 @@
 ﻿public class User
 {
-    private int _userId;
-    private string _userName;
+    private int id;
+    private string name;
 
     public string UserName
     {
         get
         {
-            return _userName;
+            return name;
         }
     }
 
     public User(int userId, string userName)
     {
-        _userId = userId;
-        _userName = userName;
+        id = userId;
+        name = userName;
     }
 }
