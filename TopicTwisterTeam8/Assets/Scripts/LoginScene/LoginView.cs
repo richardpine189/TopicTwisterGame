@@ -43,7 +43,7 @@ public class LoginView : MonoBehaviour, ILoginView
 
         public void LoadMainScene(UserDTO user)
         {
-            // TODO save user
+            
             UserDTO.PlayerName = user.name;
             SceneManager.LoadScene("MainScene");
         }

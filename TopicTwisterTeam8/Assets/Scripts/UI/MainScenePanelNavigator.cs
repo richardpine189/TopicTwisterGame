@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class MainScenePanelNavigator : MonoBehaviour
@@ -25,6 +26,12 @@ public class MainScenePanelNavigator : MonoBehaviour
             rt.DOAnchorPos(tempVector, ANIMATION_TIME_TO_SLIDING);
         }
         panelToShow.DOAnchorPos(Vector2.zero, ANIMATION_TIME_TO_SLIDING);
+    }
+
+    public void PlaceHoldingLogOut()
+    {
+        UserDTO.PlayerName = null;
+        SceneManager.LoadScene("LoginScene");
     }
 }
 

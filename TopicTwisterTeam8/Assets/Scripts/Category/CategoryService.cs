@@ -59,7 +59,7 @@ public class CategoryService : ICategoryService
             finalURL += $"category[{i}]={roundCategories[i]}&";
             
         }
-        finalURL += $"letter = {letter}";
+        finalURL += $"letter={letter}";
         
         UnityEngine.Debug.Log(finalURL);
         
