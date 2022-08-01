@@ -61,7 +61,6 @@ public class CategoryService : ICategoryService
         }
         finalURL += $"letter={letter}";
         
-        UnityEngine.Debug.Log(finalURL);
         
         var response = await _client.GetAsync(finalURL);
 

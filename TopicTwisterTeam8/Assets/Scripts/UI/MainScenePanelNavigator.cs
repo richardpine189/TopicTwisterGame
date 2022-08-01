@@ -30,7 +30,7 @@ public class MainScenePanelNavigator : MonoBehaviour
 
     public void PlaceHoldingLogOut()
     {
-        UserDTO.PlayerName = null;
+        LoggedUserDTO.PlayerName = null;
         SceneManager.LoadScene("LoginScene");
     }
 }

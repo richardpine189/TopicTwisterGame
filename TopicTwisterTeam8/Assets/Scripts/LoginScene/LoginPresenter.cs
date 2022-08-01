@@ -25,9 +25,9 @@ using System.Threading.Tasks;
                 {
                     string userJson = await _loginAction.Invoke(username);
 
-                    UserDTO user = _loginAction.UserJsonToDTO(userJson);
-
-                    _view.LoadMainScene(user);
+                    LoggedUserDTO user = _loginAction.UserJsonToDTO(userJson);
+                    LoggedUserDTO.PlayerName = user.name;
+                    _view.LoadMainScene();
                 }
                 catch (Exception e)
                 {

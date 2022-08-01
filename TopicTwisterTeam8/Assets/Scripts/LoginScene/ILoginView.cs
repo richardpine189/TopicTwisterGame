@@ -12,6 +12,6 @@ public interface ILoginView
 
         void ShowErrorMessage(string message);
 
-        void LoadMainScene(UserDTO user);
+        void LoadMainScene();
     }
 

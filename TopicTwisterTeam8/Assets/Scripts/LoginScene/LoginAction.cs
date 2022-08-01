@@ -37,15 +37,15 @@ using System.Threading.Tasks;
             return responseString;
         }
 
-        public UserDTO UserJsonToDTO(string userJson)
+        public LoggedUserDTO UserJsonToDTO(string userJson)
         {
-            return JsonConvert.DeserializeObject<UserDTO>(userJson);
+            return JsonConvert.DeserializeObject<LoggedUserDTO>(userJson);
         }
     }
 
     public interface ILoginGetUserAction
     {
         Task<string> Invoke(string username);
-        UserDTO UserJsonToDTO(string userJson);
+        LoggedUserDTO UserJsonToDTO(string userJson);
     }
 

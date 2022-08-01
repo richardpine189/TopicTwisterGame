@@ -61,7 +61,7 @@ public class OngoingMatchView : MonoBehaviour
         _opponentName.text = match.opponentName;
         _round.text = "Ronda " + match.currentRound;
 
-        bool isPlayerTurn = (match.isChallengerTurn && UserDTO.PlayerName == match.challengerName) || (!match.isChallengerTurn && UserDTO.PlayerName == match.opponentName);
+        bool isPlayerTurn = (match.isChallengerTurn && LoggedUserDTO.PlayerName == match.challengerName) || (!match.isChallengerTurn && LoggedUserDTO.PlayerName == match.opponentName);
 
         if (isPlayerTurn || match.isMatchFinished)
         {

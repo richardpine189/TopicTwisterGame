@@ -12,7 +12,7 @@
 
         if (_action.IsFinished())
         {
-            bool playerWon = (_action.ChallengerWon() && _action.GetMatch().challenger.UserName == UserDTO.PlayerName) || (!_action.ChallengerWon() && _action.GetMatch().opponent.UserName == UserDTO.PlayerName);
+            bool playerWon = (_action.ChallengerWon() && _action.GetMatch().challenger.UserName == LoggedUserDTO.PlayerName) || (!_action.ChallengerWon() && _action.GetMatch().opponent.UserName == LoggedUserDTO.PlayerName);
 
             _view.ShowEndGamePanel(playerWon);
         }

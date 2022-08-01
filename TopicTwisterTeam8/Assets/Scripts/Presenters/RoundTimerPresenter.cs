@@ -23,7 +23,7 @@ namespace Assets.Scripts.Presenters
         {
             _matchActions.GetMatch();
             int timeToAnswer = _matchActions.GetTimeToAnswer();
-            _view.TimeLeft = timeToAnswer;
+            _view.SetTimeLeft(timeToAnswer);
         }
 
         private void SendTimeToRound(int timeLeft)

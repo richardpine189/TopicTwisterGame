@@ -262,5 +262,224 @@
       }
     ],
     "isChallengerTurn": false
+  },
+  {
+    "id": 2,
+    "challenger": {
+      "UserName": "Theo"
+    },
+    "opponent": {
+      "UserName": "Romina"
+    },
+    "rounds": [
+      {
+        "letter": "C",
+        "assignedCategoryNames": [
+          "Frutas Y Verduras",
+          "Peliculas",
+          "Cosas",
+          "Profesiones",
+          "Animales"
+        ],
+        "challengerAnswers": [
+          "",
+          "",
+          "casa",
+          "",
+          "camello"
+        ],
+        "opponentAnswers": null,
+        "challengerResult": [
+          false,
+          false,
+          true,
+          false,
+          true
+        ],
+        "opponentResult": null,
+        "roundFinished": false,
+        "timer": 60
+      },
+      null,
+      null
+    ],
+    "isChallengerTurn": false
+  },
+  {
+    "id": 3,
+    "challenger": {
+      "UserName": "Theo"
+    },
+    "opponent": {
+      "UserName": "Ricardo"
+    },
+    "rounds": [
+      {
+        "letter": "B",
+        "assignedCategoryNames": [
+          "Color",
+          "Animales",
+          "Cosas",
+          "Marcas",
+          "Peliculas"
+        ],
+        "challengerAnswers": [
+          "blanco",
+          "",
+          "botella",
+          "",
+          ""
+        ],
+        "opponentAnswers": null,
+        "challengerResult": [
+          true,
+          false,
+          true,
+          false,
+          false
+        ],
+        "opponentResult": null,
+        "roundFinished": false,
+        "timer": 45
+      },
+      null,
+      null
+    ],
+    "isChallengerTurn": false
+  },
+  {
+    "id": 4,
+    "challenger": {
+      "UserName": "Theo"
+    },
+    "opponent": {
+      "UserName": "Ricardo"
+    },
+    "rounds": [
+      {
+        "letter": "A",
+        "assignedCategoryNames": [
+          "Animales",
+          "Profesiones",
+          "Color",
+          "Marcas",
+          "Frutas Y Verduras"
+        ],
+        "challengerAnswers": [
+          "araña",
+          "",
+          "azul",
+          "",
+          "apio"
+        ],
+        "opponentAnswers": [
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "challengerResult": [
+          true,
+          false,
+          true,
+          false,
+          true
+        ],
+        "opponentResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true,
+        "timer": 50
+      },
+      {
+        "letter": "A",
+        "assignedCategoryNames": [
+          "Paises",
+          "Marcas",
+          "Peliculas",
+          "Frutas Y Verduras",
+          "Animales"
+        ],
+        "challengerAnswers": [
+          "argentina",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "opponentAnswers": [
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "challengerResult": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "opponentResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true,
+        "timer": 57
+      },
+      null
+    ],
+    "isChallengerTurn": true
+  },
+  {
+    "id": 5,
+    "challenger": {
+      "UserName": "Theo"
+    },
+    "opponent": {
+      "UserName": "Romina"
+    },
+    "rounds": [
+      {
+        "letter": "B",
+        "assignedCategoryNames": [
+          "Peliculas",
+          "Frutas Y Verduras",
+          "Marcas",
+          "Cosas",
+          "Color"
+        ],
+        "challengerAnswers": [
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "opponentAnswers": null,
+        "challengerResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "opponentResult": null,
+        "roundFinished": false,
+        "timer": 1
+      },
+      null,
+      null
+    ],
+    "isChallengerTurn": false
   }
 ]

@@ -51,7 +51,7 @@ public class GetMatchesInfo : IGetMatchesInfo
 
     public MatchViewModel[] Execute()
     {
-        List<Match> matches = _matchRepository.GetMatchesByName(UserDTO.PlayerName);
+        List<Match> matches = _matchRepository.GetMatchesByName(LoggedUserDTO.PlayerName);
 
         IsMatchFinishedAction isMatchFinished = new IsMatchFinishedAction();
 

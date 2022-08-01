@@ -12,34 +12,36 @@ public class RoundTimerView : MonoBehaviour
 
     public event Action<int> OnTimerStop;
 
-    private bool TimerOn = false;
-    public float TimeLeft;
+    private bool _timerOn = false;
+    private float _timeLeft;
 
     void OnEnable()
     {
         new RoundTimerPresenter(this);
 
-        TimerOn = true;
+        _timerOn = true;
     }
 
     void Update()
     {
-        if (TimerOn)
+        if (_timerOn)
         {
-            if (TimeLeft > 0)
+            if (_timeLeft > 0)
             {
-                TimeLeft -= Time.deltaTime;
-                UpdateTimer(TimeLeft);
+                _timeLeft -= Time.deltaTime;
+                
+                UpdateTimer(_timeLeft);
             }
             else
             {
                 Debug.Log("Time is UP!");
-                TimeLeft = 0;
-                TimerOn = false;
+                _timeLeft = 0;
+                _timerOn = false;
             }
         }
     }
 
+    
     private void UpdateTimer(float timeLeft)
     {
         float seconds = Mathf.FloorToInt(timeLeft);
@@ -49,8 +51,12 @@ public class RoundTimerView : MonoBehaviour
 
     public void StopTimer()
     {
-        TimerOn = false;
+        _timerOn = false;
+        OnTimerStop?.Invoke((int)_timeLeft);
+    }
 
-        OnTimerStop?.Invoke((int)TimeLeft);
+    public void SetTimeLeft(int timeLeft)
+    {
+        _timeLeft = timeLeft;
     }
 }

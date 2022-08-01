@@ -37,7 +37,7 @@ public class HardcodedMatchActions : IMatchAction
     {
         var users = new List<User>() { new User(0, "Ricardo"), new User(1, "Theo"), new User(2, "Romina") };
 
-        _challenger = users.First(x => x.UserName == UserDTO.PlayerName);
+        _challenger = users.First(x => x.UserName == LoggedUserDTO.PlayerName);
 
         users.Remove(_challenger);
 
@@ -147,18 +147,19 @@ public class HardcodedMatchActions : IMatchAction
     public void SaveTimeToRound(int timeLeft)
     {
         Round round = GetCurrentRound();
-        round.timer = timeLeft;
+        round.timer = 60 - timeLeft;
+        UnityEngine.Debug.Log((timeLeft));
     }
 
     public int GetTimeToAnswer()
     {
         Round round = GetCurrentRound();
-
-        if(round.timer < 50)
+        
+        if(round.timer < 10)
         {
             return round.timer + 10;
         }
-
+        
         return round.timer;
     }
 

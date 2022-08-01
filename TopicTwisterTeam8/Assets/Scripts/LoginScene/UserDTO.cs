@@ -7,12 +7,20 @@ using PlasticGui;
 
 
 public class UserDTO
-    {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string email { get; set; }
-        public int coin { get; set; }
+{
+    public int id { get; set; }
+    public string name { get; set; }
+    
+}
 
-        public static string PlayerName; // ELIMINAR CAMPO
-    }
+public class LoggedUserDTO
+{
+    public int id { get; set; }
+    public string name { get; set; }
+    public static string PlayerName { get; set; }
+    
+    public string email { get; set; }
+    
+    public int coin { get; set; }
+}
 

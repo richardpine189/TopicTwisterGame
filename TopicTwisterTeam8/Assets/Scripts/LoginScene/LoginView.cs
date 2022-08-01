@@ -41,10 +41,8 @@ public class LoginView : MonoBehaviour, ILoginView
             _errorPanel.SetActive(true);
         }
 
-        public void LoadMainScene(UserDTO user)
+        public void LoadMainScene()
         {
-            
-            UserDTO.PlayerName = user.name;
             SceneManager.LoadScene("MainScene");
         }
     }
