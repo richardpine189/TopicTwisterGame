@@ -1,51 +1,22 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Zenject;
 
 
-    class LoginAction : ILoginGetUserAction
+public class LoginAction : ILoginGetUserAction
+{
+    [Inject] private ILoginService _loginService;
+    public async Task Invoke(string userName)
     {
-        // This should be in a general config file for the whole project
-        private readonly HttpClient _client = new HttpClient();
-
-        // Development URL
-        private readonly string _baseURL = @"http://localhost:8080";
-
-        public async Task<string> Invoke(string username)
-        {
-            var values = new Dictionary<string, string>
-            {
-                { "userName", username }
-            };
-
-            var content = new FormUrlEncodedContent(values);
-
-            var response = await _client.PostAsync(_baseURL + "/user/logIn", content);
-
-            if (response.StatusCode == HttpStatusCode.NotFound)
-            {
-                throw new HttpRequestException("User not found in databse");
-            }
-
-            var responseString = await response.Content.ReadAsStringAsync();
-
-            return responseString;
-        }
-
-        public LoggedUserDTO UserJsonToDTO(string userJson)
-        {
-            return JsonConvert.DeserializeObject<LoggedUserDTO>(userJson);
-        }
+        var tempUser = await _loginService.RequestLogin(userName);
+        LoggedUserDTO userDto = UserJsonToDTO(tempUser);
+        LoggedUserDTO.PlayerName = userDto.name; // OJO ACA!!!
     }
 
-    public interface ILoginGetUserAction
+    public LoggedUserDTO UserJsonToDTO(string userJson)
     {
-        Task<string> Invoke(string username);
-        LoggedUserDTO UserJsonToDTO(string userJson);
+        return JsonConvert.DeserializeObject<LoggedUserDTO>(userJson);
     }
+}
+
 

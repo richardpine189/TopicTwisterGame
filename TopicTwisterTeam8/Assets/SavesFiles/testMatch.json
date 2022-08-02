@@ -481,5 +481,47 @@
       null
     ],
     "isChallengerTurn": false
+  },
+  {
+    "id": 6,
+    "challenger": {
+      "UserName": "Theo"
+    },
+    "opponent": {
+      "UserName": "Romina"
+    },
+    "rounds": [
+      {
+        "letter": "D",
+        "assignedCategoryNames": [
+          "Paises",
+          "Profesiones",
+          "Color",
+          "Marcas",
+          "Frutas Y Verduras"
+        ],
+        "challengerAnswers": [
+          "Dinamarca",
+          "",
+          "Dorado",
+          "",
+          ""
+        ],
+        "opponentAnswers": null,
+        "challengerResult": [
+          true,
+          false,
+          true,
+          false,
+          false
+        ],
+        "opponentResult": null,
+        "roundFinished": false,
+        "timer": 11
+      },
+      null,
+      null
+    ],
+    "isChallengerTurn": false
   }
 ]

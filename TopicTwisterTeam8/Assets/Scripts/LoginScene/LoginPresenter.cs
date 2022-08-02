@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-    class LoginPresenter
+using Zenject;
+public class LoginPresenter : IInitializable, IDisposable
     {
-        private ILoginView _view;
-        private ILoginGetUserAction _loginAction;
+        [Inject] private ILoginView _view;
+        [Inject] private ILoginGetUserAction _loginAction;
 
-        public LoginPresenter(ILoginView view)
+        public void Initialize()
         {
-            _view = view;
             _view.OnLoginTrigger += LogIn;
-            _loginAction = new LoginAction();
+        }
+
+        public void Dispose()
+        {
+            _view.OnLoginTrigger -= LogIn;
         }
 
         private async void LogIn(string username)
@@ -23,10 +21,7 @@ using System.Threading.Tasks;
             {
                 try
                 {
-                    string userJson = await _loginAction.Invoke(username);
-
-                    LoggedUserDTO user = _loginAction.UserJsonToDTO(userJson);
-                    LoggedUserDTO.PlayerName = user.name;
+                    await _loginAction.Invoke(username);
                     _view.LoadMainScene();
                 }
                 catch (Exception e)
@@ -39,7 +34,5 @@ using System.Threading.Tasks;
                 _view.ShowErrorMessage("No se ha envíado un nombre de usuario");
             }
         }
-
-        ~LoginPresenter() { _view.OnLoginTrigger -= LogIn; }
     }
 
