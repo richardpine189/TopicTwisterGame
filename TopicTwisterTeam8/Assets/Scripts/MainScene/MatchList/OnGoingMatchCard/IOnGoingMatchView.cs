@@ -1,10 +1,16 @@
-namespace MainScene.MatchList.OnGoingMatchCard
+using System;
+
+public interface IOngoingMatchView
 {
-    public interface IOnGoingMatchView
-    {
-        public void ShowWaitingClock();
-        public void ShowPlayButton();
-        void SetFields(MatchViewModel match);
-        void LoadMatch();
-    }
+    public void ShowWaitingClock();
+
+    public void ShowPlayButton();
+
+    public void SetOpponentName(string name);
+
+    public void SetRoundNumber(int round);
+
+    void LoadMatch();
+
+    public event Action OnStartMatch;
 }

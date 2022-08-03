@@ -6,7 +6,7 @@ public class MatchListGetter : IGetMatchesInfo
 {
     [Inject] IMatchRepository _matchRepository;
     
-    public MatchViewModel[] Execute()
+    public MatchDTO[] Execute()
     {
         List<Match> matches = _matchRepository.GetMatchesByName(LoggedUserDTO.PlayerName);
 
@@ -14,7 +14,7 @@ public class MatchListGetter : IGetMatchesInfo
 
         if (matches != null)
         {
-            return matches.Select(m => new MatchViewModel
+            return matches.Select(m => new MatchDTO
             {
                 idMatch = (int)m.id,
                 challengerName = m.challenger.UserName,
@@ -26,7 +26,7 @@ public class MatchListGetter : IGetMatchesInfo
         }
         else
         {
-            return new MatchViewModel[0];
+            return new MatchDTO[0];
         }
     }
 }

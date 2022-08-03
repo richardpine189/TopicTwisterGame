@@ -26,14 +26,13 @@ namespace Assets.Scripts.Presenters
             _view.SetNewGameState(_isNewGame);
             _view.StartAnimation();
             //SelectSectionAtStart();
-
-
-
         }
+
        ~LoadingGamePresenter()
-        {
-            _view.OnReadyForNext -= SelectSectionAtStart;
-        }
+       {
+           _view.OnReadyForNext -= SelectSectionAtStart;
+       }
+
         private void InitMatchData()
         {
             _isNewGame = !_matchActions.CheckActiveMatch();

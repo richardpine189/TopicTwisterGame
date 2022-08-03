@@ -6,11 +6,67 @@ using System.Threading.Tasks;
 
 public class OngoingMatchPresenter
 {
-    
-    public void SaveCurrentMatch(int matchId)
+    private IOngoingMatchView _view;
+
+    private int _matchId = 0;
+
+    private bool _isPlayerTurn = true;
+
+    public OngoingMatchPresenter(IOngoingMatchView view, MatchDTO matchDTO)
+    {
+        _view = view;
+
+        _matchId = matchDTO.idMatch;
+
+        IsPlayerTurn(matchDTO);
+
+        SetViewName(matchDTO);
+
+        _view.SetRoundNumber(matchDTO.currentRound);
+
+        SetViewState(matchDTO);
+
+        _view.OnStartMatch += SaveCurrentMatch;
+    }
+
+    ~OngoingMatchPresenter()
+    {
+        _view.OnStartMatch -= SaveCurrentMatch;
+    }
+
+    public void SaveCurrentMatch()
     {
         SetActiveMatch action = new SetActiveMatch();
-        action.Execute(matchId);
+        action.Execute(_matchId);
+    }
+
+    private void IsPlayerTurn(MatchDTO match)
+    {
+        _isPlayerTurn = (match.isChallengerTurn && LoggedUserDTO.PlayerName == match.challengerName) || (!match.isChallengerTurn && LoggedUserDTO.PlayerName == match.opponentName);
+    }
+
+    private void SetViewName(MatchDTO match)
+    {
+        if(LoggedUserDTO.PlayerName == match.challengerName)
+        {
+            _view.SetOpponentName(match.opponentName);
+        }
+        else
+        {
+            _view.SetOpponentName(match.challengerName);
+        }
+    }
+
+    private void SetViewState(MatchDTO matchDTO)
+    {
+        if (_isPlayerTurn || matchDTO.isMatchFinished)
+        {
+            _view.ShowPlayButton();
+        }
+        else
+        {
+            _view.ShowWaitingClock();
+        }
     }
 
     /*public void BotResolveRound(int matchId, ICategoriesGetter categoriesGetter)

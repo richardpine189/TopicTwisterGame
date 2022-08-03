@@ -1,5 +1,5 @@
 ﻿    public interface IGetMatchesInfo
     {
-        MatchViewModel[] Execute();
+        MatchDTO[] Execute();
     }
 

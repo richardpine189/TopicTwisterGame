@@ -1,11 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using MainScene.MatchList.OnGoingMatchCard;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class OngoingMatchView : MonoBehaviour, IOnGoingMatchView
+public class OngoingMatchView : MonoBehaviour, IOngoingMatchView
 {
     [SerializeField]
     private TMP_Text _opponentName;
@@ -24,16 +24,11 @@ public class OngoingMatchView : MonoBehaviour, IOnGoingMatchView
 
     [SerializeField]
     private GameObject _playButton;
-    
 
-    private int matchId = 0;
-
-    private OngoingMatchPresenter _presenter;
-
+    public event Action OnStartMatch;
 
     private void Start()
     {
-        _presenter = new OngoingMatchPresenter();
         //StartCoroutine(ChangeClockForButton()); ACCESS TO SKYNET
     }
     
@@ -58,22 +53,15 @@ public class OngoingMatchView : MonoBehaviour, IOnGoingMatchView
         _presenter.SaveCurrentMatch(match.idMatch);
     }
     */
-    public void SetFields(MatchViewModel match) 
+
+    public void SetOpponentName(string name)
     {
-        matchId = match.idMatch;
-        _opponentName.text = match.opponentName;
-        _round.text = "Ronda " + match.currentRound;
+        _opponentName.text = name;
+    }
 
-        bool isPlayerTurn = (match.isChallengerTurn && LoggedUserDTO.PlayerName == match.challengerName) || (!match.isChallengerTurn && LoggedUserDTO.PlayerName == match.opponentName);
-
-        if (isPlayerTurn || match.isMatchFinished)
-        {
-            ShowPlayButton();
-        }
-        else
-        {
-           ShowWaitingClock();
-        }
+    public void SetRoundNumber(int round)
+    {
+        _round.text = "Ronda " + round;
     }
 
     public void ShowWaitingClock()
@@ -90,10 +78,8 @@ public class OngoingMatchView : MonoBehaviour, IOnGoingMatchView
 
     public void LoadMatch()
     {
-        _presenter.SaveCurrentMatch(matchId);
-
+        OnStartMatch?.Invoke();
         SceneManager.LoadScene(2, LoadSceneMode.Single);
     }
-
 }
 
