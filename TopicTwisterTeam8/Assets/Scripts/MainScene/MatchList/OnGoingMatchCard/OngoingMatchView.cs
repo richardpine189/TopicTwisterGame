@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using MainScene.MatchList.OnGoingMatchCard;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class OngoingMatchView : MonoBehaviour
+public class OngoingMatchView : MonoBehaviour, IOnGoingMatchView
 {
     [SerializeField]
     private TMP_Text _opponentName;
@@ -33,9 +34,11 @@ public class OngoingMatchView : MonoBehaviour
     private void Start()
     {
         _presenter = new OngoingMatchPresenter();
-        //StartCoroutine(ChangeClockForButton()); ACCESO AL BOT
+        //StartCoroutine(ChangeClockForButton()); ACCESS TO SKYNET
     }
-
+    
+    /* SKYNET LOGIC - REQUEST TO SOLVE
+     
     IEnumerator ChangeClockForButton()
     {
         yield return new WaitForSeconds(5);
@@ -54,7 +57,7 @@ public class OngoingMatchView : MonoBehaviour
         match.isChallengerTurn = true;
         _presenter.SaveCurrentMatch(match.idMatch);
     }
-
+    */
     public void SetFields(MatchViewModel match) 
     {
         matchId = match.idMatch;
@@ -65,14 +68,24 @@ public class OngoingMatchView : MonoBehaviour
 
         if (isPlayerTurn || match.isMatchFinished)
         {
-            _waitingClock.SetActive(false);
-            _playButton.SetActive(true);
+            ShowPlayButton();
         }
         else
         {
-            _waitingClock.SetActive(true);
-            _playButton.SetActive(false);
+           ShowWaitingClock();
         }
+    }
+
+    public void ShowWaitingClock()
+    {
+        _waitingClock.SetActive(true);
+        _playButton.SetActive(false);
+    }
+
+    public void ShowPlayButton()
+    {
+        _waitingClock.SetActive(false);
+        _playButton.SetActive(true);
     }
 
     public void LoadMatch()
