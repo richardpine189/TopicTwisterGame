@@ -4,6 +4,7 @@ using Zenject;
 public class MatchListInstaller : MonoInstaller
 {
     [SerializeField] private MatchListView _matchListView;
+
     public override void InstallBindings()
     {
         Container.Bind<IMatchListView>().To<MatchListView>().FromInstance(_matchListView).NonLazy();

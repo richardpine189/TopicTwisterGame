@@ -523,5 +523,116 @@
       null
     ],
     "isChallengerTurn": false
+  },
+  {
+    "id": 7,
+    "challenger": {
+      "UserName": "Ricardo"
+    },
+    "opponent": {
+      "UserName": "Romina"
+    },
+    "rounds": [
+      {
+        "letter": "A",
+        "assignedCategoryNames": [],
+        "challengerAnswers": [
+          "Dinamarca",
+          "",
+          "Dorado",
+          "",
+          ""
+        ],
+        "opponentAnswers": null,
+        "challengerResult": null,
+        "opponentResult": null,
+        "roundFinished": false,
+        "timer": 60
+      },
+      null,
+      null
+    ],
+    "isChallengerTurn": false
+  },
+  {
+    "id": 8,
+    "challenger": {
+      "UserName": "Ricardo"
+    },
+    "opponent": {
+      "UserName": "Romina"
+    },
+    "rounds": [
+      {
+        "letter": "C",
+        "assignedCategoryNames": [
+          "Animales",
+          "Marcas",
+          "Profesiones",
+          "Peliculas",
+          "Color"
+        ],
+        "challengerAnswers": [
+          "Camello",
+          "Asus",
+          "Casa",
+          "Avengers",
+          "Celeste"
+        ],
+        "opponentAnswers": [
+          "aaa",
+          "aaa",
+          "ssss",
+          "dddd",
+          "ffff"
+        ],
+        "challengerResult": [
+          true,
+          false,
+          false,
+          false,
+          true
+        ],
+        "opponentResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true,
+        "timer": 26
+      },
+      {
+        "letter": "D",
+        "assignedCategoryNames": [
+          "Paises",
+          "Animales",
+          "Peliculas",
+          "Color",
+          "Marcas"
+        ],
+        "challengerAnswers": null,
+        "opponentAnswers": [
+          "Dinamarca",
+          "Delfin",
+          "Dumbo",
+          "Dorado",
+          "qwerty"
+        ],
+        "challengerResult": null,
+        "opponentResult": [
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "roundFinished": false,
+        "timer": 21
+      },
+      null
+    ],
+    "isChallengerTurn": true
   }
 ]
