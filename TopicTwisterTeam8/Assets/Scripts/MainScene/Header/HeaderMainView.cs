@@ -15,7 +15,9 @@ public class HeaderMainView : MonoBehaviour
 
     void Start()
     {
-        _userName.text = LoggedUserDTO.PlayerName;
+        _userName.text = PlayerPrefs.GetString("PlayerName");
+        _userCoins.text = PlayerPrefs.GetInt("PlayerCoin").ToString();
+        
     }
 
 }

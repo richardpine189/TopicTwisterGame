@@ -10,7 +10,7 @@ public class LoginService : ILoginService
     private readonly HttpClient _client = new HttpClient();
 
     // Development URL
-    private readonly string _baseURL; //= @"http://localhost:8080";
+    private readonly string _baseURL;
 
     public LoginService(string _path)
     {

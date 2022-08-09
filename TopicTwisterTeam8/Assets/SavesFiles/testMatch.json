@@ -5,668 +5,26 @@
       "UserName": "Ricardo"
     },
     "opponent": {
-      "UserName": "Theo"
-    },
-    "rounds": [
-      {
-        "letter": "D",
-        "assignedCategoryNames": [
-          "Animales",
-          "Paises",
-          "Marcas",
-          "Color",
-          "Profesiones"
-        ],
-        "challengerAnswers": [
-          "Araña",
-          "xx",
-          "Etermax",
-          "xxx",
-          "xxx"
-        ],
-        "opponentAnswers": [
-          "Araña",
-          "Argentina",
-          "Etermax",
-          "Dorado",
-          "aaaa"
-        ],
-        "challengerResult": [
-          true,
-          false,
-          true,
-          false,
-          false
-        ],
-        "opponentResult": [
-          true,
-          true,
-          true,
-          true,
-          false
-        ],
-        "roundFinished": true,
-        "timer": 60
-      },
-      {
-        "letter": "A",
-        "assignedCategoryNames": [
-          "Animales",
-          "Paises",
-          "Marcas",
-          "Color",
-          "Profesiones"
-        ],
-        "challengerAnswers": [
-          "Delfin",
-          "Chile",
-          "aa",
-          "sss",
-          "Arquitecto"
-        ],
-        "opponentAnswers": [
-          "ccc",
-          "ccc",
-          "cccc",
-          "ccc",
-          "cccc"
-        ],
-        "challengerResult": [
-          true,
-          true,
-          false,
-          false,
-          true
-        ],
-        "opponentResult": [
-          false,
-          false,
-          false,
-          false,
-          false
-        ],
-        "roundFinished": true,
-        "timer": 60
-      },
-      {
-        "letter": "A",
-        "assignedCategoryNames": [
-          "Animales",
-          "Paises",
-          "Marcas",
-          "Color",
-          "Profesiones"
-        ],
-        "challengerAnswers": [
-          "zzz",
-          "xxx",
-          "aaa",
-          "zzz",
-          "xxx"
-        ],
-        "opponentAnswers": [
-          "Araña",
-          "qq",
-          "qqq",
-          "qq",
-          "qqq"
-        ],
-        "challengerResult": [
-          false,
-          false,
-          false,
-          false,
-          false
-        ],
-        "opponentResult": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "roundFinished": true,
-        "timer": 60
-      }
-    ],
-    "isChallengerTurn": false
-  },
-  {
-    "id": 1,
-    "challenger": {
-      "UserName": "Romina"
-    },
-    "opponent": {
-      "UserName": "Ricardo"
-    },
-    "rounds": [
-      {
-        "letter": "B",
-        "assignedCategoryNames": [
-          "Animales",
-          "Paises",
-          "Marcas",
-          "Color",
-          "Profesiones"
-        ],
-        "challengerAnswers": [
-          "a",
-          "s",
-          "d",
-          "f",
-          "g"
-        ],
-        "opponentAnswers": [
-          "a",
-          "a",
-          "a",
-          "azul",
-          "a"
-        ],
-        "challengerResult": [
-          false,
-          false,
-          false,
-          false,
-          false
-        ],
-        "opponentResult": [
-          false,
-          false,
-          false,
-          false,
-          false
-        ],
-        "roundFinished": true,
-        "timer": 60
-      },
-      {
-        "letter": "A",
-        "assignedCategoryNames": [
-          "Animales",
-          "Paises",
-          "Marcas",
-          "Color",
-          "Profesiones"
-        ],
-        "challengerAnswers": [
-          "v",
-          "v",
-          "v",
-          "v",
-          "v"
-        ],
-        "opponentAnswers": [
-          "Araña",
-          "Argentina",
-          "Etermax",
-          "Azul",
-          ""
-        ],
-        "challengerResult": [
-          false,
-          false,
-          false,
-          false,
-          false
-        ],
-        "opponentResult": [
-          true,
-          true,
-          true,
-          true,
-          false
-        ],
-        "roundFinished": true,
-        "timer": 60
-      },
-      {
-        "letter": "C",
-        "assignedCategoryNames": [
-          "Animales",
-          "Paises",
-          "Marcas",
-          "Color",
-          "Profesiones"
-        ],
-        "challengerAnswers": [
-          "a",
-          "a",
-          "a",
-          "a",
-          "a"
-        ],
-        "opponentAnswers": [
-          "Araña",
-          "a",
-          "a",
-          "a",
-          "a"
-        ],
-        "challengerResult": [
-          false,
-          false,
-          false,
-          false,
-          false
-        ],
-        "opponentResult": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "roundFinished": true,
-        "timer": 60
-      }
-    ],
-    "isChallengerTurn": false
-  },
-  {
-    "id": 2,
-    "challenger": {
-      "UserName": "Theo"
-    },
-    "opponent": {
-      "UserName": "Romina"
-    },
-    "rounds": [
-      {
-        "letter": "C",
-        "assignedCategoryNames": [
-          "Frutas Y Verduras",
-          "Peliculas",
-          "Cosas",
-          "Profesiones",
-          "Animales"
-        ],
-        "challengerAnswers": [
-          "",
-          "",
-          "casa",
-          "",
-          "camello"
-        ],
-        "opponentAnswers": null,
-        "challengerResult": [
-          false,
-          false,
-          true,
-          false,
-          true
-        ],
-        "opponentResult": null,
-        "roundFinished": false,
-        "timer": 60
-      },
-      null,
-      null
-    ],
-    "isChallengerTurn": false
-  },
-  {
-    "id": 3,
-    "challenger": {
-      "UserName": "Theo"
-    },
-    "opponent": {
-      "UserName": "Ricardo"
-    },
-    "rounds": [
-      {
-        "letter": "B",
-        "assignedCategoryNames": [
-          "Color",
-          "Animales",
-          "Cosas",
-          "Marcas",
-          "Peliculas"
-        ],
-        "challengerAnswers": [
-          "blanco",
-          "",
-          "botella",
-          "",
-          ""
-        ],
-        "opponentAnswers": null,
-        "challengerResult": [
-          true,
-          false,
-          true,
-          false,
-          false
-        ],
-        "opponentResult": null,
-        "roundFinished": false,
-        "timer": 45
-      },
-      null,
-      null
-    ],
-    "isChallengerTurn": false
-  },
-  {
-    "id": 4,
-    "challenger": {
-      "UserName": "Theo"
-    },
-    "opponent": {
-      "UserName": "Ricardo"
-    },
-    "rounds": [
-      {
-        "letter": "A",
-        "assignedCategoryNames": [
-          "Animales",
-          "Profesiones",
-          "Color",
-          "Marcas",
-          "Frutas Y Verduras"
-        ],
-        "challengerAnswers": [
-          "araña",
-          "",
-          "azul",
-          "",
-          "apio"
-        ],
-        "opponentAnswers": [
-          "",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "challengerResult": [
-          true,
-          false,
-          true,
-          false,
-          true
-        ],
-        "opponentResult": [
-          false,
-          false,
-          false,
-          false,
-          false
-        ],
-        "roundFinished": true,
-        "timer": 50
-      },
-      {
-        "letter": "A",
-        "assignedCategoryNames": [
-          "Paises",
-          "Marcas",
-          "Peliculas",
-          "Frutas Y Verduras",
-          "Animales"
-        ],
-        "challengerAnswers": [
-          "argentina",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "opponentAnswers": [
-          "",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "challengerResult": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "opponentResult": [
-          false,
-          false,
-          false,
-          false,
-          false
-        ],
-        "roundFinished": true,
-        "timer": 57
-      },
-      null
-    ],
-    "isChallengerTurn": true
-  },
-  {
-    "id": 5,
-    "challenger": {
-      "UserName": "Theo"
-    },
-    "opponent": {
-      "UserName": "Romina"
-    },
-    "rounds": [
-      {
-        "letter": "B",
-        "assignedCategoryNames": [
-          "Peliculas",
-          "Frutas Y Verduras",
-          "Marcas",
-          "Cosas",
-          "Color"
-        ],
-        "challengerAnswers": [
-          "",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "opponentAnswers": null,
-        "challengerResult": [
-          false,
-          false,
-          false,
-          false,
-          false
-        ],
-        "opponentResult": null,
-        "roundFinished": false,
-        "timer": 1
-      },
-      null,
-      null
-    ],
-    "isChallengerTurn": false
-  },
-  {
-    "id": 6,
-    "challenger": {
-      "UserName": "Theo"
-    },
-    "opponent": {
       "UserName": "Romina"
     },
     "rounds": [
       {
         "letter": "D",
         "assignedCategoryNames": [
-          "Paises",
-          "Profesiones",
+          "Frutas Y Verduras",
           "Color",
-          "Marcas",
-          "Frutas Y Verduras"
-        ],
-        "challengerAnswers": [
-          "Dinamarca",
-          "",
-          "Dorado",
-          "",
-          ""
-        ],
-        "opponentAnswers": null,
-        "challengerResult": [
-          true,
-          false,
-          true,
-          false,
-          false
-        ],
-        "opponentResult": null,
-        "roundFinished": false,
-        "timer": 11
-      },
-      null,
-      null
-    ],
-    "isChallengerTurn": false
-  },
-  {
-    "id": 7,
-    "challenger": {
-      "UserName": "Ricardo"
-    },
-    "opponent": {
-      "UserName": "Romina"
-    },
-    "rounds": [
-      {
-        "letter": "A",
-        "assignedCategoryNames": [],
-        "challengerAnswers": [
-          "Dinamarca",
-          "",
-          "Dorado",
-          "",
-          ""
-        ],
-        "opponentAnswers": null,
-        "challengerResult": null,
-        "opponentResult": null,
-        "roundFinished": false,
-        "timer": 60
-      },
-      null,
-      null
-    ],
-    "isChallengerTurn": false
-  },
-  {
-    "id": 8,
-    "challenger": {
-      "UserName": "Ricardo"
-    },
-    "opponent": {
-      "UserName": "Romina"
-    },
-    "rounds": [
-      {
-        "letter": "C",
-        "assignedCategoryNames": [
-          "Animales",
-          "Marcas",
-          "Profesiones",
-          "Peliculas",
-          "Color"
-        ],
-        "challengerAnswers": [
-          "Camello",
-          "Asus",
-          "Casa",
-          "Avengers",
-          "Celeste"
-        ],
-        "opponentAnswers": [
-          "aaa",
-          "aaa",
-          "ssss",
-          "dddd",
-          "ffff"
-        ],
-        "challengerResult": [
-          true,
-          false,
-          false,
-          false,
-          true
-        ],
-        "opponentResult": [
-          false,
-          false,
-          false,
-          false,
-          false
-        ],
-        "roundFinished": true,
-        "timer": 26
-      },
-      {
-        "letter": "D",
-        "assignedCategoryNames": [
           "Paises",
-          "Animales",
           "Peliculas",
-          "Color",
-          "Marcas"
+          "Profesiones"
         ],
-        "challengerAnswers": null,
-        "opponentAnswers": [
+        "challengerAnswers": [
+          "Durazno",
+          "Dorado",
           "Dinamarca",
-          "Delfin",
           "Dumbo",
-          "Dorado",
-          "qwerty"
-        ],
-        "challengerResult": null,
-        "opponentResult": [
-          true,
-          true,
-          true,
-          true,
-          false
-        ],
-        "roundFinished": false,
-        "timer": 21
-      },
-      null
-    ],
-    "isChallengerTurn": true
-  },
-  {
-    "id": 9,
-    "challenger": {
-      "UserName": "Theo"
-    },
-    "opponent": {
-      "UserName": "Ricardo"
-    },
-    "rounds": [
-      {
-        "letter": "C",
-        "assignedCategoryNames": [
-          "Peliculas",
-          "Paises",
-          "Color",
-          "Cosas",
-          "Frutas Y Verduras"
-        ],
-        "challengerAnswers": [
-          "Capitan America",
-          "Chile",
-          "Celeste",
-          "Casa",
-          "Cereza"
-        ],
-        "opponentAnswers": [
-          "",
-          "",
-          "",
-          "",
           ""
         ],
+        "opponentAnswers": null,
         "challengerResult": [
           true,
           true,
@@ -674,14 +32,8 @@
           true,
           false
         ],
-        "opponentResult": [
-          false,
-          false,
-          false,
-          false,
-          false
-        ],
-        "roundFinished": true,
+        "opponentResult": null,
+        "roundFinished": false,
         "timer": 28
       },
       null,
@@ -690,41 +42,83 @@
     "isChallengerTurn": false
   },
   {
-    "id": 10,
+    "id": 1,
     "challenger": {
-      "UserName": "Theo"
+      "UserName": "Ricardo"
     },
     "opponent": {
-      "UserName": "Romina"
+      "UserName": "Theo"
+    },
+    "rounds": [
+      {
+        "letter": "B",
+        "assignedCategoryNames": [
+          "Cosas",
+          "Frutas Y Verduras",
+          "Marcas",
+          "Color",
+          "Profesiones"
+        ],
+        "challengerAnswers": [
+          "Botella",
+          "",
+          "Bentley",
+          "Blanco",
+          ""
+        ],
+        "opponentAnswers": null,
+        "challengerResult": [
+          true,
+          false,
+          true,
+          true,
+          false
+        ],
+        "opponentResult": null,
+        "roundFinished": false,
+        "timer": 19
+      },
+      null,
+      null
+    ],
+    "isChallengerTurn": false
+  },
+  {
+    "id": 2,
+    "challenger": {
+      "UserName": "Ricardo"
+    },
+    "opponent": {
+      "UserName": "Theo"
     },
     "rounds": [
       {
         "letter": "C",
         "assignedCategoryNames": [
-          "Marcas",
           "Frutas Y Verduras",
+          "Cosas",
           "Color",
           "Profesiones",
-          "Cosas"
+          "Peliculas"
         ],
         "challengerAnswers": [
           "",
-          "",
+          "Casa",
           "Celeste",
           "",
-          ""
+          "Capitan America"
         ],
         "opponentAnswers": null,
         "challengerResult": [
           false,
-          false,
+          true,
           true,
           false,
-          false
+          true
         ],
         "opponentResult": null,
         "roundFinished": false,
-        "timer": 8
+        "timer": 17
       },
       null,
       null

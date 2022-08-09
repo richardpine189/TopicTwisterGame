@@ -8,11 +8,13 @@ public class LoginPresenter : IInitializable, IDisposable
         public void Initialize()
         {
             _view.OnLoginTrigger += LogIn;
+
         }
 
         public void Dispose()
         {
             _view.OnLoginTrigger -= LogIn;
+
         }
 
         private async void LogIn(string username)
@@ -34,5 +36,6 @@ public class LoginPresenter : IInitializable, IDisposable
                 _view.ShowErrorMessage("No se ha envíado un nombre de usuario");
             }
         }
+
     }
 
