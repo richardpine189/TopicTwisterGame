@@ -35,6 +35,9 @@ namespace Team8.TopicTwister
 
         private LoadingGamePresenter _presenter;
 
+        [SerializeField] private GameObject _spiner;
+        
+
         bool _isNewGame;
 
         private void Start()
@@ -54,21 +57,15 @@ namespace Team8.TopicTwister
 
         private IEnumerator LoadingAnimation()
         {
-            _loadingText.gameObject.SetActive(true);
+            _spiner.gameObject.SetActive(true);
             _versusImage.SetActive(false);
-
-            for (int i = 0; i < 10; i++)
-            {
-                _loadingText.text = "Loading" + (i % 3 == 0 ? "." : (i % 3 == 1 ? ".." : "..."));
-                yield return new WaitForSeconds(0.3f);
-            }
-
+            yield return new WaitForSeconds(1f);
             StartCoroutine(SecondWaiting());
         }
 
         public IEnumerator SecondWaiting()
         {
-            _loadingText.gameObject.SetActive(false);
+            _spiner.gameObject.SetActive(false);
             _versusImage.SetActive(true);
 
             yield return new WaitForSeconds(3.0f);

@@ -36,6 +36,8 @@ public class CategoriesView : MonoBehaviour, ILetterView
     [SerializeField]
     private CategoriesSO _categoriesSO;
 
+    [SerializeField] private GameObject _spiner;
+
     private LetterPresenter _presenter;
     [SerializeField] private RouteConfig _config;
     private void Start()
@@ -83,8 +85,10 @@ public class CategoriesView : MonoBehaviour, ILetterView
 
     public void ShowCategories(string[] categories)
     {
+        _spiner.SetActive(false);
         for(int i = 0; i < 5; i++)
         {
+            _categories[i].gameObject.SetActive(true);
             _categories[i].text = categories[i];
         }
         _categoriesSO.CategoriesName = categories; // SAVING CATEGORIES NAME

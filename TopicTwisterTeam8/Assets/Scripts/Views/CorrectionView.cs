@@ -39,6 +39,8 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
     [SerializeField]
     private GameObject _endRoundPanel;
 
+    [SerializeField] private GameObject _spiner;
+
     [SerializeField] private RouteConfig _config;
     private CorrectionPresenter _presenter;
     private string[] _answers;
@@ -75,9 +77,11 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
         ShowAnswers(_answers);
 
         bool[] corrections = await _presenter.GetCorrections(_categoryNames, _answers, _roundLetter);
-
+        _spiner.SetActive(false);
+        
         for(int i = 0; i < 5; i++)
         {
+            _resultsUI[i].gameObject.SetActive(true);
             if (corrections[i] == true)
             {
                 _resultsUI[i].sprite = _tickSprite;

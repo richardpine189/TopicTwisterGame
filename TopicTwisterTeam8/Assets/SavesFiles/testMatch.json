@@ -688,5 +688,47 @@
       null
     ],
     "isChallengerTurn": false
+  },
+  {
+    "id": 10,
+    "challenger": {
+      "UserName": "Theo"
+    },
+    "opponent": {
+      "UserName": "Romina"
+    },
+    "rounds": [
+      {
+        "letter": "C",
+        "assignedCategoryNames": [
+          "Marcas",
+          "Frutas Y Verduras",
+          "Color",
+          "Profesiones",
+          "Cosas"
+        ],
+        "challengerAnswers": [
+          "",
+          "",
+          "Celeste",
+          "",
+          ""
+        ],
+        "opponentAnswers": null,
+        "challengerResult": [
+          false,
+          false,
+          true,
+          false,
+          false
+        ],
+        "opponentResult": null,
+        "roundFinished": false,
+        "timer": 8
+      },
+      null,
+      null
+    ],
+    "isChallengerTurn": false
   }
 ]
