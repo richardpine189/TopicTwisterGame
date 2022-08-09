@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Zenject;
 
 public class LoginService : ILoginService
 {
@@ -9,8 +10,12 @@ public class LoginService : ILoginService
     private readonly HttpClient _client = new HttpClient();
 
     // Development URL
-    private readonly string _baseURL = @"http://localhost:8080";
+    private readonly string _baseURL; //= @"http://localhost:8080";
 
+    public LoginService(string _path)
+    {
+        _baseURL = _path;
+    }
     public async Task<string> RequestLogin(string username)
     {
         var values = new Dictionary<string, string>

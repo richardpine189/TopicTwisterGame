@@ -634,5 +634,59 @@
       null
     ],
     "isChallengerTurn": true
+  },
+  {
+    "id": 9,
+    "challenger": {
+      "UserName": "Theo"
+    },
+    "opponent": {
+      "UserName": "Ricardo"
+    },
+    "rounds": [
+      {
+        "letter": "C",
+        "assignedCategoryNames": [
+          "Peliculas",
+          "Paises",
+          "Color",
+          "Cosas",
+          "Frutas Y Verduras"
+        ],
+        "challengerAnswers": [
+          "Capitan America",
+          "Chile",
+          "Celeste",
+          "Casa",
+          "Cereza"
+        ],
+        "opponentAnswers": [
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "challengerResult": [
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "opponentResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "roundFinished": true,
+        "timer": 28
+      },
+      null,
+      null
+    ],
+    "isChallengerTurn": false
   }
 ]

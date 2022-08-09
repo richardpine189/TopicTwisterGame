@@ -11,6 +11,8 @@ public class LoginView : MonoBehaviour, ILoginView
         [SerializeField]
         private GameObject _errorPanel;
 
+        [SerializeField] private GameObject _button;
+        [SerializeField] private GameObject _spiner;
         public event Action<string> OnLoginTrigger;
 
         public void LoginButton()
@@ -18,6 +20,8 @@ public class LoginView : MonoBehaviour, ILoginView
             string username = _usernameInputField.text;
 
             OnLoginTrigger.Invoke(username);
+            _button.SetActive(false);
+            _spiner.SetActive(true);
         }
 
         public void ShowErrorMessage(string message)

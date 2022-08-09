@@ -37,7 +37,7 @@ public class CategoriesView : MonoBehaviour, ILetterView
     private CategoriesSO _categoriesSO;
 
     private LetterPresenter _presenter;
-
+    [SerializeField] private RouteConfig _config;
     private void Start()
     {
         Initialize();
@@ -55,7 +55,7 @@ public class CategoriesView : MonoBehaviour, ILetterView
 
     private void Initialize()
     {
-        _presenter = new LetterPresenter(this, new RandomLetterGetter(), new CategoriesGetter(new CategoryService()));
+        _presenter = new LetterPresenter(this, new RandomLetterGetter(), new CategoriesGetter(new CategoryService(_config.path)));
     }
 
     public void ShowLetter(char letter)

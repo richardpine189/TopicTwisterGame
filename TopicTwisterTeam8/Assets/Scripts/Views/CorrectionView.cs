@@ -39,6 +39,7 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
     [SerializeField]
     private GameObject _endRoundPanel;
 
+    [SerializeField] private RouteConfig _config;
     private CorrectionPresenter _presenter;
     private string[] _answers;
     private string[] _categoryNames;
@@ -57,7 +58,7 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
 
     private void Initialize()
     {
-        _presenter = new CorrectionPresenter(this, new CorrectionGetter(new CategoryService()));
+        _presenter = new CorrectionPresenter(this, new CorrectionGetter(new CategoryService(_config.path)));
 
         Answers answersObject = AssetDatabase.LoadAssetAtPath<Answers>("Assets/Scripts/pruebaSO.asset");
         _answers = answersObject.AnswersString;

@@ -20,6 +20,8 @@ public class HardcodedMatchActions : IMatchAction
         _matchService = ServiceLocator.Instance.GetService<ICurrentMatchService>();
     }
 
+
+    #region USECASE CREATE MATCH
     public void CreateMatch()
     {
         FindPlayers();
@@ -45,6 +47,10 @@ public class HardcodedMatchActions : IMatchAction
 
         _opponent = users[rnd.Next(0, users.Count)];
     }
+    
+
+    #endregion
+    
 
     public string GetPlayerName()
     {
@@ -70,7 +76,7 @@ public class HardcodedMatchActions : IMatchAction
         return match;
     }
 
-    #region Other_Class
+    #region USECASE GETROUND
     // These methods should be in a separate action class responsible of multiple verifications of a Match instance. The methods should receive a Match by parameter.
     
     public Round GetCurrentRound()
@@ -102,7 +108,12 @@ public class HardcodedMatchActions : IMatchAction
         return 3;
     }
 
-    public bool IsFinished()
+    #endregion
+
+    #region Comprobadores
+
+    
+    public bool IsFinished() // HA FINALIZADO MATCH?
     {
         if (!match.rounds.Any(x => x == null) && match.rounds.All(x => x.roundFinished))
         {
@@ -112,7 +123,7 @@ public class HardcodedMatchActions : IMatchAction
         return false;
     }
 
-    public bool ChallengerWon()
+    public bool ChallengerWon() // CORROBORAR GANADOR
     {
         int wonRoundsCount = 0;
 
@@ -134,16 +145,19 @@ public class HardcodedMatchActions : IMatchAction
         }
     }
 
-    public bool CheckActiveMatch()
+    public bool CheckActiveMatch() //Verificar Match Activo
     {
         return (_matchService.GetActiveMatch() != null);
     }
 
-    public bool IsChallengerTurn()
+    public bool IsChallengerTurn() //Verificar turno
     {
         return (CheckActiveMatch() && GetCurrentRound().opponentAnswers == null);
     }
 
+    #endregion
+    
+    #region USECASE TIMEACTION
     public void SaveTimeToRound(int timeLeft)
     {
         Round round = GetCurrentRound();

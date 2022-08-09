@@ -10,13 +10,12 @@ using Newtonsoft.Json;
 
 public class CategoryService : ICategoryService
 {
-    private HttpClient _client;
+    private HttpClient _client = new HttpClient();
     private string _baseURL;
 
-    public CategoryService()
+    public CategoryService(string path)
     {
-        _client = new HttpClient();
-        _baseURL = "http://localhost:8081";
+        _baseURL = path;
     }
 
     public async Task<string[]> GetCategoriesNames(int amount)
