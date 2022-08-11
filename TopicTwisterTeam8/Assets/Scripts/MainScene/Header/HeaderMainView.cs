@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Zenject;
 
 public class HeaderMainView : MonoBehaviour
 {
@@ -13,11 +14,13 @@ public class HeaderMainView : MonoBehaviour
     [SerializeField]
     private Image _userAvatar;
 
+    [Inject]
+    private ILocalPlayerDataRepository _localPlayerDataRepository;
+
     void Start()
     {
-        _userName.text = PlayerPrefs.GetString("PlayerName");
-        _userCoins.text = PlayerPrefs.GetInt("PlayerCoin").ToString();
-        
+        _userName.text = _localPlayerDataRepository.GetData().name;
+        _userCoins.text = _localPlayerDataRepository.GetData().coin.ToString();
     }
 
 }

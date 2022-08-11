@@ -3,31 +3,60 @@ using Newtonsoft.Json;
 using UnityEngine;
 using Zenject;
 
-
 public class LoginAction : ILoginGetUserAction
 {
-    [Inject] private ILoginService _loginService;
+    //[Inject]
+    private ILoginService _loginService;
+
+    private ILocalPlayerDataRepository _localPlayerDataRepository;
+
+    public LoginAction(ILoginService loginService, ILocalPlayerDataRepository localPlayerDataRepository)
+    {
+        _loginService = loginService;
+        _localPlayerDataRepository = localPlayerDataRepository;
+    }
+
     public async Task Invoke(string userName)
     {
         var tempUser = await _loginService.RequestLogin(userName);
-        LoggedUserDTO userDto = UserJsonToDTO(tempUser);
-        SaveToPlayerPref(userDto);
-        LoggedUserDTO.PlayerName = userDto.name; // OJO ACA!!!
+        UserDTO userDto = UserJsonToDTO(tempUser);
+
+        _localPlayerDataRepository.SetData(userDto);
+
+        UserDTO.PlayerName = userDto.name; // OJO ACA!!!
     }
 
-    public LoggedUserDTO UserJsonToDTO(string userJson)
+    public UserDTO UserJsonToDTO(string userJson)
     {
-        return JsonConvert.DeserializeObject<LoggedUserDTO>(userJson);
-    }
-
-    private void SaveToPlayerPref(LoggedUserDTO user) // ME SIENTO SUCIO
-    {
-        PlayerPrefs.SetString("PlayerName", user.name);
-        PlayerPrefs.SetString("PlayerEmail", user.email);
-        PlayerPrefs.SetInt("PlayerId", user.id);
-        PlayerPrefs.SetInt("PlayerCoin", user.coin);
-        PlayerPrefs.Save();
+        return JsonConvert.DeserializeObject<UserDTO>(userJson);
     }
 }
 
+public interface ILocalPlayerDataRepository
+{
+    void SetData(UserDTO userDto);
 
+    UserDTO GetData();
+}
+
+public class PlayerPrefsPlayerDataRepository : ILocalPlayerDataRepository
+{
+    public UserDTO GetData()
+    {
+        UserDTO user = new UserDTO();
+        user.name = PlayerPrefs.GetString("PlayerName");
+        user.email = PlayerPrefs.GetString("PlayerEmail");
+        user.id = PlayerPrefs.GetInt("PlayerId");
+        user.coin = PlayerPrefs.GetInt("PlayerCoin");
+        return user;
+    }
+
+    public void SetData(UserDTO userDto)
+    {
+        PlayerPrefs.SetString("PlayerName", userDto.name);
+        PlayerPrefs.SetString("PlayerEmail", userDto.email);
+        PlayerPrefs.SetInt("PlayerId", userDto.id);
+        PlayerPrefs.SetInt("PlayerCoin", userDto.coin);
+        PlayerPrefs.Save();
+    }
+}

@@ -2,11 +2,15 @@ using Zenject;
 
 public class MatchListPresenter : IInitializable
 {
-    [Inject]
     IMatchListView _view;
 
-    [Inject]
     private IGetMatchesInfo _matchInfo;
+
+    public MatchListPresenter(IMatchListView view, IGetMatchesInfo matchInfo)
+    {
+        _view = view;
+        _matchInfo = matchInfo;
+    }
 
     public void Initialize()
     {
@@ -15,7 +19,7 @@ public class MatchListPresenter : IInitializable
         for (int i = 0; i < matches.Length; i++)
         {
             IOngoingMatchView matchCard = _view.CreateMatchCard();
-            OngoingMatchPresenter matchPresenter = new OngoingMatchPresenter(matchCard, matches[i]);
+            new OngoingMatchPresenter(matchCard, matches[i]);
         }
     }
 }

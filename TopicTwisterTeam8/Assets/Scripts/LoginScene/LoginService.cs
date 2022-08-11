@@ -16,6 +16,7 @@ public class LoginService : ILoginService
     {
         _baseURL = _path;
     }
+
     public async Task<string> RequestLogin(string username)
     {
         var values = new Dictionary<string, string>

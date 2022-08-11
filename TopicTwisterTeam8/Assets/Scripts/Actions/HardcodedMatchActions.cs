@@ -39,7 +39,7 @@ public class HardcodedMatchActions : IMatchAction
     {
         var users = new List<User>() { new User(0, "Ricardo"), new User(1, "Theo"), new User(2, "Romina") };
 
-        _challenger = users.First(x => x.UserName == LoggedUserDTO.PlayerName);
+        _challenger = users.First(x => x.UserName == UserDTO.PlayerName);
 
         users.Remove(_challenger);
 

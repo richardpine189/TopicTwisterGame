@@ -4,11 +4,20 @@ using Zenject;
 
 public class MatchListGetter : IGetMatchesInfo
 {
-    [Inject] IMatchRepository _matchRepository;
+    IMatchRepository _matchRepository;
+
+    ILocalPlayerDataRepository _localPlayerDataRepository;
+
+    public MatchListGetter(IMatchRepository matchRepository, ILocalPlayerDataRepository localPlayerDataRepository)
+    {
+        _matchRepository = matchRepository;
+        _localPlayerDataRepository = localPlayerDataRepository;
+    }
     
     public MatchDTO[] Execute()
     {
-        List<Match> matches = _matchRepository.GetMatchesByName(LoggedUserDTO.PlayerName);
+        //List<Match> matches = _matchRepository.GetMatchesByName(UserDTO.PlayerName);
+        List<Match> matches = _matchRepository.GetMatchesByName(_localPlayerDataRepository.GetData().name);
 
         IsMatchFinishedAction isMatchFinished = new IsMatchFinishedAction();
 

@@ -42,12 +42,12 @@ public class OngoingMatchPresenter
 
     private void IsPlayerTurn(MatchDTO match)
     {
-        _isPlayerTurn = (match.isChallengerTurn && LoggedUserDTO.PlayerName == match.challengerName) || (!match.isChallengerTurn && LoggedUserDTO.PlayerName == match.opponentName);
+        _isPlayerTurn = (match.isChallengerTurn && UserDTO.PlayerName == match.challengerName) || (!match.isChallengerTurn && UserDTO.PlayerName == match.opponentName);
     }
 
     private void SetViewName(MatchDTO match)
     {
-        if(LoggedUserDTO.PlayerName == match.challengerName)
+        if(UserDTO.PlayerName == match.challengerName)
         {
             _view.SetOpponentName(match.opponentName);
         }
