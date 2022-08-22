@@ -13,7 +13,7 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
     private TMP_Text[] _categories;
 
     [SerializeField]
-    private TMP_InputField[] _answersUI;
+    private TMP_Text[] _answersUI;
 
     [SerializeField]
     private Image[] _resultsUI;

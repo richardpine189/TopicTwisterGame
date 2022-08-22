@@ -11,10 +11,10 @@ public class EndRoundPanelView : MonoBehaviour, IEndRoundView
     private TextMeshProUGUI[] _categories;
 
     [SerializeField]
-    private TMP_InputField[] _challengerAnswers;
+    private TextMeshProUGUI[] _challengerAnswers;
 
     [SerializeField]
-    private TMP_InputField[] _opponentAnswers;
+    private TextMeshProUGUI[] _opponentAnswers;
 
     [SerializeField]
     private Image[] _challengerResult;

@@ -124,5 +124,86 @@
       null
     ],
     "isChallengerTurn": false
+  },
+  {
+    "id": 3,
+    "challenger": {
+      "UserName": "Ricardo"
+    },
+    "opponent": {
+      "UserName": "Theo"
+    },
+    "rounds": [
+      {
+        "letter": "D",
+        "assignedCategoryNames": [
+          "Profesiones",
+          "Frutas Y Verduras",
+          "Color",
+          "Cosas",
+          "Paises"
+        ],
+        "challengerAnswers": [
+          "",
+          "",
+          "Dorado",
+          "",
+          "Dinamarca"
+        ],
+        "opponentAnswers": [
+          "",
+          "Durazno",
+          "Dorado",
+          "",
+          "Dinamarca"
+        ],
+        "challengerResult": [
+          false,
+          false,
+          true,
+          false,
+          true
+        ],
+        "opponentResult": [
+          false,
+          true,
+          true,
+          false,
+          true
+        ],
+        "roundFinished": true,
+        "timer": 44
+      },
+      {
+        "letter": "A",
+        "assignedCategoryNames": [
+          "Cosas",
+          "Marcas",
+          "Color",
+          "Paises",
+          "Peliculas"
+        ],
+        "challengerAnswers": null,
+        "opponentAnswers": [
+          "",
+          "Asus",
+          "Azul",
+          "Argentina",
+          ""
+        ],
+        "challengerResult": null,
+        "opponentResult": [
+          false,
+          true,
+          true,
+          true,
+          false
+        ],
+        "roundFinished": false,
+        "timer": 19
+      },
+      null
+    ],
+    "isChallengerTurn": true
   }
 ]
