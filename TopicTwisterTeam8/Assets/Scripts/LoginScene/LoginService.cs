@@ -26,7 +26,7 @@ public class LoginService : ILoginService
 
         var content = new FormUrlEncodedContent(values);
 
-        var response = await _client.PostAsync(_baseURL + "/user/logIn", content);
+        var response = await _client.PostAsync(_baseURL + "/logIn", content);
 
         if (response.StatusCode == HttpStatusCode.NotFound)
         {

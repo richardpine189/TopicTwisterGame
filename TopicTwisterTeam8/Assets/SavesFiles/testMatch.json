@@ -205,5 +205,173 @@
       null
     ],
     "isChallengerTurn": true
+  },
+  {
+    "id": 4,
+    "challenger": {
+      "UserName": "Ricardo"
+    },
+    "opponent": {
+      "UserName": "Theo"
+    },
+    "rounds": [
+      {
+        "letter": "A",
+        "assignedCategoryNames": [
+          "Paises",
+          "Color",
+          "Marcas",
+          "Frutas Y Verduras",
+          "Profesiones"
+        ],
+        "challengerAnswers": [
+          "qweqwe",
+          "asdasd",
+          "zxczxc",
+          "dfssdf",
+          "gfddfgdfg"
+        ],
+        "opponentAnswers": null,
+        "challengerResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "opponentResult": null,
+        "roundFinished": false,
+        "timer": 8
+      },
+      null,
+      null
+    ],
+    "isChallengerTurn": false
+  },
+  {
+    "id": 5,
+    "challenger": {
+      "UserName": "Ricardo"
+    },
+    "opponent": {
+      "UserName": "Theo"
+    },
+    "rounds": [
+      {
+        "letter": "A",
+        "assignedCategoryNames": [
+          "Cosas",
+          "Frutas Y Verduras",
+          "Marcas",
+          "Peliculas",
+          "Color"
+        ],
+        "challengerAnswers": [
+          "zxczxc",
+          "asdf",
+          "qweq",
+          "asdads",
+          "Azul"
+        ],
+        "opponentAnswers": null,
+        "challengerResult": [
+          false,
+          false,
+          false,
+          false,
+          true
+        ],
+        "opponentResult": null,
+        "roundFinished": false,
+        "timer": 12
+      },
+      null,
+      null
+    ],
+    "isChallengerTurn": false
+  },
+  {
+    "id": 6,
+    "challenger": {
+      "UserName": "Theo"
+    },
+    "opponent": {
+      "UserName": "Romina"
+    },
+    "rounds": [
+      {
+        "letter": "D",
+        "assignedCategoryNames": [
+          "Peliculas",
+          "Frutas Y Verduras",
+          "Profesiones",
+          "Cosas",
+          "Marcas"
+        ],
+        "challengerAnswers": [
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "opponentAnswers": null,
+        "challengerResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "opponentResult": null,
+        "roundFinished": false,
+        "timer": 2
+      },
+      null,
+      null
+    ],
+    "isChallengerTurn": false
+  },
+  {
+    "id": 7,
+    "challenger": {
+      "UserName": "Theo"
+    },
+    "opponent": {
+      "UserName": "Romina"
+    },
+    "rounds": [
+      {
+        "letter": "A",
+        "assignedCategoryNames": [
+          "Peliculas",
+          "Profesiones",
+          "Color",
+          "Cosas",
+          "Animales"
+        ],
+        "challengerAnswers": [
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "opponentAnswers": null,
+        "challengerResult": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "opponentResult": null,
+        "roundFinished": false,
+        "timer": 2
+      },
+      null,
+      null
+    ],
+    "isChallengerTurn": false
   }
 ]
