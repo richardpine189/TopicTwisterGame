@@ -9,43 +9,22 @@ using System.Threading.Tasks;
 
 public class HardcodedRoundActions : IMatchAction
 {
-    private User _challenger;
-    private User _opponent;
-    private ImBot _newBoot;
-    
-    Match match;
+    private static MatchDTO match;
 
-    public Match GetMatch()
-    {
-        return match;
-    }
-    public Round GetCurrentRound()
-    {
-        int index = GetCurrentRoundIndex();
-        if (match.rounds[index] == null)
+    public MatchDTO Match {
+        get
         {
-            match.rounds[index] = new Round();
+            return match;
         }
-
-        return match.rounds[GetCurrentRoundIndex()];
+        set
+        {
+            match = value;
+        }
     }
 
     public int GetCurrentRoundIndex()
     {
-        if (match.rounds.All(x => x == null))
-        {
-            return 0;
-        }
-
-        for (int i = 0; i < match.rounds.Length; i++)
-        {
-            if (match.rounds[i] == null || !match.rounds[i].roundFinished)
-            {
-                return i;
-            }
-        }
-
-        return 3;
+        return match.currentRound;
     }
 
     public bool IsFinished()
@@ -55,25 +34,18 @@ public class HardcodedRoundActions : IMatchAction
 
     public void SaveTimeToRound(int timeLeft)
     {
-        Round round = GetCurrentRound();
-        round.timer = 60 - timeLeft;
+        match.roundTimeLeft = 60 - timeLeft;
     }
 
     public int GetTimeToAnswer()
     {
-        Round round = GetCurrentRound();
+        int timeLeft = match.roundTimeLeft;
         
-        if(round.timer < 10)
+        if(timeLeft < 10)
         {
-            return round.timer + 10;
+            return timeLeft + 10;
         }
         
-        return round.timer;
+        return timeLeft;
     }
 }
-
-
-
-
-
-

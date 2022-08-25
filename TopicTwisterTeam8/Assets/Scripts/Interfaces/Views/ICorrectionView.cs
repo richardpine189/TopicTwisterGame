@@ -7,10 +7,16 @@ using System.Threading.Tasks;
 
 public interface ICorrectionView
 {
-    //event Action<string[], string[], char> OnNextTurnClick;
+    event Action EndTurn;
 
-    void ShowCorrections();
+    void ShowCorrections(bool[] corrections);
+
     void ChangeScene();
+
     void LoadNextTurn();
+
+    void ShowAnswers(string[] answers);
+
+    void ShowCategories(string[] categories);
 }
 

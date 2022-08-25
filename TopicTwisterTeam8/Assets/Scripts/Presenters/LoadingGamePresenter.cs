@@ -12,11 +12,16 @@ namespace Assets.Scripts.Presenters
         private string _opponentName;
         private int _matchId = -1;
         private const int ITS_NEW_MATCH= -1;
+
+        private IMatchAction _matchActions;
+
         public void Initialize()
         {
             //Inicializar USERNAME
             //Inicializar MatchId
             RequestMatchData();
+
+            _matchActions = new HardcodedRoundActions();
             
             _view.SetPlayersInfoInView(_challengerName, _opponentName);
 
@@ -34,6 +39,7 @@ namespace Assets.Scripts.Presenters
             var matchDto = await _getMatch.Invoke(_matchId, _challengerName);
             _challengerName = matchDto.challengerName;
             _opponentName = matchDto.opponentName;
+            _matchActions.Match = matchDto;
         }
 
         private void SelectSectionAtStart()

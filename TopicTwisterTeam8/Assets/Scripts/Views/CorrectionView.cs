@@ -1,16 +1,17 @@
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using System;
+using Core.Match.Service;
+using Assets.Scripts.Core.Match.UseCases;
 
 public class CorrectionView : MonoBehaviour, ICorrectionView
 {
-    //public event Action<string[], string[], char> OnNextTurnClick;
+    public event Action EndTurn;
 
     [SerializeField]
-    private TMP_Text[] _categories;
+    private TMP_Text[] _categoriesUI;
 
     [SerializeField]
     private TMP_Text[] _answersUI;
@@ -25,16 +26,10 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
     private Button _nextTurnButton;
 
     [SerializeField]
-    private LetterSO _letterSO;
-
-    [SerializeField]
     private Sprite _tickSprite;
 
     [SerializeField]
     private Sprite _crossSprite;
-
-    [SerializeField]
-    private CategoriesSO _categoriesSO;
 
     [SerializeField]
     private GameObject _endRoundPanel;
@@ -43,10 +38,6 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
 
     [SerializeField] private RouteConfig _config;
     private CorrectionPresenter _presenter;
-    private string[] _answers;
-    private string[] _categoryNames;
-    private char _roundLetter;
-
 
     private void Start()
     {
@@ -60,23 +51,11 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
 
     private void Initialize()
     {
-        _presenter = new CorrectionPresenter(this, new CorrectionGetter(new CategoryService(_config.path)));
-
-        Answers answersObject = AssetDatabase.LoadAssetAtPath<Answers>("Assets/Scripts/pruebaSO.asset");
-        _answers = answersObject.AnswersString;
-        _categoryNames = _categoriesSO.CategoriesName;
-        _roundLetter = _letterSO.Letter;
-
-        _roundLetterUI.text = _roundLetter.ToString();
-
-        ShowCorrections();
+        _presenter = new CorrectionPresenter(this, new CorrectionGetter(new CategoryService(_config.path)), new UpdateMatchUseCase(new MatchService("http://localhost:8082")));
     }
 
-    public async void ShowCorrections()
+    public void ShowCorrections(bool[] corrections)
     {
-        ShowAnswers(_answers);
-
-        bool[] corrections = await _presenter.GetCorrections(_categoryNames, _answers, _roundLetter);
         _spiner.SetActive(false);
         
         for(int i = 0; i < 5; i++)
@@ -93,18 +72,25 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
         }
     }
 
-    private void ShowAnswers(string[] answers)
+    public void ShowAnswers(string[] answers)
     {
-        for (int i = 0; i < _categoryNames.Length; i++)
-            _categories[i].text = _categoryNames[i];
-
         for (int i = 0; i < _answersUI.Length; i++)
+        {
             _answersUI[i].text = answers[i];
+        }
+    }
+
+    public void ShowCategories(string[] categories)
+    {
+        for (int i = 0; i < _categoriesUI.Length; i++)
+        {
+            _categoriesUI[i].text = categories[i];
+        }
     }
 
     public void SaveMatch()
     {
-        _presenter.EndTurn(_categoryNames, _answers, _roundLetter);
+        EndTurn?.Invoke();
     }
 
     public void ChangeScene()

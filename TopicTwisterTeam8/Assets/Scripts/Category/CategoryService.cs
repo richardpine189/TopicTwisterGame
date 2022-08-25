@@ -70,11 +70,7 @@ public class CategoryService : ICategoryService
 
         var responseArray = await response.Content.ReadAsStringAsync();
         
-        UnityEngine.Debug.Log(responseArray);
         var deserializeResponse = JsonConvert.DeserializeObject<bool[]>(responseArray);
-        
-        
-
         
         return deserializeResponse;
     }

@@ -9,7 +9,8 @@ using Zenject;
 public class MatchDependencyInstaller : MonoInstaller
 {
     [SerializeField] private LoadingGameView _loadingView;
-    private readonly string API_URL_BASE_PATH = "http://0.0.0.0:8082";
+    private readonly string API_URL_BASE_PATH = "http://localhost:8082";
+
     public override void InstallBindings()
     {
         IGetMatchService service = new MatchService(API_URL_BASE_PATH);

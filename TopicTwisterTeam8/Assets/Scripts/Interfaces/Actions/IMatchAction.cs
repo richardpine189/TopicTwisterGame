@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
 public interface IMatchAction
 {
-    Round GetCurrentRound();
+    MatchDTO Match { get; set; }
 
     public int GetCurrentRoundIndex();
     
     bool IsFinished();
-    public Match GetMatch();
-
 }
 
+public class RoundDTO
+{
+}

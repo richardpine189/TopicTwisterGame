@@ -10,6 +10,7 @@ public class LetterPresenter
     private ILetterGetter _letterGetter;
     private ICategoriesGetter _categoriesGetter;
     private IMatchAction _matchActions;
+    private MatchDTO _match;
 
     public LetterPresenter(ILetterView view, ILetterGetter letterGetter, ICategoriesGetter categoriesGetter)
     {
@@ -17,7 +18,7 @@ public class LetterPresenter
         _letterGetter = letterGetter;
         _categoriesGetter = categoriesGetter;
         _matchActions = new HardcodedRoundActions();
-        _matchActions.GetMatch();
+        _match = _matchActions.Match;
         _view.OnSpinClick += GetLetter;
 
         GetRoundNumber();
@@ -32,14 +33,20 @@ public class LetterPresenter
 
     private async void GetCategories()
     {
-        string[] categories = (_matchActions.GetCurrentRound() != null && _matchActions.GetCurrentRound().assignedCategoryNames != null) ? _matchActions.GetCurrentRound().assignedCategoryNames : await _categoriesGetter.GetCategories(5);
+        string[] categories = _matchActions.Match.currentCategories != null ? _matchActions.Match.currentCategories : await _categoriesGetter.GetCategories(5);
+
+        _match.currentCategories = categories;
+        _matchActions.Match = _match;
 
         _view.ShowCategories(categories);
     }
 
     private void GetLetter()
     {
-        char letter = (char)((_matchActions.GetCurrentRound() != null && _matchActions.GetCurrentRound().letter != null) ? _matchActions.GetCurrentRound().letter : _letterGetter.GetLetter());
+        char letter = (char)(_matchActions.Match.currentLetter != null ? _matchActions.Match.currentLetter : _letterGetter.GetLetter());
+
+        _match.currentLetter = letter;
+        _matchActions.Match = _match;
 
         _view.ShowLetter(letter);
     }

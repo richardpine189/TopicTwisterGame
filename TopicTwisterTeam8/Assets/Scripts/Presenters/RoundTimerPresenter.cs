@@ -21,7 +21,6 @@ namespace Assets.Scripts.Presenters
 
         private void SetInitialTime()
         {
-            _roundActions.GetMatch();
             int timeToAnswer = _roundActions.GetTimeToAnswer();
             _view.SetTimeLeft(timeToAnswer);
         }
