@@ -15,54 +15,14 @@ class CorrectionPresenter
     {
         _view = view;
         _getCorrections = getCorrections;
-        _matchActions = new HardcodedMatchActions();
+        _matchActions = new HardcodedRoundActions();
         //_view.OnNextTurnClick += EndTurn;
     }
 
     public void EndTurn(string[] roundCategories, string[] answers, char letter)
     {
-        // This assaingment should be inside a method of the actions object
-        Match match = _matchActions.GetMatch();
-        int currentRoundIndex = _matchActions.GetCurrentRoundIndex();
-
-        Round round = _matchActions.GetCurrentRound() != null ? _matchActions.GetCurrentRound() : new Round();
-
-        round.assignedCategoryNames = roundCategories;
-        round.letter = letter;
-
-        if (match.isChallengerTurn)
-        {
-            round.challengerAnswers = answers;
-            round.challengerResult = _results;
-
-            if (round.opponentAnswers != null)
-            {
-                round.roundFinished = true;
-            }
-            else
-            {
-                match.isChallengerTurn = false;
-            }
-        }
-        else
-        {
-            round.opponentAnswers = answers;
-            round.opponentResult = _results;
-
-            if (round.challengerAnswers != null)
-            {
-                round.roundFinished = true;
-            }
-            else
-            {
-                match.isChallengerTurn = true;
-            }
-        }
-
-        match.rounds[currentRoundIndex] = round;
-        SaveMatch action = new SaveMatch();
-        action.Save(match);
-
+        //LlamarServicio y Update
+        /*
         if (round.roundFinished)
         {
             _view.LoadNextTurn();
@@ -71,6 +31,7 @@ class CorrectionPresenter
         {
             _view.ChangeScene();
         }
+        */
     }
 
     public async Task<bool[]> GetCorrections(string[] roundCategories, string[] answers, char letter)

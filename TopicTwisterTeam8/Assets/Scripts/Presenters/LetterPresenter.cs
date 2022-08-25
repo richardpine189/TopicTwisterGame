@@ -16,7 +16,7 @@ public class LetterPresenter
         _view = view;
         _letterGetter = letterGetter;
         _categoriesGetter = categoriesGetter;
-        _matchActions = new HardcodedMatchActions();
+        _matchActions = new HardcodedRoundActions();
         _matchActions.GetMatch();
         _view.OnSpinClick += GetLetter;
 
@@ -27,7 +27,7 @@ public class LetterPresenter
     private void GetRoundNumber()
     {
         int index = _matchActions.GetCurrentRoundIndex();
-        _view.ShowRoundNumber(index + 1);
+        _view.ShowRoundNumber(124);
     }
 
     private async void GetCategories()

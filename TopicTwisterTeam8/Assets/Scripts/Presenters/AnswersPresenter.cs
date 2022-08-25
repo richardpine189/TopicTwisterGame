@@ -14,7 +14,7 @@ public class AnswersPresenter
     {
         _view = view;
         _answersRepository = answersRepository;
-        _matchActions = new HardcodedMatchActions();
+        _matchActions = new HardcodedRoundActions();
         _view.OnStopClick += SendAnswersAction;
 
         GetRoundNumber();
@@ -27,8 +27,6 @@ public class AnswersPresenter
 
     private void GetRoundNumber()
     {
-        _matchActions.GetMatch();
-        int index = _matchActions.GetCurrentRoundIndex();
-        _view.ShowRoundNumber(index + 1);
+        _view.ShowRoundNumber(124);
     }
 }

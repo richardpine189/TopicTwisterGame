@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-
+/*
 public class CorrectionPresenter_New
 {
     private bool[] results;
@@ -16,7 +16,7 @@ public class CorrectionPresenter_New
     public CorrectionPresenter_New(ICorrectionView_New view)
     {
         _view = view;
-        _matchActions = new HardcodedMatchActions();
+        _matchActions = new HardcodedRoundActions();
         _correctionAction = new JsonAPICorrectionAction();
         //_view.OnNextTurnClick += EndTurn;
         _view.OnStart += GetCorrections;
@@ -97,4 +97,4 @@ internal class JsonAPICorrectionAction : ICorrectionAction
 public interface ICorrectionAction
 {
     Task<bool> GetCorrection(string word, string categoryName);
-}
+}*/

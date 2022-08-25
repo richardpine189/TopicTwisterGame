@@ -24,8 +24,8 @@ namespace Assets.Scripts.Tests
 
             _view = Substitute.For<ILoadingGameView>();
             _matchActions = Substitute.For<IMatchAction>();
-            _matchActions.GetPlayerName().Returns(playerName);
-            _matchActions.GetOpponentName().Returns(opponentName);
+            //_matchActions.GetPlayerName().Returns(playerName); BROKEN AFERT MIGRATION
+            //_matchActions.GetOpponentName().Returns(opponentName);
 
             // Act
             WhenAPresenterIsCreated();
@@ -36,12 +36,12 @@ namespace Assets.Scripts.Tests
 
         private void WhenAPresenterIsCreated()
         {
-            _gamePresenter = new LoadingGamePresenter(_view);
+            _gamePresenter = new LoadingGamePresenter();
         }
 
         private void ThenShowPlayersInfo(string playerName, string opponentName)
         {
-            _view.Received().ShowPlayersInfo(playerName, opponentName);
+            _view.Received().SetPlayersInfoInView(playerName, opponentName);
         }
     }
 }

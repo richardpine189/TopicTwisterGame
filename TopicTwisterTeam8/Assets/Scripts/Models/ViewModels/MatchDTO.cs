@@ -10,6 +10,7 @@ public class MatchDTO
     public string challengerName;
     public string opponentName;
     public int currentRound;
+    public string[] currentCategories; 
     public bool isChallengerTurn;
     public bool isMatchFinished;
 }

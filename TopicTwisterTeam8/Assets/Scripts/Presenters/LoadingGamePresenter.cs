@@ -1,66 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Zenject;
+using Core.Match.Interface;
 
 namespace Assets.Scripts.Presenters
 {
-    public class LoadingGamePresenter
+    public class LoadingGamePresenter : IInitializable, IDisposable
     {
-        private ILoadingGameView _view;
-        private IMatchAction _matchActions;
-        private bool _isNewGame;
-        private string _playerName;
+        [Inject] private ILoadingGameView _view;
+        [Inject] private IGetCurrentMatchUseCase _getMatch;
+        private string _challengerName = "Theo";
         private string _opponentName;
-
-        public LoadingGamePresenter(ILoadingGameView view)
+        private int _matchId = -1;
+        private const int ITS_NEW_MATCH= -1;
+        public void Initialize()
         {
-            _view = view;
-            _matchActions = new HardcodedMatchActions();
-
-            InitMatchData();
-            _view.ShowPlayersInfo(_playerName, _opponentName);
+            //Inicializar USERNAME
+            //Inicializar MatchId
+            RequestMatchData();
+            
+            _view.SetPlayersInfoInView(_challengerName, _opponentName);
 
             _view.OnReadyForNext += SelectSectionAtStart;
-            _view.SetNewGameState(_isNewGame);
-            _view.StartAnimation();
-            //SelectSectionAtStart();
+            
+            _view.StartAnimation(_matchId == ITS_NEW_MATCH);
         }
-
-       ~LoadingGamePresenter()
-       {
-           _view.OnReadyForNext -= SelectSectionAtStart;
-       }
-
-        private void InitMatchData()
+        public void Dispose()
         {
-            _isNewGame = !_matchActions.CheckActiveMatch();
-            _matchActions.GetMatch();
-            _playerName = _matchActions.GetPlayerName();
-            _opponentName = _matchActions.GetOpponentName();
+            _view.OnReadyForNext -= SelectSectionAtStart;
+        }
+    
+       private async void RequestMatchData()
+        {
+            var matchDto = await _getMatch.Invoke(_matchId, _challengerName);
+            _challengerName = matchDto.challengerName;
+            _opponentName = matchDto.opponentName;
         }
 
         private void SelectSectionAtStart()
         {
-            
-
-            if (_isNewGame)
+            if (_matchId == ITS_NEW_MATCH)
             {
                 _view.ShowCategoriesSection();
             }
             else
             {
-                if (!_matchActions.IsFinished() && _matchActions.IsChallengerTurn())
-                {
-                    _view.ShowCategoriesSection();
-                }
-                else
-                {
-                    _view.ShowEndRoundSection();
-                }
+                _view.ShowEndRoundSection();
             }
-
         }
     }
 }

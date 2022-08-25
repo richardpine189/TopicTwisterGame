@@ -9,26 +9,26 @@ namespace Assets.Scripts.Presenters
     public class RoundTimerPresenter
     {
         RoundTimerView _view;
-        HardcodedMatchActions _matchActions;
+        HardcodedRoundActions _roundActions;
 
         public RoundTimerPresenter(RoundTimerView view)
         {
             _view = view;
-            _matchActions = new HardcodedMatchActions();
+            _roundActions = new HardcodedRoundActions();
             SetInitialTime();
             _view.OnTimerStop += SendTimeToRound;
         }
 
         private void SetInitialTime()
         {
-            _matchActions.GetMatch();
-            int timeToAnswer = _matchActions.GetTimeToAnswer();
+            _roundActions.GetMatch();
+            int timeToAnswer = _roundActions.GetTimeToAnswer();
             _view.SetTimeLeft(timeToAnswer);
         }
 
         private void SendTimeToRound(int timeLeft)
         {
-            _matchActions.SaveTimeToRound(timeLeft);
+            _roundActions.SaveTimeToRound(timeLeft);
         }
 
         ~RoundTimerPresenter() { _view.OnTimerStop -= SendTimeToRound; }

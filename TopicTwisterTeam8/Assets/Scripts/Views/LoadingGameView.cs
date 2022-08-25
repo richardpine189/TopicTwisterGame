@@ -22,9 +22,6 @@ namespace Team8.TopicTwister
         private TMP_Text _opponentName;
 
         [SerializeField]
-        private TMP_Text _loadingText;
-
-        [SerializeField]
         private GameObject _versusImage;
 
         [SerializeField]
@@ -33,21 +30,14 @@ namespace Team8.TopicTwister
         [SerializeField]
         private GameObject _endRoundPanel;
 
-        private LoadingGamePresenter _presenter;
-
-        [SerializeField] private GameObject _spiner;
         
 
-        bool _isNewGame;
+        [SerializeField] private GameObject _spiner;
+        private const int ITS_NEW_MATCH = -1;
 
-        private void Start()
+        public void StartAnimation(bool isNewGame)
         {
-            _presenter = new LoadingGamePresenter(this);
-        }
-
-        public void StartAnimation()
-        {
-            if (_isNewGame)
+            if (isNewGame)
                 // Simulated loading, change name, refactor
                 StartCoroutine(LoadingAnimation());
             else
@@ -73,7 +63,7 @@ namespace Team8.TopicTwister
             OnReadyForNext?.Invoke();
         }
 
-        public void ShowPlayersInfo(string playerName, string opponentName)
+        public void SetPlayersInfoInView(string playerName, string opponentName)
         {
             _playerName.text = playerName;
             _opponentName.text = opponentName;
@@ -95,9 +85,6 @@ namespace Team8.TopicTwister
         {
             this.gameObject.SetActive(false);
         }
-        public void SetNewGameState(bool gameState)
-        {
-            _isNewGame = gameState;
-        }
+
     }
 }
