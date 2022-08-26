@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using Zenject;
 
 class CorrectionPresenter
 {
@@ -26,21 +25,28 @@ class CorrectionPresenter
         GetCorrections(match.currentCategories, match.currentAnswers, (char)match.currentLetter);
     }
 
-    public void EndTurn()
+    public async void EndTurn()
     {
-        //LlamarServicio y Update
-        _updateMatch.Execute(match);
+        try
+        {
+            //LlamarServicio y Update
+            await _updateMatch.Execute(match);
 
-        /*
-        if (round.roundFinished)
-        {
-            _view.LoadNextTurn();
+            /*
+            if (round.roundFinished)
+            {
+                _view.LoadNextTurn();
+            }
+            else
+            {
+                _view.ChangeScene();
+            }
+            */
         }
-        else
+        catch(Exception ex)
         {
-            _view.ChangeScene();
+            _view.ShowErrorPanel(ex.Message);
         }
-        */
     }
 
     public async void GetCorrections(string[] roundCategories, string[] answers, char letter)

@@ -18,5 +18,7 @@ public interface ICorrectionView
     void ShowAnswers(string[] answers);
 
     void ShowCategories(string[] categories);
+
+    void ShowErrorPanel(string message);
 }
 

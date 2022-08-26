@@ -12,7 +12,3 @@ public interface IMatchAction
     
     bool IsFinished();
 }
-
-public class RoundDTO
-{
-}

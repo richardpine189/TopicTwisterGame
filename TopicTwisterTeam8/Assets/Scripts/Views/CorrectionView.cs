@@ -34,17 +34,18 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
     [SerializeField]
     private GameObject _endRoundPanel;
 
-    [SerializeField] private GameObject _spiner;
+    [SerializeField]
+    private ErrorPanel _errorPanel;
 
-    [SerializeField] private RouteConfig _config;
+    [SerializeField]
+    private GameObject _spiner;
+
+    [SerializeField]
+    private RouteConfig _config;
+
     private CorrectionPresenter _presenter;
 
     private void Start()
-    {
-        Initialize();
-    }
-
-    void OnEnable()
     {
         Initialize();
     }
@@ -102,5 +103,11 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
     {
         _endRoundPanel.SetActive(true);
         this.gameObject.SetActive(false);
+    }
+
+    public void ShowErrorPanel(string message)
+    {
+        _errorPanel.SetMessage(message);
+        _errorPanel.gameObject.SetActive(true);
     }
 }

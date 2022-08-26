@@ -33,23 +33,26 @@ namespace Core.Match.Service
             return await InterpretateResponse(response);
         }
 
-        public async void UpdateMatch(MatchDTO match)
+        public async Task UpdateMatch(MatchDTO match)
         {
-            var values = new Dictionary<string, string>
-            {
-                { "id", match.idMatch.ToString()},
-                { "categories", "[" + string.Join(",", match.currentCategories) + "]" },
-                { "answers", "[" + string.Join(",", match.currentAnswers) + "]" },
-                { "results",  "[" + string.Join(",", match.currentResults.ToString()) + "]" },
-                { "letter", match.currentLetter.ToString() },
-                { "timeLeft", match.roundTimeLeft.ToString() }
-            };
+            RoundDTO values = new RoundDTO();
 
-            var content = new FormUrlEncodedContent(values);
+            values.id = match.idMatch;
+            values.categories = match.currentCategories;
+            values.answers = match.currentAnswers;
+            values.results = match.currentResults;
+            values.letter = (char)match.currentLetter;
+            values.timeLeft = match.roundTimeLeft;
+
+            var content = JsonConvert.SerializeObject(values);
+
+            var buffer = System.Text.Encoding.UTF8.GetBytes(content);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
             string subPath = "/updateMatch";
 
-            var response = await _client.PostAsync(_apiPath + subPath, content);
+            var response = await _client.PostAsync(_apiPath + subPath, byteContent);
 
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
@@ -71,4 +74,14 @@ namespace Core.Match.Service
             return deserializeMatchDto;
         }
     }
+}
+
+public class RoundDTO
+{
+    public int id;
+    public string[] categories;
+    public string[] answers;
+    public bool[] results;
+    public char letter;
+    public int timeLeft;
 }
