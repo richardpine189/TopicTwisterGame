@@ -20,12 +20,6 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
     private Image[] _resultsUI;
 
     [SerializeField]
-    private TMP_Text _roundLetterUI;
-
-    [SerializeField]
-    private Button _nextTurnButton;
-
-    [SerializeField]
     private Sprite _tickSprite;
 
     [SerializeField]

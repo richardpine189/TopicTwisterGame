@@ -11,7 +11,6 @@ public interface ILetterView
     void ShowCategories(string[] categories);
 
     event Action OnSpinClick;
-
-    void ShowRoundNumber(int index);
+    
 }
 

@@ -28,7 +28,6 @@ public class LetterPresenter
     private void GetRoundNumber()
     {
         int index = _matchActions.GetCurrentRoundIndex();
-        _view.ShowRoundNumber(124);
     }
 
     private async void GetCategories()

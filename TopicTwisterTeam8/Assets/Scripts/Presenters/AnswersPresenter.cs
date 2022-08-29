@@ -19,7 +19,6 @@ public class AnswersPresenter
         match = _matchActions.Match;
         _view.OnStopClick += SendAnswersAction;
 
-        GetRoundNumber();
     }
 
     private void SendAnswersAction(string[] answers)
@@ -29,8 +28,5 @@ public class AnswersPresenter
         _answersRepository.SaveAnswers(answers);
     }
 
-    private void GetRoundNumber()
-    {
-        _view.ShowRoundNumber(124);
-    }
+    
 }

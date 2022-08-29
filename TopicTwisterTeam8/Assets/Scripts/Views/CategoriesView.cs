@@ -10,13 +10,11 @@ using UnityEngine.UI;
 
 public class CategoriesView : MonoBehaviour, ILetterView
 {
+    [SerializeField] private GameObject _header;
     public event Action OnSpinClick;
 
     [SerializeField]
     private TMP_Text _letter;
-
-    [SerializeField]
-    private TMP_Text _roundText;
 
     [SerializeField]
     private TMP_Text _countdownText;
@@ -42,6 +40,7 @@ public class CategoriesView : MonoBehaviour, ILetterView
     [SerializeField] private RouteConfig _config;
     private void Start()
     {
+        _header.SetActive(true);
         Initialize();
         _getLetterButton.onClick.AddListener(OnSpinClick.Invoke);
     }
@@ -94,8 +93,5 @@ public class CategoriesView : MonoBehaviour, ILetterView
         _categoriesSO.CategoriesName = categories; // SAVING CATEGORIES NAME
     }
 
-    public void ShowRoundNumber(int round)
-    {
-        _roundText.text = "Ronda " + round;
-    }
+
 }

@@ -29,11 +29,12 @@ class CorrectionPresenter
     {
         try
         {
-            //LlamarServicio y Update
+            
             await _updateMatch.Execute(match);
-
+            _view.ChangeScene();
+            
             /*
-            if (round.roundFinished)
+            if (match.currentRound == 1)
             {
                 _view.LoadNextTurn();
             }
