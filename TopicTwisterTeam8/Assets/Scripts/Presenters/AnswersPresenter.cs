@@ -18,7 +18,6 @@ public class AnswersPresenter
         _matchActions = new HardcodedRoundActions();
         match = _matchActions.Match;
         _view.OnStopClick += SendAnswersAction;
-
     }
 
     private void SendAnswersAction(string[] answers)

@@ -17,9 +17,9 @@ namespace Assets.Scripts.Core.Match.UseCases
             this.matchService = matchService;
         }
 
-        public async Task Execute(MatchDTO match)
+        public async Task<bool> Execute(MatchDTO match)
         {
-            await matchService.UpdateMatch(match);
+            return await matchService.UpdateMatch(match);
         }
     }
 }

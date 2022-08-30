@@ -33,7 +33,7 @@ namespace Core.Match.Service
             return await InterpretateResponse(response);
         }
 
-        public async Task UpdateMatch(MatchDTO match)
+        public async Task<bool> UpdateMatch(MatchDTO match)
         {
             RoundDTO values = new RoundDTO();
 
@@ -60,6 +60,8 @@ namespace Core.Match.Service
             }
 
             var responseString = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<bool>(responseString);
         }
 
         private async Task<MatchDTO> InterpretateResponse(HttpResponseMessage response)

@@ -29,12 +29,9 @@ class CorrectionPresenter
     {
         try
         {
-            
-            await _updateMatch.Execute(match);
-            _view.ChangeScene();
-            
-            /*
-            if (match.currentRound == 1)
+            bool continuePlaying = await _updateMatch.Execute(match);
+
+            if(continuePlaying)
             {
                 _view.LoadNextTurn();
             }
@@ -42,7 +39,6 @@ class CorrectionPresenter
             {
                 _view.ChangeScene();
             }
-            */
         }
         catch(Exception ex)
         {

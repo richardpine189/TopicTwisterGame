@@ -43,9 +43,9 @@ public class AnsweringView : MonoBehaviour, IAnsweringView
 
     void OnEnable()
     {
-        Initialize();
+        //Initialize();
 
-        for(int i = 0; i < _answers.Length; i++)
+        for (int i = 0; i < _answers.Length; i++)
         {
             _answers[i].text = "";
         }

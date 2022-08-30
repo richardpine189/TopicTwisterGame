@@ -17,7 +17,7 @@ public class MatchDTO
     public bool[] currentResults;
     public char? currentLetter;
 
-    public int roundTimeLeft;
+    public int roundTimeLeft = 60;
 
     public bool isChallengerTurn;
     public bool isMatchFinished;

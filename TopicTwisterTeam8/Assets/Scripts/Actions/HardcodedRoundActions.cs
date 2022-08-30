@@ -35,6 +35,7 @@ public class HardcodedRoundActions : IMatchAction
     public void SaveTimeToRound(int timeLeft)
     {
         match.roundTimeLeft = 60 - timeLeft;
+        UnityEngine.Debug.Log(match.roundTimeLeft);
     }
 
     public int GetTimeToAnswer()

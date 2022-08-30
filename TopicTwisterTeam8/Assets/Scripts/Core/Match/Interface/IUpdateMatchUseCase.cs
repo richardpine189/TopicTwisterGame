@@ -8,6 +8,6 @@ namespace Assets.Scripts.Core.Match.Interface
 {
     interface IUpdateMatchUseCase
     {
-        Task Execute(MatchDTO match);
+        Task<bool> Execute(MatchDTO match);
     }
 }
