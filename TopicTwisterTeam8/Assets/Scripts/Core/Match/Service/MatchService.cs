@@ -7,7 +7,7 @@ using Unity.Plastic.Newtonsoft.Json;
 
 namespace Core.Match.Service
 {
-    public class MatchService : IGetMatchService, IUpdateMatchService
+    public class MatchService : IGetMatchService, IUpdateMatchService, IGetMatches
     {
         private readonly HttpClient _client = new HttpClient();
         private readonly string _apiPath;
@@ -15,6 +15,16 @@ namespace Core.Match.Service
         public MatchService(string path)
         {
             _apiPath = path;
+        }
+
+        public async Task<List<MatchDTO>> GetMatchesDTOByName(string userName)
+        {
+            string subPath = "/getMatches";
+            var response = await _client.GetAsync(_apiPath + subPath + $"/{userName}");
+
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<List<MatchDTO>>(responseString);
         }
 
         public async Task<MatchDTO> GetNewMatch(string challenger)

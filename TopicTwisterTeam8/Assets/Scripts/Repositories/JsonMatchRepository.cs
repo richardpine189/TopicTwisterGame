@@ -4,14 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class JsonMatchRepository : IMatchRepository
+public class JsonMatchRepository : IMatchRepository, IGetMatches
 {
-    public List<Match> GetMatches()
+    public async Task<List<Match>> GetMatches()
     {
         return SaveDataToJson.LoadFromJson<List<Match>>("testMatch");
     }
 
-    public void SaveMatch(Match match)
+    public async Task<List<MatchDTO>> GetMatchesDTOByName(string userName)
+    {
+        List<Match> matches = await GetMatchesByName(userName);
+
+        return MatchesToMatchDTO(matches);
+    }
+
+    public async Task<List<Match>> GetMatchesByName(string userName)
+    {
+        List<Match> matches = await GetMatches();
+
+        return matches.Where(x => x.challenger.UserName == userName || x.opponent.UserName == userName).ToList();
+    }
+
+    public async Task SaveMatch(Match match)
     {
         List<Match> matches = SaveDataToJson.LoadFromJson<List<Match>>("testMatch");
 
@@ -20,7 +34,7 @@ public class JsonMatchRepository : IMatchRepository
             matches = new List<Match>();
         }
 
-        int matchIndex = GetMatchIndexById(match.id.Value);
+        int matchIndex = await GetMatchIndexById(match.id.Value);
 
         if (matchIndex == -1)
         {
@@ -34,9 +48,9 @@ public class JsonMatchRepository : IMatchRepository
         SaveDataToJson.SaveIntoJson<List<Match>>(matches, ref matches, "testMatch");
     }
 
-    public int GetMatchIndexById(int id)
+    public async Task<int> GetMatchIndexById(int id)
     {
-        List<Match> matches = GetMatches();
+        List<Match> matches = await GetMatches();
 
         if (matches != null)
         {
@@ -52,10 +66,10 @@ public class JsonMatchRepository : IMatchRepository
         return -1;
     }
 
-    public int GetNewId()
+    public async Task<int> GetNewId()
     {
         int highestId = -1;
-        List<Match> matches = GetMatches();
+        List<Match> matches = await GetMatches();
 
         if (matches != null)
         {
@@ -71,10 +85,25 @@ public class JsonMatchRepository : IMatchRepository
         return highestId + 1;
     }
 
-    public List<Match> GetMatchesByName(string userName)
+    private List<MatchDTO> MatchesToMatchDTO(List<Match> matches)
     {
-        List<Match> matches = GetMatches();
+        IsMatchFinishedAction isMatchFinished = new IsMatchFinishedAction();
 
-        return matches.Where(x => x.challenger.UserName == userName || x.opponent.UserName == userName).ToList();
+        if (matches != null)
+        {
+            return matches.Select(m => new MatchDTO
+            {
+                idMatch = (int)m.id,
+                challengerName = m.challenger.UserName,
+                opponentName = m.opponent.UserName,
+                currentRound = m.rounds.All(x => x == null) ? 1 : m.rounds.Where(t => t != null).Count(),
+                isChallengerTurn = m.isChallengerTurn,
+                isMatchFinished = isMatchFinished.Execute(m)
+            }).ToList();
+        }
+        else
+        {
+            return new List<MatchDTO>();
+        }
     }
 }

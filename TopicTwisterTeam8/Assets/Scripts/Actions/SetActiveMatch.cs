@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 public class SetActiveMatch
 {
     IMatchRepository _matchRepository;
@@ -12,9 +13,9 @@ public class SetActiveMatch
         _matchService = new SingletonCurrentMatchService();
     }
 
-    public void Execute(int id)
+    public async void Execute(int id)
     {
-        List<Match> matches = _matchRepository.GetMatches();
+        List<Match> matches = await _matchRepository.GetMatches();
         Match activeMatch = matches.Find(m => m.id == id);
         _matchService.SetActiveMatch(activeMatch);
     }

@@ -1,5 +1,8 @@
-﻿    public interface IGetMatchesInfo
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+
+public interface IGetMatchesInfo
     {
-        MatchDTO[] Execute();
+        Task<List<MatchDTO>> Execute();
     }
 

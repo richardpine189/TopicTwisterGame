@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Zenject;
 
 public class MatchListPresenter : IInitializable
@@ -12,11 +13,11 @@ public class MatchListPresenter : IInitializable
         _matchInfo = matchInfo;
     }
 
-    public void Initialize()
+    public async void Initialize()
     {
-        MatchDTO[] matches = _matchInfo.Execute();
+        List<MatchDTO> matches = await _matchInfo.Execute();
 
-        for (int i = 0; i < matches.Length; i++)
+        for (int i = 0; i < matches.Count; i++)
         {
             IOngoingMatchView matchCard = _view.CreateMatchCard();
             new OngoingMatchPresenter(matchCard, matches[i]);

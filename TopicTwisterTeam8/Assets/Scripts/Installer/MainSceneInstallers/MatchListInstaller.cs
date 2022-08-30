@@ -1,3 +1,4 @@
+using Core.Match.Service;
 using UnityEngine;
 using Zenject;
 
@@ -9,7 +10,8 @@ public class MatchListInstaller : MonoInstaller
     {
         Container.Bind<IMatchListView>().To<MatchListView>().FromInstance(_matchListView).NonLazy();
         Container.Bind<IGetMatchesInfo>().To<MatchListGetter>().AsTransient().NonLazy();
-        Container.Bind<IMatchRepository>().To<JsonMatchRepository>().AsTransient().NonLazy();
+        //Container.Bind<IGetMatches>().To<JsonMatchRepository>().AsTransient().NonLazy();
+        Container.Bind<IGetMatches>().To<MatchService>().AsTransient().NonLazy();
         Container.BindInterfacesTo<MatchListPresenter>().AsTransient().Lazy();
     }
 }

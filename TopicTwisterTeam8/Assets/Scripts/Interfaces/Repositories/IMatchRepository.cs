@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    public interface IMatchRepository
-    {
-        void SaveMatch(Match match);
+public interface IMatchRepository
+{
+    Task SaveMatch(Match match);
 
-        List<Match> GetMatches();
+    Task<List<Match>> GetMatches();
 
-        List<Match> GetMatchesByName(string userName);
+    Task<List<Match>> GetMatchesByName(string userName);
 
-        int GetNewId();
-    }
-
+    Task<int> GetNewId();
+}
