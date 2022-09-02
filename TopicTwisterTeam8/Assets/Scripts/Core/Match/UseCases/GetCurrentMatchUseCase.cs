@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Core.Match.Interface;
 using Core.Match.Service;
+using Models;
 
 namespace Core.Match
 {
@@ -18,17 +19,17 @@ namespace Core.Match
 
         public async Task<MatchDTO> Invoke(int matchId, string challenger)
         {
-            MatchDTO currentMatchDTO;
+            MatchDTO currentMatch;
             if (matchId == ITS_NEW_MATCH)
             {
-                currentMatchDTO = await _matchService.GetNewMatch(challenger);
+                currentMatch = await _matchService.GetNewMatch(challenger);
             }
             else
             {
-                currentMatchDTO = await _matchService.GetOnGoingMatch(matchId);
+                currentMatch = await _matchService.GetOnGoingMatch(matchId);
             }
 
-            return currentMatchDTO;
+            return currentMatch;
         }
     
     }

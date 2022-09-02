@@ -17,7 +17,7 @@ public class AnswersPresenterShould
 
         IAnsweringView _view = Substitute.For<IAnsweringView>();
         IAnswersRepository _answerRepository = Substitute.For<IAnswersRepository>();
-        AnswersPresenter _presenter = new AnswersPresenter(_view, _answerRepository);
+        AnswersPresenter _presenter = new AnswersPresenter(_view);
 
         // Act
         _view.OnStopClick += Raise.Event<Action<string[]>>(answers);

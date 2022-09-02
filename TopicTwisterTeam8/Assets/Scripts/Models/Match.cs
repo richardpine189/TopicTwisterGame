@@ -1,20 +1,17 @@
-public class Match
+﻿
+public class Match // NO ES DTO ES PERSISTENCIA
 {
-    public int? id;
-    public User challenger;
-    public User opponent;
-    public Round[] rounds = new Round[3];
-    public bool isChallengerTurn = true;
-}
+    public int idMatch;
+    public string challengerName;
+    public string opponentName;
+    public int currentRound;
 
-public class Round
-{
-    public char? letter;
-    public string[] assignedCategoryNames;
-    public string[] challengerAnswers;
-    public string[] opponentAnswers;
-    public bool[] challengerResult;
-    public bool[] opponentResult;
-    public bool roundFinished = false;
-    public int timer = 60;
+    public string[] currentAnswers;
+    public string[] currentCategories;
+    public bool[] currentResults;
+    public char? currentLetter;
+    public int roundTimeLeft = 60;
+
+    public bool isChallengerTurn;
+    public bool isMatchFinished;
 }

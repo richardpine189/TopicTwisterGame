@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 public interface IMatchRepository
 {
-    Task SaveMatch(Match match);
+    Task SaveMatch(MatchToDeleteRefacto matchToDeleteRefacto);
 
-    Task<List<Match>> GetMatches();
+    Task<List<MatchToDeleteRefacto>> GetMatches();
 
-    Task<List<Match>> GetMatchesByName(string userName);
+    Task<List<MatchToDeleteRefacto>> GetMatchesByName(string userName);
 
     Task<int> GetNewId();
 }

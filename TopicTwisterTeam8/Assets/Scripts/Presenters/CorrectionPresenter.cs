@@ -12,7 +12,7 @@ class CorrectionPresenter
     private IGetCorrections _getCorrections;
     private IMatchAction _inMemoryMatchActions;
     private IUpdateMatchUseCase _updateMatch;
-    private MatchDTO match;
+    private Match match;
 
     public CorrectionPresenter(ICorrectionView view, IGetCorrections getCorrections, IUpdateMatchUseCase updateMatch)
     {
@@ -43,6 +43,7 @@ class CorrectionPresenter
         catch(Exception ex)
         {
             _view.ShowErrorPanel(ex.Message);
+            
         }
     }
 

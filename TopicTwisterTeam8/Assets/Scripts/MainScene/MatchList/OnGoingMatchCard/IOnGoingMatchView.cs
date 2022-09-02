@@ -13,4 +13,5 @@ public interface IOngoingMatchView
     void LoadMatch();
 
     public event Action OnStartMatch;
+    void SetRoundCount(string formatingScore);
 }

@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
     public class SingletonCurrentMatchService : ICurrentMatchService
     {
-        public Match GetActiveMatch()
+        public MatchToDeleteRefacto GetActiveMatch()
         {
             return CurrentMatchSingleton.Get();
         }
 
-        public void SetActiveMatch(Match match)
+        public void SetActiveMatch(MatchToDeleteRefacto matchToDeleteRefacto)
         {
-            CurrentMatchSingleton.Set(match);
+            CurrentMatchSingleton.Set(matchToDeleteRefacto);
         }
     }
 

@@ -8,16 +8,16 @@ using System.Threading.Tasks;
     {
         private CurrentMatchSingleton() { }
 
-        private static Match _currentMatch;
+        private static MatchToDeleteRefacto _currentMatchToDeleteRefacto;
 
-        public static Match Get()
+        public static MatchToDeleteRefacto Get()
         {
-            return _currentMatch;
+            return _currentMatchToDeleteRefacto;
         }
 
-        public static void Set(Match match)
+        public static void Set(MatchToDeleteRefacto matchToDeleteRefacto)
         {
-            _currentMatch = match;
+            _currentMatchToDeleteRefacto = matchToDeleteRefacto;
         }
     }
 

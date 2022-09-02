@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-//using Microsoft.AspNetCore.WebUtilities;
-using Newtonsoft.Json;
+using Unity.Plastic.Newtonsoft.Json;
 
 
 public class CategoryService : ICategoryService

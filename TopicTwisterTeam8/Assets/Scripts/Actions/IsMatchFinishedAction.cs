@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 public class IsMatchFinishedAction
 {
-    public bool Execute(Match match)
+    public bool Execute(MatchToDeleteRefacto matchToDeleteRefacto)
     {
-        if (!match.rounds.Any(x => x == null) && match.rounds.All(x => x.roundFinished))
+        if (!matchToDeleteRefacto.rounds.Any(x => x == null) && matchToDeleteRefacto.rounds.All(x => x.roundFinished))
         {
             return true;
         }

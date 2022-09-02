@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public interface IMatchAction
 {
-    MatchDTO Match { get; set; }
+    Match Match { get; set; }
 
     public int GetCurrentRoundIndex();
     

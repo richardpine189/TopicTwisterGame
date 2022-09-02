@@ -8,10 +8,12 @@ public class MatchListInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
+        MatchService matchServices = new MatchService("http://localhost:8082");
         Container.Bind<IMatchListView>().To<MatchListView>().FromInstance(_matchListView).NonLazy();
-        Container.Bind<IGetMatchesInfo>().To<MatchListGetter>().AsTransient().NonLazy();
+        Container.Bind<IGetMatchesService>().To<MatchService>().FromInstance(matchServices).NonLazy();
+        Container.Bind<IGetMatchesInfoUseCase>().To<MatchListGetterUseCase>().AsTransient().NonLazy();
         //Container.Bind<IGetMatches>().To<JsonMatchRepository>().AsTransient().NonLazy();
-        Container.Bind<IGetMatches>().To<MatchService>().AsTransient().NonLazy();
+        
         Container.BindInterfacesTo<MatchListPresenter>().AsTransient().Lazy();
     }
 }

@@ -10,7 +10,7 @@ public class LetterPresenter
     private ILetterGetter _letterGetter;
     private ICategoriesGetter _categoriesGetter;
     private IMatchAction _matchActions;
-    private MatchDTO _match;
+    private Match _match;
 
     public LetterPresenter(ILetterView view, ILetterGetter letterGetter, ICategoriesGetter categoriesGetter)
     {

@@ -11,10 +11,8 @@ public class Installer
         
         var fileName = "pruebaSO.asset";
 
-        _answerRepository = new SOAnswersRepository(fileName);
-        ServiceLocator.Instance.RegisterService<IAnswersRepository>(_answerRepository);
 
-        ServiceLocator.Instance.RegisterService<IMatchRepository>(new JsonMatchRepository());
+        ServiceLocator.Instance.RegisterService<IMatchRepository>(new JsonMatchServiceRepository());
 
         ServiceLocator.Instance.RegisterService<ICurrentMatchService>(new SingletonCurrentMatchService());
 

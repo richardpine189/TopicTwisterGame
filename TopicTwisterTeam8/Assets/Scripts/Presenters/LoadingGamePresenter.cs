@@ -39,7 +39,14 @@ namespace Assets.Scripts.Presenters
             var matchDto = await _getMatch.Invoke(_matchId, _challengerName);
             _challengerName = matchDto.challengerName;
             _opponentName = matchDto.opponentName;
-            _matchActions.Match = matchDto;
+            _matchActions.Match = new Match();
+            _matchActions.Match.idMatch = matchDto.idMatch;
+            _matchActions.Match.challengerName = matchDto.challengerName;
+            _matchActions.Match.opponentName = matchDto.opponentName;
+            _matchActions.Match.currentRound = matchDto.currentRound;
+            _matchActions.Match.isChallengerTurn = matchDto.isChallengerTurn;
+            _matchActions.Match.isMatchFinished = matchDto.isMatchFinished;
+            
         }
 
         private void SelectSectionAtStart()

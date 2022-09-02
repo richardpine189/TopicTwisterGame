@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Models;
 
 public class OngoingMatchPresenter
 {
@@ -12,20 +13,22 @@ public class OngoingMatchPresenter
 
     private bool _isPlayerTurn = true;
 
-    public OngoingMatchPresenter(IOngoingMatchView view, MatchDTO matchDTO)
+    public OngoingMatchPresenter(IOngoingMatchView view, MatchDTO match)
     {
         _view = view;
 
-        _matchId = matchDTO.idMatch;
+        _matchId = match.idMatch;
 
-        IsPlayerTurn(matchDTO);
+        IsPlayerTurn(match);
 
-        SetViewName(matchDTO);
+        SetViewName(match);
 
-        _view.SetRoundNumber(matchDTO.currentRound);
+        _view.SetRoundNumber(match.currentRound+1); // SACAR MAGIC NUMBER
 
-        SetViewState(matchDTO);
+        SetViewState(match);
 
+        SetRoundsWinnerCounterInUI(match.roundResults);
+            
         _view.OnStartMatch += SaveCurrentMatch;
     }
 
@@ -57,9 +60,9 @@ public class OngoingMatchPresenter
         }
     }
 
-    private void SetViewState(MatchDTO matchDTO)
+    private void SetViewState(MatchDTO match)
     {
-        if (_isPlayerTurn || matchDTO.isMatchFinished)
+        if (_isPlayerTurn || match.isMatchFinished)
         {
             _view.ShowPlayButton();
         }
@@ -69,10 +72,24 @@ public class OngoingMatchPresenter
         }
     }
 
-    /*public void BotResolveRound(int matchId, ICategoriesGetter categoriesGetter)
+    private void SetRoundsWinnerCounterInUI(WinnerStatus[] winner)
     {
-        SetBotInMatchAction botAction = new SetBotInMatchAction(matchId, categoriesGetter);
-        botAction.Execute();
+        int[] winnerCount = new int[2] {0,0};
+        foreach (var w in winner)
+        {
+            if (w == WinnerStatus.Challenger)
+                winnerCount[0]++;
+            else if (w == WinnerStatus.Opponent)
+                winnerCount[1]++;
+            else if (w == WinnerStatus.Draw)
+            {
+                winnerCount[0]++;
+                winnerCount[1]++;
+            }
+        }
+        
+        string formatingScore = winnerCount[0] + " - " + winnerCount[1];
+
+        _view.SetRoundCount(formatingScore);
     }
-    */
 }

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
     public interface ICurrentMatchService
     {
-        void SetActiveMatch(Match match);
+        void SetActiveMatch(MatchToDeleteRefacto matchToDeleteRefacto);
 
-        Match GetActiveMatch();
+        MatchToDeleteRefacto GetActiveMatch();
     }
 

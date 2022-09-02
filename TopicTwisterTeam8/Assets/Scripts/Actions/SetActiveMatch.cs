@@ -15,9 +15,9 @@ public class SetActiveMatch
 
     public async void Execute(int id)
     {
-        List<Match> matches = await _matchRepository.GetMatches();
-        Match activeMatch = matches.Find(m => m.id == id);
-        _matchService.SetActiveMatch(activeMatch);
+        List<MatchToDeleteRefacto> matches = await _matchRepository.GetMatches();
+        MatchToDeleteRefacto activeMatchToDeleteRefacto = matches.Find(m => m.id == id);
+        _matchService.SetActiveMatch(activeMatchToDeleteRefacto);
     }
 
     public void RemoveActiveMatch()

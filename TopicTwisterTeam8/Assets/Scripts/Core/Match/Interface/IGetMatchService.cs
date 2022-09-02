@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Models;
 
 namespace Core.Match.Interface
 {

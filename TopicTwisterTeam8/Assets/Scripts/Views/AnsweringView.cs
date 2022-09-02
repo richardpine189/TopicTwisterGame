@@ -37,7 +37,7 @@ public class AnsweringView : MonoBehaviour, IAnsweringView
 
     private void Initialize()
     {
-        _presenter = new AnswersPresenter(this, ServiceLocator.Instance.GetService<IAnswersRepository>());
+        _presenter = new AnswersPresenter(this);
         ShowCategories(); // REVISAR
     }
 

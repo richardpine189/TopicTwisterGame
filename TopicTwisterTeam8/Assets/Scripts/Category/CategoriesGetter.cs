@@ -6,8 +6,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using Unity.Plastic.Newtonsoft.Json;
-using JsonConvert = Newtonsoft.Json.JsonConvert;
 
 public class CategoriesGetter : ICategoriesGetter
 {

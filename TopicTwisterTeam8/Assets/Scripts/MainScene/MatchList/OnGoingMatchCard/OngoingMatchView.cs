@@ -26,6 +26,10 @@ public class OngoingMatchView : MonoBehaviour, IOngoingMatchView
     private GameObject _playButton;
 
     public event Action OnStartMatch;
+    public void SetRoundCount(string formatingScore)
+    {
+        _score.text = formatingScore;
+    }
 
     private void Start()
     {

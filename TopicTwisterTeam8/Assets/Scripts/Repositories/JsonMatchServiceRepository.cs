@@ -3,54 +3,55 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Models;
 
-public class JsonMatchRepository : IMatchRepository, IGetMatches
+public class JsonMatchServiceRepository : IMatchRepository, IGetMatchesService
 {
-    public async Task<List<Match>> GetMatches()
+    public async Task<List<MatchToDeleteRefacto>> GetMatches()
     {
-        return SaveDataToJson.LoadFromJson<List<Match>>("testMatch");
+        return SaveDataToJson.LoadFromJson<List<MatchToDeleteRefacto>>("testMatch");
     }
 
     public async Task<List<MatchDTO>> GetMatchesDTOByName(string userName)
     {
-        List<Match> matches = await GetMatchesByName(userName);
+        List<MatchToDeleteRefacto> matches = await GetMatchesByName(userName);
 
         return MatchesToMatchDTO(matches);
     }
 
-    public async Task<List<Match>> GetMatchesByName(string userName)
+    public async Task<List<MatchToDeleteRefacto>> GetMatchesByName(string userName)
     {
-        List<Match> matches = await GetMatches();
+        List<MatchToDeleteRefacto> matches = await GetMatches();
 
         return matches.Where(x => x.challenger.UserName == userName || x.opponent.UserName == userName).ToList();
     }
 
-    public async Task SaveMatch(Match match)
+    public async Task SaveMatch(MatchToDeleteRefacto matchToDeleteRefacto)
     {
-        List<Match> matches = SaveDataToJson.LoadFromJson<List<Match>>("testMatch");
+        List<MatchToDeleteRefacto> matches = SaveDataToJson.LoadFromJson<List<MatchToDeleteRefacto>>("testMatch");
 
         if(matches == null)
         {
-            matches = new List<Match>();
+            matches = new List<MatchToDeleteRefacto>();
         }
 
-        int matchIndex = await GetMatchIndexById(match.id.Value);
+        int matchIndex = await GetMatchIndexById(matchToDeleteRefacto.id.Value);
 
         if (matchIndex == -1)
         {
-            matches.Add(match);
+            matches.Add(matchToDeleteRefacto);
         }
         else
         {
-            matches[matchIndex] = match;
+            matches[matchIndex] = matchToDeleteRefacto;
         }
 
-        SaveDataToJson.SaveIntoJson<List<Match>>(matches, ref matches, "testMatch");
+        SaveDataToJson.SaveIntoJson<List<MatchToDeleteRefacto>>(matches, ref matches, "testMatch");
     }
 
     public async Task<int> GetMatchIndexById(int id)
     {
-        List<Match> matches = await GetMatches();
+        List<MatchToDeleteRefacto> matches = await GetMatches();
 
         if (matches != null)
         {
@@ -69,7 +70,7 @@ public class JsonMatchRepository : IMatchRepository, IGetMatches
     public async Task<int> GetNewId()
     {
         int highestId = -1;
-        List<Match> matches = await GetMatches();
+        List<MatchToDeleteRefacto> matches = await GetMatches();
 
         if (matches != null)
         {
@@ -85,7 +86,7 @@ public class JsonMatchRepository : IMatchRepository, IGetMatches
         return highestId + 1;
     }
 
-    private List<MatchDTO> MatchesToMatchDTO(List<Match> matches)
+    private List<MatchDTO> MatchesToMatchDTO(List<MatchToDeleteRefacto> matches)
     {
         IsMatchFinishedAction isMatchFinished = new IsMatchFinishedAction();
 

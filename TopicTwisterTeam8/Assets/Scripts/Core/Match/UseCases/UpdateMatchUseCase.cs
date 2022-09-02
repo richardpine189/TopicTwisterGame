@@ -10,16 +10,16 @@ namespace Assets.Scripts.Core.Match.UseCases
 {
     class UpdateMatchUseCase : IUpdateMatchUseCase
     {
-        private MatchService matchService;
+        private MatchService _matchService;
 
         public UpdateMatchUseCase(MatchService matchService)
         {
-            this.matchService = matchService;
+            this._matchService = matchService;
         }
 
-        public async Task<bool> Execute(MatchDTO match)
+        public async Task<bool> Execute(global::Match match)
         {
-            return await matchService.UpdateMatch(match);
+            return await _matchService.UpdateMatch(match);
         }
     }
 }

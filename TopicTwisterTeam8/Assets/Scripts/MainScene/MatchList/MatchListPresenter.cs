@@ -1,21 +1,23 @@
 using System.Collections.Generic;
+using Models;
 using Zenject;
 
 public class MatchListPresenter : IInitializable
 {
     IMatchListView _view;
 
-    private IGetMatchesInfo _matchInfo;
+    private IGetMatchesInfoUseCase _matchInfoUseCase;
 
-    public MatchListPresenter(IMatchListView view, IGetMatchesInfo matchInfo)
+    
+    public MatchListPresenter(IMatchListView view, IGetMatchesInfoUseCase matchInfoUseCase)
     {
         _view = view;
-        _matchInfo = matchInfo;
+        _matchInfoUseCase = matchInfoUseCase;
     }
 
     public async void Initialize()
     {
-        List<MatchDTO> matches = await _matchInfo.Execute();
+        List<MatchDTO> matches = await _matchInfoUseCase.Execute();
 
         for (int i = 0; i < matches.Count; i++)
         {

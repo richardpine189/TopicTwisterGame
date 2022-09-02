@@ -15,17 +15,17 @@ namespace Assets.Scripts.Tests.EditMode.Services
             // Arrange
             User challenger = new User(1, "test");
             User opponent = new User(44, "test2");
-            Match match = new Match();
-            match.challenger = challenger;
-            match.opponent = opponent;
-            Match expectedMatch = match;
+            MatchToDeleteRefacto matchToDeleteRefacto = new MatchToDeleteRefacto();
+            matchToDeleteRefacto.challenger = challenger;
+            matchToDeleteRefacto.opponent = opponent;
+            MatchToDeleteRefacto expectedMatchToDeleteRefacto = matchToDeleteRefacto;
             SingletonCurrentMatchService _matchService = new SingletonCurrentMatchService();
 
             // Act
-            _matchService.SetActiveMatch(expectedMatch);
+            _matchService.SetActiveMatch(expectedMatchToDeleteRefacto);
 
             // Assert
-            Assert.AreEqual(expectedMatch, _matchService.GetActiveMatch());
+            Assert.AreEqual(expectedMatchToDeleteRefacto, _matchService.GetActiveMatch());
         }
     }
 }

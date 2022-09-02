@@ -3,11 +3,14 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Core.Match.Interface;
+using Models;
+using UnityEngine;
 using Unity.Plastic.Newtonsoft.Json;
+
 
 namespace Core.Match.Service
 {
-    public class MatchService : IGetMatchService, IUpdateMatchService, IGetMatches
+    public class MatchService : IGetMatchService, IUpdateMatchService, IGetMatchesService
     {
         private readonly HttpClient _client = new HttpClient();
         private readonly string _apiPath;
@@ -23,8 +26,11 @@ namespace Core.Match.Service
             var response = await _client.GetAsync(_apiPath + subPath + $"/{userName}");
 
             var responseString = await response.Content.ReadAsStringAsync();
-
-            return JsonConvert.DeserializeObject<List<MatchDTO>>(responseString);
+            UnityEngine.Debug.Log(responseString);
+            //var list = JsonUtility.FromJson<ListMatchDTO>(responseString);
+            var list = JsonConvert.DeserializeObject<List<MatchDTO>>(responseString);
+            
+            return list;
         }
 
         public async Task<MatchDTO> GetNewMatch(string challenger)
@@ -43,7 +49,7 @@ namespace Core.Match.Service
             return await InterpretateResponse(response);
         }
 
-        public async Task<bool> UpdateMatch(MatchDTO match)
+        public async Task<bool> UpdateMatch(global::Match match)
         {
             RoundDTO values = new RoundDTO();
 
