@@ -1,17 +1,15 @@
-﻿public class EndRoundPresenter
+﻿using Zenject;
+
+public class EndRoundPresenter
 {
+    [Inject]
+    private IActiveMatch _action;
+
     private IEndRoundView _view;
-    private IMatchAction _action;
 
     public EndRoundPresenter(IEndRoundView endRoundView)
     {
         _view = endRoundView;
-
-        _action = new HardcodedRoundActions();
-
-        int roundIndex = 0;
-
-        roundIndex = _action.GetCurrentRoundIndex() - 1;
 
         //This shouldn't be in the presenter
         

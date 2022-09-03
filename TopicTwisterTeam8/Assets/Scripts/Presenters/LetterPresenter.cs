@@ -1,52 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Zenject;
 
-public class LetterPresenter
+public class LetterPresenter : IInitializable, IDisposable
 {
-    private ILetterView _view;
-    private ILetterGetter _letterGetter;
-    private ICategoriesGetter _categoriesGetter;
-    private IMatchAction _matchActions;
-    private Match _match;
+    private ILetterView _letterView;
+    private IGetLetterUseCase _getLetter;
+    private ISaveLetterUseCase _saveLetter;
 
-    public LetterPresenter(ILetterView view, ILetterGetter letterGetter, ICategoriesGetter categoriesGetter)
+    private char _currentLetter;
+
+    public LetterPresenter(ILetterView letterView, IGetLetterUseCase getLetter, ISaveLetterUseCase saveLetter)
     {
-        _view = view;
-        _letterGetter = letterGetter;
-        _categoriesGetter = categoriesGetter;
-        _matchActions = new HardcodedRoundActions();
-        _match = _matchActions.Match;
-        _view.OnSpinClick += GetLetter;
-
-        GetRoundNumber();
-        GetCategories();
+        _letterView = letterView;
+        _getLetter = getLetter;
+        _saveLetter = saveLetter;
+        _letterView.OnAskForLetter += AskForLetter;
+        _letterView.OnKeepRoundLetter += KeepLetter;
     }
 
-    private void GetRoundNumber()
+    ~LetterPresenter()
     {
-        int index = _matchActions.GetCurrentRoundIndex();
+        _letterView.OnAskForLetter -= AskForLetter;
+        _letterView.OnKeepRoundLetter -= KeepLetter;
     }
 
-    private async void GetCategories()
+    public void Dispose() { }
+
+    public void Initialize() { }
+
+    private void AskForLetter()
     {
-        string[] categories = _matchActions.Match.currentCategories != null ? _matchActions.Match.currentCategories : await _categoriesGetter.GetCategories(5);
-
-        _match.currentCategories = categories;
-        _matchActions.Match = _match;
-
-        _view.ShowCategories(categories);
+        char tempLetter = _getLetter.Execute();
+        UpdateInterface(tempLetter);
     }
 
-    private void GetLetter()
+    private void KeepLetter()
     {
-        char letter = (char)(_matchActions.Match.currentLetter != null ? _matchActions.Match.currentLetter : _letterGetter.GetLetter());
+        _saveLetter.Execute(_currentLetter);
+    }
 
-        _match.currentLetter = letter;
-        _matchActions.Match = _match;
-
-        _view.ShowLetter(letter);
+    private void UpdateInterface(char currentLetter)
+    {
+        _currentLetter = currentLetter;
+        _letterView.SetLetter(currentLetter);
     }
 }
+
+

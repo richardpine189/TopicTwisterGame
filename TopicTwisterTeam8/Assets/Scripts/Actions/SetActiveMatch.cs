@@ -1,9 +1,10 @@
 ﻿public class SetActiveMatch
 {
-    private readonly HardcodedRoundActions _matchAction;
+    private readonly ActiveMatchInMemory _matchAction;
+
     public SetActiveMatch()
     {
-        _matchAction = new HardcodedRoundActions();
+        _matchAction = new ActiveMatchInMemory();
     }
 
     public async void Execute(int id)

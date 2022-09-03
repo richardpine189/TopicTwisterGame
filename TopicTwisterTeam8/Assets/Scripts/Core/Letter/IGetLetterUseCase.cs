@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-    public interface ILetterGetter
-    {
-        char GetLetter();
-    }
+public interface IGetLetterUseCase
+{
+    char Execute();
+}
 

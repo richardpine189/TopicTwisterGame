@@ -13,7 +13,7 @@ namespace Assets.Scripts.Tests
     {
         private LoadingGamePresenter _gamePresenter;
         private ILoadingGameView _view;
-        private IMatchAction _matchActions;
+        private IActiveMatch _matchActions;
 
         [Test]
         public void ShowPlayersInfoWhenAMatchIsCreated()
@@ -23,7 +23,7 @@ namespace Assets.Scripts.Tests
             string opponentName = "Test Oponente";
 
             _view = Substitute.For<ILoadingGameView>();
-            _matchActions = Substitute.For<IMatchAction>();
+            _matchActions = Substitute.For<IActiveMatch>();
             //_matchActions.GetPlayerName().Returns(playerName); BROKEN AFERT MIGRATION
             //_matchActions.GetOpponentName().Returns(opponentName);
 

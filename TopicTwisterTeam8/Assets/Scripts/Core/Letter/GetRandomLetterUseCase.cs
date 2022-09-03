@@ -1,6 +1,6 @@
-﻿public class GetRandomLetterUseCase : ILetterGetter
+﻿public class GetRandomLetterUseCase : IGetLetterUseCase
 {
-    public char GetLetter()
+    public char Execute()
     {
         System.Random rnd = new System.Random();
         //char randomChar = (char)rnd.Next('A', 'Z');

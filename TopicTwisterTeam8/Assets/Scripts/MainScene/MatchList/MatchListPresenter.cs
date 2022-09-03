@@ -7,7 +7,6 @@ public class MatchListPresenter : IInitializable
     IMatchListView _view;
 
     private IGetMatchesInfoUseCase _matchInfoUseCase;
-
     
     public MatchListPresenter(IMatchListView view, IGetMatchesInfoUseCase matchInfoUseCase)
     {

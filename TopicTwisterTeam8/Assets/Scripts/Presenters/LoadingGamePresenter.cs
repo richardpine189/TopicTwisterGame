@@ -6,14 +6,19 @@ namespace Assets.Scripts.Presenters
 {
     public class LoadingGamePresenter : IInitializable, IDisposable
     {
-        [Inject] private ILoadingGameView _view;
-        [Inject] private IGetCurrentMatchUseCase _getMatch;
+        [Inject]
+        private ILoadingGameView _view;
+
+        [Inject]
+        private IGetCurrentMatchUseCase _getMatch;
+
+        [Inject]
+        private IActiveMatch _matchActions;
+
         private string _challengerName;
         private string _opponentName;
         private int _matchId = -1;
         private const int ITS_NEW_MATCH= -1;
-
-        private IMatchAction _matchActions = new HardcodedRoundActions();
 
         public void Initialize()
         {
@@ -22,7 +27,6 @@ namespace Assets.Scripts.Presenters
             _challengerName = UserDTO.PlayerName;
             
             //Inicializar MatchId
-            
                 
             RequestMatchData();
             
@@ -32,12 +36,13 @@ namespace Assets.Scripts.Presenters
             
             _view.StartAnimation(_matchId == ITS_NEW_MATCH);
         }
+
         public void Dispose()
         {
             _view.OnReadyForNext -= SelectSectionAtStart;
         }
     
-       private async void RequestMatchData()
+        private async void RequestMatchData()
         {
             if (_matchActions.Match == null)
             {

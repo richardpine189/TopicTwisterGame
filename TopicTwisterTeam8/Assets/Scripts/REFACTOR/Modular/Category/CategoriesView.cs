@@ -8,7 +8,11 @@ using TMPro;
 
 public class CategoriesView : MonoBehaviour, ICategoriesView
 {
+    [SerializeField]
+    private GameObject _header;
+
     public event Action<int> OnUpdateCategoriesField;
+
     public event Action<int> OnChangeCategory;
     
     [SerializeField] private TextMeshProUGUI[] _categoriesLetterSelectionPanel;
@@ -21,6 +25,7 @@ public class CategoriesView : MonoBehaviour, ICategoriesView
 
     private void Start()
     {
+        _header.SetActive(true);
         OnUpdateCategoriesField?.Invoke(StandardCategoriesAmount);
     }
 
@@ -34,6 +39,7 @@ public class CategoriesView : MonoBehaviour, ICategoriesView
                                     categoriesName[i];
         }
     }
+
     public void UpdateSingleField(string categoryName, int index)
     {
 

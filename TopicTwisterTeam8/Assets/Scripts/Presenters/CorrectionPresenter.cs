@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using Zenject;
 
 class CorrectionPresenter
 {
+    [Inject]
+    private IActiveMatch _inMemoryMatchActions;
+
     private bool[] _results;
     private ICorrectionView _view;
     private IGetCorrections _getCorrections;
-    private IMatchAction _inMemoryMatchActions;
     private IUpdateMatchUseCase _updateMatch;
     private Match match;
 
@@ -20,7 +23,6 @@ class CorrectionPresenter
         _view.EndTurn += EndTurn;
         _getCorrections = getCorrections;
         _updateMatch = updateMatch;
-        _inMemoryMatchActions = new HardcodedRoundActions();
         match = _inMemoryMatchActions.Match;
         GetCorrections(match.currentCategories, match.currentAnswers, (char)match.currentLetter);
     }

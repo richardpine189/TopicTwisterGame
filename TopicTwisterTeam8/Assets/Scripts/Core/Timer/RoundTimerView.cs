@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class RoundTimerView : MonoBehaviour
+public class RoundTimerView : MonoBehaviour, IRoundTimerView
 {
     [SerializeField]
     private TMP_Text timeCounter;
@@ -17,8 +17,6 @@ public class RoundTimerView : MonoBehaviour
 
     void OnEnable()
     {
-        new RoundTimerPresenter(this);
-
         _timerOn = true;
     }
 
@@ -40,7 +38,6 @@ public class RoundTimerView : MonoBehaviour
             }
         }
     }
-
     
     private void UpdateTimer(float timeLeft)
     {

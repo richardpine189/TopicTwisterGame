@@ -7,7 +7,6 @@ using Models;
 using UnityEngine;
 using Unity.Plastic.Newtonsoft.Json;
 
-
 namespace Core.Match.Service
 {
     public class MatchService : IGetMatchService, IUpdateMatchService, IGetMatchesService
@@ -54,7 +53,6 @@ namespace Core.Match.Service
             var responseBody = await response.Content.ReadAsStringAsync();
             var deserializeMatchDto = JsonConvert.DeserializeObject<ActiveMatchDTO>(responseBody);
             return deserializeMatchDto;
-            
         }
 
         public async Task<bool> UpdateMatch(global::Match match)

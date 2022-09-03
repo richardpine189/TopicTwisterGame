@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Zenject;
 
 namespace Assets.Scripts.Presenters
 {
-    public class RoundTimerPresenter
+    public class RoundTimerPresenter : IInitializable, IDisposable
     {
-        RoundTimerView _view;
-        HardcodedRoundActions _roundActions;
+        IRoundTimerUseCase _roundActions;
 
-        public RoundTimerPresenter(RoundTimerView view)
+        IRoundTimerView _view;
+
+        public RoundTimerPresenter(IRoundTimerView view, IRoundTimerUseCase roundActions)
         {
             _view = view;
-            _roundActions = new HardcodedRoundActions();
+            _roundActions = roundActions;
             SetInitialTime();
             _view.OnTimerStop += SendTimeToRound;
         }
@@ -28,6 +26,16 @@ namespace Assets.Scripts.Presenters
         private void SendTimeToRound(int timeLeft)
         {
             _roundActions.SaveTimeToRound(timeLeft);
+        }
+
+        public void Initialize()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
 
         ~RoundTimerPresenter() { _view.OnTimerStop -= SendTimeToRound; }

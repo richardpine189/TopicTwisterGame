@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
     class RandomLetterGetterShould
     {
-        ILetterGetter _letterGetter;
+        IGetLetterUseCase _letterGetter;
         char _letter;
 
         [SetUp]
@@ -18,7 +18,7 @@ using System.Threading.Tasks;
             _letterGetter = new GetRandomLetterUseCase();
 
             // Act
-            _letter = _letterGetter.GetLetter();
+            _letter = _letterGetter.Execute();
         }
 
         [Test]

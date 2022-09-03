@@ -19,6 +19,7 @@ namespace Core.Match
         {
             return await _matchService.GetActiveMatch(matchId);
         }
+
         public async Task<MatchDTO> Invoke(string challenger)
         {
            return await _matchService.GetNewMatch(challenger);

@@ -7,7 +7,6 @@ using DG.Tweening;
 public class LoadingAnimation : MonoBehaviour
 {
     [SerializeField] private float _speedRotation;
-   
 
     private void Update()
     {

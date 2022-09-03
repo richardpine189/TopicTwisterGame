@@ -4,11 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public interface IMatchAction
+public interface IActiveMatch
 {
     Match Match { get; set; }
-
-    public int GetCurrentRoundIndex();
-    
-    bool IsFinished();
 }
