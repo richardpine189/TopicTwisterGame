@@ -5,6 +5,8 @@ namespace Core.Match.Interface
 {
     public interface IGetCurrentMatchUseCase
     {
-        Task<MatchDTO> Invoke(int matchId, string challenger);
+        Task<MatchDTO> Invoke(string challenger);
+
+        Task<ActiveMatchDTO> Invoke(int matchId);
     }
 }

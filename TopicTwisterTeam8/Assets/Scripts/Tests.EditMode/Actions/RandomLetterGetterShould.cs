@@ -15,7 +15,7 @@ using System.Threading.Tasks;
         public void SetUp()
         {
             // Arrange
-            _letterGetter = new RandomLetterGetter();
+            _letterGetter = new GetRandomLetterUseCase();
 
             // Act
             _letter = _letterGetter.GetLetter();

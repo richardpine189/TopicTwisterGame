@@ -2971,7 +2971,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -1024.711}
+  m_AnchoredPosition: {x: 400, y: -940.30414}
   m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &268514442
@@ -3147,7 +3147,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: FINAL DEL TURNO
+  m_text: TITULO PANEL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 04f090996aae7463d918156bd4ff8ce2, type: 2}
   m_sharedMaterial: {fileID: 21744886475155490, guid: 04f090996aae7463d918156bd4ff8ce2,
@@ -5703,7 +5703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -959.22345}
+  m_AnchoredPosition: {x: 400, y: -958.6162}
   m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566674941
@@ -6150,8 +6150,6 @@ MonoBehaviour:
   - {fileID: 1576878433}
   - {fileID: 1445448608}
   _nextPanel: {fileID: 406296897}
-  _letterSO: {fileID: 11400000, guid: 0b32b4ca43e6300499707ede34d4b819, type: 2}
-  _categoriesSO: {fileID: 11400000, guid: c3dd0cbdee602834cb35022555714303, type: 2}
   _spiner: {fileID: 131986158089148863}
   _config: {fileID: 11400000, guid: c8d8e3763a719ed4d917af696109ba61, type: 2}
 --- !u!1 &593653743
@@ -7683,7 +7681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -1024.6111}
+  m_AnchoredPosition: {x: 400, y: -940.20416}
   m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &954812715
@@ -14576,7 +14574,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -1024.6111}
+  m_AnchoredPosition: {x: 400, y: -940.20416}
   m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1862381611

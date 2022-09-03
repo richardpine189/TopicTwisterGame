@@ -41,12 +41,20 @@ namespace Core.Match.Service
             return await InterpretateResponse(response);
         }
 
-        public async Task<MatchDTO> GetOnGoingMatch(int matchId)
+        public async Task<ActiveMatchDTO> GetActiveMatch(int matchId)
         {
             string subPath = "/GetMatchById";
             var response = await _client.GetAsync(_apiPath + subPath + $"/{matchId}");
+            
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new HttpRequestException("There is not connection");
+            }
 
-            return await InterpretateResponse(response);
+            var responseBody = await response.Content.ReadAsStringAsync();
+            var deserializeMatchDto = JsonConvert.DeserializeObject<ActiveMatchDTO>(responseBody);
+            return deserializeMatchDto;
+            
         }
 
         public async Task<bool> UpdateMatch(global::Match match)

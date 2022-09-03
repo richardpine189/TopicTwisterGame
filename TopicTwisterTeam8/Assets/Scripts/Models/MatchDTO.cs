@@ -8,7 +8,7 @@ namespace Models
         public int currentRound;
         public bool isChallengerTurn;
         public bool isMatchFinished;
-        public WinnerStatus[] roundResults;
+        public WinnerStatus[] roundResults = new WinnerStatus[3];
     }
 
     public enum WinnerStatus

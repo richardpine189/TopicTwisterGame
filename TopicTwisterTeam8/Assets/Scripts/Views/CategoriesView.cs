@@ -28,12 +28,6 @@ public class CategoriesView : MonoBehaviour, ILetterView
     [SerializeField]
     private GameObject _nextPanel;
 
-    [SerializeField]
-    private LetterSO _letterSO;
-
-    [SerializeField]
-    private CategoriesSO _categoriesSO;
-
     [SerializeField] private GameObject _spiner;
 
     private LetterPresenter _presenter;
@@ -56,7 +50,7 @@ public class CategoriesView : MonoBehaviour, ILetterView
 
     private void Initialize()
     {
-        _presenter = new LetterPresenter(this, new RandomLetterGetter(), new CategoriesGetter(new CategoryService(_config.path)));
+        _presenter = new LetterPresenter(this, new GetRandomLetterUseCase(), new GetCategoriesUseCase(new CategoryService(_config.path)));
     }
 
     public void ShowLetter(char letter)
@@ -64,7 +58,6 @@ public class CategoriesView : MonoBehaviour, ILetterView
         _letter.text = letter.ToString();
         _letter.gameObject.SetActive(true);
         _getLetterButton.gameObject.SetActive(false);
-        _letterSO.Letter = letter; // SAVING LETTER
         StartCoroutine(CoutdownAnimation());
     }
 
@@ -79,7 +72,7 @@ public class CategoriesView : MonoBehaviour, ILetterView
         }
 
         _nextPanel.SetActive(true);
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void ShowCategories(string[] categories)
@@ -90,7 +83,6 @@ public class CategoriesView : MonoBehaviour, ILetterView
             _categories[i].gameObject.SetActive(true);
             _categories[i].text = categories[i];
         }
-        _categoriesSO.CategoriesName = categories; // SAVING CATEGORIES NAME
     }
 
 

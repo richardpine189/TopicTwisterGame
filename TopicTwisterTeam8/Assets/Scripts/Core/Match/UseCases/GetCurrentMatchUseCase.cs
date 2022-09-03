@@ -15,21 +15,14 @@ namespace Core.Match
 
         }
 
-        private const int ITS_NEW_MATCH = -1;
-
-        public async Task<MatchDTO> Invoke(int matchId, string challenger)
+        public async Task<ActiveMatchDTO> Invoke(int matchId)
         {
-            MatchDTO currentMatch;
-            if (matchId == ITS_NEW_MATCH)
-            {
-                currentMatch = await _matchService.GetNewMatch(challenger);
-            }
-            else
-            {
-                currentMatch = await _matchService.GetOnGoingMatch(matchId);
-            }
+            return await _matchService.GetActiveMatch(matchId);
+        }
+        public async Task<MatchDTO> Invoke(string challenger)
+        {
+           return await _matchService.GetNewMatch(challenger);
 
-            return currentMatch;
         }
     
     }

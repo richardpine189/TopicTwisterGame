@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 
-public class CategoriesGetter : ICategoriesGetter
+public class GetCategoriesUseCase : ICategoriesGetter
 {
     private ICategoryService _categoryService;
 
-    public CategoriesGetter(ICategoryService categoryService)
+    public GetCategoriesUseCase(ICategoryService categoryService)
     {
         _categoryService = categoryService;
     }

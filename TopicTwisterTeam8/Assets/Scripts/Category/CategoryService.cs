@@ -4,7 +4,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Unity.Plastic.Newtonsoft.Json;
 
-
 public class CategoryService : ICategoryService
 {
     private HttpClient _client = new HttpClient();
@@ -18,16 +17,12 @@ public class CategoryService : ICategoryService
     public async Task<string[]> GetCategoriesNames(int amount)
     {
         var response = await _client.GetAsync(_baseURL + "/Categories/" + amount);
-
-        if (response.StatusCode == HttpStatusCode.InternalServerError)
+        if (response.StatusCode == HttpStatusCode.NotFound)
         {
             throw new HttpRequestException("There is not connection");
         }
-
-        var responseArray = await response.Content.ReadAsStringAsync();
-
-        var deserializeResponse = JsonConvert.DeserializeObject<string[]>(responseArray);
-
+        var responseContent = await response.Content.ReadAsStringAsync();
+        var deserializeResponse = JsonConvert.DeserializeObject<string[]>(responseContent);
         return deserializeResponse;
     }
 
@@ -60,7 +55,7 @@ public class CategoryService : ICategoryService
         
         var response = await _client.GetAsync(finalURL);
 
-        if (response.StatusCode == HttpStatusCode.InternalServerError)
+        if (response.StatusCode == HttpStatusCode.NotFound)
         {
             throw new HttpRequestException("There is not connection");
         }

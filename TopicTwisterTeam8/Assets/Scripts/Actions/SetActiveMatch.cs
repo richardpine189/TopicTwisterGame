@@ -1,28 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-public class SetActiveMatch
+﻿public class SetActiveMatch
 {
-    IMatchRepository _matchRepository;
-    ICurrentMatchService _matchService;
-
+    private readonly HardcodedRoundActions _matchAction;
     public SetActiveMatch()
     {
-        _matchRepository = ServiceLocator.Instance.GetService<IMatchRepository>();
-        _matchService = new SingletonCurrentMatchService();
+        _matchAction = new HardcodedRoundActions();
     }
 
     public async void Execute(int id)
     {
-        List<MatchToDeleteRefacto> matches = await _matchRepository.GetMatches();
-        MatchToDeleteRefacto activeMatchToDeleteRefacto = matches.Find(m => m.id == id);
-        _matchService.SetActiveMatch(activeMatchToDeleteRefacto);
+        
+        _matchAction.Match = new Match();
+        _matchAction.Match.idMatch = id;
     }
 
     public void RemoveActiveMatch()
     {
-        _matchService.SetActiveMatch(null);
+        _matchAction.Match = null;
     }
 }
 
