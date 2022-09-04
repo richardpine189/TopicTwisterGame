@@ -4,14 +4,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using Core.Match.Service;
-using Assets.Scripts.Core.Match.UseCases;
 
 public class CorrectionView : MonoBehaviour, ICorrectionView
 {
-    public event Action EndTurn;
+    public event Action OnEndTurn;
 
-    [SerializeField]
-    private TMP_Text[] _categoriesUI;
+    public event Action OnGetCorrections;
 
     [SerializeField]
     private TMP_Text[] _answersUI;
@@ -34,23 +32,15 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
     [SerializeField]
     private GameObject _spiner;
 
-    [SerializeField]
-    private RouteConfig _config;
-
-    private CorrectionPresenter _presenter;
-
-    private void Start()
+    private void OnEnable()
     {
-        Initialize();
-    }
-
-    private void Initialize()
-    {
-        _presenter = new CorrectionPresenter(this, new CorrectionGetter(new CategoryService(_config.path)), new UpdateMatchUseCase(new MatchService("http://localhost:8082")));
+        OnGetCorrections?.Invoke();
     }
 
     public void ShowCorrections(bool[] corrections)
     {
+        Debug.Log(corrections);
+
         _spiner.SetActive(false);
         
         for(int i = 0; i < 5; i++)
@@ -75,17 +65,9 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
         }
     }
 
-    public void ShowCategories(string[] categories)
-    {
-        for (int i = 0; i < _categoriesUI.Length; i++)
-        {
-            _categoriesUI[i].text = categories[i];
-        }
-    }
-
     public void SaveMatch()
     {
-        EndTurn?.Invoke();
+        OnEndTurn?.Invoke();
     }
 
     public void ChangeScene()

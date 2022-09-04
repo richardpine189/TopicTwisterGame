@@ -4429,12 +4429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a938a6acd43b47b4cbed0a75f9009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _categories:
-  - {fileID: 1092814636}
-  - {fileID: 209686384}
-  - {fileID: 1578311621}
-  - {fileID: 954993513}
-  - {fileID: 358334365}
   _answers:
   - {fileID: 1431752391}
   - {fileID: 1660446789}
@@ -4442,8 +4436,6 @@ MonoBehaviour:
   - {fileID: 251051026}
   - {fileID: 2137769482}
   _nextPanel: {fileID: 1784816757}
-  _letterSO: {fileID: 11400000, guid: 0b32b4ca43e6300499707ede34d4b819, type: 2}
-  _categoriesSO: {fileID: 11400000, guid: c3dd0cbdee602834cb35022555714303, type: 2}
 --- !u!1 &410722504
 GameObject:
   m_ObjectHideFlags: 0
@@ -14828,6 +14820,8 @@ MonoBehaviour:
   _letterView: {fileID: 593648991}
   _categoriesView: {fileID: 593648992}
   _roundTimerView: {fileID: 6393175132309448422}
+  _answeringView: {fileID: 406296902}
+  _correctionView: {fileID: 1180373532238975859}
   _categoriesRouteConfig: {fileID: 11400000, guid: c8d8e3763a719ed4d917af696109ba61,
     type: 2}
 --- !u!114 &1851024796
@@ -16681,7 +16675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d18c021297ee8e488980fdfb270654c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _categoriesUI: []
   _answersUI:
   - {fileID: 8102575379364442812}
   - {fileID: 5400169568709392624}
@@ -16699,7 +16692,6 @@ MonoBehaviour:
   _endRoundPanel: {fileID: 797511439}
   _errorPanel: {fileID: 1560197778}
   _spiner: {fileID: 3777974542357315502}
-  _config: {fileID: 11400000, guid: c8d8e3763a719ed4d917af696109ba61, type: 2}
 --- !u!222 &1263552982089902744
 CanvasRenderer:
   m_ObjectHideFlags: 0

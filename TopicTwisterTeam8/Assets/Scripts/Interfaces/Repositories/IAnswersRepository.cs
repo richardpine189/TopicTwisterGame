@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-    public interface IAnswersRepository
-    {
-        void SaveAnswers(string[] answers);
-    }
-
+public interface IAnswersRepository
+{
+    void SaveAnswers(string[] answers);
+}

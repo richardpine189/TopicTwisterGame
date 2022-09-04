@@ -1,37 +1,45 @@
-﻿using Assets.Scripts.Core.Match.Interface;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Zenject;
 
-class CorrectionPresenter
+class CorrectionPresenter : IInitializable
 {
-    [Inject]
-    private IActiveMatch _inMemoryMatchActions;
-
     private bool[] _results;
     private ICorrectionView _view;
     private IGetCorrections _getCorrections;
     private IUpdateMatchUseCase _updateMatch;
-    private Match match;
+
+    [Inject]
+    private IGetMatchCategoriesUseCase _getCategories;
+
+    [Inject]
+    private IGetMatchLetterUseCase _getLetter;
+
+    [Inject]
+    private IGetMatchAnswersUseCase _getAnswers;
+
+    [Inject]
+    private IAssignResultsUseCase _assignResults;
 
     public CorrectionPresenter(ICorrectionView view, IGetCorrections getCorrections, IUpdateMatchUseCase updateMatch)
     {
         _view = view;
-        _view.EndTurn += EndTurn;
         _getCorrections = getCorrections;
         _updateMatch = updateMatch;
-        match = _inMemoryMatchActions.Match;
-        GetCorrections(match.currentCategories, match.currentAnswers, (char)match.currentLetter);
+        _view.OnEndTurn += EndTurn;
+        _view.OnGetCorrections += GetCorrections;
     }
+
+    public void Initialize() { }
 
     public async void EndTurn()
     {
         try
         {
-            bool continuePlaying = await _updateMatch.Execute(match);
+            bool continuePlaying = await _updateMatch.Execute();
 
             if(continuePlaying)
             {
@@ -49,17 +57,18 @@ class CorrectionPresenter
         }
     }
 
-    public async void GetCorrections(string[] roundCategories, string[] answers, char letter)
+    public async void GetCorrections()
     {
-        _results = await _getCorrections.GetCorrections(roundCategories, answers, letter);
+        var answers = _getAnswers.Execute();
 
-        match.currentResults = _results;
+        _results = await _getCorrections.GetCorrections(_getCategories.Execute(), answers, _getLetter.Execute());
+
+        _assignResults.Execute(_results);
 
         _view.ShowAnswers(answers);
 
-        _view.ShowCategories(roundCategories);
-
         _view.ShowCorrections(_results);
     }
+
 }
 

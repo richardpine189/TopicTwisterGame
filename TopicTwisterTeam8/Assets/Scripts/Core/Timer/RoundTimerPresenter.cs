@@ -13,7 +13,7 @@ namespace Assets.Scripts.Presenters
         {
             _view = view;
             _roundActions = roundActions;
-            SetInitialTime();
+            _view.OnTimerStart += SetInitialTime;
             _view.OnTimerStop += SendTimeToRound;
         }
 
@@ -30,14 +30,13 @@ namespace Assets.Scripts.Presenters
 
         public void Initialize()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _view.OnTimerStart -= SetInitialTime;
+            _view.OnTimerStop -= SendTimeToRound;
         }
-
-        ~RoundTimerPresenter() { _view.OnTimerStop -= SendTimeToRound; }
     }
 }

@@ -12,12 +12,15 @@ public class RoundTimerView : MonoBehaviour, IRoundTimerView
 
     public event Action<int> OnTimerStop;
 
+    public event Action OnTimerStart;
+
     private bool _timerOn = false;
     private float _timeLeft;
 
     void OnEnable()
     {
         _timerOn = true;
+        OnTimerStart?.Invoke();
     }
 
     void Update()

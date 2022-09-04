@@ -9,9 +9,9 @@ public class CategoriesPresenter : IInitializable, IDisposable
     private ICategoriesView _view;
     private ICategoriesGetter _categoriesGetter;
     private IAssignCategoriesUseCase _assignCategories;
-    private IGetMatchCategories _getMatchCategories;
+    private IGetMatchCategoriesUseCase _getMatchCategories;
 
-    public CategoriesPresenter(ICategoriesView view, ICategoriesGetter categoriesGetter, IAssignCategoriesUseCase assignCategories, IGetMatchCategories getMatchCategories)
+    public CategoriesPresenter(ICategoriesView view, ICategoriesGetter categoriesGetter, IAssignCategoriesUseCase assignCategories, IGetMatchCategoriesUseCase getMatchCategories)
     {
         _view = view;
         _categoriesGetter = categoriesGetter;

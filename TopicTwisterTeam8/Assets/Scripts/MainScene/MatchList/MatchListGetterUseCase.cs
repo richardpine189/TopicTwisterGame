@@ -13,7 +13,7 @@ public class MatchListGetterUseCase : IGetMatchesInfoUseCase
 
     public MatchListGetterUseCase()
     {
-        Debug.Log("Hola MatchListUseCase");
+        //Debug.Log("Hola MatchListUseCase");
     }
 
     /*public MatchListGetterUseCase(IGetMatchesService getMatchesServiceService, ILocalPlayerDataRepository localPlayerDataRepository)

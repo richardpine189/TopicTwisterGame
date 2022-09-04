@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 public interface ICorrectionView
 {
-    event Action EndTurn;
+    event Action OnEndTurn;
+
+    event Action OnGetCorrections;
 
     void ShowCorrections(bool[] corrections);
 
@@ -16,8 +18,6 @@ public interface ICorrectionView
     void LoadNextTurn();
 
     void ShowAnswers(string[] answers);
-
-    void ShowCategories(string[] categories);
 
     void ShowErrorPanel(string message);
 }
