@@ -4,21 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
+using Zenject;
 
-public class NewGamePresenter
+public class NewGamePresenter: IInitializable, IDisposable
 {
-    private INewGameView _view;
+    [Inject] private INewGameView _view;
+    [Inject] private ISaveMatchId _saveMatchId;
 
-    public NewGamePresenter(INewGameView view)
+
+    public void Initialize()
     {
-        _view = view;
         _view.OnNewGameButtonClick += LoadGameLoopScene;
+    }
+
+    public void Dispose()
+    {
+        _view.OnNewGameButtonClick -= LoadGameLoopScene;
     }
 
     private void LoadGameLoopScene()
     {
-        SetActiveMatch action = new SetActiveMatch();
-        action.RemoveActiveMatch();
+        _saveMatchId.Invoke(-1);
         SceneManager.LoadScene("GameScene");
     }
+
+    
 }

@@ -1,5 +1,5 @@
 ﻿
-public class Match // NO ES DTO ES PERSISTENCIA
+public class Match 
 {
     public int idMatch;
     public string challengerName;

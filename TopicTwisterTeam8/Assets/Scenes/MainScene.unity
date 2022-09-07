@@ -1915,6 +1915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _matchListView: {fileID: 1940459211}
+  _newGameView: {fileID: 112570111}
 --- !u!114 &663008175
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ public class CategoriesView : MonoBehaviour, ICategoriesView
     
     private const int StandardCategoriesAmount = 5;
 
-    private void Start()
+    private void OnEnable()
     {
         _header.SetActive(true);
         OnUpdateCategoriesField?.Invoke(StandardCategoriesAmount);

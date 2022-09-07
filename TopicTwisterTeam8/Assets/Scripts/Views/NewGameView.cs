@@ -8,14 +8,10 @@ public class NewGameView : MonoBehaviour, INewGameView
 {
     [SerializeField]
     private Button newGameButton;
-
-    private NewGamePresenter _presenter;
-
     public event Action OnNewGameButtonClick;
 
     void Start()
     {
-        _presenter = new NewGamePresenter(this);
         newGameButton.onClick.AddListener(OnNewGameButtonClick.Invoke);
     }
 }

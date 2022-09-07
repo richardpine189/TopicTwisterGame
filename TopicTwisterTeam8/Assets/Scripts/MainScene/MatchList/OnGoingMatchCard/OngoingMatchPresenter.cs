@@ -11,12 +11,17 @@ public class OngoingMatchPresenter
 {
     private IOngoingMatchView _view;
 
+    private ISaveMatchId _saveMatchId;
+
     private int _matchId = 0;
 
     private bool _isPlayerTurn = true;
+    
+    private const int OFFSET_FOR_ROUND_COUNTING = 1;
 
-    public OngoingMatchPresenter(IOngoingMatchView view, MatchDTO match)
+    public OngoingMatchPresenter(IOngoingMatchView view, MatchDTO match, ISaveMatchId saveMatchId)
     {
+        _saveMatchId = saveMatchId;
         _view = view;
 
         _matchId = match.idMatch;
@@ -25,7 +30,7 @@ public class OngoingMatchPresenter
 
         SetViewName(match);
 
-        _view.SetRoundNumber(match.currentRound+1); // SACAR MAGIC NUMBER
+        _view.SetRoundNumber(match.currentRound + OFFSET_FOR_ROUND_COUNTING);
 
         SetViewState(match);
 
@@ -41,8 +46,7 @@ public class OngoingMatchPresenter
 
     public void SaveCurrentMatch()
     {
-        SetActiveMatch action = new SetActiveMatch();
-        action.Execute(_matchId);
+        _saveMatchId.Invoke(_matchId);
     }
 
     private void IsPlayerTurn(MatchDTO match)

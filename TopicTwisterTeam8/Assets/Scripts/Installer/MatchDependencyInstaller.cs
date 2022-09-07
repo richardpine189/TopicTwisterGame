@@ -2,6 +2,7 @@ using Assets.Scripts.Presenters;
 using Core.Match;
 using Core.Match.Interface;
 using Core.Match.Service;
+using MainScene.MatchList.Repository;
 using Team8.TopicTwister;
 using UnityEngine;
 using Zenject;
@@ -34,15 +35,20 @@ public class MatchDependencyInstaller : MonoInstaller
     public override void InstallBindings()
     {
         IGetMatchService matchService = new MatchService(API_URL_BASE_PATH);
-
+        //RemoveActiveMatch remove = new RemoveActiveMatch();
         Container.Bind<IActiveMatch>().To<ActiveMatchInMemory>().AsSingle().NonLazy();
         Container.BindInterfacesTo<SaveDataMatchInMemory>().AsTransient();
         Container.BindInterfacesTo<GetDataMatchInMemory>().AsTransient().NonLazy();
         Container.BindInterfacesTo<MatchHasUseCase>().AsTransient();
+        Container.BindInterfacesTo<PlayerPrefMatchIdRepository>().AsTransient().NonLazy();
         Container.Bind<ICategoryService>().To<CategoryService>().AsTransient().WithArguments(_categoriesRouteConfig.path).NonLazy();
-
+        
+        Container.Bind<RemoveActiveMatch>().AsTransient();
+        Container.Bind<ResetActiveMatch>().AsTransient();
+        
         Container.Bind<ILoadingGameView>().To<LoadingGameView>().FromInstance(_loadingView).NonLazy();
         Container.Bind<IGetCurrentMatchUseCase>().To<GetCurrentMatchUseCase>().AsTransient().WithArguments(matchService).NonLazy();
+        Container.Bind<IGetMatchId>().To<MatchIDUseCase>().AsTransient().NonLazy();
         Container.BindInterfacesTo<LoadingGamePresenter>().AsTransient().Lazy();
 
         Container.Bind<ILetterView>().To<LetterView>().FromInstance(_letterView).NonLazy();

@@ -1,24 +1,20 @@
-﻿public class SetActiveMatch
+﻿using Zenject;
+
+public class CreateActiveMatch : ICreateActiveMatch
 {
-    private readonly ActiveMatchInMemory _matchAction;
+    [Inject] private IActiveMatch _matchAction;
 
-    public SetActiveMatch()
+    public void Execute()
     {
-        _matchAction = new ActiveMatchInMemory();
-    }
-
-    public async void Execute(int id)
-    {
-        
         _matchAction.Match = new Match();
-        _matchAction.Match.idMatch = id;
-    }
-
-    public void RemoveActiveMatch()
-    {
-        _matchAction.Match = null;
     }
 }
+
+public interface ICreateActiveMatch
+{
+    public void Execute();
+}
+
 
 /* SKYNET 0.1
 public class SetBotInMatchAction

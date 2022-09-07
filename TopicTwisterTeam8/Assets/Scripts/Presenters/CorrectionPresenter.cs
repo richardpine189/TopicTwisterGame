@@ -24,6 +24,9 @@ class CorrectionPresenter : IInitializable
     [Inject]
     private IAssignResultsUseCase _assignResults;
 
+    [Inject] private RemoveActiveMatch _remove;
+    [Inject] private ResetActiveMatch _resetActiveMatch;
+
     public CorrectionPresenter(ICorrectionView view, IGetCorrections getCorrections, IUpdateMatchUseCase updateMatch)
     {
         _view = view;
@@ -43,10 +46,13 @@ class CorrectionPresenter : IInitializable
 
             if(continuePlaying)
             {
+                _resetActiveMatch.Execute();
                 _view.LoadNextTurn();
             }
             else
             {
+                
+                _remove.Execute();
                 _view.ChangeScene();
             }
         }
@@ -61,7 +67,7 @@ class CorrectionPresenter : IInitializable
     {
         var answers = _getAnswers.Execute();
 
-        _results = await _getCorrections.GetCorrections(_getCategories.Execute(), answers, _getLetter.Execute());
+        _results = await _getCorrections.GetCorrections(_getCategories.Execute(), answers, (char)_getLetter.Execute());
 
         _assignResults.Execute(_results);
 

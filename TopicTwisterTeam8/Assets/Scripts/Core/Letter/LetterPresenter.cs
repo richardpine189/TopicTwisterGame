@@ -8,11 +8,13 @@ public class LetterPresenter : IInitializable, IDisposable
     private ISaveLetterUseCase _saveLetter;
 
     private char _currentLetter;
+    private IGetMatchLetterUseCase _matchLetterUseCase;
 
-    public LetterPresenter(ILetterView letterView, IGetLetterUseCase getLetter, ISaveLetterUseCase saveLetter)
+    public LetterPresenter(ILetterView letterView, IGetLetterUseCase getLetter, ISaveLetterUseCase saveLetter, IGetMatchLetterUseCase matchLetterUseCase)
     {
         _letterView = letterView;
         _getLetter = getLetter;
+        _matchLetterUseCase = matchLetterUseCase;
         _saveLetter = saveLetter;
         _letterView.OnAskForLetter += AskForLetter;
         _letterView.OnKeepRoundLetter += KeepLetter;
@@ -30,8 +32,12 @@ public class LetterPresenter : IInitializable, IDisposable
 
     private void AskForLetter()
     {
-        char tempLetter = _getLetter.Execute();
-        UpdateInterface(tempLetter);
+        char? tempLetter = _matchLetterUseCase.Execute();
+        if (tempLetter == null)
+            tempLetter = _getLetter.Execute();
+        
+
+        UpdateInterface((char)tempLetter);
     }
 
     private void KeepLetter()

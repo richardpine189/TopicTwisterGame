@@ -1,4 +1,4 @@
 ﻿public interface IGetMatchLetterUseCase
 {
-    char Execute();
+    char? Execute();
 }

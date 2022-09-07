@@ -15,8 +15,12 @@ namespace Assets.Scripts.Presenters
         [Inject]
         private IActiveMatch _matchActions;
 
+        [Inject]
+        private IGetMatchId _getMachId;
+
         private string _challengerName;
         private string _opponentName;
+        private int _currentRound;
         private int _matchId = -1;
         private const int ITS_NEW_MATCH= -1;
 
@@ -25,8 +29,8 @@ namespace Assets.Scripts.Presenters
             //Inicializar USERNAME
             
             _challengerName = UserDTO.PlayerName;
-            
-            //Inicializar MatchId
+
+            _matchId = _getMachId.Invoke();
                 
             RequestMatchData();
             
@@ -44,7 +48,7 @@ namespace Assets.Scripts.Presenters
     
         private async void RequestMatchData()
         {
-            if (_matchActions.Match == null)
+            if (_matchId == ITS_NEW_MATCH)
             {
                 _matchActions.Match = new Match();
                 _matchActions.Match.idMatch = ITS_NEW_MATCH;
@@ -55,27 +59,28 @@ namespace Assets.Scripts.Presenters
                 _matchActions.Match.challengerName = matchDto.challengerName;
                 _matchActions.Match.opponentName = matchDto.opponentName;
                 _matchActions.Match.currentRound = matchDto.currentRound;
+                _currentRound = matchDto.currentRound;
                 _matchActions.Match.isChallengerTurn = matchDto.isChallengerTurn;
                 _matchActions.Match.isMatchFinished = matchDto.isMatchFinished;
             }
             else
             {
-                var activematch = await _getMatch.Invoke(_matchActions.Match.idMatch);
+                var activematch = await _getMatch.Invoke(_matchId);
+                _matchActions.Match = new Match();
                 _opponentName = activematch.opponentName;
                 _matchActions.Match.challengerName = activematch.challengerName;
                 _matchActions.Match.opponentName = activematch.opponentName;
                 _matchActions.Match.currentRound = activematch.currentRound;
+                _currentRound = activematch.currentRound;
                 _matchActions.Match.currentCategories = activematch.currentCategories;
                 _matchActions.Match.currentLetter = activematch.currentLetter;
                 _matchActions.Match.roundTimeLeft = activematch.currentTime;
-                
             }
-
         }
 
         private void SelectSectionAtStart()
         {
-            if (_matchId == ITS_NEW_MATCH)
+            if (_currentRound == 0)
             {
                 _view.ShowCategoriesSection();
             }

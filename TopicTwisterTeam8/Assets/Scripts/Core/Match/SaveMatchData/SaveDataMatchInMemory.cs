@@ -1,4 +1,4 @@
-﻿class SaveDataMatchInMemory : ISaveLetterUseCase, IAssignCategoriesUseCase, IAssignAnswersUseCase, IAssignResultsUseCase
+﻿class SaveDataMatchInMemory : ISaveLetterUseCase, IAssignCategoriesUseCase, IAssignAnswersUseCase, IAssignResultsUseCase, IAssignMatchId
 {
     IActiveMatch _matchUseCase;
 
@@ -25,5 +25,10 @@
     void IAssignResultsUseCase.Execute(bool[] results)
     {
         _matchUseCase.Match.currentResults = results;
+    }
+
+    public void Execute(int matchId)
+    {
+        _matchUseCase.Match.idMatch = matchId;
     }
 }

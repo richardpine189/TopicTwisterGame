@@ -10,9 +10,9 @@ class GetDataMatchInMemory : IGetMatchCategoriesUseCase, IGetMatchLetterUseCase,
         return _activeMatch.Match.currentCategories;
     }
 
-    char IGetMatchLetterUseCase.Execute()
+    char? IGetMatchLetterUseCase.Execute()
     {
-        return (char)_activeMatch.Match.currentLetter;
+        return _activeMatch.Match.currentLetter;
     }
 
     string[] IGetMatchAnswersUseCase.Execute()
