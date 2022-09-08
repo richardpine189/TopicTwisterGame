@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Models;
-using UnityEngine;
 using Zenject;
 
 public class MatchListGetterUseCase : IGetMatchesInfoUseCase
@@ -11,10 +10,7 @@ public class MatchListGetterUseCase : IGetMatchesInfoUseCase
 
     [Inject] ILocalPlayerDataRepository _localPlayerDataRepository;
 
-    public MatchListGetterUseCase()
-    {
-        //Debug.Log("Hola MatchListUseCase");
-    }
+    public MatchListGetterUseCase() { }
 
     /*public MatchListGetterUseCase(IGetMatchesService getMatchesServiceService, ILocalPlayerDataRepository localPlayerDataRepository)
     {

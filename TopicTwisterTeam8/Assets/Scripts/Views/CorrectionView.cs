@@ -39,8 +39,6 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
 
     public void ShowCorrections(bool[] corrections)
     {
-        Debug.Log(corrections);
-
         _spiner.SetActive(false);
         
         for(int i = 0; i < 5; i++)

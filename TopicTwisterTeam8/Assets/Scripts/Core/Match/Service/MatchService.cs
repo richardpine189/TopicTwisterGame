@@ -24,7 +24,6 @@ namespace Core.Match.Service
             var response = await _client.GetAsync(_apiPath + subPath + $"/{userName}");
 
             var responseString = await response.Content.ReadAsStringAsync();
-            UnityEngine.Debug.Log(responseString);
             //var list = JsonUtility.FromJson<ListMatchDTO>(responseString);
             var list = JsonConvert.DeserializeObject<List<MatchDTO>>(responseString);
             

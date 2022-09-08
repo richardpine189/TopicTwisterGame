@@ -15,13 +15,17 @@ public class CategoriesView : MonoBehaviour, ICategoriesView
 
     public event Action<int> OnChangeCategory;
     
-    [SerializeField] private TextMeshProUGUI[] _categoriesLetterSelectionPanel;
+    [SerializeField] 
+    private TextMeshProUGUI[] _categoriesLetterSelectionPanel;
 
-    [SerializeField] private TextMeshProUGUI[] _categoriesAnsweringPanelPanel;
+    [SerializeField] 
+    private TextMeshProUGUI[] _categoriesAnsweringPanel;
 
-    [SerializeField] private TextMeshProUGUI[] _categoriesCorrectionPanel;
+    [SerializeField] 
+    private TextMeshProUGUI[] _categoriesCorrectionPanel;
 
-    [SerializeField] private TextMeshProUGUI[] _categoriesEndRoundPanel;
+    [SerializeField] 
+    private TextMeshProUGUI[] _categoriesEndRoundPanel;
 
     [SerializeField]
     private GameObject _loadingSpinner;
@@ -31,6 +35,7 @@ public class CategoriesView : MonoBehaviour, ICategoriesView
     private void OnEnable()
     {
         _header.SetActive(true);
+        CleanView();
         OnUpdateCategoriesField?.Invoke(StandardCategoriesAmount);
     }
 
@@ -39,10 +44,11 @@ public class CategoriesView : MonoBehaviour, ICategoriesView
         for (int i = 0; i < StandardCategoriesAmount; i++)
         {
             _categoriesLetterSelectionPanel[i].text =
-             _categoriesAnsweringPanelPanel[i].text =
+                  _categoriesAnsweringPanel[i].text =
                  _categoriesCorrectionPanel[i].text =
                    _categoriesEndRoundPanel[i].text =
                                     categoriesName[i];
+            Debug.Log("nombre: " + i);
         }
 
         _loadingSpinner.SetActive(false);
@@ -50,6 +56,7 @@ public class CategoriesView : MonoBehaviour, ICategoriesView
         foreach(var categoryText in _categoriesLetterSelectionPanel)
         {
             categoryText.gameObject.SetActive(true);
+            Debug.Log("true");
         }
     }
 
@@ -57,7 +64,7 @@ public class CategoriesView : MonoBehaviour, ICategoriesView
     {
 
         _categoriesLetterSelectionPanel[index].text =
-         _categoriesAnsweringPanelPanel[index].text =
+              _categoriesAnsweringPanel[index].text =
              _categoriesCorrectionPanel[index].text =
                _categoriesEndRoundPanel[index].text =
                 categoryName;
@@ -75,41 +82,13 @@ public class CategoriesView : MonoBehaviour, ICategoriesView
 
         OnChangeCategory?.Invoke(tempIndex);
     }
+
+    void CleanView()
+    {
+        _loadingSpinner.SetActive(true);
+        foreach (var categoryText in _categoriesLetterSelectionPanel)
+        {
+            categoryText.gameObject.SetActive(false);
+        }
+    }
 }
-
-//public class CategoriesPresenter
-//{
-//    private ICategoriesView _categoriesView;
-//    private ICategoriesGetter _categoriesGetter;
-    
-//    CategoriesPresenter(ICategoriesView categoriesView)
-//    {
-//        _categoriesView = categoriesView;
-//        _categoriesGetter = new CategoriesGetter(new CategoryService());
-//        SuscribeEvents();
-//    }
-
-//    void SuscribeEvents()
-//    {
-//        _categoriesView.OnUpdateCategoriesField += ObtainCategories;
-//        _categoriesView.OnChangeCategory += ObtainSingleCategory;
-//    }
-
-//    private async void ObtainCategories(int amount = 5)
-//    {
-//        string[] tempCategoriesName = await _categoriesGetter.GetCategories(amount);
-//        _categoriesView.UpdateFields(tempCategoriesName);
-//    }
-
-//    private async void ObtainSingleCategory(int index)
-//    {
-//        string[] tempCategory = await _categoriesGetter.GetCategories(1);
-//        _categoriesView.UpdateSingleField(tempCategory[0], index);
-//    }
-
-//    ~CategoriesPresenter()
-//    {
-//        _categoriesView.OnUpdateCategoriesField -= ObtainCategories;
-//        _categoriesView.OnChangeCategory -= ObtainCategories;
-//    }
-//}

@@ -533,7 +533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _usernameInputField: {fileID: 1129362157}
   _errorPanel: {fileID: 1548803138}
-  _button: {fileID: 1534911247}
+  _button: {fileID: 2035848899}
   _spiner: {fileID: 451357281}
 --- !u!1 &370913402
 GameObject:

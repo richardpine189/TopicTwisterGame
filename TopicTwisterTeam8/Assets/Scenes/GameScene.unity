@@ -6148,7 +6148,6 @@ MonoBehaviour:
   _countdownText: {fileID: 1336121993}
   _getLetterButton: {fileID: 563836765}
   _nextPanelButton: {fileID: 1368324949}
-  _nextPanel: {fileID: 0}
 --- !u!114 &593648992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6168,7 +6167,7 @@ MonoBehaviour:
   - {fileID: 312543335}
   - {fileID: 1576878433}
   - {fileID: 1445448608}
-  _categoriesAnsweringPanelPanel:
+  _categoriesAnsweringPanel:
   - {fileID: 1092814636}
   - {fileID: 209686384}
   - {fileID: 1578311621}
@@ -14958,7 +14957,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -940.20416}
+  m_AnchoredPosition: {x: 400, y: -940.5197}
   m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1862381611

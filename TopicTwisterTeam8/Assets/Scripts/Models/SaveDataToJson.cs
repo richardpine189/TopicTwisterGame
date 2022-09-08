@@ -36,7 +36,6 @@ public static class SaveDataToJson
                 }
 
                 File.WriteAllText(directoryPath + filePath, data);
-                //Debug.Log(receiver + " saved");
             }
             else
             {

@@ -39,6 +39,7 @@ public class CategoryService : ICategoryService
 
         var query = QueryHelpers.AddQueryString(_baseURL + "/isValid", queryParameters);
         */
+
         string finalURL = _baseURL + "/isValid?";
         for (int i = 0; i < answers.Length; i++)
         {

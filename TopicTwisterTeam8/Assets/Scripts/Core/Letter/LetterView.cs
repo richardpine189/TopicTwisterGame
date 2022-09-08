@@ -22,9 +22,6 @@ public class LetterView : MonoBehaviour, ILetterView
     [SerializeField]
     private GameObject _nextPanelButton;
 
-    [SerializeField]
-    private GameObject _nextPanel;
-
     public void SetLetter(char letter)
     {
         _letterText.text = letter.ToString();

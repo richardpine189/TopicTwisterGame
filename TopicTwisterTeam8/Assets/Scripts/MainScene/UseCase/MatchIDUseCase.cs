@@ -7,8 +7,9 @@ using Zenject;
 
         public MatchIDUseCase()
         {
-            UnityEngine.Debug.Log("Hola Mundo");
+        UnityEngine.Debug.Log("MatchIDUseCase constructor");
         }
+
         public void Invoke(int matchID)
         {
             _matchIdRepository.SaveMatchId(matchID);
