@@ -1,20 +1,20 @@
 ﻿using System;
-using Zenject;
-public class LoginPresenter : IInitializable, IDisposable
+using UnityEngine;
+public class LoginPresenter 
     {
-        [Inject] private ILoginView _view;
-        [Inject] private ILoginGetUserAction _loginAction;
-
-        public void Initialize()
+        private ILoginView _view;
+        private ILoginGetUserAction _loginAction;
+        
+        public LoginPresenter(ILoginView loginView, ILoginGetUserAction loginAction)
         {
+            _view = loginView;
+            _loginAction = loginAction;
             _view.OnLoginTrigger += LogIn;
-
         }
 
-        public void Dispose()
+        ~LoginPresenter()
         {
             _view.OnLoginTrigger -= LogIn;
-
         }
 
         private async void LogIn(string username)

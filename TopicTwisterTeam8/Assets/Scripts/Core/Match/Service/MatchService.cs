@@ -4,7 +4,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Core.Match.Interface;
 using Models;
-using UnityEngine;
 using Unity.Plastic.Newtonsoft.Json;
 
 namespace Core.Match.Service
