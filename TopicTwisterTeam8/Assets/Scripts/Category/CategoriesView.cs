@@ -48,7 +48,6 @@ public class CategoriesView : MonoBehaviour, ICategoriesView
                  _categoriesCorrectionPanel[i].text =
                    _categoriesEndRoundPanel[i].text =
                                     categoriesName[i];
-            Debug.Log("nombre: " + i);
         }
 
         _loadingSpinner.SetActive(false);
@@ -56,7 +55,6 @@ public class CategoriesView : MonoBehaviour, ICategoriesView
         foreach(var categoryText in _categoriesLetterSelectionPanel)
         {
             categoryText.gameObject.SetActive(true);
-            Debug.Log("true");
         }
     }
 

@@ -217,8 +217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d70bd9ea977f246bd2689423b8a13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _letterView: {fileID: 593648991}
   _panelTitleText: {fileID: 275636326}
   _roundNumber: {fileID: 785361847}
+  _roundLetter: {fileID: 1399981156}
   _challengerName: {fileID: 141473244}
   _oponentName: {fileID: 1800849395}
   _challengerRoundResult:

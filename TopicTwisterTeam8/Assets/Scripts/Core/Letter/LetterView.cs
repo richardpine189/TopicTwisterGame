@@ -8,6 +8,8 @@ public class LetterView : MonoBehaviour, ILetterView
 {
     public Action OnAskForLetter { get; set; }
 
+    public Action<char> UpdateLetter { get; set; }
+
     public Action OnKeepRoundLetter { get; set; }
     
     [SerializeField]
@@ -26,7 +28,7 @@ public class LetterView : MonoBehaviour, ILetterView
     {
         _letterText.text = letter.ToString();
         _letterText.gameObject.SetActive(true);
-        // Set Letter in Header (presenter)
+        UpdateLetter?.Invoke(letter);
     }
 
     public void RequestLetter()
@@ -38,7 +40,6 @@ public class LetterView : MonoBehaviour, ILetterView
     public void KeepLetter()
     {
         OnKeepRoundLetter?.Invoke();
-
     }
 
     private IEnumerator CoutdownAnimation()
@@ -59,6 +60,8 @@ public class LetterView : MonoBehaviour, ILetterView
 public interface ILetterView
 {
     Action OnAskForLetter { get; set; }
+
+    Action<char> UpdateLetter { get; set; }
 
     Action OnKeepRoundLetter { get; set; }
 

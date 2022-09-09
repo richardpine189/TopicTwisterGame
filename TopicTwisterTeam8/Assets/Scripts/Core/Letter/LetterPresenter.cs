@@ -34,8 +34,9 @@ public class LetterPresenter : IInitializable, IDisposable
     {
         char? tempLetter = _matchLetterUseCase.Execute();
         if (tempLetter == null)
+        {
             tempLetter = _getLetter.Execute();
-        
+        }
 
         UpdateInterface((char)tempLetter);
     }
