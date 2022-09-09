@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using Models;
-using Zenject;
 
-public class MatchListPresenter : IInitializable
+public class MatchListPresenter
 {
     private ISaveMatchId _saveMatchId;
     
@@ -15,9 +14,10 @@ public class MatchListPresenter : IInitializable
         _saveMatchId = saveMatchId;
         _view = view;
         _matchInfoUseCase = matchInfoUseCase;
+        InitializeOnGoingMatch();
     }
 
-    public async void Initialize()
+    private async void InitializeOnGoingMatch()
     {
         List<MatchDTO> matches = await _matchInfoUseCase.Execute();
 

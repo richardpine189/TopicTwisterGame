@@ -1,33 +1,22 @@
 using MainScene.MatchList.Repository;
-using Zenject;
 
-    public class MatchIDUseCase : ISaveMatchId, IGetMatchId
+public class MatchIDUseCase : ISaveMatchId, IGetMatchId
+{
+    private IMatchIdRepository _matchIdRepository;
+
+    public MatchIDUseCase(IMatchIdRepository matchIdRepository)
     {
-        [Inject] private IMatchIdRepository _matchIdRepository;
-
-        public MatchIDUseCase()
-        {
-        UnityEngine.Debug.Log("MatchIDUseCase constructor");
-        }
-
-        public void Invoke(int matchID)
-        {
-            _matchIdRepository.SaveMatchId(matchID);
-        }
-
-        public int Invoke()
-        {
-            return _matchIdRepository.GetMatchId();
-        }
+        _matchIdRepository = matchIdRepository;
     }
 
-    public interface IGetMatchId
+    public void Invoke(int matchID)
     {
-        public int Invoke();
+        _matchIdRepository.SaveMatchId(matchID);
     }
 
-    public interface ISaveMatchId
+    public int Invoke()
     {
-        
-        public void Invoke(int matchID);
+        return _matchIdRepository.GetMatchId();
     }
+}
+

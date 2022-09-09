@@ -1,18 +1,19 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NewGameView : MonoBehaviour, INewGameView
 {
-    [SerializeField]
-    private Button newGameButton;
     public event Action OnNewGameButtonClick;
 
-    void Start()
+    public void CreateNewMathButton()
     {
-        newGameButton.onClick.AddListener(OnNewGameButtonClick.Invoke);
+        OnNewGameButtonClick?.Invoke();
+    }
+    public void LoadGameScene()
+    {
+        SceneManager.LoadScene("GameScene");
     }
 }
 

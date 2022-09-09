@@ -14,10 +14,11 @@ public class MatchListInstaller : MonoInstaller
         Container.BindInterfacesTo<MatchService>().AsSingle().WithArguments(_routeAPI.path).NonLazy();
         Container.Bind<IMatchListView>().To<MatchListView>().FromInstance(_matchListView).NonLazy();
         Container.Bind<IGetMatchesInfoUseCase>().To<MatchListGetterUseCase>().AsTransient().NonLazy();
-        Container.BindInterfacesTo<MatchListPresenter>().AsTransient().Lazy();
         Container.Bind<IMatchIdRepository>().To<PlayerPrefMatchIdRepository>().AsTransient().NonLazy();
-        Container.BindInterfacesTo<MatchIDUseCase>().AsSingle();
+        Container.BindInterfacesTo<MatchIDUseCase>().AsSingle().NonLazy();
         Container.Bind<INewGameView>().To<NewGameView>().FromInstance(_newGameView).NonLazy();
-        Container.BindInterfacesTo<NewGamePresenter>().AsTransient().Lazy();
+        
+        Container.Instantiate<MatchListPresenter>();
+        Container.Instantiate<NewGamePresenter>();
     }
 }

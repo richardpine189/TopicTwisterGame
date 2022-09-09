@@ -53,7 +53,7 @@ namespace Core.Match.Service
             return deserializeMatchDto;
         }
 
-        public async Task<bool> UpdateMatch(global::Match match)
+        public async Task<bool> UpdateMatch(global::Match match)  // GLOBAL MATCH
         {
             RoundDTO values = new RoundDTO();
 

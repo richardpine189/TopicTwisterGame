@@ -1,32 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine.SceneManagement;
-using Zenject;
-
-public class NewGamePresenter: IInitializable, IDisposable
+﻿public class NewGamePresenter
 {
-    [Inject] private INewGameView _view;
-    [Inject] private ISaveMatchId _saveMatchId;
-
-
-    public void Initialize()
+    private INewGameView _view;
+    private ISaveMatchId _saveMatchId;
+    private const int ITS_NEW_MATCH = -1;
+    public NewGamePresenter(INewGameView view, ISaveMatchId saveMatchId)
     {
+        _view = view;
+        _saveMatchId = saveMatchId;
         _view.OnNewGameButtonClick += LoadGameLoopScene;
     }
 
-    public void Dispose()
+    ~NewGamePresenter()
     {
         _view.OnNewGameButtonClick -= LoadGameLoopScene;
     }
 
     private void LoadGameLoopScene()
     {
-        _saveMatchId.Invoke(-1);
-        SceneManager.LoadScene("GameScene");
+        _saveMatchId.Invoke(ITS_NEW_MATCH);
+        _view.LoadGameScene();
     }
-
-    
 }

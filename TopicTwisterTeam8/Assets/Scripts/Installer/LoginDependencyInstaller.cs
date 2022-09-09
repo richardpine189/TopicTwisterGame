@@ -12,7 +12,6 @@ public class LoginDependencyInstaller : MonoInstaller
         Container.Bind<ILoginGetUserAction>().To<LoginAction>().AsTransient().NonLazy();
         Container.Bind<ILoginView>().To<LoginView>().FromInstance(_loginView).NonLazy();
         Container.Bind<ILoginService>().To<LoginService>().AsTransient().WithArguments(_config.path).NonLazy();
-        //Container.BindInterfacesTo<LoginPresenter>().AsTransient().Lazy();
         Container.Instantiate<LoginPresenter>();
     }
 }

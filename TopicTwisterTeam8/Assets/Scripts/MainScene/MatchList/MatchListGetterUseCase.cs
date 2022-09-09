@@ -6,21 +6,19 @@ using Zenject;
 
 public class MatchListGetterUseCase : IGetMatchesInfoUseCase
 {
-    [Inject] IGetMatchesService _getMatchesServiceService;
+    IGetMatchesService _getMatchesService;
 
-    [Inject] ILocalPlayerDataRepository _localPlayerDataRepository;
+    ILocalPlayerDataRepository _localPlayerDataRepository;
 
-    public MatchListGetterUseCase() { }
-
-    /*public MatchListGetterUseCase(IGetMatchesService getMatchesServiceService, ILocalPlayerDataRepository localPlayerDataRepository)
+    public MatchListGetterUseCase(IGetMatchesService getMatchesService,
+        ILocalPlayerDataRepository localPlayerDataRepository)
     {
-        _getMatchesServiceService = getMatchesServiceService;
+        _getMatchesService = getMatchesService;
         _localPlayerDataRepository = localPlayerDataRepository;
     }
-    */
     public async Task<List<MatchDTO>> Execute()
     {
-        
-        return await _getMatchesServiceService.GetMatchesDTOByName(_localPlayerDataRepository.GetData().name);
+        var playerName =_localPlayerDataRepository.GetData().name;
+        return await _getMatchesService.GetMatchesDTOByName(playerName);
     }
 }

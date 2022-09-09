@@ -1,11 +1,10 @@
 ﻿using System.Threading.Tasks;
 using Unity.Plastic.Newtonsoft.Json;
 using UnityEngine;
-using Zenject;
+
 
 public class LoginAction : ILoginGetUserAction
 {
-    //[Inject]
     private ILoginService _loginService;
 
     private ILocalPlayerDataRepository _localPlayerDataRepository;
@@ -38,7 +37,7 @@ public interface ILocalPlayerDataRepository
 
     UserDTO GetData();
 }
-
+//Sacar
 public class PlayerPrefsPlayerDataRepository : ILocalPlayerDataRepository
 {
     public UserDTO GetData()

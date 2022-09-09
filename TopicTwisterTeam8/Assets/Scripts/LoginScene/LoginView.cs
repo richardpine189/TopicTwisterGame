@@ -38,7 +38,7 @@ public class LoginView : MonoBehaviour, ILoginView
 
     public void LoadMainScene()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("MainScene"); //HardCoding
     }
 }
 
