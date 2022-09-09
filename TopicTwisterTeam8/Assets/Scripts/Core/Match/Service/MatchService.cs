@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Core.Match.Interface;
 using Models;
+using Models.DTO;
 using Unity.Plastic.Newtonsoft.Json;
 
 namespace Core.Match.Service
@@ -53,7 +54,7 @@ namespace Core.Match.Service
             return deserializeMatchDto;
         }
 
-        public async Task<bool> UpdateMatch(global::Match match)  // GLOBAL MATCH
+        public async Task<bool> UpdateMatch(Models.Match match)  // Ver despues de assebly
         {
             RoundDTO values = new RoundDTO();
 

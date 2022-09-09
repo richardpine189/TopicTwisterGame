@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using Models;
+using Zenject;
 
 public class CreateActiveMatch : ICreateActiveMatch
 {

@@ -7,10 +7,10 @@ public class Installer
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     public static void Init()
     {
-        IAnswersRepository _answerRepository;
+        //IAnswersRepository _answerRepository;
         
-        ServiceLocator.Instance.RegisterService<IMatchRepository>(new JsonMatchServiceRepository());
+        //ServiceLocator.Instance.RegisterService<IMatchRepository>(new JsonMatchServiceRepository());
 
-        ServiceLocator.Instance.RegisterService<ICurrentMatchService>(new SingletonCurrentMatchService());
+        //ServiceLocator.Instance.RegisterService<ICurrentMatchService>(new SingletonCurrentMatchService());
     }
 }

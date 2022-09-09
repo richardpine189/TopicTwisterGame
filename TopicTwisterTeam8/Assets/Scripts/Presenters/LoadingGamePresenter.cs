@@ -1,6 +1,7 @@
 ﻿using System;
 using Zenject;
 using Core.Match.Interface;
+using Models;
 
 namespace Assets.Scripts.Presenters
 {

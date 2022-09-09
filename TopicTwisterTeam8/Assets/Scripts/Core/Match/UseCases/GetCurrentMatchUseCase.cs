@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Core.Match.Interface;
 using Core.Match.Service;
 using Models;
+using Models.DTO;
 
 namespace Core.Match
 {

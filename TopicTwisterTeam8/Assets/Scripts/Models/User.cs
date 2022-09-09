@@ -1,19 +1,22 @@
-﻿public class User
+﻿namespace Models
 {
-    private int id;
-    private string name;
-
-    public string UserName
+    public class User
     {
-        get
+        private int id;
+        private string name;
+
+        public string UserName
         {
-            return name;
+            get
+            {
+                return name;
+            }
         }
-    }
 
-    public User(int userId, string userName)
-    {
-        id = userId;
-        name = userName;
+        public User(int userId, string userName)
+        {
+            id = userId;
+            name = userName;
+        }
     }
 }

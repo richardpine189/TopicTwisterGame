@@ -1,4 +1,4 @@
-namespace Models
+namespace Models.DTO
 {
     public class ActiveMatchDTO
     {
