@@ -3,12 +3,12 @@ using UnityEngine;
 public class LoginPresenter 
     {
         private ILoginView _view;
-        private ILoginGetUserAction _loginAction;
+        private ILoginGetUserUseCase _loginUseCase;
         
-        public LoginPresenter(ILoginView loginView, ILoginGetUserAction loginAction)
+        public LoginPresenter(ILoginView loginView, ILoginGetUserUseCase loginUseCase)
         {
             _view = loginView;
-            _loginAction = loginAction;
+            _loginUseCase = loginUseCase;
             _view.OnLoginTrigger += LogIn;
         }
 
@@ -23,7 +23,7 @@ public class LoginPresenter
             {
                 try
                 {
-                    await _loginAction.Invoke(username);
+                    await _loginUseCase.Invoke(username);
                     _view.LoadMainScene();
                 }
                 catch (Exception e)

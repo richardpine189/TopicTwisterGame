@@ -13,7 +13,7 @@ using UnityEngine;
         public void BotInstaller(BootConfiguration bootDificulty)
         {
             _difficulty = bootDificulty.Difficulty;
-            _botUserData = new User(666, "ImBot");
+            _botUserData = new User(666, "Skynet");
         }
 
         public void BotAnswer()

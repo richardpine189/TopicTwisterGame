@@ -3,7 +3,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Core.Match.Interface;
-using Models;
 using Models.DTO;
 using Unity.Plastic.Newtonsoft.Json;
 

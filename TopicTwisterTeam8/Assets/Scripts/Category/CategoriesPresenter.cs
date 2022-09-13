@@ -1,7 +1,7 @@
 ﻿using System;
 using Zenject;
 
-public class CategoriesPresenter : IInitializable, IDisposable
+public class CategoriesPresenter
 {
     [Inject]
     private IMatchHas _matchHas;
@@ -19,15 +19,7 @@ public class CategoriesPresenter : IInitializable, IDisposable
         _getMatchCategories = getMatchCategories;
         _view.OnUpdateCategoriesField += GetCategories;
     }
-
-    public void Dispose()
-    {
-    }
-
-    public void Initialize()
-    {
-    }
-
+    
     private async void GetCategories(int categoriesAmount)
     {
         string[] categories;

@@ -1,7 +1,7 @@
 ﻿using System;
 using Zenject;
 
-public class LetterPresenter : IInitializable, IDisposable
+public class LetterPresenter
 {
     private ILetterView _letterView;
     private IGetLetterUseCase _getLetter;
@@ -16,6 +16,7 @@ public class LetterPresenter : IInitializable, IDisposable
         _getLetter = getLetter;
         _matchLetterUseCase = matchLetterUseCase;
         _saveLetter = saveLetter;
+        UnityEngine.Debug.Log("Im LetterPresenter");
         _letterView.OnAskForLetter += AskForLetter;
         _letterView.OnKeepRoundLetter += KeepLetter;
     }
@@ -25,11 +26,7 @@ public class LetterPresenter : IInitializable, IDisposable
         _letterView.OnAskForLetter -= AskForLetter;
         _letterView.OnKeepRoundLetter -= KeepLetter;
     }
-
-    public void Dispose() { }
-
-    public void Initialize() { }
-
+    
     private void AskForLetter()
     {
         char? tempLetter = _matchLetterUseCase.Execute();
@@ -37,7 +34,6 @@ public class LetterPresenter : IInitializable, IDisposable
         {
             tempLetter = _getLetter.Execute();
         }
-
         UpdateInterface((char)tempLetter);
     }
 
@@ -52,5 +48,3 @@ public class LetterPresenter : IInitializable, IDisposable
         _letterView.SetLetter(currentLetter);
     }
 }
-
-

@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Assets.Scripts.Presenters
 {
-    public class RoundTimerPresenter : IInitializable, IDisposable
+    public class RoundTimerPresenter
     {
         IRoundTimerUseCase _roundActions;
 
@@ -17,6 +17,12 @@ namespace Assets.Scripts.Presenters
             _view.OnTimerStop += SendTimeToRound;
         }
 
+        ~RoundTimerPresenter()
+        {
+            _view.OnTimerStart -= SetInitialTime;
+            _view.OnTimerStop -= SendTimeToRound;
+        }
+
         private void SetInitialTime()
         {
             int timeToAnswer = _roundActions.GetTimeToAnswer();
@@ -26,17 +32,6 @@ namespace Assets.Scripts.Presenters
         private void SendTimeToRound(int timeLeft)
         {
             _roundActions.SaveTimeToRound(timeLeft);
-        }
-
-        public void Initialize()
-        {
-            //throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            _view.OnTimerStart -= SetInitialTime;
-            _view.OnTimerStop -= SendTimeToRound;
         }
     }
 }

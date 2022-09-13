@@ -1,14 +1,15 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class LetterView : MonoBehaviour, ILetterView
 {
     public Action OnAskForLetter { get; set; }
 
-    public Action<char> UpdateLetter { get; set; }
+    public Action UpdateLetter { get; set; }
 
     public Action OnKeepRoundLetter { get; set; }
     
@@ -22,50 +23,70 @@ public class LetterView : MonoBehaviour, ILetterView
     private GameObject _getLetterButton;
 
     [SerializeField]
-    private GameObject _nextPanelButton;
+    private GameObject _reSpinButton;
 
+    [SerializeField]
+    private GameObject _nextPanel;
+
+    private Color _spinButtonColor;
     public void SetLetter(char letter)
     {
         _letterText.text = letter.ToString();
-        _letterText.gameObject.SetActive(true);
-        UpdateLetter?.Invoke(letter);
+        //UpdateLetter?.Invoke();
     }
 
     public void RequestLetter()
     {
         OnAskForLetter?.Invoke();
-        StartCoroutine(CoutdownAnimation());
+        StartAnimation();
     }
 
-    public void KeepLetter()
+    public void ReSpin()
     {
-        OnKeepRoundLetter?.Invoke();
+        _reSpinButton.SetActive(false);
+        _getLetterButton.SetActive(true);
+        _countdownText.gameObject.SetActive(false);
+        _getLetterButton.GetComponent<Image>().color = _spinButtonColor;
+        StopCoroutine(CountdownAnimation());
+        Debug.Log("i stoped coroutine");
+        RequestLetter();
     }
-
-    private IEnumerator CoutdownAnimation()
+    public void StartAnimation()
+    {
+        
+        //Desactivar button component
+        Sequence buttonSpinAnimation = DOTween.Sequence();
+        buttonSpinAnimation.Append(_getLetterButton.transform.DOScaleX(-1, 0.3f));
+        buttonSpinAnimation.Append(_getLetterButton.transform.DOScaleX(1, 0.3f));
+        buttonSpinAnimation.SetLoops(3).OnComplete(() =>
+            {
+                _spinButtonColor = _getLetterButton.GetComponent<Image>().color;
+                _getLetterButton.GetComponent<Image>().DOFade(0, 0.5f).OnComplete(() =>
+                {
+                    _getLetterButton.SetActive(false);
+                    //_reSpinButton.SetActive(true);
+                    _letterText.gameObject.SetActive(true);
+                    StartCoroutine(CountdownAnimation());
+                });
+            }
+        );
+        
+    }
+    private IEnumerator CountdownAnimation()
     {
         _countdownText.gameObject.SetActive(true);
 
-        for (int i = 3; i > 0; i--)
+        for (int i = 4; i > 0; i--)
         {
             _countdownText.text = i.ToString();
             yield return new WaitForSeconds(1);
         }
-
-        _nextPanelButton.SetActive(true);
-        _getLetterButton.SetActive(false);
+        Debug.Log("Inside coroutine");
+        OnKeepRoundLetter?.Invoke();
+        UpdateLetter?.Invoke();
+        _nextPanel.SetActive(true);
+        gameObject.SetActive(false);
     }
 }
 
-public interface ILetterView
-{
-    Action OnAskForLetter { get; set; }
 
-    Action<char> UpdateLetter { get; set; }
-
-    Action OnKeepRoundLetter { get; set; }
-
-    public void SetLetter(char letter);
-
-    public void RequestLetter();
-}

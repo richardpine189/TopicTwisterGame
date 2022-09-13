@@ -30,6 +30,9 @@ public class MatchDependencyInstaller : MonoInstaller
     private CorrectionView _correctionView;
 
     [SerializeField]
+    private MatchHeaderView _matchHeaderView;
+
+    [SerializeField]
     private RouteConfig _categoriesRouteConfig;
 
     public override void InstallBindings()
@@ -49,26 +52,35 @@ public class MatchDependencyInstaller : MonoInstaller
         Container.Bind<ILoadingGameView>().To<LoadingGameView>().FromInstance(_loadingView).NonLazy();
         Container.Bind<IGetCurrentMatchUseCase>().To<GetCurrentMatchUseCase>().AsTransient().WithArguments(matchService).NonLazy();
         Container.Bind<IGetMatchId>().To<MatchIDUseCase>().AsTransient().NonLazy();
-        Container.BindInterfacesTo<LoadingGamePresenter>().AsTransient().Lazy();
-
+        //Container.Bind<LoadingGamePresenter>().AsTransient().Lazy();
+        Container.Instantiate<LoadingGamePresenter>();
+        
         Container.Bind<ILetterView>().To<LetterView>().FromInstance(_letterView).NonLazy();
         Container.Bind<IGetLetterUseCase>().To<GetRandomLetterUseCase>().AsTransient();
-        Container.BindInterfacesTo<LetterPresenter>().AsTransient().Lazy();
-
+        //Container.Bind<LetterPresenter>().AsTransient().Lazy();
+        Container.Instantiate<LetterPresenter>();
+        
         Container.Bind<ICategoriesView>().To<CategoriesView>().FromInstance(_categoriesView).NonLazy();
         Container.Bind<ICategoriesGetter>().To<GetCategoriesUseCase>().AsTransient().NonLazy();
-        Container.BindInterfacesTo<CategoriesPresenter>().AsTransient().Lazy();
-
+        //Container.Bind<CategoriesPresenter>().AsTransient().Lazy();
+        Container.Instantiate<CategoriesPresenter>();
+        
         Container.Bind<IRoundTimerView>().To<RoundTimerView>().FromInstance(_roundTimerView).NonLazy();
         Container.Bind<IRoundTimerUseCase>().To<RoundTimerUseCase>().AsTransient().NonLazy();
-        Container.BindInterfacesTo<RoundTimerPresenter>().AsTransient().Lazy();
-
+        //Container.Bind<RoundTimerPresenter>().AsTransient().Lazy();
+        Container.Instantiate<RoundTimerPresenter>();
+        
         Container.Bind<IAnsweringView>().To<AnsweringView>().FromInstance(_answeringView).NonLazy();
-        Container.BindInterfacesTo<AnswersPresenter>().AsTransient().Lazy();
-
+        //Container.Bind<AnswersPresenter>().AsTransient().Lazy();
+        Container.Instantiate<AnswersPresenter>();
+        
         Container.Bind<ICorrectionView>().To<CorrectionView>().FromInstance(_correctionView).NonLazy();
         Container.Bind<IGetCorrections>().To<CorrectionGetter>().AsTransient();
         Container.Bind<IUpdateMatchUseCase>().To<UpdateMatchUseCase>().AsTransient().WithArguments(matchService);
-        Container.BindInterfacesTo<CorrectionPresenter>().AsTransient().Lazy();
+        //Container.Bind<CorrectionPresenter>().AsTransient().Lazy();
+        Container.Instantiate<CorrectionPresenter>();
+        
+        Container.Bind<IMatchHeaderView>().To<MatchHeaderView>().FromInstance(_matchHeaderView).NonLazy();
+        Container.Instantiate<MatchHeaderPresenter>();
     }
 }
