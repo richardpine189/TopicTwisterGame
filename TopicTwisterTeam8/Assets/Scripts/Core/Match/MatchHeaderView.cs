@@ -8,8 +8,8 @@ namespace Core.Match
 {
     public class MatchHeaderView : MonoBehaviour, IMatchHeaderView
     {
-        [SerializeField] private LetterView _letterView;
         [SerializeField] private GameObject _roundLetter;
+
         [Header("PanelTitle")] [SerializeField]
         private TextMeshProUGUI _panelTitleText;
 
@@ -32,7 +32,6 @@ namespace Core.Match
 
         [SerializeField] 
         private Sprite _crossSprite;
-
         
         public void SetPanelTitleText(string text)
         {
@@ -75,8 +74,6 @@ namespace Core.Match
             }
         }
 
-        
-
         public void SetInUIRoundNumber(string roundNumber)
         {
             _roundNumber.text = "Round" + roundNumber;
@@ -86,6 +83,11 @@ namespace Core.Match
         {
             _roundLetter.GetComponentInChildren<TextMeshProUGUI>().text = letter;
             _roundLetter.SetActive(true);
+        }
+
+        public void HideLetter()
+        {
+            _roundLetter.SetActive(false);
         }
     }
 }

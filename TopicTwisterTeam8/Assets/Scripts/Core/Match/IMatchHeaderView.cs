@@ -9,6 +9,6 @@ namespace Core.Match
         public void SetInUIPlayerRoundResult(bool isChallenger, RoundResult[] playerRoundStatus);
         public void SetInUIRoundNumber(string text);
         public void SetRoundLetter(string letter);
-
+        public void HideLetter();
     }
 }

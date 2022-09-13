@@ -8,6 +8,8 @@ public interface ILetterView
 
     Action OnKeepRoundLetter { get; set; }
 
+    event Action OnActiveLetterPanel;
+
     public void SetLetter(char letter);
 
     public void RequestLetter();

@@ -12,6 +12,8 @@ public class LetterView : MonoBehaviour, ILetterView
     public Action UpdateLetter { get; set; }
 
     public Action OnKeepRoundLetter { get; set; }
+
+    public event Action OnActiveLetterPanel;
     
     [SerializeField]
     private TextMeshProUGUI _letterText;
@@ -29,6 +31,12 @@ public class LetterView : MonoBehaviour, ILetterView
     private GameObject _nextPanel;
 
     private Color _spinButtonColor;
+
+    void OnEnable()
+    {
+        OnActiveLetterPanel?.Invoke();
+    }
+
     public void SetLetter(char letter)
     {
         _letterText.text = letter.ToString();
@@ -43,17 +51,14 @@ public class LetterView : MonoBehaviour, ILetterView
 
     public void ReSpin()
     {
-        _reSpinButton.SetActive(false);
-        _getLetterButton.SetActive(true);
-        _countdownText.gameObject.SetActive(false);
-        _getLetterButton.GetComponent<Image>().color = _spinButtonColor;
+        ResetButtonsStatus();
+
         StopCoroutine(CountdownAnimation());
         Debug.Log("i stoped coroutine");
         RequestLetter();
     }
     public void StartAnimation()
     {
-        
         //Desactivar button component
         Sequence buttonSpinAnimation = DOTween.Sequence();
         buttonSpinAnimation.Append(_getLetterButton.transform.DOScaleX(-1, 0.3f));
@@ -84,8 +89,18 @@ public class LetterView : MonoBehaviour, ILetterView
         Debug.Log("Inside coroutine");
         OnKeepRoundLetter?.Invoke();
         UpdateLetter?.Invoke();
+
+        ResetButtonsStatus();
+
         _nextPanel.SetActive(true);
         gameObject.SetActive(false);
+    }
+
+    private void ResetButtonsStatus()
+    {
+        _getLetterButton.SetActive(true);
+        _countdownText.gameObject.SetActive(false);
+        _getLetterButton.GetComponent<Image>().color = _spinButtonColor;
     }
 }
 

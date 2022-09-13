@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-class GetDataMatchInMemory : IGetMatchCategoriesUseCase, IGetMatchLetterUseCase, IGetMatchAnswersUseCase, IGetMatchResultsUseCase, IGetMatchOpponentUseCase, IGetMatchRoundNumber
+class GetDataMatchInMemory : IGetMatchCategoriesUseCase, IGetMatchLetterUseCase, IGetMatchAnswersUseCase, IGetMatchResultsUseCase, IGetMatchOpponentUseCase, IGetMatchChallengerUseCase, IGetMatchRoundNumber
 {
     [Inject]
     private IActiveMatch _activeMatch;
@@ -29,6 +29,11 @@ class GetDataMatchInMemory : IGetMatchCategoriesUseCase, IGetMatchLetterUseCase,
     string IGetMatchOpponentUseCase.Execute()
     {
         return _activeMatch.Match.opponentName;
+    }
+
+    string IGetMatchChallengerUseCase.Execute()
+    {
+        return _activeMatch.Match.challengerName;
     }
 
     int IGetMatchRoundNumber.Execute()

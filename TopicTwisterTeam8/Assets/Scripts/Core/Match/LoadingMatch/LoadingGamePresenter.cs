@@ -60,7 +60,7 @@ namespace Assets.Scripts.Presenters
                 _matchUseCase.Match.idMatch = ITS_NEW_MATCH;
                 _matchUseCase.Match.challengerName = _challengerName;
                 var matchDto = await _getMatch.Invoke(_challengerName);
-                _opponentName = matchDto.opponentName;
+                _opponentName = (matchDto.opponentName == _challengerName ? matchDto.challengerName : matchDto.opponentName);
                 _matchUseCase.Match.idMatch = matchDto.idMatch;
                 _matchUseCase.Match.challengerName = matchDto.challengerName;
                 _matchUseCase.Match.opponentName = matchDto.opponentName;
@@ -73,7 +73,7 @@ namespace Assets.Scripts.Presenters
             {
                 var activematch = await _getMatch.Invoke(_matchId);
                 _matchUseCase.Match = new Match();
-                _opponentName = activematch.opponentName;
+                _opponentName = (activematch.opponentName == _challengerName ? activematch.challengerName : activematch.opponentName);
                 _matchUseCase.Match.challengerName = activematch.challengerName;
                 _matchUseCase.Match.opponentName = activematch.opponentName;
                 _matchUseCase.Match.currentRound = activematch.currentRound;

@@ -55,7 +55,6 @@ class CorrectionPresenter
             }
             else
             {
-                
                 _remove.Execute();
                 _view.ChangeScene();
             }
@@ -63,7 +62,6 @@ class CorrectionPresenter
         catch(Exception ex)
         {
             _view.ShowErrorPanel(ex.Message);
-            
         }
     }
 

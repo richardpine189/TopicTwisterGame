@@ -10,7 +10,6 @@ using UnityEngine.UI;
 
 namespace Team8.TopicTwister
 {
-    
     public class LoadingGameView : MonoBehaviour, ILoadingGameView
     {
         public event Action OnReadyForNext;
@@ -30,8 +29,6 @@ namespace Team8.TopicTwister
 
         [SerializeField]
         private GameObject _endRoundPanel;
-
-        
 
         [SerializeField] private GameObject _spiner;
         private const int ITS_NEW_MATCH = -1;
