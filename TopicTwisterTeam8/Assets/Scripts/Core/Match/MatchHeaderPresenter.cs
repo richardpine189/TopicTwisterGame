@@ -13,6 +13,8 @@ namespace Core.Match
         private string _opponentName;
 
         private const int OFFSET_ROUND_NUMBER = 1;
+        
+        //Deberian ser 3 presenters...
         public MatchHeaderPresenter(IMatchHeaderView matchHeaderView,ILetterView letterView, ILoadingGameView loadingGameView, IGetMatchOpponentUseCase getMatchOpponentName, ILocalPlayerDataRepository _localPlayerDataRepository, IGetMatchRoundNumber getRoundNumber, IGetMatchLetterUseCase getMatchLetter)
         {
             _headerView = matchHeaderView;
