@@ -6149,6 +6149,7 @@ MonoBehaviour:
   _letterText: {fileID: 1745736204}
   _countdownText: {fileID: 1336121993}
   _getLetterButton: {fileID: 563836765}
+  _reSpinButton: {fileID: 1368324949}
   _nextPanel: {fileID: 406296897}
 --- !u!114 &593648992
 MonoBehaviour:
