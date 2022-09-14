@@ -32,7 +32,7 @@ public class MatchDependencyInstaller : MonoInstaller
     private CorrectionView _correctionView;
 
     [SerializeField]
-    private EndRoundPanelView _endRoundView;
+    private EndRoundView _endRoundView;
 
     #region Header Provider
     
@@ -103,7 +103,8 @@ public class MatchDependencyInstaller : MonoInstaller
         //Container.Bind<CorrectionPresenter>().AsTransient().Lazy();
         Container.Instantiate<CorrectionPresenter>();
         
-        Container.BindInterfacesTo<EndRoundPanelView>().FromInstance(_endRoundView).NonLazy();
+        Container.Bind<IEndRoundView>().To<EndRoundView>().FromInstance(_endRoundView).NonLazy();
+        Container.Instantiate<EndRoundPresenter>();
         
         Container.Bind<IMatchHeaderView>().To<MatchHeaderView>().FromInstance(_matchHeaderView).NonLazy();
         Container.Bind<IMatchHeaderLetterView>().To<MatchHeaderLetterView>().FromInstance(_matchHeaderLetterView).NonLazy();

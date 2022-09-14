@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Core.Match.TitleHeaderView;
@@ -6,8 +7,9 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class EndRoundPanelView : MonoBehaviour, IEndRoundView
+public class EndRoundView : MonoBehaviour, IEndRoundView
 {
+    
     private const string PANEL_NAME = "FINAL DE RONDA";
     
     [SerializeField]
@@ -41,17 +43,14 @@ public class EndRoundPanelView : MonoBehaviour, IEndRoundView
     private GameObject _nextRoundButton;
 
 
-    private void Start()
-    {
-        new EndRoundPresenter(this);
-    }
-
     void OnEnable()
     {
         _nextRoundButton.GetComponent<Button>().enabled = true;
-        new EndRoundPresenter(this);
         TitleSetName.SendPanelName(PANEL_NAME);
+        OnSetRoundResults?.Invoke();
     }
+
+    public event Action OnSetRoundResults;
 
     public void ShowCategories(string[] categories)
     {

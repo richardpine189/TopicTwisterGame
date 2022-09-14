@@ -8,7 +8,7 @@ using Unity.Plastic.Newtonsoft.Json;
 
 namespace Core.Match.Service
 {
-    public class MatchService : IGetMatchService, IUpdateMatchService, IGetMatchesService
+    public class MatchService : IGetMatchService, IUpdateMatchService, IGetMatchesService, IGetRoundResultService
     {
         private readonly HttpClient _client = new HttpClient();
         private readonly string _apiPath;
@@ -95,5 +95,13 @@ namespace Core.Match.Service
             var deserializeMatchDto = JsonConvert.DeserializeObject<MatchDTO>(responseBody);
             return deserializeMatchDto;
         }
+
+        public async Task<MatchResultsDTO> GetRoundResults(int matchId)
+        {
+            //ENDPOINT
+            return new MatchResultsDTO();
+        }
     }
+
+    
 }

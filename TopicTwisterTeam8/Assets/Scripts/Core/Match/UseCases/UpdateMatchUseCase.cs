@@ -1,15 +1,16 @@
 ﻿using Core.Match.Service;
 using System.Threading.Tasks;
+using Core.Match.Interface;
 using Zenject;
 
 class UpdateMatchUseCase : IUpdateMatchUseCase
 {
-    private MatchService _matchService;
+    private IUpdateMatchService _matchService;
 
     [Inject]
     private IActiveMatch _activeMatch;
 
-    public UpdateMatchUseCase(MatchService matchService)
+    public UpdateMatchUseCase(IUpdateMatchService matchService)
     {
         _matchService = matchService;
     }
