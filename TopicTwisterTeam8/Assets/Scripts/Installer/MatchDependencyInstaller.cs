@@ -49,7 +49,7 @@ public class MatchDependencyInstaller : MonoInstaller
     private TitleHeaderView _matchHeaderTitleView;
 
     #endregion
-    
+
 
     [SerializeField]
     private RouteConfig _categoriesRouteConfig;
@@ -102,7 +102,8 @@ public class MatchDependencyInstaller : MonoInstaller
         Container.Bind<IUpdateMatchUseCase>().To<UpdateMatchUseCase>().AsTransient().WithArguments(matchService);
         //Container.Bind<CorrectionPresenter>().AsTransient().Lazy();
         Container.Instantiate<CorrectionPresenter>();
-        
+
+        Container.Bind<IGetRoundResult>().To<GetRoundResultsUseCase>().AsTransient().WithArguments(matchService);
         Container.Bind<IEndRoundView>().To<EndRoundView>().FromInstance(_endRoundView).NonLazy();
         Container.Instantiate<EndRoundPresenter>();
         

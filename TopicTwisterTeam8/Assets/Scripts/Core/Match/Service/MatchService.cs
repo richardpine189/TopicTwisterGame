@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using Core.Match.Interface;
 using Models.DTO;
 using Unity.Plastic.Newtonsoft.Json;
@@ -96,10 +98,24 @@ namespace Core.Match.Service
             return deserializeMatchDto;
         }
 
-        public async Task<MatchResultsDTO> GetRoundResults(int matchId)
+        public async Task<MatchResultsDTO> GetRoundResults(int matchId, int roundIndex)
         {
-            //ENDPOINT
-            return new MatchResultsDTO();
+            var builder = new UriBuilder(_apiPath + "/RoundResults");
+            builder.Port = 8082;
+            var query = HttpUtility.ParseQueryString(builder.Query);
+            query["matchId"] = matchId.ToString();
+            query["round"] = roundIndex.ToString();
+            builder.Query = query.ToString();
+            var response = await _client.GetAsync(builder.ToString());
+
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new HttpRequestException("There is not connection");
+            }
+
+            var responseBody = await response.Content.ReadAsStringAsync();
+            var deserializeMatchDto = JsonConvert.DeserializeObject<MatchResultsDTO>(responseBody);
+            return deserializeMatchDto;
         }
     }
 

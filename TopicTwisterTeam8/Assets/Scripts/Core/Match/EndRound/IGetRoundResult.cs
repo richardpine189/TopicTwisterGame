@@ -3,5 +3,5 @@ using Models.DTO;
 
 public interface IGetRoundResult
 {
-    Task<MatchResultsDTO> Execute(int matchId);
+    Task<MatchResultsDTO> Execute(int matchId, int roundIndex);
 }
