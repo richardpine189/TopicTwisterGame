@@ -4,12 +4,15 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using Core.Match.Service;
+using Core.Match.TitleHeaderView;
 
 public class CorrectionView : MonoBehaviour, ICorrectionView
 {
     public event Action OnEndTurn;
 
     public event Action OnGetCorrections;
+    
+    private const string PANEL_NAME = "CORRECCION";
 
     [SerializeField]
     private TMP_Text[] _answersUI;
@@ -35,6 +38,7 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
     private void OnEnable()
     {
         OnGetCorrections?.Invoke();
+        TitleSetName.SendPanelName(PANEL_NAME);
     }
 
     public void ShowCorrections(bool[] corrections)

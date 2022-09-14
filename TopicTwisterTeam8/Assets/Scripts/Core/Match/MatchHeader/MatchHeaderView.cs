@@ -8,19 +8,12 @@ namespace Core.Match
 {
     public class MatchHeaderView : MonoBehaviour, IMatchHeaderView
     {
-        [SerializeField] private GameObject _roundLetter;
-
-        [Header("PanelTitle")] [SerializeField]
-        private TextMeshProUGUI _panelTitleText;
-
+        
         [Header("Match Data")] [SerializeField]
         private TextMeshProUGUI _roundNumber;
 
-        [SerializeField] private TextMeshProUGUI _challengerName;
-
-        [SerializeField] private TextMeshProUGUI _oponentName;
-
-        [SerializeField] private Image[] _challengerRoundResult;
+        [SerializeField]
+        private Image[] _challengerRoundResult;
 
         [SerializeField]
         private Image[] _opponentRoundResult;
@@ -32,18 +25,7 @@ namespace Core.Match
 
         [SerializeField] 
         private Sprite _crossSprite;
-        
-        public void SetPanelTitleText(string text)
-        {
-            _panelTitleText.text = text;
-        }
-
-        public void SetInUIPlayerName(string challenger, string opponent)
-        {
-            _challengerName.text = challenger;
-            _oponentName.text = opponent;
-        }
-
+     
         public void SetInUIPlayerRoundResult(bool isChallenger, RoundResult[] playerRoundStatus)
         {
             Image[] playerResult;
@@ -58,7 +40,7 @@ namespace Core.Match
 
             for (int i = 0; i < playerRoundStatus.Length; i++)
             {
-                if (playerRoundStatus[i] == RoundResult.NotFinish)
+                if (playerRoundStatus[i] != RoundResult.NotFinish)
                 {
                     playerResult[i].gameObject.SetActive(true);
                 }
@@ -77,17 +59,6 @@ namespace Core.Match
         public void SetInUIRoundNumber(string roundNumber)
         {
             _roundNumber.text = "Round" + roundNumber;
-        }
-
-        public void SetRoundLetter(string letter)
-        {
-            _roundLetter.GetComponentInChildren<TextMeshProUGUI>().text = letter;
-            _roundLetter.SetActive(true);
-        }
-
-        public void HideLetter()
-        {
-            _roundLetter.SetActive(false);
         }
     }
 }

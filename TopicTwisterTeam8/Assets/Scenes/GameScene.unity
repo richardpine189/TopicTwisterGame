@@ -135,6 +135,9 @@ GameObject:
   - component: {fileID: 4070627}
   - component: {fileID: 4070626}
   - component: {fileID: 4070628}
+  - component: {fileID: 4070631}
+  - component: {fileID: 4070630}
+  - component: {fileID: 4070629}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -217,12 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d70bd9ea977f246bd2689423b8a13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _letterView: {fileID: 593648991}
-  _roundLetter: {fileID: 1399981156}
-  _panelTitleText: {fileID: 275636326}
   _roundNumber: {fileID: 785361847}
-  _challengerName: {fileID: 141473244}
-  _oponentName: {fileID: 1800849395}
   _challengerRoundResult:
   - {fileID: 40692539}
   - {fileID: 683226016}
@@ -233,6 +231,47 @@ MonoBehaviour:
   - {fileID: 53571628}
   _tickSprite: {fileID: 21300000, guid: 6ad9c64765360874a9989b22529128f2, type: 3}
   _crossSprite: {fileID: 21300000, guid: 87cf5fe695bdab448b1f24d7521c0e15, type: 3}
+--- !u!114 &4070629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4070624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8178c571f04b4d36891a297c0584553f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _panelTitleText: {fileID: 275636326}
+--- !u!114 &4070630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4070624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57e43ae1e2646169f0827f232e003a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _challengerName: {fileID: 141473244}
+  _opponentName: {fileID: 1800849395}
+--- !u!114 &4070631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4070624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be56d2316f544a186b57b1df9b2db39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _letterContainer: {fileID: 1399981156}
+  _letter: {fileID: 1313545518}
 --- !u!1 &7737795
 GameObject:
   m_ObjectHideFlags: 0
@@ -14800,7 +14839,11 @@ MonoBehaviour:
   _roundTimerView: {fileID: 6393175132309448422}
   _answeringView: {fileID: 406296902}
   _correctionView: {fileID: 1180373532238975859}
+  _endRoundView: {fileID: 797511444}
   _matchHeaderView: {fileID: 4070628}
+  _matchHeaderLetterView: {fileID: 4070631}
+  _matchHeaderPlayerNameView: {fileID: 4070630}
+  _matchHeaderTitleView: {fileID: 4070629}
   _categoriesRouteConfig: {fileID: 11400000, guid: c8d8e3763a719ed4d917af696109ba61,
     type: 2}
 --- !u!114 &1851024796

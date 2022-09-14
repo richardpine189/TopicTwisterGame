@@ -1,10 +1,13 @@
 ﻿using System;
+using Core.Match.TitleHeaderView;
 using TMPro;
 using UnityEngine;
 
 public class AnsweringView : MonoBehaviour, IAnsweringView
 {
     public event Action<string[]> OnStopClick;
+    
+    private const string PANEL_NAME = "RESPONDE!";
 
     [SerializeField]
     private TMP_InputField[] _answers;
@@ -18,6 +21,7 @@ public class AnsweringView : MonoBehaviour, IAnsweringView
         {
             _answers[i].text = "";
         }
+        TitleSetName.SendPanelName(PANEL_NAME);
     }
 
     public void SendAnswers()

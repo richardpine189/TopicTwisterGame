@@ -1,7 +1,9 @@
 using Assets.Scripts.Presenters;
 using Core.Match;
 using Core.Match.Interface;
+using Core.Match.PlayersNames;
 using Core.Match.Service;
+using Core.Match.TitleHeaderView;
 using MainScene.MatchList.Repository;
 using Team8.TopicTwister;
 using UnityEngine;
@@ -30,7 +32,24 @@ public class MatchDependencyInstaller : MonoInstaller
     private CorrectionView _correctionView;
 
     [SerializeField]
+    private EndRoundPanelView _endRoundView;
+
+    #region Header Provider
+    
+    [SerializeField]
     private MatchHeaderView _matchHeaderView;
+
+    [SerializeField]
+    private MatchHeaderLetterView _matchHeaderLetterView;
+
+    [SerializeField]
+    private PlayerNameView _matchHeaderPlayerNameView;
+
+    [SerializeField]
+    private TitleHeaderView _matchHeaderTitleView;
+
+    #endregion
+    
 
     [SerializeField]
     private RouteConfig _categoriesRouteConfig;
@@ -55,11 +74,13 @@ public class MatchDependencyInstaller : MonoInstaller
         //Container.Bind<LoadingGamePresenter>().AsTransient().Lazy();
         Container.Instantiate<LoadingGamePresenter>();
         
+        //Container.BindInterfacesTo<LetterView>().FromInstance(_letterView).NonLazy();
         Container.Bind<ILetterView>().To<LetterView>().FromInstance(_letterView).NonLazy();
         Container.Bind<IGetLetterUseCase>().To<GetRandomLetterUseCase>().AsTransient();
         //Container.Bind<LetterPresenter>().AsTransient().Lazy();
         Container.Instantiate<LetterPresenter>();
         
+        //Container.BindInterfacesTo<CategoriesView>().FromInstance(_categoriesView).NonLazy();
         Container.Bind<ICategoriesView>().To<CategoriesView>().FromInstance(_categoriesView).NonLazy();
         Container.Bind<ICategoriesGetter>().To<GetCategoriesUseCase>().AsTransient().NonLazy();
         //Container.Bind<CategoriesPresenter>().AsTransient().Lazy();
@@ -70,17 +91,27 @@ public class MatchDependencyInstaller : MonoInstaller
         //Container.Bind<RoundTimerPresenter>().AsTransient().Lazy();
         Container.Instantiate<RoundTimerPresenter>();
         
+        //Container.BindInterfacesTo<AnsweringView>().FromInstance(_answeringView).NonLazy();
         Container.Bind<IAnsweringView>().To<AnsweringView>().FromInstance(_answeringView).NonLazy();
         //Container.Bind<AnswersPresenter>().AsTransient().Lazy();
         Container.Instantiate<AnswersPresenter>();
         
+        //Container.BindInterfacesTo<CorrectionView>().FromInstance(_correctionView).NonLazy();
         Container.Bind<ICorrectionView>().To<CorrectionView>().FromInstance(_correctionView).NonLazy();
         Container.Bind<IGetCorrections>().To<CorrectionGetter>().AsTransient();
         Container.Bind<IUpdateMatchUseCase>().To<UpdateMatchUseCase>().AsTransient().WithArguments(matchService);
         //Container.Bind<CorrectionPresenter>().AsTransient().Lazy();
         Container.Instantiate<CorrectionPresenter>();
         
+        Container.BindInterfacesTo<EndRoundPanelView>().FromInstance(_endRoundView).NonLazy();
+        
         Container.Bind<IMatchHeaderView>().To<MatchHeaderView>().FromInstance(_matchHeaderView).NonLazy();
+        Container.Bind<IMatchHeaderLetterView>().To<MatchHeaderLetterView>().FromInstance(_matchHeaderLetterView).NonLazy();
+        Container.Bind<IPlayerNameView>().To<PlayerNameView>().FromInstance(_matchHeaderPlayerNameView).NonLazy();
+        Container.Bind<ITitleHeaderView>().To<TitleHeaderView>().FromInstance(_matchHeaderTitleView).NonLazy();
         Container.Instantiate<MatchHeaderPresenter>();
+        Container.Instantiate<MatchHeaderLetterPresenter>();
+        Container.Instantiate<PlayerNamePresenter>();
+        Container.Instantiate<TitleHeaderPresenter>();
     }
 }
