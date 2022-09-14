@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class OngoingMatchView : MonoBehaviour, IOngoingMatchView
 {
@@ -24,6 +25,9 @@ public class OngoingMatchView : MonoBehaviour, IOngoingMatchView
 
     [SerializeField]
     private GameObject _playButton;
+
+    [SerializeField]
+    private Image _backgroundImage;
 
     public event Action OnStartMatch;
     public void SetRoundCount(string formatingScore)
@@ -84,6 +88,11 @@ public class OngoingMatchView : MonoBehaviour, IOngoingMatchView
     {
         OnStartMatch?.Invoke();
         SceneManager.LoadScene(2, LoadSceneMode.Single);
+    }
+
+    public void SetCardColor(System.Drawing.Color color)
+    {
+        _backgroundImage.color = new Color32(color.R, color.G, color.B, 255);
     }
 }
 

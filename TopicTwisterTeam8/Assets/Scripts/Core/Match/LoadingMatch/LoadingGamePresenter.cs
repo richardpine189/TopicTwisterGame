@@ -19,7 +19,7 @@ namespace Assets.Scripts.Presenters
         private int _matchId = -1;
         private const int ITS_NEW_MATCH= -1;
 
-        public LoadingGamePresenter(ILoadingGameView loadingGameView,IGetCurrentMatchUseCase getMatch,IActiveMatch matchUseCase, IGetMatchId getMatchId)
+        public LoadingGamePresenter(ILoadingGameView loadingGameView,IGetCurrentMatchUseCase getMatch, IActiveMatch matchUseCase, IGetMatchId getMatchId)
         {
             _view = loadingGameView;
             _getMatch = getMatch;
@@ -73,6 +73,7 @@ namespace Assets.Scripts.Presenters
             {
                 var activematch = await _getMatch.Invoke(_matchId);
                 _matchUseCase.Match = new Match();
+                _matchUseCase.Match.idMatch = _matchId;
                 _opponentName = (activematch.opponentName == _challengerName ? activematch.challengerName : activematch.opponentName);
                 _matchUseCase.Match.challengerName = activematch.challengerName;
                 _matchUseCase.Match.opponentName = activematch.opponentName;

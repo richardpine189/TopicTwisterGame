@@ -17,6 +17,7 @@ public class MatchListGetterUseCase : IGetMatchesInfoUseCase
         _getMatchesService = getMatchesService;
         _localPlayerDataRepository = localPlayerDataRepository;
     }
+
     public async Task<List<MatchDTO>> Execute()
     {
         var playerName =_localPlayerDataRepository.GetData().name;

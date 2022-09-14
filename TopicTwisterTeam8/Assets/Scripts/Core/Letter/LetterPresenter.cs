@@ -16,7 +16,6 @@ public class LetterPresenter
         _getLetter = getLetter;
         _matchLetterUseCase = matchLetterUseCase;
         _saveLetter = saveLetter;
-        UnityEngine.Debug.Log("Im LetterPresenter");
         _letterView.OnAskForLetter += AskForLetter;
         _letterView.OnKeepRoundLetter += KeepLetter;
     }

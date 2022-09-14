@@ -1,7 +1,10 @@
 using System;
+using System.Drawing;
 
 public interface IOngoingMatchView
 {
+    public event Action OnStartMatch;
+
     public void ShowWaitingClock();
 
     public void ShowPlayButton();
@@ -12,6 +15,7 @@ public interface IOngoingMatchView
 
     void LoadMatch();
 
-    public event Action OnStartMatch;
     void SetRoundCount(string formatingScore);
+
+    void SetCardColor(Color color);
 }

@@ -37,16 +37,16 @@ public class EndRoundPanelView : MonoBehaviour, IEndRoundView
     [SerializeField]
     private GameObject _nextRoundButton;
 
-    private EndRoundPresenter _endRoundPresenter;
 
     private void Start()
     {
-        _endRoundPresenter = new EndRoundPresenter(this);
+        new EndRoundPresenter(this);
     }
 
     void OnEnable()
     {
-        _endRoundPresenter = new EndRoundPresenter(this);
+        _nextRoundButton.GetComponent<Button>().enabled = true;
+        new EndRoundPresenter(this);
     }
 
     public void ShowCategories(string[] categories)
@@ -93,6 +93,7 @@ public class EndRoundPanelView : MonoBehaviour, IEndRoundView
 
     public void ChangePanel()
     {
+        _nextRoundButton.GetComponent<Button>().enabled = false;
         _categoriesPanel.SetActive(true);
         this.gameObject.SetActive(false);
     }
@@ -107,6 +108,7 @@ public class EndRoundPanelView : MonoBehaviour, IEndRoundView
 
     public void BackToMain()
     {
+        _nextRoundButton.GetComponent<Button>().enabled = false;
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 }

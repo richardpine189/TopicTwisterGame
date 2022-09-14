@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core.Match.Interface;
-using Core.Match.Service;
-using Models;
 using Models.DTO;
 
 public class OngoingMatchPresenter
@@ -17,8 +12,15 @@ public class OngoingMatchPresenter
     private int _matchId = 0;
 
     private bool _isPlayerTurn = true;
-    
+
+    private int[] winnerCount = new int[2] { 0, 0 };
+
     private const int OFFSET_FOR_ROUND_COUNTING = 1;
+
+    private readonly Color RED_COLOR = Color.FromArgb(255, 0, 0);
+    private readonly Color GREEN_COLOR = Color.FromArgb(53, 164, 52);
+    private readonly Color BLUE_COLOR = Color.FromArgb(47, 81, 231);
+    private readonly Color YELLOW_COLOR = Color.FromArgb(255, 255, 0);
 
     public OngoingMatchPresenter(IOngoingMatchView view, MatchDTO match, ISaveMatchId saveMatchId)
     {
@@ -35,7 +37,11 @@ public class OngoingMatchPresenter
 
         SetViewState(match);
 
-        SetRoundsWinnerCounterInUI(match.roundResults);
+        CalculateRoundsWinner(match.matchWinnerStatus);
+
+        SetRoundsWinnerCounter();
+
+        SetBackgroundColor(match);
             
         _view.OnStartMatch += SaveCurrentMatch;
     }
@@ -79,9 +85,8 @@ public class OngoingMatchPresenter
         }
     }
 
-    private void SetRoundsWinnerCounterInUI(WinnerStatus[] winner)
+    private void CalculateRoundsWinner(WinnerStatus[] winner)
     {
-        int[] winnerCount = new int[2] {0,0};
         foreach (var w in winner)
         {
             if (w == WinnerStatus.Challenger)
@@ -94,9 +99,49 @@ public class OngoingMatchPresenter
                 winnerCount[1]++;
             }
         }
-        
+    }
+
+    private void SetRoundsWinnerCounter()
+    {
         string formatingScore = winnerCount[0] + " - " + winnerCount[1];
 
         _view.SetRoundCount(formatingScore);
+    }
+
+    private void SetBackgroundColor(MatchDTO match)
+    {
+        if(!match.isMatchFinished)
+        {
+            _view.SetCardColor(GREEN_COLOR);
+        }
+        else
+        {
+            if(winnerCount[0] > winnerCount[1])
+            {
+                if (UserDTO.PlayerName == match.challengerName)
+                {
+                    _view.SetCardColor(BLUE_COLOR);
+                }
+                else
+                {
+                    _view.SetCardColor(RED_COLOR);
+                }
+            }
+            else if(winnerCount[0] > winnerCount[1])
+            {
+                if (UserDTO.PlayerName == match.challengerName)
+                {
+                    _view.SetCardColor(RED_COLOR);
+                }
+                else
+                {
+                    _view.SetCardColor(BLUE_COLOR);
+                }
+            }
+            else
+            {
+                _view.SetCardColor(YELLOW_COLOR);
+            }
+        }
     }
 }

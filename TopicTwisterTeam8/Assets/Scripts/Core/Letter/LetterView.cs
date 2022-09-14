@@ -54,7 +54,6 @@ public class LetterView : MonoBehaviour, ILetterView
         ResetButtonsStatus();
 
         StopCoroutine(CountdownAnimation());
-        Debug.Log("i stoped coroutine");
         RequestLetter();
     }
     public void StartAnimation()
@@ -86,7 +85,6 @@ public class LetterView : MonoBehaviour, ILetterView
             _countdownText.text = i.ToString();
             yield return new WaitForSeconds(1);
         }
-        Debug.Log("Inside coroutine");
         OnKeepRoundLetter?.Invoke();
         UpdateLetter?.Invoke();
 

@@ -8,7 +8,7 @@ namespace Models.DTO
         public int currentRound;
         public bool isChallengerTurn;
         public bool isMatchFinished;
-        public WinnerStatus[] roundResults = new WinnerStatus[3];
+        public WinnerStatus[] matchWinnerStatus = new WinnerStatus[3];
     }
 
     public enum WinnerStatus
