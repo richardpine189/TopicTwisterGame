@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Core.Match.TitleHeaderView;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
@@ -14,6 +15,8 @@ public class LetterView : MonoBehaviour, ILetterView
     public Action OnKeepRoundLetter { get; set; }
 
     public event Action OnActiveLetterPanel;
+    
+    private const string PANEL_NAME = "CATEGORIAS";
     
     [SerializeField]
     private TextMeshProUGUI _letterText;
@@ -35,6 +38,7 @@ public class LetterView : MonoBehaviour, ILetterView
     void OnEnable()
     {
         OnActiveLetterPanel?.Invoke();
+        TitleSetName.SendPanelName(PANEL_NAME);
     }
 
     public void SetLetter(char letter)
