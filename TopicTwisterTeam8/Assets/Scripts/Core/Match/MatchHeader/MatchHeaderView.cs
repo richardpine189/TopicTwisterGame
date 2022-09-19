@@ -58,7 +58,7 @@ namespace Core.Match
 
         public void SetInUIRoundNumber(string roundNumber)
         {
-            _roundNumber.text = "Round" + roundNumber;
+            _roundNumber.text = "Round " + roundNumber;
         }
     }
 }

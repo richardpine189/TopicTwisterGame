@@ -13,7 +13,6 @@ namespace Core.Match
         public GetCurrentMatchUseCase(IGetMatchService service)
         {
             _matchService = service;
-
         }
 
         public async Task<ActiveMatchDTO> Invoke(int matchId)

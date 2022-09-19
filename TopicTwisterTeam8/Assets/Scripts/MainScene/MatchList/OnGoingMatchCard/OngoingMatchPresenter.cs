@@ -75,7 +75,8 @@ public class OngoingMatchPresenter
 
     private void SetViewState(MatchDTO match)
     {
-        if (_isPlayerTurn || match.isMatchFinished)
+        // Shows clock if match is finished
+        if (!match.isMatchFinished && _isPlayerTurn)
         {
             _view.ShowPlayButton();
         }
@@ -90,9 +91,13 @@ public class OngoingMatchPresenter
         foreach (var w in winner)
         {
             if (w == WinnerStatus.Challenger)
+            {
                 winnerCount[0]++;
+            }
             else if (w == WinnerStatus.Opponent)
+            {
                 winnerCount[1]++;
+            }
             else if (w == WinnerStatus.Draw)
             {
                 winnerCount[0]++;

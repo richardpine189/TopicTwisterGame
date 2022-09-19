@@ -60,6 +60,7 @@ public class LetterView : MonoBehaviour, ILetterView
         StopCoroutine(CountdownAnimation());
         RequestLetter();
     }
+
     public void StartAnimation()
     {
         //Desactivar button component

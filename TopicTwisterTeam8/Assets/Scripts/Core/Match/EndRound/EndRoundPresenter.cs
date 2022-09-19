@@ -9,6 +9,7 @@ public class EndRoundPresenter
     private IGetMatchRoundNumber _getMatchRoundNumberUseCase;
     private int _matchId;
 
+    // Muy Sucio BORRAR
     private static int hasAppeared = 0;
 
     public EndRoundPresenter(IEndRoundView endRoundView, IGetRoundResult getRoundResultUseCase, IGetMatchRoundNumber getMatchRoundNumber)
