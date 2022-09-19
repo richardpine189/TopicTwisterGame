@@ -7,4 +7,6 @@ using System.Threading.Tasks;
 public interface IAnsweringView
 {
     event Action<string[]> OnStopClick;
+
+    public void SendAnswers();
 }

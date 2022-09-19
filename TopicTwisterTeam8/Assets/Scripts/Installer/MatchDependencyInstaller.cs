@@ -86,16 +86,16 @@ public class MatchDependencyInstaller : MonoInstaller
         //Container.Bind<CategoriesPresenter>().AsTransient().Lazy();
         Container.Instantiate<CategoriesPresenter>();
         
-        Container.Bind<IRoundTimerView>().To<RoundTimerView>().FromInstance(_roundTimerView).NonLazy();
-        Container.Bind<IRoundTimerUseCase>().To<RoundTimerUseCase>().AsTransient().NonLazy();
-        //Container.Bind<RoundTimerPresenter>().AsTransient().Lazy();
-        Container.Instantiate<RoundTimerPresenter>();
-        
         //Container.BindInterfacesTo<AnsweringView>().FromInstance(_answeringView).NonLazy();
         Container.Bind<IAnsweringView>().To<AnsweringView>().FromInstance(_answeringView).NonLazy();
         //Container.Bind<AnswersPresenter>().AsTransient().Lazy();
         Container.Instantiate<AnswersPresenter>();
         
+        Container.Bind<IRoundTimerView>().To<RoundTimerView>().FromInstance(_roundTimerView).NonLazy();
+        Container.Bind<IRoundTimerUseCase>().To<RoundTimerUseCase>().AsTransient().NonLazy();
+        //Container.Bind<RoundTimerPresenter>().AsTransient().Lazy();
+        Container.Instantiate<RoundTimerPresenter>();
+  
         //Container.BindInterfacesTo<CorrectionView>().FromInstance(_correctionView).NonLazy();
         Container.Bind<ICorrectionView>().To<CorrectionView>().FromInstance(_correctionView).NonLazy();
         Container.Bind<IGetCorrections>().To<CorrectionGetter>().AsTransient();

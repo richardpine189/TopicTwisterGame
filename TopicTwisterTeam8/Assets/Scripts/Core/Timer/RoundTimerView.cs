@@ -11,7 +11,7 @@ public class RoundTimerView : MonoBehaviour, IRoundTimerView
     private TMP_Text timeCounter;
 
     public event Action<int> OnTimerStop;
-
+    public event Action OnTimerIsUp;
     public event Action OnTimerStart;
 
     private bool _timerOn = false;
@@ -35,9 +35,10 @@ public class RoundTimerView : MonoBehaviour, IRoundTimerView
             }
             else
             {
-                Debug.Log("Time is UP!");
+                
                 _timeLeft = 0;
                 _timerOn = false;
+                OnTimerIsUp?.Invoke();
             }
         }
     }
