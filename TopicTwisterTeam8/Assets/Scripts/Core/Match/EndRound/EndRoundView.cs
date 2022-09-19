@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Core.Match.TitleHeaderView;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class EndRoundView : MonoBehaviour, IEndRoundView
 {
+    public event Action OnSetRoundResults;
     
     private const string PANEL_NAME = "FINAL DE RONDA";
     
@@ -48,10 +47,27 @@ public class EndRoundView : MonoBehaviour, IEndRoundView
         _nextRoundButton.GetComponent<Button>().enabled = true;
         TitleSetName.SendPanelName(PANEL_NAME);
         OnSetRoundResults?.Invoke();
+        CleanTextField(_challengerAnswers);
+        CleanTextField(_opponentAnswers);
+        CleanTextField(_categories);
+        CleanResults(_challengerResult);
+        CleanResults(_opponentResult);
     }
 
-    public event Action OnSetRoundResults;
-
+    private void CleanResults(Image[] imagesCorrection)
+    {
+        foreach (var image in imagesCorrection)
+        {
+            image.sprite = null;
+        }
+    }
+    private void CleanTextField(TextMeshProUGUI[] text)
+    {
+        foreach (var textField in text)
+        {
+            textField.text = "";
+        }
+    }
     public void ShowCategories(string[] categories)
     {
         for (int i = 0; i < categories.Length; i++)
@@ -66,7 +82,7 @@ public class EndRoundView : MonoBehaviour, IEndRoundView
         {
             _challengerAnswers[i].text = answers[i];
 
-            if(results[i] == true)
+            if(results[i])
             {
                 _challengerResult[i].sprite = _tickSprite;
             }
@@ -83,7 +99,7 @@ public class EndRoundView : MonoBehaviour, IEndRoundView
         {
             _opponentAnswers[i].text = answers[i];
 
-            if (results[i] == true)
+            if (results[i])
             {
                 _opponentResult[i].sprite = _tickSprite;
             }
@@ -98,7 +114,7 @@ public class EndRoundView : MonoBehaviour, IEndRoundView
     {
         _nextRoundButton.GetComponent<Button>().enabled = false;
         _categoriesPanel.SetActive(true);
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void ShowEndGamePanel(bool challengerWon)

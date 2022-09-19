@@ -17,11 +17,16 @@ public class AnsweringView : MonoBehaviour, IAnsweringView
 
     void OnEnable()
     {
+        CleanFields();
+        TitleSetName.SendPanelName(PANEL_NAME);
+    }
+
+    private void CleanFields()
+    {
         for (int i = 0; i < _answers.Length; i++)
         {
             _answers[i].text = "";
         }
-        TitleSetName.SendPanelName(PANEL_NAME);
     }
 
     public void SendAnswers()

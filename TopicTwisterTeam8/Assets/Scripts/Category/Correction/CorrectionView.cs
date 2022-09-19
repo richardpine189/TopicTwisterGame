@@ -39,6 +39,7 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
     {
         OnGetCorrections?.Invoke();
         TitleSetName.SendPanelName(PANEL_NAME);
+        CleanCorrection();
     }
 
     public void ShowCorrections(bool[] corrections)
@@ -80,12 +81,20 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
     public void LoadNextTurn()
     {
         _endRoundPanel.SetActive(true);
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void ShowErrorPanel(string message)
     {
         _errorPanel.SetMessage(message);
         _errorPanel.gameObject.SetActive(true);
+    }
+
+    private void CleanCorrection()
+    {
+        foreach (var img in _resultsUI)
+        {
+            img.sprite = null;
+        }
     }
 }

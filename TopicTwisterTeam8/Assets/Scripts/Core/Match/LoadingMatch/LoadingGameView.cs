@@ -36,7 +36,6 @@ namespace Team8.TopicTwister
         public void StartAnimation(bool isNewGame)
         {
             if (isNewGame)
-                // Simulated loading, change name, refactor
                 StartCoroutine(LoadingAnimation());
             else
                 StartCoroutine(SecondWaiting());

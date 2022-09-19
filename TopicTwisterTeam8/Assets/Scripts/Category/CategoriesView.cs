@@ -91,6 +91,7 @@ public class CategoriesView : MonoBehaviour, ICategoriesView
         foreach (var categoryText in _categoriesLetterSelectionPanel)
         {
             categoryText.gameObject.SetActive(false);
+            categoryText.text = "";
         }
     }
 }
