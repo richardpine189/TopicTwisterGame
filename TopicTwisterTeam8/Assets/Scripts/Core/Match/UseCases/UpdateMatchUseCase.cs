@@ -5,18 +5,18 @@ using Zenject;
 
 class UpdateMatchUseCase : IUpdateMatchUseCase
 {
-    private IUpdateMatchService _matchService;
+    private IUpdateMatchGateway _matchGateway;
 
     [Inject]
     private IActiveMatch _activeMatch;
 
-    public UpdateMatchUseCase(IUpdateMatchService matchService)
+    public UpdateMatchUseCase(IUpdateMatchGateway matchGateway)
     {
-        _matchService = matchService;
+        _matchGateway = matchGateway;
     }
 
     public async Task<bool> Execute()
     {
-        return await _matchService.UpdateMatch(_activeMatch.Match);
+        return await _matchGateway.UpdateMatch(_activeMatch.Match);
     }
 }

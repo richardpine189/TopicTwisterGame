@@ -11,7 +11,7 @@ public class MatchListInstaller : MonoInstaller
     [SerializeField] private RouteConfig _routeAPI;
     public override void InstallBindings()
     {
-        Container.BindInterfacesTo<MatchService>().AsSingle().WithArguments(_routeAPI.path).NonLazy();
+        Container.BindInterfacesTo<MatchGateway>().AsSingle().WithArguments(_routeAPI.path).NonLazy();
         Container.Bind<IMatchListView>().To<MatchListView>().FromInstance(_matchListView).NonLazy();
         Container.Bind<IGetMatchesInfoUseCase>().To<MatchListGetterUseCase>().AsTransient().NonLazy();
         Container.Bind<IMatchIdRepository>().To<PlayerPrefMatchIdRepository>().AsTransient().NonLazy();

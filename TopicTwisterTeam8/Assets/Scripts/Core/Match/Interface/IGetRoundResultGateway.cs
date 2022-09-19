@@ -3,7 +3,7 @@ using Models.DTO;
 
 namespace Core.Match.Interface
 {
-    public interface IGetRoundResultService
+    public interface IGetRoundResultGateway
     {
         public Task<MatchResultsDTO> GetRoundResults(int matchId, int roundIndex);
     }

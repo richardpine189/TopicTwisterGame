@@ -4,9 +4,9 @@ using Models.DTO;
 
 public class GetRoundResultsUseCase : IGetRoundResult
 {
-    private readonly IGetRoundResultService _getRoundResults;
+    private readonly IGetRoundResultGateway _getRoundResults;
 
-    GetRoundResultsUseCase(IGetRoundResultService getRoundResults)
+    GetRoundResultsUseCase(IGetRoundResultGateway getRoundResults)
     {
         _getRoundResults = getRoundResults;
     }

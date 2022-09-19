@@ -4,7 +4,7 @@ using Models.DTO;
 
 namespace Core.Match.Interface
 {
-    public interface IGetMatchService
+    public interface IGetMatchGateway
     {
         Task<MatchDTO> GetNewMatch(string challenger);
 

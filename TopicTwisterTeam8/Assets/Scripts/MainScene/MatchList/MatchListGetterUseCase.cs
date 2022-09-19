@@ -7,20 +7,20 @@ using Zenject;
 
 public class MatchListGetterUseCase : IGetMatchesInfoUseCase
 {
-    IGetMatchesService _getMatchesService;
+    IGetMatchesGateway _getMatchesGateway;
 
     ILocalPlayerDataRepository _localPlayerDataRepository;
 
-    public MatchListGetterUseCase(IGetMatchesService getMatchesService,
+    public MatchListGetterUseCase(IGetMatchesGateway getMatchesGateway,
         ILocalPlayerDataRepository localPlayerDataRepository)
     {
-        _getMatchesService = getMatchesService;
+        _getMatchesGateway = getMatchesGateway;
         _localPlayerDataRepository = localPlayerDataRepository;
     }
 
     public async Task<List<MatchDTO>> Execute()
     {
         var playerName =_localPlayerDataRepository.GetData().name;
-        return await _getMatchesService.GetMatchesDTOByName(playerName);
+        return await _getMatchesGateway.GetMatchesDTOByName(playerName);
     }
 }

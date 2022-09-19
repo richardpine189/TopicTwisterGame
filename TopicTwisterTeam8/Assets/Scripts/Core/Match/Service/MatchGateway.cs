@@ -10,12 +10,12 @@ using Unity.Plastic.Newtonsoft.Json;
 
 namespace Core.Match.Service
 {
-    public class MatchService : IGetMatchService, IUpdateMatchService, IGetMatchesService, IGetRoundResultService
+    public class MatchGateway : IGetMatchGateway, IUpdateMatchGateway, IGetMatchesGateway, IGetRoundResultGateway
     {
         private readonly HttpClient _client = new HttpClient();
         private readonly string _apiPath;
 
-        public MatchService(string path)
+        public MatchGateway(string path)
         {
             _apiPath = path;
         }

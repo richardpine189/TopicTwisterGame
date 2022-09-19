@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Models;
 using Models.DTO;
 
-public interface IGetMatchesService
+public interface IGetMatchesGateway
 {
     Task<List<MatchDTO>> GetMatchesDTOByName(string userName);
 }
