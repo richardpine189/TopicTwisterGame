@@ -102,6 +102,7 @@ public class LetterView : MonoBehaviour, ILetterView
 
     private void ResetButtonsStatus()
     {
+        _letterText.gameObject.SetActive(false);
         _getLetterButton.SetActive(true);
         _countdownText.gameObject.SetActive(false);
         _getLetterButton.GetComponent<Image>().color = _spinButtonColor;
