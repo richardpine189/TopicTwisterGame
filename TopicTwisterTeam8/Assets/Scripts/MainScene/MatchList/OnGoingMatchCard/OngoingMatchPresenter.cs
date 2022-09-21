@@ -132,7 +132,7 @@ public class OngoingMatchPresenter
                     _view.SetCardColor(RED_COLOR);
                 }
             }
-            else if(winnerCount[0] > winnerCount[1])
+            else if(winnerCount[0] < winnerCount[1])
             {
                 if (UserDTO.PlayerName == match.challengerName)
                 {
