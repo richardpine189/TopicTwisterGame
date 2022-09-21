@@ -1,5 +1,4 @@
-﻿using System;
-using Zenject;
+﻿using Zenject;
 
 public class CategoriesPresenter
 {
@@ -8,15 +7,15 @@ public class CategoriesPresenter
 
     private ICategoriesView _view;
     private ICategoriesGetter _categoriesGetter;
-    private IAssignCategoriesUseCase _assignCategories;
-    private IGetMatchCategoriesUseCase _getMatchCategories;
+    private ISaveRoundData _saveRoundData;
+    private IGetRoundData _getRoundData;
 
-    public CategoriesPresenter(ICategoriesView view, ICategoriesGetter categoriesGetter, IAssignCategoriesUseCase assignCategories, IGetMatchCategoriesUseCase getMatchCategories)
+    public CategoriesPresenter(ICategoriesView view, ICategoriesGetter categoriesGetter, ISaveRoundData saveRoundData, IGetRoundData getRoundData)
     {
         _view = view;
         _categoriesGetter = categoriesGetter;
-        _assignCategories = assignCategories;
-        _getMatchCategories = getMatchCategories;
+        _saveRoundData = saveRoundData;
+        _getRoundData = getRoundData;
         _view.OnUpdateCategoriesField += GetCategories;
     }
     
@@ -27,11 +26,11 @@ public class CategoriesPresenter
         if(!_matchHas.CurrentCategories())
         {
             categories = await _categoriesGetter.GetCategories(categoriesAmount);
-            _assignCategories.Execute(categories);
+            _saveRoundData.SaveCurrentCategories(categories);
         }
         else
         {
-            categories = _getMatchCategories.Execute();
+            categories = _getRoundData.GetCurrentCategories();
         }
 
         _view.UpdateFields(categories);

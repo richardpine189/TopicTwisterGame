@@ -7,6 +7,6 @@ class MatchHasUseCase : IMatchHas
     
     public bool CurrentCategories()
     {
-        return _activeMatch.Match.currentCategories != null;
+        return _activeMatch.Match.round.CurrentCategories != null;
     }
 }

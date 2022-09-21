@@ -1,34 +1,85 @@
-﻿class SaveDataMatchInMemory : ISaveLetterUseCase, IAssignCategoriesUseCase, IAssignAnswersUseCase, IAssignResultsUseCase, IAssignMatchId
+﻿using Zenject;
+
+class SaveRoundDataInMemory : ISaveRoundData
 {
     IActiveMatch _matchUseCase;
 
-    public SaveDataMatchInMemory(IActiveMatch matchUseCase)
+    public SaveRoundDataInMemory(IActiveMatch matchUseCase)
     {
         _matchUseCase = matchUseCase;
     }
 
-    public void Execute(char letter)
+    public void SaveLetter(char letter)
     {
-        _matchUseCase.Match.currentLetter = letter;
+        _matchUseCase.Match.round.CurrentLetter = letter;
     }
 
-    void IAssignCategoriesUseCase.Execute(string[] categories)
+    public void SaveCurrentCategories(string[] categories)
     {
-        _matchUseCase.Match.currentCategories = categories;
+        _matchUseCase.Match.round.CurrentCategories = categories;
     }
 
-    void IAssignAnswersUseCase.Execute(string[] answers)
+    public void SaveCurrentAnswers(string[] answers)
     {
-        _matchUseCase.Match.currentAnswers = answers;
+        _matchUseCase.Match.round.CurrentAnswers = answers;
     }
 
-    void IAssignResultsUseCase.Execute(bool[] results)
+    public void SaveCurrentResults(bool[] results)
     {
-        _matchUseCase.Match.currentResults = results;
+        _matchUseCase.Match.round.CurrentResults = results;
     }
 
-    public void Execute(int matchId)
+    public void SaveCurrentTime(int time)
+    {
+        _matchUseCase.Match.round.RoundTimeLeft = time;
+    }
+
+    
+}
+
+class SaveMatchDataInMemory : ISaveMatchData
+{
+    [Inject] IActiveMatch _matchUseCase;
+    public void SaveIDMatch(int matchId)
     {
         _matchUseCase.Match.idMatch = matchId;
     }
+
+    public void SavePlayerName(string challenger, string opponent)
+    {
+        _matchUseCase.Match.challengerName = challenger;
+        _matchUseCase.Match.opponentName = opponent;
+    }
+
+    public void SaveCurrentRound(int currentRound)
+    {
+        _matchUseCase.Match.currentRound = currentRound;
+    }
+
+    public void SetTurnState(bool isChallengerTurn)
+    {
+        _matchUseCase.Match.isChallengerTurn = isChallengerTurn;
+    }
+    public void SetMatchState(bool isMatchFinished)
+    {
+        _matchUseCase.Match.isMatchFinished = isMatchFinished;
+    }
+    
+}
+
+public interface ISaveMatchData
+{
+    void SavePlayerName(string challenger, string opponent);
+    void SaveCurrentRound(int currentRound);
+    void SetTurnState(bool isChallengerTurn);
+    void SetMatchState(bool isMatchFinished);
+}
+
+public interface ISaveRoundData
+{
+    void SaveLetter(char letter);
+    void SaveCurrentCategories(string[] categories);
+    void SaveCurrentAnswers(string[] answers);
+    void SaveCurrentResults(bool[] results);
+    void SaveCurrentTime(int time);
 }

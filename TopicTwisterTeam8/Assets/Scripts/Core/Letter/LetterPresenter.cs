@@ -1,21 +1,17 @@
-﻿using System;
-using Zenject;
-
-public class LetterPresenter
+﻿public class LetterPresenter
 {
     private ILetterView _letterView;
     private IGetLetterUseCase _getLetter;
-    private ISaveLetterUseCase _saveLetter;
+    private IGetRoundData _getRoundData;
+    private ISaveRoundData _saveRoundData;
 
     private char _currentLetter;
-    private IGetMatchLetterUseCase _matchLetterUseCase;
-
-    public LetterPresenter(ILetterView letterView, IGetLetterUseCase getLetter, ISaveLetterUseCase saveLetter, IGetMatchLetterUseCase matchLetterUseCase)
+    public LetterPresenter(ILetterView letterView, IGetLetterUseCase getLetter, ISaveRoundData saveRoundData, IGetRoundData getRoundData)
     {
         _letterView = letterView;
         _getLetter = getLetter;
-        _matchLetterUseCase = matchLetterUseCase;
-        _saveLetter = saveLetter;
+        _getRoundData = getRoundData;
+        _saveRoundData = saveRoundData;
         _letterView.OnAskForLetter += AskForLetter;
         _letterView.OnKeepRoundLetter += KeepLetter;
     }
@@ -28,7 +24,7 @@ public class LetterPresenter
     
     private void AskForLetter()
     {
-        char? tempLetter = _matchLetterUseCase.Execute();
+        char? tempLetter = _getRoundData.GetCurrentLetter();
         if (tempLetter == null)
         {
             tempLetter = _getLetter.Execute();
@@ -38,7 +34,7 @@ public class LetterPresenter
 
     private void KeepLetter()
     {
-        _saveLetter.Execute(_currentLetter);
+        _saveRoundData.SaveLetter(_currentLetter);
     }
 
     private void UpdateInterface(char currentLetter)

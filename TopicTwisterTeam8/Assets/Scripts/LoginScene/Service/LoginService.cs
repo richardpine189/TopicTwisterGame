@@ -11,7 +11,7 @@ public class LoginService : ILoginService
 
     // Development URL
     private readonly string _baseURL;
-
+    
     public LoginService(string _path)
     {
         _baseURL = _path;
@@ -19,6 +19,7 @@ public class LoginService : ILoginService
 
     public async Task<string> RequestLogin(string username)
     {
+        string _subPath = "/logIn";
         var values = new Dictionary<string, string>
         {
             { "userName", username }
@@ -26,7 +27,7 @@ public class LoginService : ILoginService
 
         var content = new FormUrlEncodedContent(values);
 
-        var response = await _client.PostAsync(_baseURL + "/logIn", content);
+        var response = await _client.PostAsync(_baseURL + _subPath, content);
 
         if (response.StatusCode == HttpStatusCode.NotFound)
         {

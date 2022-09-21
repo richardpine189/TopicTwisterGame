@@ -79,9 +79,9 @@ namespace Assets.Scripts.Presenters
                 _matchUseCase.Match.opponentName = activematch.opponentName;
                 _matchUseCase.Match.currentRound = activematch.currentRound;
                 _currentRound = activematch.currentRound;
-                _matchUseCase.Match.currentCategories = activematch.currentCategories;
-                _matchUseCase.Match.currentLetter = activematch.currentLetter;
-                _matchUseCase.Match.roundTimeLeft = activematch.currentTime;
+                _matchUseCase.Match.round.CurrentCategories = activematch.currentCategories;
+                _matchUseCase.Match.round.CurrentLetter = activematch.currentLetter;
+                _matchUseCase.Match.round.RoundTimeLeft = activematch.currentTime;
             }
         }
 

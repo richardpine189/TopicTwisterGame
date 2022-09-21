@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using Zenject;
 
 class CorrectionPresenter
@@ -13,19 +9,16 @@ class CorrectionPresenter
     private IUpdateMatchUseCase _updateMatch;
 
     [Inject]
-    private IGetMatchCategoriesUseCase _getCategories;
+    private IGetRoundData _getRoundData;
 
     [Inject]
-    private IGetMatchLetterUseCase _getLetter;
+    private ISaveRoundData _saveRoundData;
 
     [Inject]
-    private IGetMatchAnswersUseCase _getAnswers;
-
+    private RemoveActiveMatch _remove;
+    
     [Inject]
-    private IAssignResultsUseCase _assignResults;
-
-    [Inject] private RemoveActiveMatch _remove;
-    [Inject] private ResetActiveMatch _resetActiveMatch;
+    private ResetActiveMatch _resetActiveMatch;
 
     public CorrectionPresenter(ICorrectionView view, IGetCorrections getCorrections, IUpdateMatchUseCase updateMatch)
     {
@@ -67,11 +60,11 @@ class CorrectionPresenter
 
     public async void GetCorrections()
     {
-        var answers = _getAnswers.Execute();
+        var answers = _getRoundData.GetCurrentAnswers();
 
-        _results = await _getCorrections.GetCorrections(_getCategories.Execute(), answers, (char)_getLetter.Execute());
+        _results = await _getCorrections.GetCorrections(_getRoundData.GetCurrentCategories(), answers, (char)_getRoundData.GetCurrentLetter());
 
-        _assignResults.Execute(_results);
+        _saveRoundData.SaveCurrentResults(_results);
 
         _view.ShowAnswers(answers);
 

@@ -59,8 +59,10 @@ public class MatchDependencyInstaller : MonoInstaller
         IGetMatchGateway matchGateway = new MatchGateway(API_URL_BASE_PATH);
         //RemoveActiveMatch remove = new RemoveActiveMatch();
         Container.Bind<IActiveMatch>().To<ActiveMatchInMemory>().AsSingle().NonLazy();
-        Container.BindInterfacesTo<SaveDataMatchInMemory>().AsTransient();
-        Container.BindInterfacesTo<GetDataMatchInMemory>().AsTransient().NonLazy();
+        Container.BindInterfacesTo<SaveMatchDataInMemory>().AsTransient();
+        Container.BindInterfacesTo<SaveRoundDataInMemory>().AsTransient();
+        Container.BindInterfacesTo<GetRoundDataInMemory>().AsTransient().NonLazy();
+        Container.BindInterfacesTo<GetMatchDataInMemory>().AsTransient().NonLazy();
         Container.BindInterfacesTo<MatchHasUseCase>().AsTransient();
         Container.BindInterfacesTo<PlayerPrefMatchIdRepository>().AsTransient().NonLazy();
         Container.Bind<ICategoryService>().To<CategoryService>().AsTransient().WithArguments(_categoriesRouteConfig.path).NonLazy();

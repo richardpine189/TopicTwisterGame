@@ -5,12 +5,12 @@ public class AnswersPresenter
 {
     private IAnsweringView _view;
 
-    private IAssignAnswersUseCase _assignAnswers;
+    private ISaveRoundData _saveRoundData;
 
-    public AnswersPresenter(IAnsweringView view, IAssignAnswersUseCase assignAnswers)
+    public AnswersPresenter(IAnsweringView view, ISaveRoundData saveRoundData)
     {
         _view = view;
-        _assignAnswers = assignAnswers;
+        _saveRoundData = saveRoundData;
         _view.OnStopClick += SendAnswersAction;
     }
 
@@ -21,6 +21,6 @@ public class AnswersPresenter
 
     private void SendAnswersAction(string[] answers)
     {
-        _assignAnswers.Execute(answers);
+        _saveRoundData.SaveCurrentAnswers(answers);
     }
 }

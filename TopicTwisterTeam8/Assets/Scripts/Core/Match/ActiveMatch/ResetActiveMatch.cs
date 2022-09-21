@@ -7,10 +7,10 @@ public class ResetActiveMatch
     
     public void Execute()
     {
-        _matchAction.Match.currentCategories = null;
-        _matchAction.Match.currentLetter = null;
-        _matchAction.Match.currentAnswers = null;
-        _matchAction.Match.currentResults = null;
-        _matchAction.Match.roundTimeLeft = 60;
+        _matchAction.Match.round.CurrentCategories = null;
+        _matchAction.Match.round.CurrentLetter = null;
+        _matchAction.Match.round.CurrentAnswers = null;
+        _matchAction.Match.round.CurrentResults = null;
+        _matchAction.Match.round.RoundTimeLeft = 60;
     }
 }

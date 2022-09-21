@@ -6,16 +6,16 @@ public class EndRoundPresenter
 {
     private readonly IEndRoundView _endRoundView;
     private readonly IGetRoundResult _getRoundResultUseCase;
-    private IGetMatchRoundNumber _getMatchRoundNumberUseCase;
+    private IGetMatchData _getMatchData;
     private int _matchId;
 
-    // Muy Sucio BORRAR
+    // TODO: Muy Sucio BORRAR
     private static int hasAppeared = 0;
 
-    public EndRoundPresenter(IEndRoundView endRoundView, IGetRoundResult getRoundResultUseCase, IGetMatchRoundNumber getMatchRoundNumber)
+    public EndRoundPresenter(IEndRoundView endRoundView, IGetRoundResult getRoundResultUseCase, IGetMatchData getMatchData)
     {
         _getRoundResultUseCase = getRoundResultUseCase;
-        _getMatchRoundNumberUseCase = getMatchRoundNumber;
+        _getMatchData = getMatchData;
         _endRoundView = endRoundView;
         _endRoundView.OnSetRoundResults += RequestRoundResult;
     }
@@ -27,7 +27,7 @@ public class EndRoundPresenter
 
     private async void RequestRoundResult()
     {
-        int roundNumber = _getMatchRoundNumberUseCase.Execute();
+        int roundNumber = _getMatchData.GetRoundNumber();
         MatchResultsDTO matchResultsDTO = await _getRoundResultUseCase.Execute(_matchId, roundNumber - hasAppeared);
 
         if(hasAppeared == 0)

@@ -4,13 +4,13 @@ namespace Core.Match
     {
         private readonly ILetterView _letterView;
         private readonly IMatchHeaderLetterView _matchHeaderLetterView;
-        private readonly IGetMatchLetterUseCase _getMatchLetter;
+        private readonly IGetRoundData _getRoundData;
 
-        public MatchHeaderLetterPresenter(ILetterView letterView, IMatchHeaderLetterView matchHeaderLetterView, IGetMatchLetterUseCase getMatchLetter)
+        public MatchHeaderLetterPresenter(ILetterView letterView, IMatchHeaderLetterView matchHeaderLetterView, IGetRoundData getRoundData)
         {
             _letterView = letterView;
             _matchHeaderLetterView = matchHeaderLetterView;
-            _getMatchLetter = getMatchLetter;
+            _getRoundData = getRoundData;
             
             _letterView.UpdateLetter += SetInUIRoundLetter;
             _letterView.OnActiveLetterPanel += HideLetter;
@@ -21,9 +21,10 @@ namespace Core.Match
             _letterView.UpdateLetter -= SetInUIRoundLetter;
             _letterView.OnActiveLetterPanel -= HideLetter;
         }
+
         private void SetInUIRoundLetter()
         {
-            char? letter = _getMatchLetter.Execute();
+            char? letter = _getRoundData.GetCurrentLetter();
             _matchHeaderLetterView.SetRoundLetter(letter.ToString());
         }
         

@@ -2,27 +2,31 @@
 
 public class RoundTimerUseCase : IRoundTimerUseCase
 {
-    private IActiveMatch _activeMatch;
 
-    public RoundTimerUseCase(IActiveMatch activeMatch)
+    private readonly IGetRoundData _getRoundData;
+    private readonly ISaveRoundData _saveRoundData;
+
+    private const int EXTRA_TIME = 10;
+
+    private const int DEFAULT_TIME = 60;
+    //TODO : Ver si es necesario separarlo en dos useCase
+
+    public RoundTimerUseCase(IGetRoundData getRoundData, ISaveRoundData saveRoundData)
     {
-        _activeMatch = activeMatch;
+        _getRoundData = getRoundData;
+        _saveRoundData = saveRoundData;
     }
 
     public void SaveTimeToRound(int timeLeft)
     {
-        _activeMatch.Match.roundTimeLeft = 60 - timeLeft;
+        int tempTime = DEFAULT_TIME - timeLeft;
+        _saveRoundData.SaveCurrentTime(tempTime);
     }
 
     public int GetTimeToAnswer()
     {
-        int timeLeft = _activeMatch.Match.roundTimeLeft;
+        int timeLeft = _getRoundData.GetCurrentTime();
 
-        if (timeLeft < 10)
-        {
-            return timeLeft + 10;
-        }
-
-        return timeLeft;
+        return timeLeft < EXTRA_TIME ? timeLeft + EXTRA_TIME : timeLeft;
     }
 }

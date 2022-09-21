@@ -60,11 +60,11 @@ namespace Core.Match.Service
             RoundDTO values = new RoundDTO();
 
             values.id = match.idMatch;
-            values.categories = match.currentCategories;
-            values.answers = match.currentAnswers;
-            values.results = match.currentResults;
-            values.letter = (char)match.currentLetter;
-            values.timeLeft = match.roundTimeLeft;
+            values.categories = match.round.CurrentCategories;
+            values.answers = match.round.CurrentAnswers;
+            values.results = match.round.CurrentResults;
+            values.letter = (char)match.round.CurrentLetter;
+            values.timeLeft = match.round.RoundTimeLeft;
 
             var content = JsonConvert.SerializeObject(values);
 

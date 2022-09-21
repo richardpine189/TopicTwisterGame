@@ -7,19 +7,20 @@ namespace Models
         public string challengerName;
         public string opponentName;
         public int currentRound;
-        /*
+        
         public string[] currentAnswers;
         public string[] currentCategories;
         public bool[] currentResults;
         public char? currentLetter;
         public int roundTimeLeft = 60;
-        */
+        
         public readonly Round round= new Round();
         /*
         public readonly MatchStat matchState= new MatchState();
         */
         public bool isChallengerTurn;
         public bool isMatchFinished;
+        
     }
 
     public class MatchState

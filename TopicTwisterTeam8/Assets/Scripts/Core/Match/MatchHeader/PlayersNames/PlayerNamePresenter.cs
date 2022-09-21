@@ -2,18 +2,15 @@ namespace Core.Match.PlayersNames
 {
     public class PlayerNamePresenter
     {
-        private readonly IGetMatchOpponentUseCase _getMatchOpponent;
-        private readonly IGetMatchChallengerUseCase _getMatchChallenger;
+        private readonly IGetMatchData _getMatchData;
         private readonly IPlayerNameView _playerNameView;
         private readonly ILoadingGameView _loadingGameView;
 
-        public PlayerNamePresenter(IPlayerNameView playerNameView,IGetMatchOpponentUseCase getMatchOpponent,IGetMatchChallengerUseCase getMatchChallenger, ILoadingGameView loadingGameView)
+        public PlayerNamePresenter(IPlayerNameView playerNameView,IGetMatchData getMatchData, ILoadingGameView loadingGameView)
         {
             _playerNameView = playerNameView;
-            _getMatchChallenger = getMatchChallenger;
-            _getMatchOpponent = getMatchOpponent;
+            _getMatchData = getMatchData;
             _loadingGameView = loadingGameView;
-            
             _loadingGameView.OnSendNamesInHeader += InitializeNameInHeader;
         }
 
@@ -25,8 +22,8 @@ namespace Core.Match.PlayersNames
         
         private void InitializeNameInHeader()
         {
-            var opponentName = _getMatchOpponent.Execute();
-            var challengerName = _getMatchChallenger.Execute();
+            var opponentName = _getMatchData.GetOpponentName();
+            var challengerName = _getMatchData.GetChallengerName();
             _playerNameView.SetInUIPlayerName(challengerName, opponentName);
         }
         
