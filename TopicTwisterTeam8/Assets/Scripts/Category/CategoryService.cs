@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Unity.Plastic.Newtonsoft.Json;
+using Newtonsoft.Json;
 
 public class CategoryService : ICategoryService
 {

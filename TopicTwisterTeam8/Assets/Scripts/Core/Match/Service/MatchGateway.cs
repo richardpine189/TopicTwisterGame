@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Core.Match.Interface;
 using Models.DTO;
-using Unity.Plastic.Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace Core.Match.Service
 {
@@ -22,8 +22,8 @@ namespace Core.Match.Service
 
         public async Task<List<MatchDTO>> GetMatchesDTOByName(string userName)
         {
-            string subPath = "/getMatches";
-            var response = await _client.GetAsync(_apiPath + subPath + $"/{userName}");
+            string subPath = "/getMatches?userName=";
+            var response = await _client.GetAsync(_apiPath + subPath + userName);
 
             var responseString = await response.Content.ReadAsStringAsync();
             //var list = JsonUtility.FromJson<ListMatchDTO>(responseString);
@@ -34,16 +34,17 @@ namespace Core.Match.Service
 
         public async Task<MatchDTO> GetNewMatch(string challenger)
         {
-            string subPath = "/newMatch/";
-            var response = await _client.GetAsync(_apiPath + subPath + $"{challenger}");
+            string subPath = "/newMatch?challengerUserName=";
+            
+            var response = await _client.GetAsync(_apiPath + subPath + challenger);
 
             return await InterpretateResponse(response);
         }
 
         public async Task<ActiveMatchDTO> GetActiveMatch(int matchId)
         {
-            string subPath = "/GetMatchById";
-            var response = await _client.GetAsync(_apiPath + subPath + $"/{matchId}");
+            string subPath = "/GetMatchById/";
+            var response = await _client.GetAsync(_apiPath + subPath + matchId);
             
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
@@ -100,14 +101,16 @@ namespace Core.Match.Service
 
         public async Task<MatchResultsDTO> GetRoundResults(int matchId, int roundIndex)
         {
-            var builder = new UriBuilder(_apiPath + "/RoundResults");
-            builder.Port = 8082;
+            var path = _apiPath + $"/RoundResults?matchId={matchId}&round={roundIndex}";
+            /*ar builder = new UriBuilder(_apiPath + "/RoundResults");
+            builder.Port = 8080;
             var query = HttpUtility.ParseQueryString(builder.Query);
             query["matchId"] = matchId.ToString();
             query["round"] = roundIndex.ToString();
             builder.Query = query.ToString();
-            var response = await _client.GetAsync(builder.ToString());
-
+            */
+            //var response = await _client.GetAsync(builder.ToString());
+            var response = await _client.GetAsync(path);
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
                 throw new HttpRequestException("There is not connection");

@@ -14978,6 +14978,7 @@ MonoBehaviour:
   _matchHeaderTitleView: {fileID: 4070629}
   _categoriesRouteConfig: {fileID: 11400000, guid: c8d8e3763a719ed4d917af696109ba61,
     type: 2}
+  _matchRouteConfig: {fileID: 11400000, guid: fcfb53946b5c0c242a2c34020583be69, type: 2}
 --- !u!114 &1851024796
 MonoBehaviour:
   m_ObjectHideFlags: 0

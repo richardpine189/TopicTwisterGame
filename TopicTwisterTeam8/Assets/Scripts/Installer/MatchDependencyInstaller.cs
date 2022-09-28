@@ -11,7 +11,7 @@ using Zenject;
 
 public class MatchDependencyInstaller : MonoInstaller
 {
-    private readonly string API_URL_BASE_PATH = "http://localhost:8082";
+    //private readonly string API_URL_BASE_PATH = "http://localhost:8082";
     
     [SerializeField]
     private LoadingGameView _loadingView;
@@ -53,10 +53,12 @@ public class MatchDependencyInstaller : MonoInstaller
 
     [SerializeField]
     private RouteConfig _categoriesRouteConfig;
+    [SerializeField]
+    private RouteConfig _matchRouteConfig;
 
     public override void InstallBindings()
     {
-        IGetMatchGateway matchGateway = new MatchGateway(API_URL_BASE_PATH);
+        IGetMatchGateway matchGateway = new MatchGateway(_matchRouteConfig.path);
         //RemoveActiveMatch remove = new RemoveActiveMatch();
         Container.Bind<IActiveMatch>().To<ActiveMatchInMemory>().AsSingle().NonLazy();
         Container.BindInterfacesTo<SaveMatchDataInMemory>().AsTransient();

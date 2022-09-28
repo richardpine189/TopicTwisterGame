@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Unity.Plastic.Newtonsoft.Json;
+using Newtonsoft.Json;
+
 public class LoginUserUseCase : ILoginGetUserUseCase
 {
     private ILoginService _loginService;
