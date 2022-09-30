@@ -99,17 +99,10 @@ namespace Core.Match.Service
             return deserializeMatchDto;
         }
 
-        public async Task<MatchResultsDTO> GetRoundResults(int matchId, int roundIndex)
+        public async Task<MatchResultsDTO> GetRoundResults(int matchId)
         {
-            var path = _apiPath + $"/RoundResults?matchId={matchId}&round={roundIndex}";
-            /*ar builder = new UriBuilder(_apiPath + "/RoundResults");
-            builder.Port = 8080;
-            var query = HttpUtility.ParseQueryString(builder.Query);
-            query["matchId"] = matchId.ToString();
-            query["round"] = roundIndex.ToString();
-            builder.Query = query.ToString();
-            */
-            //var response = await _client.GetAsync(builder.ToString());
+            var path = _apiPath + $"/RoundResults?matchId={matchId}";
+            
             var response = await _client.GetAsync(path);
             if (response.StatusCode == HttpStatusCode.NotFound)
             {

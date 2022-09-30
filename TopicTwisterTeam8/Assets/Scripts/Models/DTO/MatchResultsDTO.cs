@@ -7,5 +7,6 @@ namespace Models.DTO
         public string[] opponentAnswers;
         public bool[] challengerResults;
         public bool[] opponentResults;
+        public WinnerStatus matchStatus;
     }
 }

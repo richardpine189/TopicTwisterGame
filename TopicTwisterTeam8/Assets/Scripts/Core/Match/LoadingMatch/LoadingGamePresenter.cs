@@ -18,6 +18,7 @@ namespace Assets.Scripts.Presenters
         private int _currentRound;
         private int _matchId = -1;
         private const int ITS_NEW_MATCH= -1;
+        private const int FIRST_ROUND = 0;
 
         public LoadingGamePresenter(ILoadingGameView loadingGameView,IGetCurrentMatchUseCase getMatch, IActiveMatch matchUseCase, IGetMatchId getMatchId)
         {
@@ -87,7 +88,7 @@ namespace Assets.Scripts.Presenters
 
         private void SelectSectionAtStart()
         {
-            if (_currentRound == 0)
+            if (_currentRound == FIRST_ROUND)
             {
                 _view.ShowCategoriesSection();
             }

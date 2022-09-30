@@ -39,9 +39,9 @@ class CorrectionPresenter
     {
         try
         {
-            bool continuePlaying = await _updateMatch.Execute();
+            bool showEndRoundPanel = await _updateMatch.Execute();
 
-            if(continuePlaying)
+            if(showEndRoundPanel)
             {
                 _resetActiveMatch.Execute();
                 _view.LoadNextTurn();

@@ -1,5 +1,6 @@
 using System;
 using Core.Match.TitleHeaderView;
+using Models.DTO;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -40,6 +41,10 @@ public class EndRoundView : MonoBehaviour, IEndRoundView
     
     [SerializeField]
     private GameObject _nextRoundButton;
+    
+    [SerializeField]
+    private GameObject _backToMainButton;
+    
 
 
     void OnEnable()
@@ -117,18 +122,24 @@ public class EndRoundView : MonoBehaviour, IEndRoundView
         gameObject.SetActive(false);
     }
 
-    public void ShowEndGamePanel(bool challengerWon)
+    public void ShowEndGamePanel(WinnerStatus winner)
     {
         TMP_Text text = _endgamePanel.GetComponentInChildren(typeof(TMP_Text)) as TMP_Text;
-        text.text = challengerWon ? "Ganaste!" : "Perdiste :(";
+        //text.text = challengerWon ? "Ganaste!" : "Perdiste :(";
         _nextRoundButton.SetActive(false);
-        _endgamePanel.SetActive(true);
+        _backToMainButton.SetActive(true);
     }
 
     public void BackToMain()
     {
-        _nextRoundButton.GetComponent<Button>().enabled = false;
+        _backToMainButton.GetComponent<Button>().enabled = false;
         SceneManager.LoadScene(1, LoadSceneMode.Single);
+    }
+
+    public void ChangeButtons()
+    {
+        _backToMainButton.SetActive(true);
+        _nextRoundButton.SetActive(false);
     }
 }
 

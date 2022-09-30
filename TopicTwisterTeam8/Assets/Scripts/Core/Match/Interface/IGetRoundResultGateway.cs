@@ -5,6 +5,6 @@ namespace Core.Match.Interface
 {
     public interface IGetRoundResultGateway
     {
-        public Task<MatchResultsDTO> GetRoundResults(int matchId, int roundIndex);
+        public Task<MatchResultsDTO> GetRoundResults(int matchId);
     }
 }

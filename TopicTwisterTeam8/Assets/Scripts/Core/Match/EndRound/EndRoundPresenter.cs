@@ -8,9 +8,7 @@ public class EndRoundPresenter
     private readonly IGetRoundResult _getRoundResultUseCase;
     private IGetMatchData _getMatchData;
     private int _matchId;
-
-    // TODO: Muy Sucio BORRAR
-    private static int hasAppeared = 0;
+    private const int LAST_ROUND = 2;
 
     public EndRoundPresenter(IEndRoundView endRoundView, IGetRoundResult getRoundResultUseCase, IGetMatchData getMatchData)
     {
@@ -28,19 +26,17 @@ public class EndRoundPresenter
     private async void RequestRoundResult()
     {
         int roundNumber = _getMatchData.GetRoundNumber();
-        MatchResultsDTO matchResultsDTO = await _getRoundResultUseCase.Execute(_matchId, roundNumber - hasAppeared);
+        MatchResultsDTO matchResultsDTO = await _getRoundResultUseCase.Execute(_matchId);
 
-        if(hasAppeared == 0)
+        if (roundNumber == LAST_ROUND && matchResultsDTO.matchStatus != WinnerStatus.Unassigned)
         {
-            hasAppeared = 1;
-        }
-        else
-        {
-            hasAppeared = 0;
+            _endRoundView.ShowEndGamePanel(matchResultsDTO.matchStatus);
         }
 
         ShowResultsInView(matchResultsDTO);
     }
+
+    
 
     private void ShowResultsInView(MatchResultsDTO matchResultsDTO)
     {

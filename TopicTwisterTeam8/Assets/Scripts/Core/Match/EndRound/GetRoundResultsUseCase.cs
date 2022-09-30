@@ -10,8 +10,8 @@ public class GetRoundResultsUseCase : IGetRoundResult
     {
         _getRoundResults = getRoundResults;
     }
-    public async Task<MatchResultsDTO> Execute(int matchId, int roundIndex)
+    public async Task<MatchResultsDTO> Execute(int matchId)
     {
-        return await _getRoundResults.GetRoundResults(matchId, roundIndex);
+        return await _getRoundResults.GetRoundResults(matchId);
     }
 }

@@ -7487,6 +7487,7 @@ MonoBehaviour:
   _endgamePanel: {fileID: 2643517932280817489}
   _categoriesPanel: {fileID: 593648985}
   _nextRoundButton: {fileID: 1090981618}
+  _backToMainButton: {fileID: 2643517932280817489}
 --- !u!1 &799673528
 GameObject:
   m_ObjectHideFlags: 0
@@ -14978,7 +14979,7 @@ MonoBehaviour:
   _matchHeaderTitleView: {fileID: 4070629}
   _categoriesRouteConfig: {fileID: 11400000, guid: c8d8e3763a719ed4d917af696109ba61,
     type: 2}
-  _matchRouteConfig: {fileID: 11400000, guid: fcfb53946b5c0c242a2c34020583be69, type: 2}
+  _matchRouteConfig: {fileID: 11400000, guid: 98ae32bd8ed6f844681f9b718946fd33, type: 2}
 --- !u!114 &1851024796
 MonoBehaviour:
   m_ObjectHideFlags: 0
