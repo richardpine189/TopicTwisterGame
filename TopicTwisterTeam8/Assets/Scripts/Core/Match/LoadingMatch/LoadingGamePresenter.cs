@@ -52,7 +52,7 @@ namespace Assets.Scripts.Presenters
         {
             _view.OnReadyForNext -= SelectSectionAtStart;
         }
-    
+        
         private async Task RequestMatchData()
         {
             if (_matchId == ITS_NEW_MATCH)
@@ -85,7 +85,7 @@ namespace Assets.Scripts.Presenters
                 _matchUseCase.Match.round.RoundTimeLeft = activematch.currentTime;
             }
         }
-
+        
         private void SelectSectionAtStart()
         {
             if (_currentRound == FIRST_ROUND)
