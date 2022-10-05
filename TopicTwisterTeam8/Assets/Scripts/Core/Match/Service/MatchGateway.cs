@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -60,10 +61,10 @@ namespace Core.Match.Service
         {
             RoundDTO values = new RoundDTO();
 
-            values.id = match.idMatch;
-            values.categories = match.round.CurrentCategories;
-            values.answers = match.round.CurrentAnswers;
-            values.results = match.round.CurrentResults;
+            values.idMatch = match.idMatch;
+            values.categories = match.round.CurrentCategories.ToList();
+            values.answers = match.round.CurrentAnswers.ToList();
+            values.results = match.round.CurrentResults.ToList();
             values.letter = (char)match.round.CurrentLetter;
             values.timeLeft = match.round.RoundTimeLeft;
 
