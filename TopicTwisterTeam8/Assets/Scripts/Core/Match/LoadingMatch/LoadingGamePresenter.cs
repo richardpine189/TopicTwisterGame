@@ -13,8 +13,8 @@ namespace Assets.Scripts.Presenters
         private IActiveMatch _matchUseCase;
         private IGetMatchId _getMachId;
 
-        private string _challengerName;
-        private string _opponentName;
+        private string _playerLogged;
+        private string _secondPlayer;
         private int _currentRound;
         private int _matchId = -1;
         private const int ITS_NEW_MATCH= -1;
@@ -31,17 +31,13 @@ namespace Assets.Scripts.Presenters
         }
         public async void Initialize()
         {
-            //Inicializar USERNAME
-            
-            _challengerName = UserDTO.PlayerName;
-
             _matchId = _getMachId.Invoke();
-                
-            _view.SetChallenger(_challengerName); 
+            _playerLogged = UserDTO.PlayerName;
+            _view.SetChallenger(_playerLogged); 
             
             await RequestMatchData();
             
-            _view.SetOpponent(_opponentName);
+            _view.SetOpponent(_secondPlayer);
 
             _view.OnReadyForNext += SelectSectionAtStart;
             
@@ -57,29 +53,31 @@ namespace Assets.Scripts.Presenters
         {
             if (_matchId == ITS_NEW_MATCH)
             {
+                var matchDto = await _getMatch.Invoke(_playerLogged);
+
+                _currentRound = matchDto.currentRound;
+                _secondPlayer = (matchDto.opponentName == _playerLogged ? matchDto.challengerName : matchDto.opponentName);
+                
                 _matchUseCase.Match = new Match();
-                _matchUseCase.Match.idMatch = ITS_NEW_MATCH;
-                _matchUseCase.Match.challengerName = _challengerName;
-                var matchDto = await _getMatch.Invoke(_challengerName);
-                _opponentName = (matchDto.opponentName == _challengerName ? matchDto.challengerName : matchDto.opponentName);
                 _matchUseCase.Match.idMatch = matchDto.idMatch;
                 _matchUseCase.Match.challengerName = matchDto.challengerName;
                 _matchUseCase.Match.opponentName = matchDto.opponentName;
                 _matchUseCase.Match.currentRound = matchDto.currentRound;
-                _currentRound = matchDto.currentRound;
                 _matchUseCase.Match.isChallengerTurn = matchDto.isChallengerTurn;
                 _matchUseCase.Match.isMatchFinished = matchDto.isMatchFinished;
             }
             else
             {
                 var activematch = await _getMatch.Invoke(_matchId);
+
+                _currentRound = activematch.currentRound;
+                _secondPlayer = (activematch.opponentName == _playerLogged ? activematch.challengerName : activematch.opponentName);
+                
                 _matchUseCase.Match = new Match();
                 _matchUseCase.Match.idMatch = _matchId;
-                _opponentName = (activematch.opponentName == _challengerName ? activematch.challengerName : activematch.opponentName);
                 _matchUseCase.Match.challengerName = activematch.challengerName;
                 _matchUseCase.Match.opponentName = activematch.opponentName;
                 _matchUseCase.Match.currentRound = activematch.currentRound;
-                _currentRound = activematch.currentRound;
                 _matchUseCase.Match.round.CurrentCategories = activematch.currentCategories;
                 _matchUseCase.Match.round.CurrentLetter = activematch.currentLetter;
                 _matchUseCase.Match.round.RoundTimeLeft = activematch.currentTime;

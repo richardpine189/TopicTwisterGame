@@ -20,7 +20,7 @@ public class LoginUserUseCase : ILoginGetUserUseCase
 
         _localPlayerDataRepository.SetData(userDto);
 
-        UserDTO.PlayerName = userDto.name; // OJO ACA con el estatico
+        UserDTO.PlayerName = userDto.name; //TODO: OJO ACA con el estatico
     }
 
     public UserDTO UserJsonToDTO(string userJson)
