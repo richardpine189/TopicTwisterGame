@@ -96,5 +96,11 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
         {
             img.sprite = null;
         }
+
+        foreach (var answer in _answersUI)
+        {
+            answer.text = "";
+        }
+        
     }
 }
