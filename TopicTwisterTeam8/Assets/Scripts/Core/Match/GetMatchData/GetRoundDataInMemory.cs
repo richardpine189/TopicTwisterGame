@@ -33,14 +33,15 @@ class GetRoundDataInMemory : IGetRoundData
 class GetMatchDataInMemory : IGetMatchData
 {
     [Inject] private IActiveMatch _activeMatch;
+
     public string GetChallengerName()
     {
-        return _activeMatch.Match.opponentName;
+        return _activeMatch.Match.challengerName;
     }
 
     public string GetOpponentName()
     {
-        return _activeMatch.Match.challengerName;
+        return _activeMatch.Match.opponentName;
     }
 
     public int GetRoundNumber()

@@ -22,9 +22,17 @@ namespace Core.Match.PlayersNames
         
         private void InitializeNameInHeader()
         {
-            var opponentName = _getMatchData.GetOpponentName();
             var challengerName = _getMatchData.GetChallengerName();
-            _playerNameView.SetInUIPlayerName(challengerName, opponentName);
+            var opponentName = _getMatchData.GetOpponentName();
+
+            if(UserDTO.PlayerName == challengerName)
+            {
+                _playerNameView.SetInUIPlayerName(challengerName, opponentName);
+            }
+            else
+            {
+                _playerNameView.SetInUIPlayerName(opponentName, challengerName);
+            }
         }
         
     }

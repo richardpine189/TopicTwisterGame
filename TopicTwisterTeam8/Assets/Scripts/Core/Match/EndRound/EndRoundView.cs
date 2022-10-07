@@ -44,8 +44,6 @@ public class EndRoundView : MonoBehaviour, IEndRoundView
     
     [SerializeField]
     private GameObject _backToMainButton;
-    
-
 
     void OnEnable()
     {
@@ -81,7 +79,7 @@ public class EndRoundView : MonoBehaviour, IEndRoundView
         }
     }
 
-    public void ShowChallengerAnswersAndResult(string[] answers, bool[] results)
+    public void ShowLoggedPlayerAnswersAndResult(string[] answers, bool[] results)
     {
         for (int i = 0; i < answers.Length; i++)
         {
@@ -98,7 +96,7 @@ public class EndRoundView : MonoBehaviour, IEndRoundView
         }
     }
 
-    public void ShowOponentAnswersAndResult(string[] answers, bool[] results)
+    public void ShowSecondPlayerAnswersAndResult(string[] answers, bool[] results)
     {
         for (int i = 0; i < answers.Length; i++)
         {

@@ -38,12 +38,19 @@ public class EndRoundPresenter
         ShowResultsInView(matchResultsDTO);
     }
 
-    
-
     private void ShowResultsInView(MatchResultsDTO matchResultsDTO)
     {
         _endRoundView.ShowCategories(matchResultsDTO.currentCategories);
-        _endRoundView.ShowChallengerAnswersAndResult(matchResultsDTO.challengerAnswers, matchResultsDTO.challengerResults);
-        _endRoundView.ShowOponentAnswersAndResult(matchResultsDTO.opponentAnswers, matchResultsDTO.opponentResults);
+
+        if(UserDTO.PlayerName == _getMatchData.GetChallengerName())
+        {
+            _endRoundView.ShowLoggedPlayerAnswersAndResult(matchResultsDTO.challengerAnswers, matchResultsDTO.challengerResults);
+            _endRoundView.ShowSecondPlayerAnswersAndResult(matchResultsDTO.opponentAnswers, matchResultsDTO.opponentResults);
+        }
+        else
+        {
+            _endRoundView.ShowLoggedPlayerAnswersAndResult(matchResultsDTO.opponentAnswers, matchResultsDTO.opponentResults);
+            _endRoundView.ShowSecondPlayerAnswersAndResult(matchResultsDTO.challengerAnswers, matchResultsDTO.challengerResults);
+        }
     }
 }
