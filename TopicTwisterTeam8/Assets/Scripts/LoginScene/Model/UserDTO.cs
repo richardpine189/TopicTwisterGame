@@ -9,5 +9,7 @@
     public string email { get; set; }
     
     public int coin { get; set; }
+    
+    public int victories { get; set; }
 }
 

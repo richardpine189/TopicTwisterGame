@@ -9,6 +9,7 @@ public class PlayerPrefsPlayerDataRepository : ILocalPlayerDataRepository
         user.email = PlayerPrefs.GetString("PlayerEmail");
         user.id = PlayerPrefs.GetInt("PlayerId");
         user.coin = PlayerPrefs.GetInt("PlayerCoin");
+        user.victories = PlayerPrefs.GetInt("PlayerVictories");
         return user;
     }
 
@@ -18,6 +19,7 @@ public class PlayerPrefsPlayerDataRepository : ILocalPlayerDataRepository
         PlayerPrefs.SetString("PlayerEmail", userDto.email);
         PlayerPrefs.SetInt("PlayerId", userDto.id);
         PlayerPrefs.SetInt("PlayerCoin", userDto.coin);
+        PlayerPrefs.SetInt("PlayerVictories", userDto.victories);
         PlayerPrefs.Save();
     }
 }
