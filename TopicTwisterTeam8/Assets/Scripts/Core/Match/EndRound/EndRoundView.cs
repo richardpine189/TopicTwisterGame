@@ -13,6 +13,9 @@ public class EndRoundView : MonoBehaviour, IEndRoundView
     private const string PANEL_NAME = "FINAL DE RONDA";
     
     [SerializeField]
+    private GameObject _header;
+    
+    [SerializeField]
     private TextMeshProUGUI[] _categories;
 
     [SerializeField]
@@ -47,6 +50,7 @@ public class EndRoundView : MonoBehaviour, IEndRoundView
 
     void OnEnable()
     {
+        _header.SetActive(true);
         _nextRoundButton.GetComponent<Button>().enabled = true;
         TitleSetName.SendPanelName(PANEL_NAME);
         OnSetRoundResults?.Invoke();
