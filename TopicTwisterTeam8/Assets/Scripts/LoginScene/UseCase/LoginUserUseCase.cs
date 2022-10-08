@@ -19,8 +19,6 @@ public class LoginUserUseCase : ILoginGetUserUseCase
         UserDTO userDto = UserJsonToDTO(tempUser);
 
         _localPlayerDataRepository.SetData(userDto);
-
-        UserDTO.PlayerName = userDto.name; //TODO: OJO ACA con el estatico
     }
 
     public UserDTO UserJsonToDTO(string userJson)

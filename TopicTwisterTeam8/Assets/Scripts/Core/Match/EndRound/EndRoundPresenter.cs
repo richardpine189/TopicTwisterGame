@@ -6,16 +6,18 @@ public class EndRoundPresenter
 {
     private readonly IEndRoundView _endRoundView;
     private readonly IGetRoundResult _getRoundResultUseCase;
+    private readonly ILocalPlayerDataRepository _userLocalRepository;
     private IGetMatchId _getMachId;
     private IGetMatchData _getMatchData;
     private const int LAST_ROUND = 2;
 
-    public EndRoundPresenter(IEndRoundView endRoundView, IGetRoundResult getRoundResultUseCase, IGetMatchData getMatchData, IGetMatchId getMatchId)
+    public EndRoundPresenter(IEndRoundView endRoundView, IGetRoundResult getRoundResultUseCase, IGetMatchData getMatchData, IGetMatchId getMatchId, ILocalPlayerDataRepository userLocalRepository)
     {
         _getRoundResultUseCase = getRoundResultUseCase;
         _getMachId = getMatchId;
         _getMatchData = getMatchData;
         _endRoundView = endRoundView;
+        _userLocalRepository = userLocalRepository;
         _endRoundView.OnSetRoundResults += RequestRoundResult;
     }
 
@@ -42,7 +44,7 @@ public class EndRoundPresenter
     {
         _endRoundView.ShowCategories(matchResultsDTO.currentCategories);
 
-        if(UserDTO.PlayerName == _getMatchData.GetChallengerName())
+        if(_userLocalRepository.GetData().name == _getMatchData.GetChallengerName())
         {
             _endRoundView.ShowLoggedPlayerAnswersAndResult(matchResultsDTO.challengerAnswers, matchResultsDTO.challengerResults);
             _endRoundView.ShowSecondPlayerAnswersAndResult(matchResultsDTO.opponentAnswers, matchResultsDTO.opponentResults);

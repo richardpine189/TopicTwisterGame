@@ -14,7 +14,6 @@ public class MainScenePanelNavigator : MonoBehaviour
 
     void Start()
     {
-
         _mainPanel.DOAnchorPos(Vector2.zero, ANIMATION_TIME_TO_SLIDING);
     }
 
@@ -30,7 +29,6 @@ public class MainScenePanelNavigator : MonoBehaviour
 
     public void PlaceHoldingLogOut()
     {
-        UserDTO.PlayerName = null;
         SceneManager.LoadScene("LoginScene");
     }
 }

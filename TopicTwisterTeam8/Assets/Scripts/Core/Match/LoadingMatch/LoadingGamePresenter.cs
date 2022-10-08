@@ -8,20 +8,23 @@ namespace Assets.Scripts.Presenters
 {
     public class LoadingGamePresenter
     {
-        private ILoadingGameView _view;
-        private IGetCurrentMatchUseCase _getMatch;
-        private IActiveMatch _matchUseCase;
-        private IGetMatchId _getMachId;
-
+        private readonly ILoadingGameView _view;
+        private readonly IGetCurrentMatchUseCase _getMatch;
+        private readonly IActiveMatch _matchUseCase;
+        private readonly IGetMatchId _getMachId;
+        private readonly ILocalPlayerDataRepository _userLocalRepository;
+        
         private string _playerLogged;
         private string _secondPlayer;
         private int _currentRound;
         private int _matchId = -1;
+        
         private const int ITS_NEW_MATCH= -1;
         private const int FIRST_ROUND = 0;
 
-        public LoadingGamePresenter(ILoadingGameView loadingGameView,IGetCurrentMatchUseCase getMatch, IActiveMatch matchUseCase, IGetMatchId getMatchId)
+        public LoadingGamePresenter(ILoadingGameView loadingGameView,IGetCurrentMatchUseCase getMatch, IActiveMatch matchUseCase, IGetMatchId getMatchId, ILocalPlayerDataRepository userLocalRepository)
         {
+            _userLocalRepository = userLocalRepository;
             _view = loadingGameView;
             _getMatch = getMatch;
             _matchUseCase = matchUseCase;
@@ -32,7 +35,7 @@ namespace Assets.Scripts.Presenters
         public async void Initialize()
         {
             _matchId = _getMachId.Invoke();
-            _playerLogged = UserDTO.PlayerName;
+            _playerLogged = _userLocalRepository.GetData().name;
             _view.SetChallenger(_playerLogged); 
             
             await RequestMatchData();

@@ -5,9 +5,9 @@ using Models.DTO;
 
 public class OngoingMatchPresenter
 {
-    private IOngoingMatchView _view;
-
-    private ISaveMatchId _saveMatchId;
+    private readonly IOngoingMatchView _view;
+    private readonly ISaveMatchId _saveMatchId;
+    private readonly ILocalPlayerDataRepository _playerDataRepository;
 
     private int _matchId = 0;
 
@@ -17,18 +17,21 @@ public class OngoingMatchPresenter
 
     private const int OFFSET_FOR_ROUND_COUNTING = 1;
 
+    private readonly string _loggedPlayer;
+
     private readonly Color RED_COLOR = Color.FromArgb(255, 0, 0);
     private readonly Color GREEN_COLOR = Color.FromArgb(53, 164, 52);
     private readonly Color BLUE_COLOR = Color.FromArgb(47, 81, 231);
     private readonly Color YELLOW_COLOR = Color.FromArgb(255, 255, 0);
 
-    public OngoingMatchPresenter(IOngoingMatchView view, MatchDTO match, ISaveMatchId saveMatchId)
+    public OngoingMatchPresenter(IOngoingMatchView view, MatchDTO match, ISaveMatchId saveMatchId, ILocalPlayerDataRepository playerDataRepository)
     {
+        _playerDataRepository = playerDataRepository;
         _saveMatchId = saveMatchId;
         _view = view;
 
         _matchId = match.idMatch;
-
+        _loggedPlayer = _playerDataRepository.GetData().name;
         IsPlayerTurn(match);
 
         SetViewName(match);
@@ -58,12 +61,12 @@ public class OngoingMatchPresenter
 
     private void IsPlayerTurn(MatchDTO match)
     {
-        _isPlayerTurn = (match.isChallengerTurn && UserDTO.PlayerName == match.challengerName) || (!match.isChallengerTurn && UserDTO.PlayerName == match.opponentName);
+        _isPlayerTurn = (match.isChallengerTurn && _loggedPlayer == match.challengerName) || (!match.isChallengerTurn && _loggedPlayer == match.opponentName);
     }
 
     private void SetViewName(MatchDTO match)
     {
-        if(UserDTO.PlayerName == match.challengerName)
+        if(_loggedPlayer == match.challengerName)
         {
             _view.SetOpponentName(match.opponentName);
         }
@@ -123,7 +126,7 @@ public class OngoingMatchPresenter
         {
             if(winnerCount[0] > winnerCount[1])
             {
-                if (UserDTO.PlayerName == match.challengerName)
+                if (_loggedPlayer == match.challengerName)
                 {
                     _view.SetCardColor(BLUE_COLOR);
                 }
@@ -134,7 +137,7 @@ public class OngoingMatchPresenter
             }
             else if(winnerCount[0] < winnerCount[1])
             {
-                if (UserDTO.PlayerName == match.challengerName)
+                if (_loggedPlayer == match.challengerName)
                 {
                     _view.SetCardColor(RED_COLOR);
                 }
