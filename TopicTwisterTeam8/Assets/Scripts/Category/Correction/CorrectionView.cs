@@ -19,6 +19,9 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
 
     [SerializeField]
     private Image[] _resultsUI;
+    
+    [SerializeField]
+    private GameObject[] _recommendButton;
 
     [SerializeField]
     private Sprite _tickSprite;
@@ -49,13 +52,14 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
         for(int i = 0; i < 5; i++)
         {
             _resultsUI[i].gameObject.SetActive(true);
-            if (corrections[i] == true)
+            if (corrections[i])
             {
                 _resultsUI[i].sprite = _tickSprite;
             }
             else
             {
                 _resultsUI[i].sprite = _crossSprite;
+                _recommendButton[i].SetActive(true);
             }
         }
     }
@@ -92,6 +96,10 @@ public class CorrectionView : MonoBehaviour, ICorrectionView
 
     private void CleanCorrection()
     {
+        foreach (var go in _recommendButton)
+        {
+            go.SetActive(false);
+        }
         foreach (var img in _resultsUI)
         {
             img.sprite = null;
