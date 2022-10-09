@@ -1,4 +1,3 @@
-using PlasticPipe.PlasticProtocol.Messages;
 
 namespace MainScene.Header
 {

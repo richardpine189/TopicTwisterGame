@@ -539,9 +539,9 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2160, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.09
+  m_MatchWidthOrHeight: 0.8
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -651,7 +651,7 @@ MonoBehaviour:
   _matchHeaderTitleView: {fileID: 3780579032329677109}
   _categoriesRouteConfig: {fileID: 11400000, guid: c8d8e3763a719ed4d917af696109ba61,
     type: 2}
-  _matchRouteConfig: {fileID: 11400000, guid: 98ae32bd8ed6f844681f9b718946fd33, type: 2}
+  _matchRouteConfig: {fileID: 11400000, guid: fcfb53946b5c0c242a2c34020583be69, type: 2}
 --- !u!114 &1851024796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,6 +706,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 572560339}
     m_Modifications:
+    - target: {fileID: 3780579030540171408, guid: cd3a9634608bf434aaee3fadb111f171,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3780579031421855445, guid: cd3a9634608bf434aaee3fadb111f171,
         type: 3}
       propertyPath: m_Name
