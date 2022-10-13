@@ -23,9 +23,9 @@ public class LogInView : MonoBehaviour, ILoginView
     {
         string username = _usernameInputField.text;
 
-        OnLoginTrigger.Invoke(username);
-        _button.SetActive(false);
         _spiner.SetActive(true);
+        _button.SetActive(false);
+        OnLoginTrigger.Invoke(username);
     }
 
     public void ShowErrorMessage(string message)

@@ -21,21 +21,24 @@ public class SignInPresenter
     {
         if (String.IsNullOrEmpty(username))
         {
-            _view.ShowErrorMessage("No se ha envíado un nombre de usuario.");
+            _view.ShowMessage("No se ha envíado un nombre de usuario.");
         }
         else if (String.IsNullOrEmpty(email))
         {
-            _view.ShowErrorMessage("No se ha envíado un email valido.");
+            _view.ShowMessage("No se ha envíado un email valido.");
         }
         else
         {
             try
             {
                 await _signInUseCase.Invoke(username, email);
+
+                _view.ShowMessage("La cuenta se ha creado con éxito");
+                _view.GoToLogIn();
             }
             catch (Exception e)
             {
-                _view.ShowErrorMessage(e.Message);
+                _view.ShowMessage(e.Message);
             }
         }
     }

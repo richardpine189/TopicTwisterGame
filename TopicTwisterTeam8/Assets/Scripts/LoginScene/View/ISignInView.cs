@@ -2,7 +2,9 @@
 
 public interface ISignInView
 {
-    public void ShowErrorMessage(string message);
+    public void ShowMessage(string message);
+ 
+    void GoToLogIn();
 
     event Action<string, string> OnSignInTrigger;
 }
