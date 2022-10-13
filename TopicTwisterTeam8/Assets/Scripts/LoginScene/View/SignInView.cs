@@ -1,12 +1,14 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class LogInView : MonoBehaviour, ILoginView
+public class SignInView : MonoBehaviour, ISignInView
 {
     [SerializeField]
     private TMP_InputField _usernameInputField;
+
+    [SerializeField]
+    private TMP_InputField _emailInputField;
 
     [SerializeField]
     private GameObject _errorPanel;
@@ -17,13 +19,14 @@ public class LogInView : MonoBehaviour, ILoginView
     [SerializeField]
     private GameObject _spiner;
 
-    public event Action<string> OnLoginTrigger;
+    public event Action<string, string> OnSignInTrigger;
 
-    public void LoginButton()
+    public void SignIn()
     {
         string username = _usernameInputField.text;
+        string email = _emailInputField.text;
 
-        OnLoginTrigger.Invoke(username);
+        OnSignInTrigger?.Invoke(username, email);
         _button.SetActive(false);
         _spiner.SetActive(true);
     }
@@ -35,10 +38,4 @@ public class LogInView : MonoBehaviour, ILoginView
         _errorPanel.SetActive(true);
         _button.SetActive(true);
     }
-
-    public void LoadMainScene()
-    {
-        SceneManager.LoadScene("MainScene"); //HardCoding
-    }
 }
-

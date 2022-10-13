@@ -3,11 +3,11 @@ using Newtonsoft.Json;
 
 public class LoginUserUseCase : ILoginGetUserUseCase
 {
-    private ILoginService _loginService;
+    private IUsersService _loginService;
 
     private ILocalPlayerDataRepository _localPlayerDataRepository;
 
-    public LoginUserUseCase(ILoginService loginService, ILocalPlayerDataRepository localPlayerDataRepository)
+    public LoginUserUseCase(IUsersService loginService, ILocalPlayerDataRepository localPlayerDataRepository)
     {
         _loginService = loginService;
         _localPlayerDataRepository = localPlayerDataRepository;
