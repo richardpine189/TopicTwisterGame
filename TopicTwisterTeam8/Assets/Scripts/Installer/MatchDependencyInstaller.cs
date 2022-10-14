@@ -60,12 +60,12 @@ public class MatchDependencyInstaller : MonoInstaller
     {
         IGetMatchGateway matchGateway = new MatchGateway(_matchRouteConfig.path);
         //RemoveActiveMatch remove = new RemoveActiveMatch();
-        Container.Bind<IActiveMatch>().To<ActiveMatchInMemory>().AsSingle().NonLazy();
-        Container.BindInterfacesTo<SaveMatchDataInMemory>().AsTransient();
-        Container.BindInterfacesTo<SaveRoundDataInMemory>().AsTransient();
-        Container.BindInterfacesTo<GetRoundDataInMemory>().AsTransient().NonLazy();
-        Container.BindInterfacesTo<GetMatchDataInMemory>().AsTransient().NonLazy();
-        Container.BindInterfacesTo<MatchHasUseCase>().AsTransient();
+        Container.Bind<IActiveMatchRepository>().To<ActiveMatchRepositoryInMemory>().AsSingle().NonLazy();
+        Container.BindInterfacesTo<SaveMatchData>().AsTransient();
+        Container.BindInterfacesTo<SaveRoundData>().AsTransient();
+        Container.BindInterfacesTo<GetRoundData>().AsTransient().NonLazy();
+        Container.BindInterfacesTo<GetMatchData>().AsTransient().NonLazy();
+        Container.BindInterfacesTo<MatchHas>().AsTransient();
         Container.BindInterfacesTo<PlayerPrefMatchIdRepository>().AsTransient().NonLazy();
         Container.Bind<ICategoryService>().To<CategoryService>().AsTransient().WithArguments(_categoriesRouteConfig.path).NonLazy();
         
@@ -73,20 +73,20 @@ public class MatchDependencyInstaller : MonoInstaller
         Container.Bind<ResetActiveMatch>().AsTransient();
         
         Container.Bind<ILoadingGameView>().To<LoadingGameView>().FromInstance(_loadingView).NonLazy();
-        Container.Bind<IGetCurrentMatchUseCase>().To<GetCurrentMatchUseCase>().AsTransient().WithArguments(matchGateway).NonLazy();
+        Container.Bind<IGetCurrentMatchUseCase>().To<GetCurrentMatch>().AsTransient().WithArguments(matchGateway).NonLazy();
         Container.Bind<IGetMatchId>().To<MatchIDUseCase>().AsTransient().NonLazy();
         //Container.Bind<LoadingGamePresenter>().AsTransient().Lazy();
         Container.Instantiate<LoadingGamePresenter>();
         
         //Container.BindInterfacesTo<LetterView>().FromInstance(_letterView).NonLazy();
         Container.Bind<ILetterView>().To<LetterView>().FromInstance(_letterView).NonLazy();
-        Container.Bind<IGetLetterUseCase>().To<GetRandomLetterUseCase>().AsTransient();
+        Container.Bind<IGetLetterUseCase>().To<GetRandomLetter>().AsTransient();
         //Container.Bind<LetterPresenter>().AsTransient().Lazy();
         Container.Instantiate<LetterPresenter>();
         
         //Container.BindInterfacesTo<CategoriesView>().FromInstance(_categoriesView).NonLazy();
         Container.Bind<ICategoriesView>().To<CategoriesView>().FromInstance(_categoriesView).NonLazy();
-        Container.Bind<ICategoriesGetter>().To<GetCategoriesUseCase>().AsTransient().NonLazy();
+        Container.Bind<IGetCategoriesUseCase>().To<GetCategories>().AsTransient().NonLazy();
         //Container.Bind<CategoriesPresenter>().AsTransient().Lazy();
         Container.Instantiate<CategoriesPresenter>();
         
@@ -103,7 +103,7 @@ public class MatchDependencyInstaller : MonoInstaller
         //Container.BindInterfacesTo<CorrectionView>().FromInstance(_correctionView).NonLazy();
         Container.Bind<ICorrectionView>().To<CorrectionView>().FromInstance(_correctionView).NonLazy();
         Container.Bind<IGetCorrections>().To<CorrectionGetter>().AsTransient();
-        Container.Bind<IUpdateMatchUseCase>().To<UpdateMatchUseCase>().AsTransient().WithArguments(matchGateway);
+        Container.Bind<IUpdateMatchUseCase>().To<UpdateMatch>().AsTransient().WithArguments(matchGateway);
         //Container.Bind<CorrectionPresenter>().AsTransient().Lazy();
         Container.Instantiate<CorrectionPresenter>();
 
