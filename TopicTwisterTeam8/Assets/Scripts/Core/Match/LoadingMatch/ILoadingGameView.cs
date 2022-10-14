@@ -9,5 +9,6 @@ public interface ILoadingGameView
     public void StartAnimation(bool isNewGame);
     public event Action OnReadyForNext;
     public event Action OnSendNamesInHeader;
+    public event Action SincronizeRoundNumber;
 }
 

@@ -9,12 +9,10 @@ using UnityEngine.SceneManagement;
 public class EndRoundView : MonoBehaviour, IEndRoundView
 {
     public event Action OnSetRoundResults;
-    
+    public event Action OnSetRoundNumber;
+
     private const string PANEL_NAME = "FINAL DE RONDA";
-    
-    [SerializeField]
-    private GameObject _header;
-    
+
     [SerializeField]
     private TextMeshProUGUI[] _categories;
 
@@ -50,7 +48,6 @@ public class EndRoundView : MonoBehaviour, IEndRoundView
 
     void OnEnable()
     {
-        _header.SetActive(true);
         _nextRoundButton.GetComponent<Button>().enabled = true;
         TitleSetName.SendPanelName(PANEL_NAME);
         OnSetRoundResults?.Invoke();
@@ -121,6 +118,7 @@ public class EndRoundView : MonoBehaviour, IEndRoundView
     {
         _nextRoundButton.GetComponent<Button>().enabled = false;
         _categoriesPanel.SetActive(true);
+        OnSetRoundNumber?.Invoke();
         gameObject.SetActive(false);
     }
 
@@ -143,5 +141,6 @@ public class EndRoundView : MonoBehaviour, IEndRoundView
         _backToMainButton.SetActive(true);
         _nextRoundButton.SetActive(false);
     }
+
 }
 

@@ -14,6 +14,8 @@ namespace Team8.TopicTwister
     {
         public event Action OnReadyForNext;
         public event Action OnSendNamesInHeader;
+        
+        public event Action SincronizeRoundNumber;
 
         [SerializeField]
         private TMP_Text _playerName;
@@ -30,7 +32,12 @@ namespace Team8.TopicTwister
         [SerializeField]
         private GameObject _endRoundPanel;
 
-        [SerializeField] private GameObject _spiner;
+        [SerializeField]
+        private GameObject _spiner;
+        
+        [SerializeField]
+        private GameObject _header;
+        
         private const int ITS_NEW_MATCH = -1;
 
         public void StartAnimation(bool isNewGame)
@@ -58,7 +65,7 @@ namespace Team8.TopicTwister
             yield return new WaitForSeconds(3.0f);
 
             OnReadyForNext?.Invoke();
-            OnSendNamesInHeader?.Invoke();
+            
         }
 
         public void SetChallenger(string challengerName)
@@ -75,13 +82,17 @@ namespace Team8.TopicTwister
         public void ShowCategoriesSection()
         {
             _categoriesPanel.SetActive(true);
+            _header.SetActive(true);
             DeactivateLoading();
         }
 
         public void ShowEndRoundSection()
         {
             _endRoundPanel.SetActive(true);
+            _header.SetActive(true);
             DeactivateLoading();
+            OnSendNamesInHeader?.Invoke();
+            SincronizeRoundNumber?.Invoke();
         }
 
         private void DeactivateLoading()
