@@ -1,4 +1,4 @@
-namespace MainScene.Header
+namespace Architecture.User.View.UserHeader
 {
     public interface IHeaderMainView
     {

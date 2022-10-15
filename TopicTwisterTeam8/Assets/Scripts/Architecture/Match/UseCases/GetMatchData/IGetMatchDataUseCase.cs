@@ -1,6 +1,9 @@
-public interface IGetMatchDataUseCase
+namespace Architecture.Match.UseCases.GetMatchData
 {
-    string GetChallengerName();
-    string GetOpponentName();
-    int GetRoundNumber();
+    public interface IGetMatchDataUseCase
+    {
+        string GetChallengerName();
+        string GetOpponentName();
+        int GetRoundNumber();
+    }
 }

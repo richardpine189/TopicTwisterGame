@@ -1,28 +1,34 @@
 ﻿using System.Threading.Tasks;
+using Architecture.User.Domain;
+using Architecture.User.Gateway;
+using Architecture.User.Repository;
 using Newtonsoft.Json;
 
-public class LoginUserUseCase : ILoginGetUserUseCase
+namespace Architecture.User.UseCase
 {
-    private IUserGateway _loginService;
-
-    private ILocalPlayerDataRepository _localPlayerDataRepository;
-
-    public LoginUserUseCase(IUserGateway loginService, ILocalPlayerDataRepository localPlayerDataRepository)
+    public class LoginUserUseCase : ILoginGetUserUseCase
     {
-        _loginService = loginService;
-        _localPlayerDataRepository = localPlayerDataRepository;
-    }
+        private IUserGateway _loginService;
 
-    public async Task Invoke(string userName)
-    {
-        var tempUser = await _loginService.RequestLogin(userName);
-        UserDTO userDto = UserJsonToDTO(tempUser);
+        private ILocalPlayerDataRepository _localPlayerDataRepository;
 
-        _localPlayerDataRepository.SetData(userDto);
-    }
+        public LoginUserUseCase(IUserGateway loginService, ILocalPlayerDataRepository localPlayerDataRepository)
+        {
+            _loginService = loginService;
+            _localPlayerDataRepository = localPlayerDataRepository;
+        }
 
-    public UserDTO UserJsonToDTO(string userJson)
-    {
-        return JsonConvert.DeserializeObject<UserDTO>(userJson);
+        public async Task Invoke(string userName)
+        {
+            var tempUser = await _loginService.RequestLogin(userName);
+            UserDTO userDto = UserJsonToDTO(tempUser);
+
+            _localPlayerDataRepository.SetData(userDto);
+        }
+
+        public UserDTO UserJsonToDTO(string userJson)
+        {
+            return JsonConvert.DeserializeObject<UserDTO>(userJson);
+        }
     }
 }

@@ -1,5 +1,5 @@
 
-namespace Core.Match
+namespace Architecture.Match.MatchHeader.Letter
 {
     public interface IMatchHeaderLetterView
     {

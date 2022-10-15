@@ -1,5 +1,5 @@
 ﻿
-namespace Models
+namespace Architecture.Match.Domain
 {
     public class Match 
     {

@@ -1,5 +1,7 @@
 
-namespace MainScene.Header
+using Architecture.User.UseCase;
+
+namespace Architecture.User.View.UserHeader
 {
     public class HeaderMainPresenter
     {

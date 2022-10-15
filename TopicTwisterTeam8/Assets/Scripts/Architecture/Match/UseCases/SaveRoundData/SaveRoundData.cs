@@ -1,37 +1,40 @@
-﻿using Zenject;
+﻿using Architecture.Match.ActiveMatchRepository;
 
-class SaveRoundData : ISaveRoundDataUseCase
+namespace Architecture.Match.UseCases.SaveRoundData
 {
-    IActiveMatchRepository _matchRepositoryUseCase;
-
-    public SaveRoundData(IActiveMatchRepository matchRepositoryUseCase)
+    class SaveRoundData : ISaveRoundDataUseCase
     {
-        _matchRepositoryUseCase = matchRepositoryUseCase;
-    }
+        IActiveMatchRepository _matchRepositoryUseCase;
 
-    public void SaveLetter(char letter)
-    {
-        _matchRepositoryUseCase.Match.round.CurrentLetter = letter;
-    }
+        public SaveRoundData(IActiveMatchRepository matchRepositoryUseCase)
+        {
+            _matchRepositoryUseCase = matchRepositoryUseCase;
+        }
 
-    public void SaveCurrentCategories(string[] categories)
-    {
-        _matchRepositoryUseCase.Match.round.CurrentCategories = categories;
-    }
+        public void SaveLetter(char letter)
+        {
+            _matchRepositoryUseCase.Match.round.CurrentLetter = letter;
+        }
 
-    public void SaveCurrentAnswers(string[] answers)
-    {
-        _matchRepositoryUseCase.Match.round.CurrentAnswers = answers;
-    }
+        public void SaveCurrentCategories(string[] categories)
+        {
+            _matchRepositoryUseCase.Match.round.CurrentCategories = categories;
+        }
 
-    public void SaveCurrentResults(bool[] results)
-    {
-        _matchRepositoryUseCase.Match.round.CurrentResults = results;
-    }
+        public void SaveCurrentAnswers(string[] answers)
+        {
+            _matchRepositoryUseCase.Match.round.CurrentAnswers = answers;
+        }
 
-    public void SaveCurrentTime(int time)
-    {
-        _matchRepositoryUseCase.Match.round.RoundTimeLeft = time;
+        public void SaveCurrentResults(bool[] results)
+        {
+            _matchRepositoryUseCase.Match.round.CurrentResults = results;
+        }
+
+        public void SaveCurrentTime(int time)
+        {
+            _matchRepositoryUseCase.Match.round.RoundTimeLeft = time;
+        }
     }
 }
 

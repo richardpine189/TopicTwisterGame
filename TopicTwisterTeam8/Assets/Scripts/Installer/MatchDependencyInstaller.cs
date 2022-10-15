@@ -1,11 +1,30 @@
-using Assets.Scripts.Presenters;
-using Core.Match;
-using Core.Match.Interface;
-using Core.Match.PlayersNames;
-using Core.Match.Service;
-using Core.Match.TitleHeaderView;
-using MainScene.MatchList.Repository;
-using Team8.TopicTwister;
+using Architecture.Category.AnswersPanel;
+using Architecture.Category.CorrectionPanel;
+using Architecture.Category.Gateway;
+using Architecture.Category.UseCases.GetCategories;
+using Architecture.Category.UseCases.GetCorrection;
+using Architecture.Letter.UseCase;
+using Architecture.Match.ActiveMatchRepository;
+using Architecture.Match.ActiveMatchRepository.UseCases;
+using Architecture.Match.Gateway;
+using Architecture.Match.Gateway.Interfaces;
+using Architecture.Match.MatchHeader.Letter;
+using Architecture.Match.MatchHeader.PlayersNames;
+using Architecture.Match.MatchHeader.RoundStatus;
+using Architecture.Match.MatchHeader.TitleHeaderView;
+using Architecture.Match.Panel.EndRound;
+using Architecture.Match.Panel.EndRound.GetRoundResults;
+using Architecture.Match.Panel.LoadingMatch;
+using Architecture.Match.UseCases.GetCurrentMatch;
+using Architecture.Match.UseCases.GetMatchData;
+using Architecture.Match.UseCases.GetRoundData;
+using Architecture.Match.UseCases.MatchHas;
+using Architecture.Match.UseCases.SaveMatchData;
+using Architecture.Match.UseCases.SaveRoundData;
+using Architecture.Match.UseCases.UpdateMatch;
+using Architecture.OnGoingMatch.Repository;
+using Architecture.OnGoingMatch.UseCase;
+using Architecture.Timer;
 using UnityEngine;
 using Zenject;
 
@@ -17,10 +36,10 @@ public class MatchDependencyInstaller : MonoInstaller
     private LoadingGameView _loadingView;
 
     [SerializeField]
-    private LetterView _letterView;
+    private Architecture.Letter.View.LetterView _letterView;
 
     [SerializeField]
-    private CategoriesView _categoriesView;
+    private Architecture.Category.CategoriesPanel.CategoriesView _categoriesView;
 
     [SerializeField]
     private RoundTimerView _roundTimerView;
@@ -67,7 +86,7 @@ public class MatchDependencyInstaller : MonoInstaller
         Container.BindInterfacesTo<GetMatchData>().AsTransient().NonLazy();
         Container.BindInterfacesTo<MatchHas>().AsTransient();
         Container.BindInterfacesTo<PlayerPrefMatchIdRepository>().AsTransient().NonLazy();
-        Container.Bind<ICategoryService>().To<CategoryService>().AsTransient().WithArguments(_categoriesRouteConfig.path).NonLazy();
+        Container.Bind<Architecture.Category.Gateway.ICategoryService>().To<CategoryService>().AsTransient().WithArguments(_categoriesRouteConfig.path).NonLazy();
         
         Container.Bind<RemoveActiveMatch>().AsTransient();
         Container.Bind<ResetActiveMatch>().AsTransient();
@@ -79,16 +98,16 @@ public class MatchDependencyInstaller : MonoInstaller
         Container.Instantiate<LoadingGamePresenter>();
         
         //Container.BindInterfacesTo<LetterView>().FromInstance(_letterView).NonLazy();
-        Container.Bind<ILetterView>().To<LetterView>().FromInstance(_letterView).NonLazy();
+        Container.Bind<Architecture.Letter.View.ILetterView>().To<Architecture.Letter.View.LetterView>().FromInstance(_letterView).NonLazy();
         Container.Bind<IGetLetterUseCase>().To<GetRandomLetter>().AsTransient();
         //Container.Bind<LetterPresenter>().AsTransient().Lazy();
-        Container.Instantiate<LetterPresenter>();
+        Container.Instantiate<Architecture.Letter.LetterPresenter>();
         
         //Container.BindInterfacesTo<CategoriesView>().FromInstance(_categoriesView).NonLazy();
-        Container.Bind<ICategoriesView>().To<CategoriesView>().FromInstance(_categoriesView).NonLazy();
+        Container.Bind<Architecture.Category.CategoriesPanel.ICategoriesView>().To<Architecture.Category.CategoriesPanel.CategoriesView>().FromInstance(_categoriesView).NonLazy();
         Container.Bind<IGetCategoriesUseCase>().To<GetCategories>().AsTransient().NonLazy();
         //Container.Bind<CategoriesPresenter>().AsTransient().Lazy();
-        Container.Instantiate<CategoriesPresenter>();
+        Container.Instantiate<Architecture.Category.CategoriesPanel.CategoriesPresenter>();
         
         //Container.BindInterfacesTo<AnsweringView>().FromInstance(_answeringView).NonLazy();
         Container.Bind<IAnsweringView>().To<AnsweringView>().FromInstance(_answeringView).NonLazy();

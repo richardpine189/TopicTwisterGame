@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Models;
 using UnityEngine;
 
-
+namespace Architecture.Bot
+{
     public class ImBot : MonoBehaviour
     {
         private User _botUserData;
@@ -36,3 +36,4 @@ using UnityEngine;
 
         public int Difficulty { get => _difficulty; set => _difficulty = value; }
     }
+}

@@ -1,22 +1,25 @@
-﻿using Core.Match.Service;
-using System.Threading.Tasks;
-using Core.Match.Interface;
+﻿using System.Threading.Tasks;
+using Architecture.Match.ActiveMatchRepository;
+using Architecture.Match.Gateway.Interfaces;
 using Zenject;
 
-class UpdateMatch : IUpdateMatchUseCase
+namespace Architecture.Match.UseCases.UpdateMatch
 {
-    private IUpdateMatchGateway _matchGateway;
-
-    [Inject]
-    private IActiveMatchRepository _activeMatchRepository;
-
-    public UpdateMatch(IUpdateMatchGateway matchGateway)
+    class UpdateMatch : IUpdateMatchUseCase
     {
-        _matchGateway = matchGateway;
-    }
+        private IUpdateMatchGateway _matchGateway;
 
-    public async Task<bool> Invoke()
-    {
-        return await _matchGateway.UpdateMatch(_activeMatchRepository.Match);
+        [Inject]
+        private IActiveMatchRepository _activeMatchRepository;
+
+        public UpdateMatch(IUpdateMatchGateway matchGateway)
+        {
+            _matchGateway = matchGateway;
+        }
+
+        public async Task<bool> Invoke()
+        {
+            return await _matchGateway.UpdateMatch(_activeMatchRepository.Match);
+        }
     }
 }

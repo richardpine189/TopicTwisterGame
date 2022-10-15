@@ -1,18 +1,22 @@
 ﻿using System.Threading.Tasks;
+using Architecture.User.Gateway;
 
-public class SignInUseCase : ISignInUseCase
+namespace Architecture.User.UseCase
 {
-    private IUserGateway _userGateway;
-
-    public SignInUseCase(IUserGateway loginService)
+    public class SignInUseCase : ISignInUseCase
     {
-        _userGateway = loginService;
-    }
+        private IUserGateway _userGateway;
 
-    public async Task Invoke(string userName, string email)
-    {
-        var tempUser = await _userGateway.RequestSignIn(userName, email);
+        public SignInUseCase(IUserGateway loginService)
+        {
+            _userGateway = loginService;
+        }
 
-        // Loguear automaticamente cuando se registra?
+        public async Task Invoke(string userName, string email)
+        {
+            var tempUser = await _userGateway.RequestSignIn(userName, email);
+
+            // Loguear automaticamente cuando se registra?
+        }
     }
 }

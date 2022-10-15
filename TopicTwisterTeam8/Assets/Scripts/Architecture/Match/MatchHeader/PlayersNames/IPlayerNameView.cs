@@ -1,4 +1,4 @@
-namespace Core.Match.PlayersNames
+namespace Architecture.Match.MatchHeader.PlayersNames
 {
     public interface IPlayerNameView
     {

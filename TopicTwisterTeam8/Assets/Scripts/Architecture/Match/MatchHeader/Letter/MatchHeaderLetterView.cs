@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Core.Match
+namespace Architecture.Match.MatchHeader.Letter
 {
     public class MatchHeaderLetterView : MonoBehaviour, IMatchHeaderLetterView
     

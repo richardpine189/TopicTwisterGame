@@ -1,42 +1,46 @@
 ﻿using System;
-using UnityEngine;
+using Architecture.User.UseCase;
+using Architecture.User.View;
 
-public class LoginPresenter
+namespace Architecture.User
 {
-    private ILoginView _view;
-    private ILoginGetUserUseCase _loginUseCase;
+    public class LoginPresenter
+    {
+        private ILoginView _view;
+        private ILoginGetUserUseCase _loginUseCase;
         
-    public LoginPresenter(ILoginView loginView, ILoginGetUserUseCase loginUseCase)
-    {
-        _view = loginView;
-        _loginUseCase = loginUseCase;
-        _view.OnLoginTrigger += LogIn;
-    }
-
-    ~LoginPresenter()
-    {
-        _view.OnLoginTrigger -= LogIn;
-    }
-
-    private async void LogIn(string username)
-    {
-        if (!String.IsNullOrEmpty(username))
+        public LoginPresenter(ILoginView loginView, ILoginGetUserUseCase loginUseCase)
         {
-            try
+            _view = loginView;
+            _loginUseCase = loginUseCase;
+            _view.OnLoginTrigger += LogIn;
+        }
+
+        ~LoginPresenter()
+        {
+            _view.OnLoginTrigger -= LogIn;
+        }
+
+        private async void LogIn(string username)
+        {
+            if (!String.IsNullOrEmpty(username))
             {
-                await _loginUseCase.Invoke(username);
-                _view.LoadMainScene();
+                try
+                {
+                    await _loginUseCase.Invoke(username);
+                    _view.LoadMainScene();
+                }
+                catch (Exception e)
+                {
+                    _view.ShowErrorMessage(e.Message);
+                }
             }
-            catch (Exception e)
+            else
             {
-                _view.ShowErrorMessage(e.Message);
+                _view.ShowErrorMessage("No se ha envíado un nombre de usuario");
             }
         }
-        else
-        {
-            _view.ShowErrorMessage("No se ha envíado un nombre de usuario");
-        }
-    }
 
+    }
 }
 

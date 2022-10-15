@@ -1,10 +1,10 @@
+using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using System;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
-namespace Core.Match
+namespace Architecture.Match.MatchHeader.RoundStatus
 {
     public class MatchHeaderView : MonoBehaviour, IMatchHeaderView
     {
@@ -61,6 +61,6 @@ namespace Core.Match
             _roundNumber.text = "Round " + roundNumber;
         }
     }
-}
 
-public enum RoundResult {Win, Lose, NotFinish}
+    public enum RoundResult {Win, Lose, NotFinish}
+}

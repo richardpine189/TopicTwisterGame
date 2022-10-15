@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-interface IUpdateMatchUseCase
+namespace Architecture.Match.UseCases.UpdateMatch
 {
-    Task<bool> Invoke();
+    interface IUpdateMatchUseCase
+    {
+        Task<bool> Invoke();
+    }
 }

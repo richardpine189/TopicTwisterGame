@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Models;
-using Models.DTO;
+using Architecture.Match.Domain.DTO;
 
-public interface IGetMatchesGateway
+namespace Architecture.Match.Gateway.Interfaces
 {
-    Task<List<MatchDTO>> GetMatchesDTOByName(string userName);
+    public interface IGetMatchesGateway
+    {
+        Task<List<MatchDTO>> GetMatchesDTOByName(string userName);
+    }
 }

@@ -1,97 +1,95 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Core.Match.TitleHeaderView;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
-public class CategoriesView : MonoBehaviour, ICategoriesView
+namespace Architecture.Category.CategoriesPanel
 {
-    [SerializeField]
-    private GameObject _header;
+    public class CategoriesView : MonoBehaviour, ICategoriesView
+    {
+        [SerializeField]
+        private GameObject _header;
 
-    public event Action<int> OnUpdateCategoriesField;
+        public event Action<int> OnUpdateCategoriesField;
 
-    public event Action<int> OnChangeCategory;
+        public event Action<int> OnChangeCategory;
 
 
 
     
-    [SerializeField] 
-    private TextMeshProUGUI[] _categoriesLetterSelectionPanel;
+        [SerializeField] 
+        private TextMeshProUGUI[] _categoriesLetterSelectionPanel;
 
-    [SerializeField] 
-    private TextMeshProUGUI[] _categoriesAnsweringPanel;
+        [SerializeField] 
+        private TextMeshProUGUI[] _categoriesAnsweringPanel;
 
-    [SerializeField] 
-    private TextMeshProUGUI[] _categoriesCorrectionPanel;
+        [SerializeField] 
+        private TextMeshProUGUI[] _categoriesCorrectionPanel;
 
-    [SerializeField] 
-    private TextMeshProUGUI[] _categoriesEndRoundPanel;
+        [SerializeField] 
+        private TextMeshProUGUI[] _categoriesEndRoundPanel;
 
-    [SerializeField]
-    private GameObject _loadingSpinner;
+        [SerializeField]
+        private GameObject _loadingSpinner;
     
-    private const int StandardCategoriesAmount = 5;
+        private const int StandardCategoriesAmount = 5;
 
-    private void OnEnable()
-    {
-        _header.SetActive(true);
-        CleanView();
-        OnUpdateCategoriesField?.Invoke(StandardCategoriesAmount);
-    }
-
-    public void UpdateFields(string[] categoriesName)
-    {
-        for (int i = 0; i < StandardCategoriesAmount; i++)
+        private void OnEnable()
         {
-            _categoriesLetterSelectionPanel[i].text =
-                  _categoriesAnsweringPanel[i].text =
-                 _categoriesCorrectionPanel[i].text =
-                   _categoriesEndRoundPanel[i].text =
-                                    categoriesName[i];
+            _header.SetActive(true);
+            CleanView();
+            OnUpdateCategoriesField?.Invoke(StandardCategoriesAmount);
         }
 
-        _loadingSpinner.SetActive(false);
-
-        foreach(var categoryText in _categoriesLetterSelectionPanel)
+        public void UpdateFields(string[] categoriesName)
         {
-            categoryText.gameObject.SetActive(true);
-        }
-    }
+            for (int i = 0; i < StandardCategoriesAmount; i++)
+            {
+                _categoriesLetterSelectionPanel[i].text =
+                    _categoriesAnsweringPanel[i].text =
+                        _categoriesCorrectionPanel[i].text =
+                            _categoriesEndRoundPanel[i].text =
+                                categoriesName[i];
+            }
 
-    public void UpdateSingleField(string categoryName, int index)
-    {
+            _loadingSpinner.SetActive(false);
 
-        _categoriesLetterSelectionPanel[index].text =
-              _categoriesAnsweringPanel[index].text =
-             _categoriesCorrectionPanel[index].text =
-               _categoriesEndRoundPanel[index].text =
-                categoryName;
-
-    }
-
-    void ChangeOneCategory(TextMeshProUGUI categoryToChange)
-    {
-        int tempIndex=0;
-        for (int i = 0; i < StandardCategoriesAmount; i++)
-        {
-            if (_categoriesLetterSelectionPanel[i].text == categoryToChange.text)
-                tempIndex = i;
+            foreach(var categoryText in _categoriesLetterSelectionPanel)
+            {
+                categoryText.gameObject.SetActive(true);
+            }
         }
 
-        OnChangeCategory?.Invoke(tempIndex);
-    }
-
-    void CleanView()
-    {
-        _loadingSpinner.SetActive(true);
-        foreach (var categoryText in _categoriesLetterSelectionPanel)
+        public void UpdateSingleField(string categoryName, int index)
         {
-            categoryText.gameObject.SetActive(false);
-            categoryText.text = "";
+
+            _categoriesLetterSelectionPanel[index].text =
+                _categoriesAnsweringPanel[index].text =
+                    _categoriesCorrectionPanel[index].text =
+                        _categoriesEndRoundPanel[index].text =
+                            categoryName;
+
+        }
+
+        void ChangeOneCategory(TextMeshProUGUI categoryToChange)
+        {
+            int tempIndex=0;
+            for (int i = 0; i < StandardCategoriesAmount; i++)
+            {
+                if (_categoriesLetterSelectionPanel[i].text == categoryToChange.text)
+                    tempIndex = i;
+            }
+
+            OnChangeCategory?.Invoke(tempIndex);
+        }
+
+        void CleanView()
+        {
+            _loadingSpinner.SetActive(true);
+            foreach (var categoryText in _categoriesLetterSelectionPanel)
+            {
+                categoryText.gameObject.SetActive(false);
+                categoryText.text = "";
+            }
         }
     }
 }

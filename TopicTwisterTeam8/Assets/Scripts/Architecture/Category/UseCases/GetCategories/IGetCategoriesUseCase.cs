@@ -1,7 +1,10 @@
 ﻿using System.Threading.Tasks;
 
-public interface IGetCategoriesUseCase
+namespace Architecture.Category.UseCases.GetCategories
 {
-    Task<string[]> Invoke(int amount);
+    public interface IGetCategoriesUseCase
+    {
+        Task<string[]> Invoke(int amount);
+    }
 }
 

@@ -1,3 +1,5 @@
+using Architecture.User.Repository;
+using Architecture.User.UseCase;
 using UnityEngine;
 using Zenject;
 

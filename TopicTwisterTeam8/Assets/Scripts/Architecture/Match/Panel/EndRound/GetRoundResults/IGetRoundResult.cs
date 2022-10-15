@@ -1,7 +1,10 @@
 using System.Threading.Tasks;
-using Models.DTO;
+using Architecture.Match.Domain.DTO;
 
-public interface IGetRoundResult
+namespace Architecture.Match.Panel.EndRound.GetRoundResults
 {
-    Task<RoundResultsDTO> Execute(int matchId);
+    public interface IGetRoundResult
+    {
+        Task<RoundResultsDTO> Execute(int matchId);
+    }
 }

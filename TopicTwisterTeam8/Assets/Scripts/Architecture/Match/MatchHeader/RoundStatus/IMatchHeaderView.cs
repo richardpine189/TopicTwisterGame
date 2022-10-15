@@ -1,6 +1,4 @@
-using System;
-
-namespace Core.Match
+namespace Architecture.Match.MatchHeader.RoundStatus
 {
     public interface IMatchHeaderView
     {

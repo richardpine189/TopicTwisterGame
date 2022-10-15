@@ -1,4 +1,7 @@
-public interface ISaveMatchId
+namespace Architecture.OnGoingMatch.UseCase
 {
-    public void Invoke(int matchID);
+    public interface ISaveMatchId
+    {
+        public void Invoke(int matchID);
+    }
 }

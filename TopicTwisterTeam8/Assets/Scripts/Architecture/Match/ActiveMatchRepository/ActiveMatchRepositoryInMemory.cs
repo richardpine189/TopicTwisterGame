@@ -1,19 +1,19 @@
-﻿using System;
-using Models;
-
-public class ActiveMatchRepositoryInMemory : IActiveMatchRepository
+﻿namespace Architecture.Match.ActiveMatchRepository
 {
-    private Match match;
+    public class ActiveMatchRepositoryInMemory : IActiveMatchRepository
+    {
+        private Domain.Match match;
 
-    public Match Match {
-        get
-        {
-            return match;
+        public Domain.Match Match {
+            get
+            {
+                return match;
+            }
+            set
+            {
+                match = value;
+            }
         }
-        set
-        {
-            match = value;
-        }
+
     }
-
 }

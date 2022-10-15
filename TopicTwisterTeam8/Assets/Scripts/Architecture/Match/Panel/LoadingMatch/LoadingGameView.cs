@@ -1,14 +1,9 @@
-﻿using Assets.Scripts.Presenters;
-using System;
+﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Team8.TopicTwister
+namespace Architecture.Match.Panel.LoadingMatch
 {
     public class LoadingGameView : MonoBehaviour, ILoadingGameView
     {

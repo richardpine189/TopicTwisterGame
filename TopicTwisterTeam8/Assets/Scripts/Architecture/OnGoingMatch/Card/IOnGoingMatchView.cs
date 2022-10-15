@@ -1,21 +1,24 @@
 using System;
 using System.Drawing;
 
-public interface IOngoingMatchView
+namespace Architecture.OnGoingMatch.Card
 {
-    public event Action OnStartMatch;
+    public interface IOngoingMatchView
+    {
+        public event Action OnStartMatch;
 
-    public void ShowWaitingClock();
+        public void ShowWaitingClock();
 
-    public void ShowPlayButton();
+        public void ShowPlayButton();
 
-    public void SetOpponentName(string name);
+        public void SetOpponentName(string name);
 
-    public void SetRoundNumber(int round);
+        public void SetRoundNumber(int round);
 
-    void LoadMatch();
+        void LoadMatch();
 
-    void SetRoundCount(string formatingScore);
+        void SetRoundCount(string formatingScore);
 
-    void SetCardColor(Color color);
+        void SetCardColor(Color color);
+    }
 }

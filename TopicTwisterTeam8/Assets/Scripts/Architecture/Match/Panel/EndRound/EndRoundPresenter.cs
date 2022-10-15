@@ -1,58 +1,63 @@
-﻿using Models.DTO;
-using System;
-using Zenject;
+﻿using Architecture.Match.Domain.DTO;
+using Architecture.Match.Panel.EndRound.GetRoundResults;
+using Architecture.Match.UseCases.GetMatchData;
+using Architecture.OnGoingMatch.UseCase;
+using Architecture.User.Repository;
 
-public class EndRoundPresenter
+namespace Architecture.Match.Panel.EndRound
 {
-    private readonly IEndRoundView _endRoundView;
-    private readonly IGetRoundResult _getRoundResultUseCase;
-    private readonly ILocalPlayerDataRepository _userLocalRepository;
-    private IGetMatchId _getMachId;
-    private IGetMatchDataUseCase _getMatchDataUseCase;
-    private const int LAST_ROUND = 2;
-
-    public EndRoundPresenter(IEndRoundView endRoundView, IGetRoundResult getRoundResultUseCase, IGetMatchDataUseCase getMatchDataUseCase, IGetMatchId getMatchId, ILocalPlayerDataRepository userLocalRepository)
+    public class EndRoundPresenter
     {
-        _getRoundResultUseCase = getRoundResultUseCase;
-        _getMachId = getMatchId;
-        _getMatchDataUseCase = getMatchDataUseCase;
-        _endRoundView = endRoundView;
-        _userLocalRepository = userLocalRepository;
-        _endRoundView.OnSetRoundResults += RequestRoundResult;
-    }
+        private readonly IEndRoundView _endRoundView;
+        private readonly IGetRoundResult _getRoundResultUseCase;
+        private readonly ILocalPlayerDataRepository _userLocalRepository;
+        private IGetMatchId _getMachId;
+        private IGetMatchDataUseCase _getMatchDataUseCase;
+        private const int LAST_ROUND = 2;
 
-    ~EndRoundPresenter()
-    {
-        _endRoundView.OnSetRoundResults -= RequestRoundResult;
-    }
-
-    private async void RequestRoundResult()
-    {
-        int roundNumber = _getMatchDataUseCase.GetRoundNumber();
-        int _matchId = _getMachId.Invoke();
-        RoundResultsDTO roundResultsDto = await _getRoundResultUseCase.Execute(_matchId);
-
-        if (roundNumber == LAST_ROUND && roundResultsDto.matchStatus != WinnerStatus.Unassigned)
+        public EndRoundPresenter(IEndRoundView endRoundView, IGetRoundResult getRoundResultUseCase, IGetMatchDataUseCase getMatchDataUseCase, IGetMatchId getMatchId, ILocalPlayerDataRepository userLocalRepository)
         {
-            _endRoundView.ShowEndGamePanel(roundResultsDto.matchStatus);
+            _getRoundResultUseCase = getRoundResultUseCase;
+            _getMachId = getMatchId;
+            _getMatchDataUseCase = getMatchDataUseCase;
+            _endRoundView = endRoundView;
+            _userLocalRepository = userLocalRepository;
+            _endRoundView.OnSetRoundResults += RequestRoundResult;
         }
 
-        ShowResultsInView(roundResultsDto);
-    }
-
-    private void ShowResultsInView(RoundResultsDTO roundResultsDto)
-    {
-        _endRoundView.ShowCategories(roundResultsDto.currentCategories);
-
-        if(_userLocalRepository.GetData().name == _getMatchDataUseCase.GetChallengerName())
+        ~EndRoundPresenter()
         {
-            _endRoundView.ShowLoggedPlayerAnswersAndResult(roundResultsDto.challengerAnswers, roundResultsDto.challengerResults);
-            _endRoundView.ShowSecondPlayerAnswersAndResult(roundResultsDto.opponentAnswers, roundResultsDto.opponentResults);
+            _endRoundView.OnSetRoundResults -= RequestRoundResult;
         }
-        else
+
+        private async void RequestRoundResult()
         {
-            _endRoundView.ShowLoggedPlayerAnswersAndResult(roundResultsDto.opponentAnswers, roundResultsDto.opponentResults);
-            _endRoundView.ShowSecondPlayerAnswersAndResult(roundResultsDto.challengerAnswers, roundResultsDto.challengerResults);
+            int roundNumber = _getMatchDataUseCase.GetRoundNumber();
+            int _matchId = _getMachId.Invoke();
+            RoundResultsDTO roundResultsDto = await _getRoundResultUseCase.Execute(_matchId);
+
+            if (roundNumber == LAST_ROUND && roundResultsDto.matchStatus != WinnerStatus.Unassigned)
+            {
+                _endRoundView.ShowEndGamePanel(roundResultsDto.matchStatus);
+            }
+
+            ShowResultsInView(roundResultsDto);
+        }
+
+        private void ShowResultsInView(RoundResultsDTO roundResultsDto)
+        {
+            _endRoundView.ShowCategories(roundResultsDto.currentCategories);
+
+            if(_userLocalRepository.GetData().name == _getMatchDataUseCase.GetChallengerName())
+            {
+                _endRoundView.ShowLoggedPlayerAnswersAndResult(roundResultsDto.challengerAnswers, roundResultsDto.challengerResults);
+                _endRoundView.ShowSecondPlayerAnswersAndResult(roundResultsDto.opponentAnswers, roundResultsDto.opponentResults);
+            }
+            else
+            {
+                _endRoundView.ShowLoggedPlayerAnswersAndResult(roundResultsDto.opponentAnswers, roundResultsDto.opponentResults);
+                _endRoundView.ShowSecondPlayerAnswersAndResult(roundResultsDto.challengerAnswers, roundResultsDto.challengerResults);
+            }
         }
     }
 }

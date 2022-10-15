@@ -1,10 +1,13 @@
 ﻿using System;
 
-public interface ISignInView
+namespace Architecture.User.View
 {
-    public void ShowMessage(string message);
+    public interface ISignInView
+    {
+        public void ShowMessage(string message);
  
-    void GoToLogIn();
+        void GoToLogIn();
 
-    event Action<string, string> OnSignInTrigger;
+        event Action<string, string> OnSignInTrigger;
+    }
 }

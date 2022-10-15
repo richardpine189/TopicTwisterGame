@@ -1,15 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
-using Core.Match.Interface;
-using Models.DTO;
+using Architecture.Match.Domain.DTO;
+using Architecture.Match.Gateway.Interfaces;
 using Newtonsoft.Json;
 
-namespace Core.Match.Service
+namespace Architecture.Match.Gateway
 {
     public class MatchGateway : IGetMatchGateway, IUpdateMatchGateway, IGetMatchesGateway, IGetRoundResultGateway
     {
@@ -57,7 +55,7 @@ namespace Core.Match.Service
             return deserializeMatchDto;
         }
 
-        public async Task<bool> UpdateMatch(Models.Match match)  // Ver despues de assebly
+        public async Task<bool> UpdateMatch(Domain.Match match)  // Ver despues de assebly
         {
             RoundDTO values = new RoundDTO();
 

@@ -1,7 +1,10 @@
-public interface ISaveMatchDataUseCase
+namespace Architecture.Match.UseCases.SaveMatchData
 {
-    void SavePlayerName(string challenger, string opponent);
-    void SaveCurrentRound(int currentRound);
-    void SetTurnState(bool isChallengerTurn);
-    void SetMatchState(bool isMatchFinished);
+    public interface ISaveMatchDataUseCase
+    {
+        void SavePlayerName(string challenger, string opponent);
+        void SaveCurrentRound(int currentRound);
+        void SetTurnState(bool isChallengerTurn);
+        void SetMatchState(bool isMatchFinished);
+    }
 }

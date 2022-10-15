@@ -1,6 +1,9 @@
 ﻿using System.Threading.Tasks;
 
-public interface IGetCorrections
+namespace Architecture.Category.UseCases.GetCorrection
 {
-    Task<bool[]> GetCorrections(string[] roundCategories, string[] answers, char letter);
+    public interface IGetCorrections
+    {
+        Task<bool[]> GetCorrections(string[] roundCategories, string[] answers, char letter);
+    }
 }

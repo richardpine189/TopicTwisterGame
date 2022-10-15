@@ -1,38 +1,45 @@
-﻿using Zenject;
+﻿using Architecture.Category.UseCases.GetCategories;
+using Architecture.Match.UseCases.GetRoundData;
+using Architecture.Match.UseCases.MatchHas;
+using Architecture.Match.UseCases.SaveRoundData;
+using Zenject;
 
-public class CategoriesPresenter
+namespace Architecture.Category.CategoriesPanel
 {
-    [Inject]
-    private IMatchHasUseCase _matchHasUseCase;
-
-    private ICategoriesView _view;
-    private IGetCategoriesUseCase _getCategoriesUseCase;
-    private ISaveRoundDataUseCase _saveRoundDataUseCase;
-    private IGetRoundDataUseCase _getRoundDataUseCase;
-
-    public CategoriesPresenter(ICategoriesView view, IGetCategoriesUseCase getCategoriesUseCase, ISaveRoundDataUseCase saveRoundDataUseCase, IGetRoundDataUseCase getRoundDataUseCase)
+    public class CategoriesPresenter
     {
-        _view = view;
-        _getCategoriesUseCase = getCategoriesUseCase;
-        _saveRoundDataUseCase = saveRoundDataUseCase;
-        _getRoundDataUseCase = getRoundDataUseCase;
-        _view.OnUpdateCategoriesField += GetCategories;
-    }
+        [Inject]
+        private IMatchHasUseCase _matchHasUseCase;
+
+        private ICategoriesView _view;
+        private IGetCategoriesUseCase _getCategoriesUseCase;
+        private ISaveRoundDataUseCase _saveRoundDataUseCase;
+        private IGetRoundDataUseCase _getRoundDataUseCase;
+
+        public CategoriesPresenter(ICategoriesView view, IGetCategoriesUseCase getCategoriesUseCase, ISaveRoundDataUseCase saveRoundDataUseCase, IGetRoundDataUseCase getRoundDataUseCase)
+        {
+            _view = view;
+            _getCategoriesUseCase = getCategoriesUseCase;
+            _saveRoundDataUseCase = saveRoundDataUseCase;
+            _getRoundDataUseCase = getRoundDataUseCase;
+            _view.OnUpdateCategoriesField += GetCategories;
+        }
     
-    private async void GetCategories(int categoriesAmount)
-    {
-        string[] categories;
-
-        if(!_matchHasUseCase.CurrentCategories())
+        private async void GetCategories(int categoriesAmount)
         {
-            categories = await _getCategoriesUseCase.Invoke(categoriesAmount);
-            _saveRoundDataUseCase.SaveCurrentCategories(categories);
-        }
-        else
-        {
-            categories = _getRoundDataUseCase.GetCurrentCategories();
-        }
+            string[] categories;
 
-        _view.UpdateFields(categories);
+            if(!_matchHasUseCase.CurrentCategories())
+            {
+                categories = await _getCategoriesUseCase.Invoke(categoriesAmount);
+                _saveRoundDataUseCase.SaveCurrentCategories(categories);
+            }
+            else
+            {
+                categories = _getRoundDataUseCase.GetCurrentCategories();
+            }
+
+            _view.UpdateFields(categories);
+        }
     }
 }

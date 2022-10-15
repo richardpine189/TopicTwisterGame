@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Models;
-
-public interface IActiveMatchRepository
+﻿namespace Architecture.Match.ActiveMatchRepository
 {
-    Match Match { get; set; }
+    public interface IActiveMatchRepository
+    {
+        Domain.Match Match { get; set; }
+    }
 }

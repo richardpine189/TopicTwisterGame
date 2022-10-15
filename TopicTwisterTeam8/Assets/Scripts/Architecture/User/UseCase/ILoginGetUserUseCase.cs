@@ -1,7 +1,11 @@
 using System.Threading.Tasks;
+using Architecture.User.Domain;
 
-public interface ILoginGetUserUseCase
+namespace Architecture.User.UseCase
 {
-    Task Invoke(string userName);
-    UserDTO UserJsonToDTO(string userJson);
+    public interface ILoginGetUserUseCase
+    {
+        Task Invoke(string userName);
+        UserDTO UserJsonToDTO(string userJson);
+    }
 }

@@ -1,6 +1,9 @@
 ﻿using System.Threading.Tasks;
 
-public interface ISignInUseCase
+namespace Architecture.User.UseCase
 {
-    Task Invoke(string userName, string email);
+    public interface ISignInUseCase
+    {
+        Task Invoke(string userName, string email);
+    }
 }

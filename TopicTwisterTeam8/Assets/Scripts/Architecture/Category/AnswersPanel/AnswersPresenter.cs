@@ -1,26 +1,28 @@
-using System;
-using Zenject;
+using Architecture.Match.UseCases.SaveRoundData;
 
-public class AnswersPresenter
+namespace Architecture.Category.AnswersPanel
 {
-    private IAnsweringView _view;
-
-    private ISaveRoundDataUseCase _saveRoundDataUseCase;
-
-    public AnswersPresenter(IAnsweringView view, ISaveRoundDataUseCase saveRoundDataUseCase)
+    public class AnswersPresenter
     {
-        _view = view;
-        _saveRoundDataUseCase = saveRoundDataUseCase;
-        _view.OnStopClick += SendAnswersAction;
-    }
+        private IAnsweringView _view;
 
-    ~AnswersPresenter()
-    {
-        _view.OnStopClick -= SendAnswersAction;
-    }
+        private ISaveRoundDataUseCase _saveRoundDataUseCase;
 
-    private void SendAnswersAction(string[] answers)
-    {
-        _saveRoundDataUseCase.SaveCurrentAnswers(answers);
+        public AnswersPresenter(IAnsweringView view, ISaveRoundDataUseCase saveRoundDataUseCase)
+        {
+            _view = view;
+            _saveRoundDataUseCase = saveRoundDataUseCase;
+            _view.OnStopClick += SendAnswersAction;
+        }
+
+        ~AnswersPresenter()
+        {
+            _view.OnStopClick -= SendAnswersAction;
+        }
+
+        private void SendAnswersAction(string[] answers)
+        {
+            _saveRoundDataUseCase.SaveCurrentAnswers(answers);
+        }
     }
 }

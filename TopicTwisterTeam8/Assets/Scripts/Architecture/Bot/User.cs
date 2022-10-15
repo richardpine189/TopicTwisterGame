@@ -1,4 +1,4 @@
-﻿namespace Models
+﻿namespace Architecture.Bot
 {
     public class User
     {

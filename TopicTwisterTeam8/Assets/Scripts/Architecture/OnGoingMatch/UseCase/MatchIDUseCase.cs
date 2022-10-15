@@ -1,22 +1,25 @@
-using MainScene.MatchList.Repository;
+using Architecture.OnGoingMatch.Repository;
 
-public class MatchIDUseCase : ISaveMatchId, IGetMatchId
+namespace Architecture.OnGoingMatch.UseCase
 {
-    private IMatchIdRepository _matchIdRepository;
-
-    public MatchIDUseCase(IMatchIdRepository matchIdRepository)
+    public class MatchIDUseCase : ISaveMatchId, IGetMatchId
     {
-        _matchIdRepository = matchIdRepository;
-    }
+        private IMatchIdRepository _matchIdRepository;
 
-    public void Invoke(int matchID)
-    {
-        _matchIdRepository.SaveMatchId(matchID);
-    }
+        public MatchIDUseCase(IMatchIdRepository matchIdRepository)
+        {
+            _matchIdRepository = matchIdRepository;
+        }
 
-    public int Invoke()
-    {
-        return _matchIdRepository.GetMatchId();
+        public void Invoke(int matchID)
+        {
+            _matchIdRepository.SaveMatchId(matchID);
+        }
+
+        public int Invoke()
+        {
+            return _matchIdRepository.GetMatchId();
+        }
     }
 }
 

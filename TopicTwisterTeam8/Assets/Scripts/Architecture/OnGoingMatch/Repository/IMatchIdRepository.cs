@@ -1,4 +1,4 @@
-namespace MainScene.MatchList.Repository
+namespace Architecture.OnGoingMatch.Repository
 {
     public interface IMatchIdRepository
     {

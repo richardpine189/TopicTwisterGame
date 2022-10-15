@@ -1,30 +1,37 @@
 using System.Collections.Generic;
-using Models.DTO;
+using Architecture.Match.Domain.DTO;
+using Architecture.Match.UseCases;
+using Architecture.OnGoingMatch.Card;
+using Architecture.OnGoingMatch.UseCase;
+using Architecture.User.Repository;
 
-public class MatchListPresenter
+namespace Architecture.OnGoingMatch.MatchListFactory
 {
-    private readonly ISaveMatchId _saveMatchId;
-    private readonly IMatchListView _view;
-    private readonly IGetMatchesInfoUseCase _matchInfoUseCase;
-    private readonly ILocalPlayerDataRepository _playerDataRepository;
-
-    public MatchListPresenter(IMatchListView view, IGetMatchesInfoUseCase matchInfoUseCase, ISaveMatchId saveMatchId, ILocalPlayerDataRepository playerDataRepository)
+    public class MatchListPresenter
     {
-        _saveMatchId = saveMatchId;
-        _view = view;
-        _matchInfoUseCase = matchInfoUseCase;
-        _playerDataRepository = playerDataRepository;
-        InitializeOnGoingMatch();
-    }
+        private readonly ISaveMatchId _saveMatchId;
+        private readonly IMatchListView _view;
+        private readonly IGetMatchesInfoUseCase _matchInfoUseCase;
+        private readonly ILocalPlayerDataRepository _playerDataRepository;
 
-    private async void InitializeOnGoingMatch()
-    {
-        List<MatchDTO> matches = await _matchInfoUseCase.Execute();
-
-        for (int i = 0; i < matches.Count; i++)
+        public MatchListPresenter(IMatchListView view, IGetMatchesInfoUseCase matchInfoUseCase, ISaveMatchId saveMatchId, ILocalPlayerDataRepository playerDataRepository)
         {
-            IOngoingMatchView matchCard = _view.CreateMatchCard();
-            new OngoingMatchPresenter(matchCard, matches[i], _saveMatchId, _playerDataRepository);
+            _saveMatchId = saveMatchId;
+            _view = view;
+            _matchInfoUseCase = matchInfoUseCase;
+            _playerDataRepository = playerDataRepository;
+            InitializeOnGoingMatch();
+        }
+
+        private async void InitializeOnGoingMatch()
+        {
+            List<MatchDTO> matches = await _matchInfoUseCase.Execute();
+
+            for (int i = 0; i < matches.Count; i++)
+            {
+                IOngoingMatchView matchCard = _view.CreateMatchCard();
+                new OngoingMatchPresenter(matchCard, matches[i], _saveMatchId, _playerDataRepository);
+            }
         }
     }
 }

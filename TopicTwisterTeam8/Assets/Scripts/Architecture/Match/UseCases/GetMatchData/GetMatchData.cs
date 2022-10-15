@@ -1,21 +1,25 @@
+using Architecture.Match.ActiveMatchRepository;
 using Zenject;
 
-class GetMatchData : IGetMatchDataUseCase
+namespace Architecture.Match.UseCases.GetMatchData
 {
-    [Inject] private IActiveMatchRepository _activeMatchRepository;
-
-    public string GetChallengerName()
+    class GetMatchData : IGetMatchDataUseCase
     {
-        return _activeMatchRepository.Match.challengerName;
-    }
+        [Inject] private IActiveMatchRepository _activeMatchRepository;
 
-    public string GetOpponentName()
-    {
-        return _activeMatchRepository.Match.opponentName;
-    }
+        public string GetChallengerName()
+        {
+            return _activeMatchRepository.Match.challengerName;
+        }
 
-    public int GetRoundNumber()
-    {
-        return _activeMatchRepository.Match.currentRound;
+        public string GetOpponentName()
+        {
+            return _activeMatchRepository.Match.opponentName;
+        }
+
+        public int GetRoundNumber()
+        {
+            return _activeMatchRepository.Match.currentRound;
+        }
     }
 }

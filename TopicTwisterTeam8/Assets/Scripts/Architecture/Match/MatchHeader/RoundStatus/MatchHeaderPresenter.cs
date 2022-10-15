@@ -1,4 +1,7 @@
-namespace Core.Match
+using Architecture.Match.Panel.LoadingMatch;
+using Architecture.Match.UseCases.GetMatchData;
+
+namespace Architecture.Match.MatchHeader.RoundStatus
 {
     public class MatchHeaderPresenter
     {

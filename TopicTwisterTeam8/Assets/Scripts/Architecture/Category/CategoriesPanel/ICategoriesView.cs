@@ -1,12 +1,15 @@
 using System;
-using TMPro;
-public interface ICategoriesView
+
+namespace Architecture.Category.CategoriesPanel
 {
-    event Action<int> OnUpdateCategoriesField;
+    public interface ICategoriesView
+    {
+        event Action<int> OnUpdateCategoriesField;
 
-    event Action<int> OnChangeCategory;
+        event Action<int> OnChangeCategory;
 
-    void UpdateFields(string[] categoriesName);
+        void UpdateFields(string[] categoriesName);
 
-    void UpdateSingleField(string categoryName, int index);
+        void UpdateSingleField(string categoryName, int index);
+    }
 }

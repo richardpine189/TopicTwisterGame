@@ -1,7 +1,10 @@
-using Core.Match.Interface;
-using Core.Match.Service;
-using MainScene.Header;
-using MainScene.MatchList.Repository;
+using Architecture.Match.Gateway;
+using Architecture.Match.UseCases;
+using Architecture.Match.UseCases.CreateNewMatch;
+using Architecture.OnGoingMatch.MatchListFactory;
+using Architecture.OnGoingMatch.Repository;
+using Architecture.OnGoingMatch.UseCase;
+using Architecture.User.View.UserHeader;
 using UnityEngine;
 using Zenject;
 

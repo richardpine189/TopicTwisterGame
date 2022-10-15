@@ -1,8 +1,11 @@
 
-public interface IGetUserDataUseCase
+namespace Architecture.User.UseCase
 {
-    public string GetUserName();
-    public int GetUserCoin();
-    public int GetUserVictories();
+    public interface IGetUserDataUseCase
+    {
+        public string GetUserName();
+        public int GetUserCoin();
+        public int GetUserVictories();
     
+    }
 }

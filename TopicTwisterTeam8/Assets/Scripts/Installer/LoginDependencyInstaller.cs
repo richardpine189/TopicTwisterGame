@@ -1,3 +1,7 @@
+using Architecture.User;
+using Architecture.User.Gateway;
+using Architecture.User.UseCase;
+using Architecture.User.View;
 using UnityEngine;
 using Zenject;
 

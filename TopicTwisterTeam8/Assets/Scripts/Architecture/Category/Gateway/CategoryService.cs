@@ -1,34 +1,35 @@
-
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-public class CategoryService : ICategoryService
+namespace Architecture.Category.Gateway
 {
-    private HttpClient _client = new HttpClient();
-    private string _baseURL;
-
-    public CategoryService(string path)
+    public class CategoryService : ICategoryService
     {
-        _baseURL = path;
-    }
+        private HttpClient _client = new HttpClient();
+        private string _baseURL;
 
-    public async Task<string[]> GetCategoriesNames(int amount)
-    {
-        var response = await _client.GetAsync(_baseURL + "/Categories/" + amount);
-        if (response.StatusCode == HttpStatusCode.NotFound)
+        public CategoryService(string path)
         {
-            throw new HttpRequestException("There is not connection");
+            _baseURL = path;
         }
-        var responseContent = await response.Content.ReadAsStringAsync();
-        var deserializeResponse = JsonConvert.DeserializeObject<string[]>(responseContent);
-        return deserializeResponse;
-    }
 
-    public async Task<bool[]> GetWordsCorrection(string[] roundCategories, string[] answers, char letter)
-    {
-        /*
+        public async Task<string[]> GetCategoriesNames(int amount)
+        {
+            var response = await _client.GetAsync(_baseURL + "/Categories/" + amount);
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new HttpRequestException("There is not connection");
+            }
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var deserializeResponse = JsonConvert.DeserializeObject<string[]>(responseContent);
+            return deserializeResponse;
+        }
+
+        public async Task<bool[]> GetWordsCorrection(string[] roundCategories, string[] answers, char letter)
+        {
+            /*
         var queryParameters = new Dictionary<string, string[]>()
         {
             ["Categories"] = roundCategories,
@@ -40,31 +41,32 @@ public class CategoryService : ICategoryService
         var query = QueryHelpers.AddQueryString(_baseURL + "/isValid", queryParameters);
         */
 
-        string finalURL = _baseURL + "/isValid?";
-        for (int i = 0; i < answers.Length; i++)
-        {
-            finalURL += $"word[{i}]={answers[i]}&";
+            string finalURL = _baseURL + "/isValid?";
+            for (int i = 0; i < answers.Length; i++)
+            {
+                finalURL += $"word[{i}]={answers[i]}&";
             
-        }
-        for (int i = 0; i < roundCategories.Length; i++)
-        {
-            finalURL += $"category[{i}]={roundCategories[i]}&";
+            }
+            for (int i = 0; i < roundCategories.Length; i++)
+            {
+                finalURL += $"category[{i}]={roundCategories[i]}&";
             
-        }
-        finalURL += $"letter={letter}";
+            }
+            finalURL += $"letter={letter}";
         
         
-        var response = await _client.GetAsync(finalURL);
+            var response = await _client.GetAsync(finalURL);
 
-        if (response.StatusCode == HttpStatusCode.NotFound)
-        {
-            throw new HttpRequestException("There is not connection");
-        }
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new HttpRequestException("There is not connection");
+            }
 
-        var responseArray = await response.Content.ReadAsStringAsync();
+            var responseArray = await response.Content.ReadAsStringAsync();
         
-        var deserializeResponse = JsonConvert.DeserializeObject<bool[]>(responseArray);
+            var deserializeResponse = JsonConvert.DeserializeObject<bool[]>(responseArray);
         
-        return deserializeResponse;
+            return deserializeResponse;
+        }
     }
 }

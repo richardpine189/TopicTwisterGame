@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MainScene.MatchList.Repository
+namespace Architecture.OnGoingMatch.Repository
 {
     public class PlayerPrefMatchIdRepository : IMatchIdRepository
     {

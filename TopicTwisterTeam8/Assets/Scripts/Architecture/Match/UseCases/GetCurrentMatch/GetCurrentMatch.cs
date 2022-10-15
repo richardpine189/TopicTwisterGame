@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using Core.Match.Interface;
-using Models.DTO;
+using Architecture.Match.Domain.DTO;
+using Architecture.Match.Gateway.Interfaces;
 
-namespace Core.Match
+namespace Architecture.Match.UseCases.GetCurrentMatch
 {
     public class GetCurrentMatch : IGetCurrentMatchUseCase
     {

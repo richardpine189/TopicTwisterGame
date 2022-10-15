@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-public interface IAnsweringView
+namespace Architecture.Category.AnswersPanel
 {
-    event Action<string[]> OnStopClick;
+    public interface IAnsweringView
+    {
+        event Action<string[]> OnStopClick;
 
-    public void SendAnswers();
+        public void SendAnswers();
+    }
 }

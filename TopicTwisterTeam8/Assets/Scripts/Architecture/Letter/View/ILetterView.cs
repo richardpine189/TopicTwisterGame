@@ -1,16 +1,19 @@
 using System;
 
-public interface ILetterView
+namespace Architecture.Letter.View
 {
-    Action OnAskForLetter { get; set; }
+    public interface ILetterView
+    {
+        Action OnAskForLetter { get; set; }
 
-    Action UpdateLetter { get; set; }
+        Action UpdateLetter { get; set; }
 
-    Action OnKeepRoundLetter { get; set; }
+        Action OnKeepRoundLetter { get; set; }
 
-    event Action OnActiveLetterPanel;
+        event Action OnActiveLetterPanel;
 
-    public void SetLetter(char letter);
+        public void SetLetter(char letter);
 
-    public void RequestLetter();
+        public void RequestLetter();
+    }
 }

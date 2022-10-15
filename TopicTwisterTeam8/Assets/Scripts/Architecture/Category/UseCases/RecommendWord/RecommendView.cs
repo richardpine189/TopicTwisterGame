@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-namespace Category.Correction.RecommendUseCase
+namespace Architecture.Category.UseCases.RecommendWord
 {
     public class RecommendView : MonoBehaviour
     {

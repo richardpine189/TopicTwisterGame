@@ -1,4 +1,8 @@
-namespace Core.Match.PlayersNames
+using Architecture.Match.Panel.LoadingMatch;
+using Architecture.Match.UseCases.GetMatchData;
+using Architecture.User.Repository;
+
+namespace Architecture.Match.MatchHeader.PlayersNames
 {
     public class PlayerNamePresenter
     {

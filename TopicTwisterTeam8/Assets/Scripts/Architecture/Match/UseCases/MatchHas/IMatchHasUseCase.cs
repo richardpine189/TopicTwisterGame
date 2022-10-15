@@ -1,4 +1,7 @@
-﻿public interface IMatchHasUseCase
+﻿namespace Architecture.Match.UseCases.MatchHas
 {
-    bool CurrentCategories();
+    public interface IMatchHasUseCase
+    {
+        bool CurrentCategories();
+    }
 }

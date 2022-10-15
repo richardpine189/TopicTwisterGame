@@ -1,14 +1,18 @@
+using Architecture.OnGoingMatch.Card;
 using UnityEngine;
 
-public class MatchListView : MonoBehaviour, IMatchListView
+namespace Architecture.OnGoingMatch.MatchListFactory
 {
-    [SerializeField]
-    private GameObject matchUIPrefab;
-    
-    public IOngoingMatchView CreateMatchCard()
+    public class MatchListView : MonoBehaviour, IMatchListView
     {
-        GameObject go = Instantiate(matchUIPrefab, new Vector2(0, 0), Quaternion.identity);
-        go.transform.SetParent(this.transform, false);
-        return go.GetComponent<IOngoingMatchView>();
+        [SerializeField]
+        private GameObject matchUIPrefab;
+    
+        public IOngoingMatchView CreateMatchCard()
+        {
+            GameObject go = Instantiate(matchUIPrefab, new Vector2(0, 0), Quaternion.identity);
+            go.transform.SetParent(this.transform, false);
+            return go.GetComponent<IOngoingMatchView>();
+        }
     }
 }

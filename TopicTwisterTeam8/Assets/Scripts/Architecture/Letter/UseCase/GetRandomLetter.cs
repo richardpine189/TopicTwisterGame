@@ -1,13 +1,16 @@
-﻿public class GetRandomLetter : IGetLetterUseCase
+﻿namespace Architecture.Letter.UseCase
 {
-    public char Invoke()
+    public class GetRandomLetter : IGetLetterUseCase
     {
+        public char Invoke()
+        {
         
-        System.Random rnd = new System.Random();
-        //char randomChar = (char)rnd.Next('A', 'Z');
-        char randomChar = (char)rnd.Next('A', 'E');
+            System.Random rnd = new System.Random();
+            //char randomChar = (char)rnd.Next('A', 'Z');
+            char randomChar = (char)rnd.Next('A', 'E');
 
-        return randomChar;
+            return randomChar;
+        }
     }
 }
 

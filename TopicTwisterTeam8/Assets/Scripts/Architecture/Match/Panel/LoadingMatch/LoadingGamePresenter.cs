@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using Zenject;
-using Core.Match.Interface;
-using Models;
+﻿using System.Threading.Tasks;
+using Architecture.Match.ActiveMatchRepository;
+using Architecture.Match.UseCases.GetCurrentMatch;
+using Architecture.OnGoingMatch.UseCase;
+using Architecture.User.Repository;
 
-namespace Assets.Scripts.Presenters
+namespace Architecture.Match.Panel.LoadingMatch
 {
     public class LoadingGamePresenter
     {
@@ -61,7 +61,7 @@ namespace Assets.Scripts.Presenters
                 _currentRound = matchDto.currentRound;
                 _secondPlayer = (matchDto.opponentName == _playerLogged ? matchDto.challengerName : matchDto.opponentName);
                 
-                _matchRepositoryUseCase.Match = new Match();
+                _matchRepositoryUseCase.Match = new Domain.Match();
                 _matchRepositoryUseCase.Match.idMatch = matchDto.idMatch;
                 _matchRepositoryUseCase.Match.challengerName = matchDto.challengerName;
                 _matchRepositoryUseCase.Match.opponentName = matchDto.opponentName;
@@ -76,7 +76,7 @@ namespace Assets.Scripts.Presenters
                 _currentRound = activematch.currentRound;
                 _secondPlayer = (activematch.opponentName == _playerLogged ? activematch.challengerName : activematch.opponentName);
                 
-                _matchRepositoryUseCase.Match = new Match();
+                _matchRepositoryUseCase.Match = new Domain.Match();
                 _matchRepositoryUseCase.Match.idMatch = _matchId;
                 _matchRepositoryUseCase.Match.challengerName = activematch.challengerName;
                 _matchRepositoryUseCase.Match.opponentName = activematch.opponentName;

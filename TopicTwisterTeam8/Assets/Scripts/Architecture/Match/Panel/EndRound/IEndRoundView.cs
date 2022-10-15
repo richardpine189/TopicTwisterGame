@@ -1,7 +1,8 @@
-﻿
-    using System;
-    using Models.DTO;
+﻿using System;
+using Architecture.Match.Domain.DTO;
 
+namespace Architecture.Match.Panel.EndRound
+{
     public interface IEndRoundView
     {
         event Action OnSetRoundResults;
@@ -13,5 +14,6 @@
         void ShowSecondPlayerAnswersAndResult(string[] answers, bool[] results);
 
         void ShowEndGamePanel(WinnerStatus winner);
+    }
 }
 

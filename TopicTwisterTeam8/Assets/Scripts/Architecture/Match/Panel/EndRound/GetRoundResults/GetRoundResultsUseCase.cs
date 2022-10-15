@@ -1,17 +1,20 @@
 using System.Threading.Tasks;
-using Core.Match.Interface;
-using Models.DTO;
+using Architecture.Match.Domain.DTO;
+using Architecture.Match.Gateway.Interfaces;
 
-public class GetRoundResultsUseCase : IGetRoundResult
+namespace Architecture.Match.Panel.EndRound.GetRoundResults
 {
-    private readonly IGetRoundResultGateway _getRoundResults;
+    public class GetRoundResultsUseCase : IGetRoundResult
+    {
+        private readonly IGetRoundResultGateway _getRoundResults;
 
-    GetRoundResultsUseCase(IGetRoundResultGateway getRoundResults)
-    {
-        _getRoundResults = getRoundResults;
-    }
-    public async Task<RoundResultsDTO> Execute(int matchId)
-    {
-        return await _getRoundResults.GetRoundResults(matchId);
+        GetRoundResultsUseCase(IGetRoundResultGateway getRoundResults)
+        {
+            _getRoundResults = getRoundResults;
+        }
+        public async Task<RoundResultsDTO> Execute(int matchId)
+        {
+            return await _getRoundResults.GetRoundResults(matchId);
+        }
     }
 }

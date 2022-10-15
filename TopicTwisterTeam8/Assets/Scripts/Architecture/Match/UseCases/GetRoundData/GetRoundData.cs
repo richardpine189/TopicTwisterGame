@@ -1,31 +1,35 @@
-﻿using Zenject;
+﻿using Architecture.Match.ActiveMatchRepository;
+using Zenject;
 
-class GetRoundData : IGetRoundDataUseCase
+namespace Architecture.Match.UseCases.GetRoundData
 {
-    [Inject] private IActiveMatchRepository _activeMatchRepository;
-
-    public string[] GetCurrentCategories()
+    class GetRoundData : IGetRoundDataUseCase
     {
-        return _activeMatchRepository.Match.round.CurrentCategories;
-    }
+        [Inject] private IActiveMatchRepository _activeMatchRepository;
 
-    public char? GetCurrentLetter()
-    {
-        return _activeMatchRepository.Match.round.CurrentLetter;
-    }
+        public string[] GetCurrentCategories()
+        {
+            return _activeMatchRepository.Match.round.CurrentCategories;
+        }
 
-    public string[] GetCurrentAnswers()
-    {
-        return _activeMatchRepository.Match.round.CurrentAnswers;
-    }
+        public char? GetCurrentLetter()
+        {
+            return _activeMatchRepository.Match.round.CurrentLetter;
+        }
 
-    public bool[] GetCurrentResults()
-    {
-        return _activeMatchRepository.Match.round.CurrentResults;
-    }
+        public string[] GetCurrentAnswers()
+        {
+            return _activeMatchRepository.Match.round.CurrentAnswers;
+        }
 
-    public int GetCurrentTime()
-    {
-        return _activeMatchRepository.Match.round.RoundTimeLeft;
+        public bool[] GetCurrentResults()
+        {
+            return _activeMatchRepository.Match.round.CurrentResults;
+        }
+
+        public int GetCurrentTime()
+        {
+            return _activeMatchRepository.Match.round.RoundTimeLeft;
+        }
     }
 }

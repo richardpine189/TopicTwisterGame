@@ -1,8 +1,11 @@
 using System.Threading.Tasks;
 
-public interface IUserGateway
+namespace Architecture.User.Gateway
 {
-    Task<string> RequestLogin(string username);
+    public interface IUserGateway
+    {
+        Task<string> RequestLogin(string username);
 
-    Task<string> RequestSignIn(string username, string email);
+        Task<string> RequestSignIn(string username, string email);
+    }
 }

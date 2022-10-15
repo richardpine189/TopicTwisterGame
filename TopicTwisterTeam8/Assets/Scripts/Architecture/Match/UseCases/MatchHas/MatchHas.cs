@@ -1,12 +1,16 @@
-﻿using Zenject;
+﻿using Architecture.Match.ActiveMatchRepository;
+using Zenject;
 
-class MatchHas : IMatchHasUseCase
+namespace Architecture.Match.UseCases.MatchHas
 {
-    [Inject]
-    private IActiveMatchRepository _activeMatchRepository;
-    
-    public bool CurrentCategories()
+    class MatchHas : IMatchHasUseCase
     {
-        return _activeMatchRepository.Match.round.CurrentCategories != null;
+        [Inject]
+        private IActiveMatchRepository _activeMatchRepository;
+    
+        public bool CurrentCategories()
+        {
+            return _activeMatchRepository.Match.round.CurrentCategories != null;
+        }
     }
 }

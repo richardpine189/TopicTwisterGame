@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Models;
-using Models.DTO;
+using Architecture.Match.Domain.DTO;
 
-public interface IGetMatchesInfoUseCase
+namespace Architecture.Match.UseCases
+{
+    public interface IGetMatchesInfoUseCase
     {
         Task<List<MatchDTO>> Execute();
     }
+}
 

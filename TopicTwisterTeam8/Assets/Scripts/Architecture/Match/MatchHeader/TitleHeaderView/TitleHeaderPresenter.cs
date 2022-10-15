@@ -1,4 +1,4 @@
-namespace Core.Match.TitleHeaderView
+namespace Architecture.Match.MatchHeader.TitleHeaderView
 {
     public class TitleHeaderPresenter
     {

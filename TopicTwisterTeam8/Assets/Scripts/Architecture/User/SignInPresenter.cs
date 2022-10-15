@@ -1,44 +1,49 @@
 ﻿using System;
+using Architecture.User.UseCase;
+using Architecture.User.View;
 
-public class SignInPresenter
+namespace Architecture.User
 {
-    private ISignInView _view;
-    private ISignInUseCase _signInUseCase;
-
-    public SignInPresenter(ISignInView signInView, ISignInUseCase signInUseCase)
+    public class SignInPresenter
     {
-        _view = signInView;
-        _signInUseCase = signInUseCase;
-        _view.OnSignInTrigger += SignIn;
-    }
+        private ISignInView _view;
+        private ISignInUseCase _signInUseCase;
 
-    ~SignInPresenter()
-    {
-        _view.OnSignInTrigger -= SignIn;
-    }
-
-    private async void SignIn(string username, string email)
-    {
-        if (String.IsNullOrEmpty(username))
+        public SignInPresenter(ISignInView signInView, ISignInUseCase signInUseCase)
         {
-            _view.ShowMessage("No se ha envíado un nombre de usuario.");
+            _view = signInView;
+            _signInUseCase = signInUseCase;
+            _view.OnSignInTrigger += SignIn;
         }
-        else if (String.IsNullOrEmpty(email))
+
+        ~SignInPresenter()
         {
-            _view.ShowMessage("No se ha envíado un email valido.");
+            _view.OnSignInTrigger -= SignIn;
         }
-        else
+
+        private async void SignIn(string username, string email)
         {
-            try
+            if (String.IsNullOrEmpty(username))
             {
-                await _signInUseCase.Invoke(username, email);
-
-                _view.ShowMessage("La cuenta se ha creado con éxito");
-                _view.GoToLogIn();
+                _view.ShowMessage("No se ha envíado un nombre de usuario.");
             }
-            catch (Exception e)
+            else if (String.IsNullOrEmpty(email))
             {
-                _view.ShowMessage(e.Message);
+                _view.ShowMessage("No se ha envíado un email valido.");
+            }
+            else
+            {
+                try
+                {
+                    await _signInUseCase.Invoke(username, email);
+
+                    _view.ShowMessage("La cuenta se ha creado con éxito");
+                    _view.GoToLogIn();
+                }
+                catch (Exception e)
+                {
+                    _view.ShowMessage(e.Message);
+                }
             }
         }
     }

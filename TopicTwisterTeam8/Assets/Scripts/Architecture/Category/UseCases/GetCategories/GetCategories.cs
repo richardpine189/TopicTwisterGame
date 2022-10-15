@@ -1,24 +1,27 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-public class GetCategories : IGetCategoriesUseCase
+namespace Architecture.Category.UseCases.GetCategories
 {
-    private ICategoryService _categoryService;
-
-    public GetCategories(ICategoryService categoryService)
+    public class GetCategories : IGetCategoriesUseCase
     {
-        _categoryService = categoryService;
-    }
+        private Gateway.ICategoryService _categoryService;
 
-    public async Task<string[]> Invoke(int amount)
-    {
-        if (amount <= 0)
+        public GetCategories(Gateway.ICategoryService categoryService)
         {
-            throw new Exception("The amount is not valid");
+            _categoryService = categoryService;
         }
 
-        var categories = await _categoryService.GetCategoriesNames(amount);
+        public async Task<string[]> Invoke(int amount)
+        {
+            if (amount <= 0)
+            {
+                throw new Exception("The amount is not valid");
+            }
 
-        return categories;
+            var categories = await _categoryService.GetCategoriesNames(amount);
+
+            return categories;
+        }
     }
 }

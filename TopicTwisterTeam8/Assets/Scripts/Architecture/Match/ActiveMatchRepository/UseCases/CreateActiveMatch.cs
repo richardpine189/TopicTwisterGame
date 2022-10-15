@@ -1,20 +1,21 @@
-﻿using Models;
-using Zenject;
+﻿using Zenject;
 
-public class CreateActiveMatch : ICreateActiveMatch
+namespace Architecture.Match.ActiveMatchRepository.UseCases
 {
-    [Inject] private IActiveMatchRepository _matchRepositoryAction;
-
-    public void Execute()
+    public class CreateActiveMatch : ICreateActiveMatch
     {
-        _matchRepositoryAction.Match = new Match();
-    }
-}
+        [Inject] private IActiveMatchRepository _matchRepositoryAction;
 
-public interface ICreateActiveMatch
-{
-    public void Execute();
-}
+        public void Execute()
+        {
+            _matchRepositoryAction.Match = new Domain.Match();
+        }
+    }
+
+    public interface ICreateActiveMatch
+    {
+        public void Execute();
+    }
 
 
 /* SKYNET 0.1
@@ -99,3 +100,4 @@ public class SetBotInMatchAction
     }
 }
 */
+}

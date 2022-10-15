@@ -1,4 +1,9 @@
-public interface IMatchListView
+using Architecture.OnGoingMatch.Card;
+
+namespace Architecture.OnGoingMatch.MatchListFactory
 {
-    IOngoingMatchView CreateMatchCard();
+    public interface IMatchListView
+    {
+        IOngoingMatchView CreateMatchCard();
+    }
 }

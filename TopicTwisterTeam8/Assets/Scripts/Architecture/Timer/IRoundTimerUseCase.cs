@@ -1,6 +1,9 @@
-﻿public interface IRoundTimerUseCase
+﻿namespace Architecture.Timer
 {
-    int GetTimeToAnswer();
+    public interface IRoundTimerUseCase
+    {
+        int GetTimeToAnswer();
 
-    void SaveTimeToRound(int timeLeft);
+        void SaveTimeToRound(int timeLeft);
+    }
 }

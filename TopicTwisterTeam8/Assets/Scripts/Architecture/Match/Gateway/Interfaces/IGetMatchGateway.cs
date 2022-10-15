@@ -1,8 +1,7 @@
 using System.Threading.Tasks;
-using Models;
-using Models.DTO;
+using Architecture.Match.Domain.DTO;
 
-namespace Core.Match.Interface
+namespace Architecture.Match.Gateway.Interfaces
 {
     public interface IGetMatchGateway
     {

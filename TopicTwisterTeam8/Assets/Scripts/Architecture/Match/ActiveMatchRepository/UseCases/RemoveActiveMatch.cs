@@ -1,10 +1,13 @@
 using Zenject;
 
-public class RemoveActiveMatch
+namespace Architecture.Match.ActiveMatchRepository.UseCases
 {
-    [Inject] private IActiveMatchRepository _matchRepositoryAction;
-    public void Execute()
+    public class RemoveActiveMatch
     {
-        _matchRepositoryAction.Match = null;
+        [Inject] private IActiveMatchRepository _matchRepositoryAction;
+        public void Execute()
+        {
+            _matchRepositoryAction.Match = null;
+        }
     }
 }

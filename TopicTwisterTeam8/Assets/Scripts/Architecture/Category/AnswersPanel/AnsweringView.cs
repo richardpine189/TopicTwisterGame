@@ -1,46 +1,49 @@
 ﻿using System;
-using Core.Match.TitleHeaderView;
+using Architecture.Match.MatchHeader.TitleHeaderView;
 using TMPro;
 using UnityEngine;
 
-public class AnsweringView : MonoBehaviour, IAnsweringView
+namespace Architecture.Category.AnswersPanel
 {
-    public event Action<string[]> OnStopClick;
+    public class AnsweringView : MonoBehaviour, IAnsweringView
+    {
+        public event Action<string[]> OnStopClick;
     
-    private const string PANEL_NAME = "RESPONDE!";
+        private const string PANEL_NAME = "RESPONDE!";
 
-    [SerializeField]
-    private TMP_InputField[] _answers;
+        [SerializeField]
+        private TMP_InputField[] _answers;
 
-    [SerializeField]
-    private GameObject _nextPanel;
+        [SerializeField]
+        private GameObject _nextPanel;
 
-    void OnEnable()
-    {
-        CleanFields();
-        TitleSetName.SendPanelName(PANEL_NAME);
-    }
-
-    private void CleanFields()
-    {
-        for (int i = 0; i < _answers.Length; i++)
+        void OnEnable()
         {
-            _answers[i].text = "";
-        }
-    }
-
-    public void SendAnswers()
-    {
-        string[] answers = new string[5];
-
-        for(int i = 0; i < 5; i++)
-        {
-            answers[i] = _answers[i].text;
+            CleanFields();
+            TitleSetName.SendPanelName(PANEL_NAME);
         }
 
-        OnStopClick.Invoke(answers);
-        _nextPanel.SetActive(true);
-        gameObject.SetActive(false);
+        private void CleanFields()
+        {
+            for (int i = 0; i < _answers.Length; i++)
+            {
+                _answers[i].text = "";
+            }
+        }
+
+        public void SendAnswers()
+        {
+            string[] answers = new string[5];
+
+            for(int i = 0; i < 5; i++)
+            {
+                answers[i] = _answers[i].text;
+            }
+
+            OnStopClick.Invoke(answers);
+            _nextPanel.SetActive(true);
+            gameObject.SetActive(false);
+        }
     }
 }
 

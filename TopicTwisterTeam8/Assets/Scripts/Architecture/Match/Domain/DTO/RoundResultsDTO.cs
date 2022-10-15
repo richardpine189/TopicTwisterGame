@@ -1,4 +1,4 @@
-namespace Models.DTO
+namespace Architecture.Match.Domain.DTO
 {
     public class RoundResultsDTO
     {

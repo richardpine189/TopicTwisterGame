@@ -1,12 +1,14 @@
-namespace Core.Match
+using Architecture.Match.UseCases.GetRoundData;
+
+namespace Architecture.Match.MatchHeader.Letter
 {
     public class MatchHeaderLetterPresenter
     {
-        private readonly ILetterView _letterView;
+        private readonly Architecture.Letter.View.ILetterView _letterView;
         private readonly IMatchHeaderLetterView _matchHeaderLetterView;
         private readonly IGetRoundDataUseCase _getRoundDataUseCase;
 
-        public MatchHeaderLetterPresenter(ILetterView letterView, IMatchHeaderLetterView matchHeaderLetterView, IGetRoundDataUseCase getRoundDataUseCase)
+        public MatchHeaderLetterPresenter(Architecture.Letter.View.ILetterView letterView, IMatchHeaderLetterView matchHeaderLetterView, IGetRoundDataUseCase getRoundDataUseCase)
         {
             _letterView = letterView;
             _matchHeaderLetterView = matchHeaderLetterView;

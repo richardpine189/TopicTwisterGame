@@ -1,16 +1,19 @@
 
 using Zenject;
 
-public class ResetActiveMatch
+namespace Architecture.Match.ActiveMatchRepository.UseCases
 {
-    [Inject] private IActiveMatchRepository _matchRepositoryAction;
-    
-    public void Execute()
+    public class ResetActiveMatch
     {
-        _matchRepositoryAction.Match.round.CurrentCategories = null;
-        _matchRepositoryAction.Match.round.CurrentLetter = null;
-        _matchRepositoryAction.Match.round.CurrentAnswers = null;
-        _matchRepositoryAction.Match.round.CurrentResults = null;
-        _matchRepositoryAction.Match.round.RoundTimeLeft = 60;
+        [Inject] private IActiveMatchRepository _matchRepositoryAction;
+    
+        public void Execute()
+        {
+            _matchRepositoryAction.Match.round.CurrentCategories = null;
+            _matchRepositoryAction.Match.round.CurrentLetter = null;
+            _matchRepositoryAction.Match.round.CurrentAnswers = null;
+            _matchRepositoryAction.Match.round.CurrentResults = null;
+            _matchRepositoryAction.Match.round.RoundTimeLeft = 60;
+        }
     }
 }

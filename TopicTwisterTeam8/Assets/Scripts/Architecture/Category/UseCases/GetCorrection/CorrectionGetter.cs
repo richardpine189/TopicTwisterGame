@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-public class CorrectionGetter : IGetCorrections
+namespace Architecture.Category.UseCases.GetCorrection
 {
-    private ICategoryService _service;
-
-    public CorrectionGetter(ICategoryService service)
+    public class CorrectionGetter : IGetCorrections
     {
-        _service = service;
-    }
+        private Gateway.ICategoryService _service;
 
-    public async Task<bool[]> GetCorrections(string[] roundCategories, string[] answers, char letter)
-    {
-        return await _service.GetWordsCorrection(roundCategories, answers, letter);
+        public CorrectionGetter(Gateway.ICategoryService service)
+        {
+            _service = service;
+        }
+
+        public async Task<bool[]> GetCorrections(string[] roundCategories, string[] answers, char letter)
+        {
+            return await _service.GetWordsCorrection(roundCategories, answers, letter);
+        }
     }
 }

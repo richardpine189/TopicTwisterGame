@@ -1,7 +1,12 @@
 
-public interface ILocalPlayerDataRepository
-{
-    void SetData(UserDTO userDto);
+using Architecture.User.Domain;
 
-    UserDTO GetData();
+namespace Architecture.User.Repository
+{
+    public interface ILocalPlayerDataRepository
+    {
+        void SetData(UserDTO userDto);
+
+        UserDTO GetData();
+    }
 }

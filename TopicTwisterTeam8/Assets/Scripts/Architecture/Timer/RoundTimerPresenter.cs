@@ -1,7 +1,6 @@
-﻿using System;
-using Zenject;
+﻿using Architecture.Category.AnswersPanel;
 
-namespace Assets.Scripts.Presenters
+namespace Architecture.Timer
 {
     public class RoundTimerPresenter
     {

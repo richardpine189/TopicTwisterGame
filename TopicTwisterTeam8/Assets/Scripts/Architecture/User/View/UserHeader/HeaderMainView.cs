@@ -1,31 +1,32 @@
-using MainScene.Header;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
-public class HeaderMainView : MonoBehaviour, IHeaderMainView
+namespace Architecture.User.View.UserHeader
 {
-    [SerializeField]
-    private TextMeshProUGUI _userName;
-
-    [SerializeField]
-    private TextMeshProUGUI _userCoins;
-    
-    [SerializeField]
-    private TextMeshProUGUI _victories;
-
-    [SerializeField]
-    private Image _userAvatar;
-
-
-
-
-    public void SetUserDataInHeader(string loggedUserName, string loggedUserCoin, string loggedUserVictories)
+    public class HeaderMainView : MonoBehaviour, IHeaderMainView
     {
-        _userName.text = loggedUserName;
-        _userCoins.text = loggedUserCoin;
-        _victories.text = loggedUserVictories;
+        [SerializeField]
+        private TextMeshProUGUI _userName;
+
+        [SerializeField]
+        private TextMeshProUGUI _userCoins;
+    
+        [SerializeField]
+        private TextMeshProUGUI _victories;
+
+        [SerializeField]
+        private Image _userAvatar;
+
+
+
+
+        public void SetUserDataInHeader(string loggedUserName, string loggedUserCoin, string loggedUserVictories)
+        {
+            _userName.text = loggedUserName;
+            _userCoins.text = loggedUserCoin;
+            _victories.text = loggedUserVictories;
+        }
     }
 }
 

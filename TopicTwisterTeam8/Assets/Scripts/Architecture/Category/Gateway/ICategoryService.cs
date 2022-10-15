@@ -1,8 +1,11 @@
 using System.Threading.Tasks;
 
-public interface ICategoryService
+namespace Architecture.Category.Gateway
 {
-    Task<string[]> GetCategoriesNames(int amount);
+    public interface ICategoryService
+    {
+        Task<string[]> GetCategoriesNames(int amount);
 
-    Task<bool[]> GetWordsCorrection(string[] roundCategories, string[] answers, char letter);
+        Task<bool[]> GetWordsCorrection(string[] roundCategories, string[] answers, char letter);
+    }
 }

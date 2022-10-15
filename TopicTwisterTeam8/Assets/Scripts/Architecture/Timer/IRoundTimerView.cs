@@ -1,13 +1,16 @@
 ﻿using System;
 
-public interface IRoundTimerView
+namespace Architecture.Timer
 {
-    event Action<int> OnTimerStop;
+    public interface IRoundTimerView
+    {
+        event Action<int> OnTimerStop;
 
-    event Action OnTimerStart;
-    public event Action OnTimerIsUp;
+        event Action OnTimerStart;
+        public event Action OnTimerIsUp;
 
-    void SetTimeLeft(int timeToAnswer);
+        void SetTimeLeft(int timeToAnswer);
 
-    public void StopTimer();
+        public void StopTimer();
+    }
 }

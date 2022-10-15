@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 
-namespace Core.Match.Interface
+namespace Architecture.Match.Gateway.Interfaces
 {
     public interface IUpdateMatchGateway
     {
-        public Task<bool> UpdateMatch(Models.Match match);
+        public Task<bool> UpdateMatch(Domain.Match match);
     }
 }

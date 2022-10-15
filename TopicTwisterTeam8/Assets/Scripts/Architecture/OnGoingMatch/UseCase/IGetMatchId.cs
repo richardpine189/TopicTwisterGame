@@ -1,4 +1,7 @@
-public interface IGetMatchId
+namespace Architecture.OnGoingMatch.UseCase
 {
-    public int Invoke();
+    public interface IGetMatchId
+    {
+        public int Invoke();
+    }
 }
