@@ -26,8 +26,13 @@ namespace Architecture.Match.Gateway
 
             var responseString = await response.Content.ReadAsStringAsync();
             //var list = JsonUtility.FromJson<ListMatchDTO>(responseString);
-            var list = JsonConvert.DeserializeObject<List<MatchDTO>>(responseString);
+            var list = new List<MatchDTO>();
             
+            if (!string.IsNullOrEmpty(responseString))
+            {
+                 list = JsonConvert.DeserializeObject<List<MatchDTO>>(responseString);
+            }
+
             return list;
         }
 
