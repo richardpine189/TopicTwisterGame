@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace Architecture.User.View
 {
-    public class LogInView : MonoBehaviour, ILoginView
+    public class LoginView : MonoBehaviour, ILoginView
     {
         [SerializeField]
         private TMP_InputField _usernameInputField;

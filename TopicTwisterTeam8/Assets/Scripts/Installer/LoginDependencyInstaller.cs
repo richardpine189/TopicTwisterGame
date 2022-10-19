@@ -8,7 +8,7 @@ using Zenject;
 public class LoginDependencyInstaller : MonoInstaller
 {
     [SerializeField]
-    private LogInView _loginView;
+    private LoginView _loginView;
 
     [SerializeField]
     private SignInView _signInView;
@@ -16,7 +16,7 @@ public class LoginDependencyInstaller : MonoInstaller
     [SerializeField] private RouteConfig _config;
     public override void InstallBindings()
     {
-        Container.Bind<ILoginView>().To<LogInView>().FromInstance(_loginView).NonLazy();
+        Container.Bind<ILoginView>().To<LoginView>().FromInstance(_loginView).NonLazy();
         Container.Bind<ILoginGetUserUseCase>().To<LoginUserUseCase>().AsTransient().NonLazy();
 
         Container.Bind<ISignInView>().To<SignInView>().FromInstance(_signInView).NonLazy();
