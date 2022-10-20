@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,9 @@ namespace Architecture.User.View
         [SerializeField]
         private GameObject _spiner;
 
+        [SerializeField]
+        private TransitionLoadingView _transitionLoadingView;
+        
         public event Action<string> OnLoginTrigger;
 
         public void LoginButton()
@@ -40,6 +44,14 @@ namespace Architecture.User.View
 
         public void LoadMainScene()
         {
+            _transitionLoadingView.SlideUp();
+
+            StartCoroutine(WaitAndChangeScene());
+        }
+
+        private IEnumerator WaitAndChangeScene()
+        {
+            yield return new WaitForSeconds(1);
             SceneManager.LoadScene("MainScene"); //HardCoding
         }
     }

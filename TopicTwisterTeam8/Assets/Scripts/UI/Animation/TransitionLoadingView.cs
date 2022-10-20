@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
@@ -17,7 +18,8 @@ public class TransitionLoadingView : MonoBehaviour
 
     private void OnEnable()
     {
-        OnShowOffTransition?.Invoke();
+        StartCoroutine(WaitForChargeData());
+        
     }
 
     private void OnDestroy()
@@ -28,11 +30,17 @@ public class TransitionLoadingView : MonoBehaviour
 
     public void SlideUp()
     {
-        _transform.DOAnchorPosY(0,0.7f);
+        _transform.DOAnchorPosY(0,0.9f);
     }
 
     public void SlideDown()
     {
-        _transform.DOAnchorPosY(-3400,0.7f);
+        _transform.DOAnchorPosY(-2600,0.9f);
+    }
+
+    public IEnumerator WaitForChargeData()
+    {
+        yield return new WaitForSeconds(1);
+        OnShowOffTransition?.Invoke();
     }
 }

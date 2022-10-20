@@ -1246,7 +1246,7 @@ GameObject:
   - component: {fileID: 674691761}
   - component: {fileID: 674691762}
   m_Layer: 5
-  m_Name: LogIn
+  m_Name: LogInText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2647,7 +2647,7 @@ PrefabInstance:
     - target: {fileID: 6841430347668191666, guid: 5c300ee1034e7254882663170d3c0393,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.845703
+      value: 104
       objectReference: {fileID: 0}
     - target: {fileID: 6841430347668191666, guid: 5c300ee1034e7254882663170d3c0393,
         type: 3}
@@ -2672,7 +2672,7 @@ PrefabInstance:
     - target: {fileID: 6841430347668191669, guid: 5c300ee1034e7254882663170d3c0393,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c300ee1034e7254882663170d3c0393, type: 3}
@@ -2682,6 +2682,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1251163583}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1251163585 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6841430347668191665, guid: 5c300ee1034e7254882663170d3c0393,
+    type: 3}
+  m_PrefabInstance: {fileID: 1251163583}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c35bad8e30f8516438db8b928ad3e8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1269803780
 GameObject:
   m_ObjectHideFlags: 0
@@ -3275,6 +3287,7 @@ MonoBehaviour:
   _errorPanel: {fileID: 1548803138}
   _button: {fileID: 2035848899}
   _spiner: {fileID: 451357281}
+  _transitionLoadingView: {fileID: 1251163585}
 --- !u!1 &1548803138
 GameObject:
   m_ObjectHideFlags: 0
@@ -3811,7 +3824,7 @@ GameObject:
   - component: {fileID: 1730898662}
   - component: {fileID: 1730898663}
   m_Layer: 5
-  m_Name: SignIn
+  m_Name: SignInText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

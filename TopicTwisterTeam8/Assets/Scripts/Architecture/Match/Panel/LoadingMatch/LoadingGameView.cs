@@ -16,8 +16,6 @@ namespace Architecture.Match.Panel.LoadingMatch
         [SerializeField]
         private TMP_Text _opponentName;
 
-        [SerializeField]
-        private GameObject _versusImage;
 
         [SerializeField]
         private GameObject _categoriesPanel;
@@ -27,6 +25,8 @@ namespace Architecture.Match.Panel.LoadingMatch
 
         [SerializeField] private GameObject _spiner;
         private const int ITS_NEW_MATCH = -1;
+
+        
 
         public void StartAnimation(bool isNewGame)
         {
@@ -40,7 +40,6 @@ namespace Architecture.Match.Panel.LoadingMatch
         private IEnumerator LoadingAnimation()
         {
             _spiner.gameObject.SetActive(true);
-            _versusImage.SetActive(false);
             yield return new WaitForSeconds(1f);
             StartCoroutine(SecondWaiting());
         }
@@ -48,7 +47,6 @@ namespace Architecture.Match.Panel.LoadingMatch
         public IEnumerator SecondWaiting()
         {
             _spiner.gameObject.SetActive(false);
-            _versusImage.SetActive(true);
 
             yield return new WaitForSeconds(3.0f);
 
@@ -81,7 +79,7 @@ namespace Architecture.Match.Panel.LoadingMatch
 
         private void DeactivateLoading()
         {
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
 
     }
