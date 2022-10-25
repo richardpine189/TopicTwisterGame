@@ -47,15 +47,15 @@ namespace Architecture.Match.Panel.EndRound
             RoundResultsDTO roundResultsDto = await _getRoundResultUseCase.Execute(_matchId);
             
             //Synchronize Letter
-            char previewsRoundLetter = roundResultsDto.letter;
+            char previousRoundLetter = roundResultsDto.letter;
             char currentRoundLetter = _getRoundData.GetCurrentLetter();
             
             //Synchronize RoundNumber
-            int previewsRoundNumber = roundResultsDto.roundIndex;
+            int previousRoundNumber = roundResultsDto.roundIndex;
             int currentRoundNumber = _getMatchDataUseCase.GetRoundNumber();
             
-            _saveMatchData.SaveCurrentRound(previewsRoundNumber);
-            _saveRoundData.SaveLetter(previewsRoundLetter);
+            _saveMatchData.SaveCurrentRound(previousRoundNumber);
+            _saveRoundData.SaveLetter(previousRoundLetter);
             
             _endRoundView.SetLetterForHeader();
             
