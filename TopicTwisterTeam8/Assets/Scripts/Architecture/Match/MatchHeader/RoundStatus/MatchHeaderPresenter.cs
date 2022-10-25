@@ -1,3 +1,4 @@
+using Architecture.Match.Panel.EndRound;
 using Architecture.Match.Panel.LoadingMatch;
 using Architecture.Match.UseCases.GetMatchData;
 
@@ -14,11 +15,12 @@ namespace Architecture.Match.MatchHeader.RoundStatus
 
         private const int OFFSET_ROUND_NUMBER = 1;
 
-        public MatchHeaderPresenter(IMatchHeaderView matchHeaderView, ILoadingGameView loadingGameView, IGetMatchDataUseCase getMatchDataUseCase)
+        public MatchHeaderPresenter(IMatchHeaderView matchHeaderView, ILoadingGameView loadingGameView, IGetMatchDataUseCase getMatchDataUseCase, IEndRoundView endRoundView)
         {
             _headerView = matchHeaderView;
             _loadingGameView = loadingGameView;
             _getMatchDataUseCase = getMatchDataUseCase;
+            endRoundView.OnSetLetterForRoundResults += InitializeHeader;
             _loadingGameView.OnSendNamesInHeader += InitializeHeader;
         }
 

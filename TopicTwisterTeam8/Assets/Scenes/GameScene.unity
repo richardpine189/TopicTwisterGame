@@ -1602,6 +1602,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1048334306}
     m_Modifications:
+    - target: {fileID: 6473263164292781924, guid: 4f01d1ad9a9ebf946ac3669158cb5954,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6473263165466465962, guid: 4f01d1ad9a9ebf946ac3669158cb5954,
         type: 3}
       propertyPath: m_Name
@@ -1780,7 +1785,7 @@ MonoBehaviour:
   _matchHeaderTitleView: {fileID: 6473263164745180400}
   _categoriesRouteConfig: {fileID: 11400000, guid: c8d8e3763a719ed4d917af696109ba61,
     type: 2}
-  _matchRouteConfig: {fileID: 11400000, guid: fcfb53946b5c0c242a2c34020583be69, type: 2}
+  _matchRouteConfig: {fileID: 11400000, guid: 98ae32bd8ed6f844681f9b718946fd33, type: 2}
 --- !u!114 &1851024796
 MonoBehaviour:
   m_ObjectHideFlags: 0

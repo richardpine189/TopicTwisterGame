@@ -42,7 +42,7 @@ namespace Architecture.Match.Domain
         public string[] CurrentAnswers;
         public string[] CurrentCategories;
         public bool[] CurrentResults;
-        public char? CurrentLetter;
+        public char CurrentLetter = '!';
         public int RoundTimeLeft = 60;
     }
 }

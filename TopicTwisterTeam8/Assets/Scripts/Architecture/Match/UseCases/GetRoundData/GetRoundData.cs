@@ -12,7 +12,7 @@ namespace Architecture.Match.UseCases.GetRoundData
             return _activeMatchRepository.Match.round.CurrentCategories;
         }
 
-        public char? GetCurrentLetter()
+        public char GetCurrentLetter()
         {
             return _activeMatchRepository.Match.round.CurrentLetter;
         }

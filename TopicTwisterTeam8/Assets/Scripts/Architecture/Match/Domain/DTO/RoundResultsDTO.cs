@@ -7,6 +7,8 @@ namespace Architecture.Match.Domain.DTO
         public string[] opponentAnswers;
         public bool[] challengerResults;
         public bool[] opponentResults;
+        public char letter;
+        public int roundIndex;
         public WinnerStatus matchStatus;
     }
 }

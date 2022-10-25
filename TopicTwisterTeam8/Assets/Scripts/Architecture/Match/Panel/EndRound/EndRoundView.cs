@@ -11,6 +11,7 @@ namespace Architecture.Match.Panel.EndRound
     public class EndRoundView : MonoBehaviour, IEndRoundView
     {
         public event Action OnSetRoundResults;
+        public event Action OnSetLetterForRoundResults;
     
         private const string PANEL_NAME = "FINAL DE RONDA";
     
@@ -123,6 +124,7 @@ namespace Architecture.Match.Panel.EndRound
         {
             _nextRoundButton.GetComponent<Button>().enabled = false;
             _categoriesPanel.SetActive(true);
+            OnSetLetterForRoundResults?.Invoke();
             gameObject.SetActive(false);
         }
 
@@ -132,6 +134,11 @@ namespace Architecture.Match.Panel.EndRound
             //text.text = challengerWon ? "Ganaste!" : "Perdiste :(";
             _nextRoundButton.SetActive(false);
             _backToMainButton.SetActive(true);
+        }
+
+        public void SetLetterForHeader()
+        {
+            OnSetLetterForRoundResults?.Invoke();
         }
 
         public void BackToMain()

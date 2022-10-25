@@ -6,6 +6,7 @@ namespace Architecture.Match.Panel.EndRound
     public interface IEndRoundView
     {
         event Action OnSetRoundResults;
+        event Action OnSetLetterForRoundResults;
 
         void ShowCategories(string[] categories);
 
@@ -14,6 +15,8 @@ namespace Architecture.Match.Panel.EndRound
         void ShowSecondPlayerAnswersAndResult(string[] answers, bool[] results);
 
         void ShowEndGamePanel(WinnerStatus winner);
+        
+        void SetLetterForHeader();
     }
 }
 

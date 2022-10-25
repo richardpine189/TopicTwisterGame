@@ -30,12 +30,12 @@ namespace Architecture.Letter
     
         private void AskForLetter()
         {
-            char? tempLetter = _getRoundDataUseCase.GetCurrentLetter();
-            if (tempLetter == null)
+            char tempLetter = _getRoundDataUseCase.GetCurrentLetter();
+            if (tempLetter == '!')
             {
                 tempLetter = _getLetter.Invoke();
             }
-            UpdateInterface((char)tempLetter);
+            UpdateInterface(tempLetter);
         }
 
         private void KeepLetter()
