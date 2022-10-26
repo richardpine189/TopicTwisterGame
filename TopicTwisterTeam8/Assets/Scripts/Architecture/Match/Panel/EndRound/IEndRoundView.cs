@@ -7,6 +7,7 @@ namespace Architecture.Match.Panel.EndRound
     {
         event Action OnSetRoundResults;
         event Action OnSetLetterForRoundResults;
+        public event Action OnSetRoundNumberForRoundResults;
         public event Action OnUpdateRoundNumber;
 
         void ShowCategories(string[] categories);

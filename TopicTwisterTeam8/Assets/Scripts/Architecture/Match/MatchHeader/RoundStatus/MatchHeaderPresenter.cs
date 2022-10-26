@@ -12,6 +12,7 @@ namespace Architecture.Match.MatchHeader.RoundStatus
 
         private string _challengerName;
         private string _opponentName;
+        private readonly IEndRoundView _endRoundView;
 
         private const int OFFSET_ROUND_NUMBER = 1;
 
@@ -20,7 +21,8 @@ namespace Architecture.Match.MatchHeader.RoundStatus
             _headerView = matchHeaderView;
             _loadingGameView = loadingGameView;
             _getMatchDataUseCase = getMatchDataUseCase;
-            endRoundView.OnSetLetterForRoundResults += InitializeHeader;
+            _endRoundView = endRoundView;
+            _endRoundView.OnSetRoundNumberForRoundResults += InitializeHeader;
             _loadingGameView.OnSendNamesInHeader += InitializeHeader;
         }
 
