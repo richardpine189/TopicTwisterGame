@@ -16,7 +16,7 @@ namespace Architecture.Match.Panel.EndRound
 
         void ShowSecondPlayerAnswersAndResult(string[] answers, bool[] results);
 
-        void ShowEndGamePanel(WinnerStatus winner);
+        void ShowEndGamePanel(string winner);
         
         void SetLetterForHeader();
     }

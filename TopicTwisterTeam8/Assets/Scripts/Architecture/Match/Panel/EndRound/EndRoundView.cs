@@ -131,10 +131,10 @@ namespace Architecture.Match.Panel.EndRound
             gameObject.SetActive(false);
         }
 
-        public void ShowEndGamePanel(WinnerStatus winner)
+        public void ShowEndGamePanel(string winner)
         {
             TMP_Text text = _endgamePanel.GetComponentInChildren(typeof(TMP_Text)) as TMP_Text;
-            //text.text = challengerWon ? "Ganaste!" : "Perdiste :(";
+            text.text = winner;
             _nextRoundButton.SetActive(false);
             _backToMainButton.SetActive(true);
         }

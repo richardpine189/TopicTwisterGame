@@ -63,10 +63,20 @@ namespace Architecture.Match.Panel.EndRound
             
             _saveRoundData.SaveLetter(currentRoundLetter);
             //_saveMatchData.SaveCurrentRound(currentRoundNumber);
-                
+
             if (roundNumber == LAST_ROUND && roundResultsDto.matchStatus != WinnerStatus.Unassigned)
             {
-                _endRoundView.ShowEndGamePanel(roundResultsDto.matchStatus);
+                bool isPlayerChallenger = _userLocalRepository.GetData().name == _getMatchDataUseCase.GetChallengerName();
+
+                string winnerText = "";
+                if (roundResultsDto.matchStatus == WinnerStatus.Challenger)
+                    winnerText = (isPlayerChallenger ? "Ganaste!" : "Perdiste!");
+                if (roundResultsDto.matchStatus == WinnerStatus.Opponent)
+                    winnerText = (!isPlayerChallenger ? "Ganaste!" : "Perdiste!");
+                if (roundResultsDto.matchStatus == WinnerStatus.Draw)
+                    winnerText = "Empataste!";
+
+                _endRoundView.ShowEndGamePanel(winnerText);
             }
 
             ShowResultsInView(roundResultsDto);
