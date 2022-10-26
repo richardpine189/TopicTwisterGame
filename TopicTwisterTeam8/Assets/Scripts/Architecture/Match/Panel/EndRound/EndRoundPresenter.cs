@@ -33,11 +33,13 @@ namespace Architecture.Match.Panel.EndRound
             _endRoundView = endRoundView;
             _userLocalRepository = userLocalRepository;
             _endRoundView.OnSetRoundResults += RequestRoundResult;
+            _endRoundView.OnUpdateRoundNumber += UpdateRoundNumber;
         }
 
         ~EndRoundPresenter()
         {
             _endRoundView.OnSetRoundResults -= RequestRoundResult;
+            _endRoundView.OnUpdateRoundNumber -= UpdateRoundNumber;
         }
 
         private async void RequestRoundResult()
@@ -60,7 +62,7 @@ namespace Architecture.Match.Panel.EndRound
             _endRoundView.SetLetterForHeader();
             
             _saveRoundData.SaveLetter(currentRoundLetter);
-            _saveMatchData.SaveCurrentRound(currentRoundNumber);
+            //_saveMatchData.SaveCurrentRound(currentRoundNumber);
                 
             if (roundNumber == LAST_ROUND && roundResultsDto.matchStatus != WinnerStatus.Unassigned)
             {
@@ -84,6 +86,13 @@ namespace Architecture.Match.Panel.EndRound
                 _endRoundView.ShowLoggedPlayerAnswersAndResult(roundResultsDto.opponentAnswers, roundResultsDto.opponentResults);
                 _endRoundView.ShowSecondPlayerAnswersAndResult(roundResultsDto.challengerAnswers, roundResultsDto.challengerResults);
             }
+        }
+
+        private void UpdateRoundNumber()
+        {
+            int roundNumber = _getMatchDataUseCase.GetRoundNumber();
+            roundNumber++;
+            _saveMatchData.SaveCurrentRound(roundNumber);
         }
     }
 }

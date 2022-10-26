@@ -12,6 +12,7 @@ namespace Architecture.Match.Panel.EndRound
     {
         public event Action OnSetRoundResults;
         public event Action OnSetLetterForRoundResults;
+        public event Action OnUpdateRoundNumber;
     
         private const string PANEL_NAME = "FINAL DE RONDA";
     
@@ -124,6 +125,7 @@ namespace Architecture.Match.Panel.EndRound
         {
             _nextRoundButton.GetComponent<Button>().enabled = false;
             _categoriesPanel.SetActive(true);
+            OnUpdateRoundNumber?.Invoke();
             OnSetLetterForRoundResults?.Invoke();
             gameObject.SetActive(false);
         }

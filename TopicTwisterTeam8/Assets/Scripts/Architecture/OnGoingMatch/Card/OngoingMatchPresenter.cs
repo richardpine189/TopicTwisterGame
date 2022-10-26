@@ -152,6 +152,7 @@ namespace Architecture.OnGoingMatch.Card
                 {
                     _view.SetCardColor(YELLOW_COLOR);
                 }
+                _view.ShowFinishedMatchText();
             }
         }
     }

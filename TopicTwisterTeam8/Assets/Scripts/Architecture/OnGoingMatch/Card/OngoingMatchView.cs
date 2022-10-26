@@ -35,33 +35,6 @@ namespace Architecture.OnGoingMatch.Card
             _score.text = formatingScore;
         }
 
-        private void Start()
-        {
-            //StartCoroutine(ChangeClockForButton()); ACCESS TO SKYNET
-        }
-    
-        /* SKYNET LOGIC - REQUEST TO SOLVE
-     
-    IEnumerator ChangeClockForButton()
-    {
-        yield return new WaitForSeconds(5);
-        _waitingClock.SetActive(false);
-        //_presenter.BotResolveRound(matchId, new CategoriesGetter(new CategoryService())); SKYNET SOLVE
-        _playButton.SetActive(true);
-        SaveState();
-    }
-
-    public void SaveState()
-    {
-        MatchViewModel match = new MatchViewModel();
-        match.idMatch = matchId;
-        match.opponentName = _opponentName.text;
-        match.currentRound = int.Parse(_round.text.Split(" ")[1]);
-        match.isChallengerTurn = true;
-        _presenter.SaveCurrentMatch(match.idMatch);
-    }
-    */
-
         public void SetOpponentName(string name)
         {
             _opponentName.text = name;
@@ -76,12 +49,21 @@ namespace Architecture.OnGoingMatch.Card
         {
             _waitingClock.SetActive(true);
             _playButton.SetActive(false);
+            _turn.text = "Esperando al oponente";
         }
 
         public void ShowPlayButton()
         {
             _waitingClock.SetActive(false);
             _playButton.SetActive(true);
+            _turn.text = "Es su turno";
+        }
+
+        public void ShowFinishedMatchText()
+        {
+            _waitingClock.SetActive(false);
+            _playButton.SetActive(false);
+            _turn.text = "Partida Terminada";
         }
 
         public void LoadMatch()

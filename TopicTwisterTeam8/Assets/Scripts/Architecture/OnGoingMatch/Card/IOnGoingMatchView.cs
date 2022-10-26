@@ -20,5 +20,7 @@ namespace Architecture.OnGoingMatch.Card
         void SetRoundCount(string formatingScore);
 
         void SetCardColor(Color color);
+
+        public void ShowFinishedMatchText();
     }
 }
