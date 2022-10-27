@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Architecture.Match.Domain.DTO;
 using Architecture.Match.MatchHeader.TitleHeaderView;
 using TMPro;
@@ -52,6 +53,9 @@ namespace Architecture.Match.Panel.EndRound
     
         [SerializeField]
         private GameObject _backToMainButton;
+        
+        [SerializeField]
+        private TransitionLoadingView _transitionLoading;
 
         void OnEnable()
         {
@@ -148,7 +152,14 @@ namespace Architecture.Match.Panel.EndRound
         public void BackToMain()
         {
             _backToMainButton.GetComponent<Button>().enabled = false;
-            SceneManager.LoadScene(1, LoadSceneMode.Single);
+            _transitionLoading.SlideUp();
+            StartCoroutine(WaitingForEndTransitionAnimation());
+            
+        }
+        IEnumerator WaitingForEndTransitionAnimation()
+        {
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene(1,LoadSceneMode.Single);
         }
 
         public void ChangeButtons()

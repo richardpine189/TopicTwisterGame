@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,9 @@ public class MainScenePanelNavigator : MonoBehaviour
     [SerializeField] private List<RectTransform> _panels;
 
     private const float ANIMATION_TIME_TO_SLIDING = 0.5f;
+
+    [SerializeField]
+    private TransitionLoadingView _transitionLoading;
 
     void Start()
     {
@@ -29,7 +33,14 @@ public class MainScenePanelNavigator : MonoBehaviour
 
     public void PlaceHoldingLogOut()
     {
-        SceneManager.LoadScene("LoginScene");
+        _transitionLoading.SlideUp();
+        StartCoroutine(WaitingForEndTransitionAnimation());
+            
+    }
+    IEnumerator WaitingForEndTransitionAnimation()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(0,LoadSceneMode.Single);
     }
 }
 

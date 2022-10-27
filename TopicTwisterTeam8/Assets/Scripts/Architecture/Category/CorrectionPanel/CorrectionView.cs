@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Architecture.Match.MatchHeader.TitleHeaderView;
 using TMPro;
 using UnityEngine;
@@ -38,6 +39,9 @@ namespace Architecture.Category.CorrectionPanel
 
         [SerializeField]
         private GameObject _spiner;
+
+        [SerializeField]
+        private TransitionLoadingView _transitionLoading;
 
         private void OnEnable()
         {
@@ -80,6 +84,13 @@ namespace Architecture.Category.CorrectionPanel
 
         public void ChangeScene()
         {
+            _transitionLoading.SlideUp();
+            StartCoroutine(WaitingForEndTransitionAnimation());
+            
+        }
+        IEnumerator WaitingForEndTransitionAnimation()
+        {
+            yield return new WaitForSeconds(1f);
             SceneManager.LoadScene(1,LoadSceneMode.Single);
         }
 

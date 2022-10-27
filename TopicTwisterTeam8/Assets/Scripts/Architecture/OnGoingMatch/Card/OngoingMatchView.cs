@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,6 +29,13 @@ namespace Architecture.OnGoingMatch.Card
 
         [SerializeField]
         private Image _backgroundImage;
+
+        private TransitionLoadingView _transitionLoading;
+
+        private void Start()
+        {
+            _transitionLoading = GameObject.Find("Transition").GetComponent<TransitionLoadingView>();
+        }
 
         public event Action OnStartMatch;
         public void SetRoundCount(string formatingScore)
@@ -69,6 +77,14 @@ namespace Architecture.OnGoingMatch.Card
         public void LoadMatch()
         {
             OnStartMatch?.Invoke();
+            
+            _transitionLoading.SlideUp();
+            StartCoroutine(WaitingForEndTransitionAnimation());
+            
+        }
+        IEnumerator WaitingForEndTransitionAnimation()
+        {
+            yield return new WaitForSeconds(1f);
             SceneManager.LoadScene(2, LoadSceneMode.Single);
         }
 

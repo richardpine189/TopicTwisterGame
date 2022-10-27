@@ -2047,6 +2047,7 @@ MonoBehaviour:
   _categoriesPanel: {fileID: 0}
   _nextRoundButton: {fileID: 2021586082319858798}
   _backToMainButton: {fileID: 4080741033069139405}
+  _transitionLoading: {fileID: 0}
 --- !u!1 &2021586082614836772
 GameObject:
   m_ObjectHideFlags: 0
