@@ -4,7 +4,7 @@ namespace Architecture.Match.UseCases.CreateNewMatch
 {
     public interface INewGameView
     {
-        public void LoadGameScene();
+        public void StartGame();
         event Action OnNewGameButtonClick;
     }
 }

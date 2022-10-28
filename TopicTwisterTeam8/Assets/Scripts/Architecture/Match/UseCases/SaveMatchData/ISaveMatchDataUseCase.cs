@@ -1,3 +1,5 @@
+using Architecture.Match.Domain.DTO;
+
 namespace Architecture.Match.UseCases.SaveMatchData
 {
     public interface ISaveMatchDataUseCase
@@ -6,5 +8,7 @@ namespace Architecture.Match.UseCases.SaveMatchData
         void SaveCurrentRound(int currentRound);
         void SetTurnState(bool isChallengerTurn);
         void SetMatchState(bool isMatchFinished);
+        void SaveNewMatch(MatchDTO matchDto);
+        void SaveActiveMatch(ActiveMatchDTO activeMatch, int matchId);
     }
 }

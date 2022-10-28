@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Architecture.Match.ActiveMatchRepository;
 using Architecture.Match.UseCases.GetCurrentMatch;
+using Architecture.Match.UseCases.SaveMatchData;
 using Architecture.OnGoingMatch.UseCase;
 using Architecture.User.Repository;
 
@@ -18,12 +19,14 @@ namespace Architecture.Match.Panel.LoadingMatch
         private string _secondPlayer;
         private int _currentRound;
         private int _matchId = -1;
-        
+        private readonly ISaveMatchDataUseCase _saveMatchData;
+
         private const int ITS_NEW_MATCH= -1;
         private const int FIRST_ROUND = 0;
 
-        public LoadingGamePresenter(ILoadingGameView loadingGameView,IGetCurrentMatchUseCase getMatch, IActiveMatchRepository matchRepositoryUseCase, IGetMatchId getMatchId, ILocalPlayerDataRepository userLocalRepository)
+        public LoadingGamePresenter(ILoadingGameView loadingGameView,IGetCurrentMatchUseCase getMatch,ISaveMatchDataUseCase saveMatchData, IActiveMatchRepository matchRepositoryUseCase, IGetMatchId getMatchId, ILocalPlayerDataRepository userLocalRepository)
         {
+            _saveMatchData = saveMatchData;
             _userLocalRepository = userLocalRepository;
             _view = loadingGameView;
             _getMatch = getMatch;
@@ -36,6 +39,7 @@ namespace Architecture.Match.Panel.LoadingMatch
         {
             _matchId = _getMachId.Invoke();
             _playerLogged = _userLocalRepository.GetData().name;
+            
             _view.SetChallenger(_playerLogged); 
             
             await RequestMatchData();
@@ -56,34 +60,24 @@ namespace Architecture.Match.Panel.LoadingMatch
         {
             if (_matchId == ITS_NEW_MATCH)
             {
+                //Try Catch para capturar las excepciones creadas en el BACK de MATCH Y USER API.
                 var matchDto = await _getMatch.Invoke(_playerLogged);
 
                 _currentRound = matchDto.currentRound;
                 _secondPlayer = (matchDto.opponentName == _playerLogged ? matchDto.challengerName : matchDto.opponentName);
+
+                _saveMatchData.SaveNewMatch(matchDto);
                 
-                _matchRepositoryUseCase.Match = new Domain.Match();
-                _matchRepositoryUseCase.Match.idMatch = matchDto.idMatch;
-                _matchRepositoryUseCase.Match.challengerName = matchDto.challengerName;
-                _matchRepositoryUseCase.Match.opponentName = matchDto.opponentName;
-                _matchRepositoryUseCase.Match.currentRound = matchDto.currentRound;
-                _matchRepositoryUseCase.Match.isChallengerTurn = matchDto.isChallengerTurn;
-                _matchRepositoryUseCase.Match.isMatchFinished = matchDto.isMatchFinished;
             }
             else
             {
-                var activematch = await _getMatch.Invoke(_matchId);
+                var activeMatch = await _getMatch.Invoke(_matchId);
 
-                _currentRound = activematch.currentRound;
-                _secondPlayer = (activematch.opponentName == _playerLogged ? activematch.challengerName : activematch.opponentName);
+                _currentRound = activeMatch.currentRound;
+                _secondPlayer = (activeMatch.opponentName == _playerLogged ? activeMatch.challengerName : activeMatch.opponentName);
                 
-                _matchRepositoryUseCase.Match = new Domain.Match();
-                _matchRepositoryUseCase.Match.idMatch = _matchId;
-                _matchRepositoryUseCase.Match.challengerName = activematch.challengerName;
-                _matchRepositoryUseCase.Match.opponentName = activematch.opponentName;
-                _matchRepositoryUseCase.Match.currentRound = activematch.currentRound;
-                _matchRepositoryUseCase.Match.round.CurrentCategories = activematch.currentCategories;
-                _matchRepositoryUseCase.Match.round.CurrentLetter = activematch.currentLetter;
-                _matchRepositoryUseCase.Match.round.RoundTimeLeft = activematch.currentTime;
+                _saveMatchData.SaveActiveMatch(activeMatch, _matchId);
+                
             }
         }
         

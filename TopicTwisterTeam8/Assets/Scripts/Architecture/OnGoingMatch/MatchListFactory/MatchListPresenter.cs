@@ -20,7 +20,13 @@ namespace Architecture.OnGoingMatch.MatchListFactory
             _view = view;
             _matchInfoUseCase = matchInfoUseCase;
             _playerDataRepository = playerDataRepository;
+            _view.OnUpdateMatchList += InitializeOnGoingMatch;
             InitializeOnGoingMatch();
+        }
+
+        ~MatchListPresenter()
+        {
+            _view.OnUpdateMatchList -= InitializeOnGoingMatch;
         }
 
         private async void InitializeOnGoingMatch()

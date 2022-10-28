@@ -8,13 +8,14 @@ namespace Architecture.Match.UseCases.CreateNewMatch
     public class NewGameView : MonoBehaviour, INewGameView
     {
         public event Action OnNewGameButtonClick;
+        
         [SerializeField]
         private TransitionLoadingView _transitionLoading;
         public void CreateNewMathButton()
         {
             OnNewGameButtonClick?.Invoke();
         }
-        public void LoadGameScene()
+        public void StartGame()
         {
             _transitionLoading.SlideUp();
             StartCoroutine(WaitingForEndTransitionAnimation());
@@ -22,7 +23,7 @@ namespace Architecture.Match.UseCases.CreateNewMatch
         }
         IEnumerator WaitingForEndTransitionAnimation()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1f); //TODO : Refactor Animation
             SceneManager.LoadScene(2,LoadSceneMode.Single);
         }
     }

@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 3645333906878392614}
   m_Layer: 5
   m_Name: OngoingMatch - XBig with Scale
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

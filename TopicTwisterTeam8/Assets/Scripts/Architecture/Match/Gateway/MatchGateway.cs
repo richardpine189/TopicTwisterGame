@@ -93,9 +93,9 @@ namespace Architecture.Match.Gateway
 
         private async Task<MatchDTO> InterpretateResponse(HttpResponseMessage response)
         {
-            if (response.StatusCode == HttpStatusCode.InternalServerError)
+            if (response.StatusCode == HttpStatusCode.NotFound)
             {
-                throw new HttpRequestException("There is not connection");
+                throw new HttpRequestException(await response.Content.ReadAsStringAsync());
             }
 
             var responseBody = await response.Content.ReadAsStringAsync();
