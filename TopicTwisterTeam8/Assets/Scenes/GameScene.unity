@@ -130,10 +130,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1048334306}
     m_Modifications:
+    - target: {fileID: 4705224950204538569, guid: d3541e43305a43c41ba99f87f4f06248,
+        type: 3}
+      propertyPath: m_text
+      value: Volver
+      objectReference: {fileID: 0}
     - target: {fileID: 4705224950394824322, guid: d3541e43305a43c41ba99f87f4f06248,
         type: 3}
       propertyPath: m_Name
       value: ErrorPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705224950394824322, guid: d3541e43305a43c41ba99f87f4f06248,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705224950394824323, guid: d3541e43305a43c41ba99f87f4f06248,
         type: 3}
@@ -239,6 +249,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705224950943468925, guid: d3541e43305a43c41ba99f87f4f06248,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907907359957478370, guid: d3541e43305a43c41ba99f87f4f06248,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.7458496
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3541e43305a43c41ba99f87f4f06248, type: 3}
@@ -525,7 +545,7 @@ PrefabInstance:
     - target: {fileID: 6841430347668191669, guid: 5c300ee1034e7254882663170d3c0393,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c300ee1034e7254882663170d3c0393, type: 3}
@@ -1815,6 +1835,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1048334306}
     m_Modifications:
+    - target: {fileID: 4598018452044827206, guid: 61438e9c4d7101e40899e3ffde5c00a3,
+        type: 3}
+      propertyPath: _panelError
+      value: 
+      objectReference: {fileID: 4705224950329028331}
     - target: {fileID: 4598018452044827206, guid: 61438e9c4d7101e40899e3ffde5c00a3,
         type: 3}
       propertyPath: _endRoundPanel

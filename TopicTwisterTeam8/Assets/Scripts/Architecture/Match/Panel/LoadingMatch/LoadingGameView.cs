@@ -7,7 +7,7 @@ namespace Architecture.Match.Panel.LoadingMatch
 {
     public class LoadingGameView : MonoBehaviour, ILoadingGameView
     {
-        public event Action OnReadyForNext;
+        public event Action OnReadyForPanelSelection;
         public event Action OnSendNamesInHeader;
 
         [SerializeField]
@@ -15,42 +15,43 @@ namespace Architecture.Match.Panel.LoadingMatch
 
         [SerializeField]
         private TMP_Text _opponentName;
-
-
+        
         [SerializeField]
         private GameObject _categoriesPanel;
 
         [SerializeField]
         private GameObject _endRoundPanel;
 
-        [SerializeField] private GameObject _spiner;
-        private const int ITS_NEW_MATCH = -1;
-
+        [SerializeField]
+        private ErrorPanel _panelError;
         
+        [SerializeField] private GameObject _spiner;
 
+        [SerializeField] private float waitingTimeForLoadingAnimation = 1f;
+        [SerializeField] private float waitingTimeForPanelSelection = 3f;
+        
         public void StartAnimation(bool isNewGame)
         {
             if (isNewGame)
                 StartCoroutine(LoadingAnimation());
             else
-                StartCoroutine(SecondWaiting());
-
+                StartCoroutine(ShowMatchInfo());
         }
 
         private IEnumerator LoadingAnimation()
         {
             _spiner.gameObject.SetActive(true);
-            yield return new WaitForSeconds(1f);
-            StartCoroutine(SecondWaiting());
+            yield return new WaitForSeconds(waitingTimeForLoadingAnimation);
+            StartCoroutine(ShowMatchInfo());
         }
 
-        public IEnumerator SecondWaiting()
+        public IEnumerator ShowMatchInfo()
         {
             _spiner.gameObject.SetActive(false);
 
-            yield return new WaitForSeconds(3.0f);
+            yield return new WaitForSeconds(waitingTimeForPanelSelection);
 
-            OnReadyForNext?.Invoke();
+            OnReadyForPanelSelection?.Invoke();
             OnSendNamesInHeader?.Invoke();
         }
 
@@ -82,5 +83,10 @@ namespace Architecture.Match.Panel.LoadingMatch
             gameObject.SetActive(false);
         }
 
+        public void ShowErrorInPanel(string errorMessage)
+        {
+            _panelError.gameObject.SetActive(true);
+            _panelError.SetMessage(errorMessage);
+        }
     }
 }

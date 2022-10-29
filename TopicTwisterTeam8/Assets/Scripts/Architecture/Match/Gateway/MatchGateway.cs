@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -95,7 +96,7 @@ namespace Architecture.Match.Gateway
         {
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
-                throw new HttpRequestException(await response.Content.ReadAsStringAsync());
+                throw new Exception(await response.Content.ReadAsStringAsync());
             }
 
             var responseBody = await response.Content.ReadAsStringAsync();

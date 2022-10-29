@@ -8,9 +8,9 @@ namespace Architecture.Match.Panel.LoadingMatch
         void SetOpponent(string opponentName);
         public void ShowEndRoundSection();
         public void ShowCategoriesSection();
-
+        public void ShowErrorInPanel(string errorMessage);
         public void StartAnimation(bool isNewGame);
-        public event Action OnReadyForNext;
+        public event Action OnReadyForPanelSelection;
         public event Action OnSendNamesInHeader;
     }
 }

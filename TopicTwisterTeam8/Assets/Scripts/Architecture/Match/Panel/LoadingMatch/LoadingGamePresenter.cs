@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Architecture.Match.ActiveMatchRepository;
 using Architecture.Match.UseCases.GetCurrentMatch;
 using Architecture.Match.UseCases.SaveMatchData;
@@ -11,7 +12,6 @@ namespace Architecture.Match.Panel.LoadingMatch
     {
         private readonly ILoadingGameView _view;
         private readonly IGetCurrentMatchUseCase _getMatch;
-        private readonly IActiveMatchRepository _matchRepositoryUseCase;
         private readonly IGetMatchId _getMachId;
         private readonly ILocalPlayerDataRepository _userLocalRepository;
         
@@ -24,13 +24,12 @@ namespace Architecture.Match.Panel.LoadingMatch
         private const int ITS_NEW_MATCH= -1;
         private const int FIRST_ROUND = 0;
 
-        public LoadingGamePresenter(ILoadingGameView loadingGameView,IGetCurrentMatchUseCase getMatch,ISaveMatchDataUseCase saveMatchData, IActiveMatchRepository matchRepositoryUseCase, IGetMatchId getMatchId, ILocalPlayerDataRepository userLocalRepository)
+        public LoadingGamePresenter(ILoadingGameView loadingGameView,IGetCurrentMatchUseCase getMatch,ISaveMatchDataUseCase saveMatchData, IGetMatchId getMatchId, ILocalPlayerDataRepository userLocalRepository)
         {
             _saveMatchData = saveMatchData;
             _userLocalRepository = userLocalRepository;
             _view = loadingGameView;
             _getMatch = getMatch;
-            _matchRepositoryUseCase = matchRepositoryUseCase;
             _getMachId = getMatchId;
             
             Initialize();
@@ -46,28 +45,32 @@ namespace Architecture.Match.Panel.LoadingMatch
             
             _view.SetOpponent(_secondPlayer);
 
-            _view.OnReadyForNext += SelectSectionAtStart;
+            _view.OnReadyForPanelSelection += SelectSectionAtStart;
             
             _view.StartAnimation(_matchId == ITS_NEW_MATCH);
         }
 
         ~LoadingGamePresenter()
         {
-            _view.OnReadyForNext -= SelectSectionAtStart;
+            _view.OnReadyForPanelSelection -= SelectSectionAtStart;
         }
         
         private async Task RequestMatchData()
         {
             if (_matchId == ITS_NEW_MATCH)
             {
-                //Try Catch para capturar las excepciones creadas en el BACK de MATCH Y USER API.
-                var matchDto = await _getMatch.Invoke(_playerLogged);
-
-                _currentRound = matchDto.currentRound;
-                _secondPlayer = (matchDto.opponentName == _playerLogged ? matchDto.challengerName : matchDto.opponentName);
-
-                _saveMatchData.SaveNewMatch(matchDto);
-                
+                try
+                {
+                    var matchDto = await _getMatch.Invoke(_playerLogged);
+                    _currentRound = matchDto.currentRound;
+                    _secondPlayer = (matchDto.opponentName == _playerLogged ? matchDto.challengerName : matchDto.opponentName);
+                    _saveMatchData.SaveNewMatch(matchDto);
+                }
+                catch (Exception ex)
+                {
+                    _view.ShowErrorInPanel(ex.Message);
+                }
+   
             }
             else
             {
