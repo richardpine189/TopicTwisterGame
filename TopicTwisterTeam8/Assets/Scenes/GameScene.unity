@@ -545,7 +545,7 @@ PrefabInstance:
     - target: {fileID: 6841430347668191669, guid: 5c300ee1034e7254882663170d3c0393,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c300ee1034e7254882663170d3c0393, type: 3}
@@ -1395,9 +1395,9 @@ MonoBehaviour:
   _matchHeaderLetterView: {fileID: 6473263164745180402}
   _matchHeaderPlayerNameView: {fileID: 6473263164745180403}
   _matchHeaderTitleView: {fileID: 6473263164745180400}
-  _categoriesRouteConfig: {fileID: 11400000, guid: c8d8e3763a719ed4d917af696109ba61,
+  _categoriesRouteConfig: {fileID: 11400000, guid: 9146f8b0d908ef24db1b8b58c06863b3,
     type: 2}
-  _matchRouteConfig: {fileID: 11400000, guid: fcfb53946b5c0c242a2c34020583be69, type: 2}
+  _matchRouteConfig: {fileID: 11400000, guid: 98ae32bd8ed6f844681f9b718946fd33, type: 2}
 --- !u!114 &1851024796
 MonoBehaviour:
   m_ObjectHideFlags: 0

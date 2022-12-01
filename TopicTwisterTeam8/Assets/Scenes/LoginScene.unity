@@ -542,7 +542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loginView: {fileID: 1534911255}
   _signInView: {fileID: 925370558}
-  _config: {fileID: 11400000, guid: 8784ad6f32edc504c996b7bb917f0146, type: 2}
+  _config: {fileID: 11400000, guid: 69dda32532ba5da4bba603bccbaa3257, type: 2}
 --- !u!114 &24504856
 MonoBehaviour:
   m_ObjectHideFlags: 0
